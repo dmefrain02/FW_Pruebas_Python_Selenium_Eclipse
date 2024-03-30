@@ -1,0 +1,33 @@
+Prueba: 01-01-2024 - 200736 - Se descargo correctamente el archivo Jpeg_with_exif.jpeg en la ruta C:\Users\dmefr\Desktop\Carpeta MEGA\Videos QA\Curso Automatizacion Pruebas\Framework Pruebas Automatizadas\Entornos Virtuales\EnviromentQA\Framework Automatizacion Pruebas\src\Archivos Descargados 
+--------------------------------------------------------------------Prueba: 04-01-2024 - 174321 - Se descargo correctamente el archivo my Selenium.txt en la ruta C:\Users\dmefr\Desktop\Carpeta MEGA\Videos QA\Curso Automatizacion Pruebas\Framework Pruebas Automatizadas\Entornos Virtuales\EnviromentQA\Framework Automatizacion Pruebas\src\Archivos Descargados 
+--------------------------------------------------------------------
+Prueba: 04-01-2024 - 174517 - Se descargo correctamente el archivo my Selenium.txt en la ruta C:\Users\dmefr\Desktop\Carpeta MEGA\Videos QA\Curso Automatizacion Pruebas\Framework Pruebas Automatizadas\Entornos Virtuales\EnviromentQA\Framework Automatizacion Pruebas\src\Archivos Descargados 
+--------------------------------------------------------------------
+Prueba: 04-01-2024 - 184208 - Se descargo correctamente el archivo my Selenium.txt en la ruta C:\Users\dmefr\Desktop\Carpeta MEGA\Videos QA\Curso Automatizacion Pruebas\Framework Pruebas Automatizadas\Entornos Virtuales\EnviromentQA\Framework Automatizacion Pruebas\src\Archivos Descargados 
+--------------------------------------------------------------------
+Prueba: 04-01-2024 - 193459 - Se descargo correctamente el archivo my Selenium.txt en la ruta C:\Users\dmefr\Desktop\Carpeta MEGA\Videos QA\Curso Automatizacion Pruebas\Framework Pruebas Automatizadas\Entornos Virtuales\EnviromentQA\Framework Automatizacion Pruebas\src\Archivos Descargados 
+--------------------------------------------------------------------
+Prueba: 08-01-2024 - 182253 - Se descargo correctamente el archivo my Selenium.txt en la ruta C:\Users\dmefr\Desktop\Carpeta MEGA\Videos QA\Curso Automatizacion Pruebas\Framework Pruebas Automatizadas\Entornos Virtuales\EnviromentQA\Framework Automatizacion Pruebas\src\Archivos Descargados 
+--------------------------------------------------------------------
+Prueba: 08-01-2024 - 182400 - Se descargo correctamente el archivo my Selenium.txt en la ruta C:\Users\dmefr\Desktop\Carpeta MEGA\Videos QA\Curso Automatizacion Pruebas\Framework Pruebas Automatizadas\Entornos Virtuales\EnviromentQA\Framework Automatizacion Pruebas\src\Archivos Descargados 
+--------------------------------------------------------------------
+Prueba: 08-01-2024 - 182420 - Se descargo correctamente el archivo my Selenium.txt en la ruta C:\Users\dmefr\Desktop\Carpeta MEGA\Videos QA\Curso Automatizacion Pruebas\Framework Pruebas Automatizadas\Entornos Virtuales\EnviromentQA\Framework Automatizacion Pruebas\src\Archivos Descargados 
+--------------------------------------------------------------------
+Prueba: 08-01-2024 - 184403 - No se descargo el archivo my Selenium.txt en la ruta C:\Users\dmefr\Desktop\Carpeta MEGA\Videos QA\Curso Automatizacion Pruebas\Framework Pruebas Automatizadas\Entornos Virtuales\EnviromentQA\Framework Automatizacion Pruebas\src\Archivos Descargados 
+--------------------------------------------------------------------
+Prueba: 08-01-2024 - 184403 - Se descargo correctamente el archivo my Selenium.txt en la ruta C:\Users\dmefr\Desktop\Carpeta MEGA\Videos QA\Curso Automatizacion Pruebas\Framework Pruebas Automatizadas\Entornos Virtuales\EnviromentQA\Framework Automatizacion Pruebas\src\Archivos Descargados 
+--------------------------------------------------------------------
+Prueba: 08-01-2024 - 184403 - No se descargo el archivo my Selenium.txt en la ruta C:\Users\dmefr\Desktop\Carpeta MEGA\Videos QA\Curso Automatizacion Pruebas\Framework Pruebas Automatizadas\Entornos Virtuales\EnviromentQA\Framework Automatizacion Pruebas\src\Archivos Descargados 
+--------------------------------------------------------------------
+Prueba: 08-01-2024 - 184403 - No se descargo el archivo my Selenium.txt en la ruta C:\Users\dmefr\Desktop\Carpeta MEGA\Videos QA\Curso Automatizacion Pruebas\Framework Pruebas Automatizadas\Entornos Virtuales\EnviromentQA\Framework Automatizacion Pruebas\src\Archivos Descargados 
+--------------------------------------------------------------------
+Prueba: 08-01-2024 - 184823 - No se descargo el archivo sample-zip-file.zip en la ruta C:\Users\dmefr\Desktop\Carpeta MEGA\Videos QA\Curso Automatizacion Pruebas\Framework Pruebas Automatizadas\Entornos Virtuales\EnviromentQA\Framework Automatizacion Pruebas\src\Archivos Descargados 
+--------------------------------------------------------------------
+Prueba: 08-01-2024 - 184823 - Se descargo correctamente el archivo sample-zip-file.zip en la ruta C:\Users\dmefr\Desktop\Carpeta MEGA\Videos QA\Curso Automatizacion Pruebas\Framework Pruebas Automatizadas\Entornos Virtuales\EnviromentQA\Framework Automatizacion Pruebas\src\Archivos Descargados 
+--------------------------------------------------------------------
+Prueba: 08-01-2024 - 185706 - Se descargo correctamente el archivo sample-zip-file.zip en la ruta C:\Users\dmefr\Desktop\Carpeta MEGA\Videos QA\Curso Automatizacion Pruebas\Framework Pruebas Automatizadas\Entornos Virtuales\EnviromentQA\Framework Automatizacion Pruebas\src\Archivos Descargados 
+--------------------------------------------------------------------
+Prueba: 21-01-2024 - 093413 - No se descargo el archivo sample-zip-file.zip en la ruta C:\Users\dmefr\Desktop\Carpeta MEGA\Videos QA\Curso Automatizacion Pruebas\Framework Pruebas Automatizadas\Entornos Virtuales\EnviromentQA\Framework Automatizacion Pruebas\src\Archivos Descargados 
+--------------------------------------------------------------------
+Prueba: 21-01-2024 - 094414 - No se descargo el archivo sample-zip-file.zip en la ruta C:\Users\dmefr\Desktop\Carpeta MEGA\Videos QA\Curso Automatizacion Pruebas\Framework Pruebas Automatizadas\Entornos Virtuales\EnviromentQA\Framework Automatizacion Pruebas\src\Archivos Descargados 
+--------------------------------------------------------------------

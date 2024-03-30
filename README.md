@@ -1,2 +1,0 @@
-# FW_Pruebas_Python_Selenium
-FW_Pruebas_Python_Selenium
