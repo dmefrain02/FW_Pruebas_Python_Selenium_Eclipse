@@ -1,5 +1,5 @@
 {
-  "uid" : "384df9cc3b11790c",
+  "uid" : "dd7fe93718984277",
   "name" : "test_001",
   "fullName" : "test37.Test#test_001",
   "historyId" : "a5f5aa280614c713d30f97eba7c5836f",
@@ -25,10 +25,10 @@
     "steps" : [ ],
     "attachments" : [ ],
     "parameters" : [ ],
-    "shouldDisplayMessage" : false,
-    "attachmentsCount" : 0,
     "stepsCount" : 0,
-    "hasContent" : false
+    "hasContent" : false,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
   } ],
   "testStage" : {
     "description" : "Caso de prueba para verificar el</br>\nlogin y </br>\nregistro en el aplicativo web de pruebas",
@@ -46,10 +46,10 @@
       "steps" : [ ],
       "attachments" : [ ],
       "parameters" : [ ],
-      "shouldDisplayMessage" : false,
-      "attachmentsCount" : 0,
       "stepsCount" : 0,
-      "hasContent" : false
+      "hasContent" : false,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
     }, {
       "name" : "Paso 2: Ir al sitio de la aplicacion de pruebas",
       "time" : {
@@ -61,10 +61,10 @@
       "steps" : [ ],
       "attachments" : [ ],
       "parameters" : [ ],
-      "shouldDisplayMessage" : false,
-      "attachmentsCount" : 0,
       "stepsCount" : 0,
-      "hasContent" : false
+      "hasContent" : false,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
     }, {
       "name" : "Paso 3: Ingresar datos en el campo First Name del formulario de registro",
       "time" : {
@@ -76,10 +76,10 @@
       "steps" : [ ],
       "attachments" : [ ],
       "parameters" : [ ],
-      "shouldDisplayMessage" : false,
-      "attachmentsCount" : 0,
       "stepsCount" : 0,
-      "hasContent" : false
+      "hasContent" : false,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
     }, {
       "name" : "Paso 4: Ingresar datos en el campo Last Name del formulario de registro",
       "time" : {
@@ -91,10 +91,10 @@
       "steps" : [ ],
       "attachments" : [ ],
       "parameters" : [ ],
-      "shouldDisplayMessage" : false,
-      "attachmentsCount" : 0,
       "stepsCount" : 0,
-      "hasContent" : false
+      "hasContent" : false,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
     }, {
       "name" : "Paso 5: Ingresar datos en el campo Email del formulario de registro",
       "time" : {
@@ -106,10 +106,10 @@
       "steps" : [ ],
       "attachments" : [ ],
       "parameters" : [ ],
-      "shouldDisplayMessage" : false,
-      "attachmentsCount" : 0,
       "stepsCount" : 0,
-      "hasContent" : false
+      "hasContent" : false,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
     }, {
       "name" : "Paso 6: Ingresar datos en el campo Telefono del formulario de registro",
       "time" : {
@@ -121,10 +121,10 @@
       "steps" : [ ],
       "attachments" : [ ],
       "parameters" : [ ],
-      "shouldDisplayMessage" : false,
-      "attachmentsCount" : 0,
       "stepsCount" : 0,
-      "hasContent" : false
+      "hasContent" : false,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
     }, {
       "name" : "Paso 7: Ingresar datos en el campo Password del formulario de registro",
       "time" : {
@@ -136,10 +136,10 @@
       "steps" : [ ],
       "attachments" : [ ],
       "parameters" : [ ],
-      "shouldDisplayMessage" : false,
-      "attachmentsCount" : 0,
       "stepsCount" : 0,
-      "hasContent" : false
+      "hasContent" : false,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
     }, {
       "name" : "Paso 8: Ingresar datos en el campo Password Confirm del formulario de registro",
       "time" : {
@@ -150,17 +150,17 @@
       "status" : "passed",
       "steps" : [ ],
       "attachments" : [ {
-        "uid" : "fb4031e97218e773",
+        "uid" : "dbc8cda8fc8db121",
         "name" : "Formulario con datos",
-        "source" : "fb4031e97218e773.png",
+        "source" : "dbc8cda8fc8db121.png",
         "type" : "image/png",
         "size" : 97835
       } ],
       "parameters" : [ ],
-      "shouldDisplayMessage" : false,
-      "attachmentsCount" : 1,
       "stepsCount" : 0,
-      "hasContent" : true
+      "hasContent" : true,
+      "attachmentsCount" : 1,
+      "shouldDisplayMessage" : false
     }, {
       "name" : "Paso 9: Marcar el campo Suscribe del formulario de registro",
       "time" : {
@@ -172,10 +172,10 @@
       "steps" : [ ],
       "attachments" : [ ],
       "parameters" : [ ],
-      "shouldDisplayMessage" : false,
-      "attachmentsCount" : 0,
       "stepsCount" : 0,
-      "hasContent" : false
+      "hasContent" : false,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
     }, {
       "name" : "Paso 10: Marcar el campo Privacy Policy del formulario de registro",
       "time" : {
@@ -187,10 +187,10 @@
       "steps" : [ ],
       "attachments" : [ ],
       "parameters" : [ ],
-      "shouldDisplayMessage" : false,
-      "attachmentsCount" : 0,
       "stepsCount" : 0,
-      "hasContent" : false
+      "hasContent" : false,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
     }, {
       "name" : "Paso 11: Presionar el boton Continuar para realizar el registro",
       "time" : {
@@ -202,10 +202,10 @@
       "steps" : [ ],
       "attachments" : [ ],
       "parameters" : [ ],
-      "shouldDisplayMessage" : false,
-      "attachmentsCount" : 0,
       "stepsCount" : 0,
-      "hasContent" : false
+      "hasContent" : false,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
     }, {
       "name" : "Paso 12: Validaciones en el registro: Elemento se muestra en pantalla",
       "time" : {
@@ -219,10 +219,10 @@
       "steps" : [ ],
       "attachments" : [ ],
       "parameters" : [ ],
-      "shouldDisplayMessage" : true,
-      "attachmentsCount" : 0,
       "stepsCount" : 0,
-      "hasContent" : true
+      "hasContent" : true,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : true
     }, {
       "name" : "Paso 7: Cerrar instancia del navegador",
       "time" : {
@@ -236,23 +236,23 @@
       "steps" : [ ],
       "attachments" : [ ],
       "parameters" : [ ],
-      "shouldDisplayMessage" : true,
-      "attachmentsCount" : 0,
       "stepsCount" : 0,
-      "hasContent" : true
+      "hasContent" : true,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : true
     } ],
     "attachments" : [ {
-      "uid" : "4ac97fbe53d0192b",
+      "uid" : "6f914799a0972928",
       "name" : "stdout",
-      "source" : "4ac97fbe53d0192b.txt",
+      "source" : "6f914799a0972928.txt",
       "type" : "text/plain",
       "size" : 8486
     } ],
     "parameters" : [ ],
-    "shouldDisplayMessage" : true,
-    "attachmentsCount" : 2,
     "stepsCount" : 13,
-    "hasContent" : true
+    "hasContent" : true,
+    "attachmentsCount" : 2,
+    "shouldDisplayMessage" : true
   },
   "afterStages" : [ {
     "name" : "_unittest_setUpClass_fixture_Test::0",
@@ -265,10 +265,10 @@
     "steps" : [ ],
     "attachments" : [ ],
     "parameters" : [ ],
-    "shouldDisplayMessage" : false,
-    "attachmentsCount" : 0,
     "stepsCount" : 0,
-    "hasContent" : false
+    "hasContent" : false,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
   } ],
   "labels" : [ {
     "name" : "feature",
@@ -322,6 +322,6 @@
     } ],
     "tags" : [ ]
   },
-  "source" : "384df9cc3b11790c.json",
+  "source" : "dd7fe93718984277.json",
   "parameterValues" : [ ]
 }

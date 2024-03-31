@@ -1,5 +1,5 @@
 {
-  "uid" : "91096403c35c7d15",
+  "uid" : "88b4d349059de4e5",
   "name" : "test_002",
   "fullName" : "src.test37.Test#test_002",
   "historyId" : "263c828ee17df8303c24065d67af5faf",
@@ -23,10 +23,10 @@
     "steps" : [ ],
     "attachments" : [ ],
     "parameters" : [ ],
-    "shouldDisplayMessage" : false,
-    "attachmentsCount" : 0,
     "stepsCount" : 0,
-    "hasContent" : false
+    "hasContent" : false,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
   } ],
   "testStage" : {
     "description" : "Caso de prueba para verificar el</br>\nlogin y </br>\nregistro en el aplicativo web de pruebas",
@@ -42,10 +42,10 @@
       "steps" : [ ],
       "attachments" : [ ],
       "parameters" : [ ],
-      "shouldDisplayMessage" : false,
-      "attachmentsCount" : 0,
       "stepsCount" : 0,
-      "hasContent" : false
+      "hasContent" : false,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
     }, {
       "name" : "Paso 1: Ir al sitio de la aplicacion de pruebas",
       "time" : {
@@ -57,10 +57,10 @@
       "steps" : [ ],
       "attachments" : [ ],
       "parameters" : [ ],
-      "shouldDisplayMessage" : false,
-      "attachmentsCount" : 0,
       "stepsCount" : 0,
-      "hasContent" : false
+      "hasContent" : false,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
     }, {
       "name" : "Paso 2: Ingresar datos en el campo Email_Usuario del formulario de registro",
       "time" : {
@@ -72,10 +72,10 @@
       "steps" : [ ],
       "attachments" : [ ],
       "parameters" : [ ],
-      "shouldDisplayMessage" : false,
-      "attachmentsCount" : 0,
       "stepsCount" : 0,
-      "hasContent" : false
+      "hasContent" : false,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
     }, {
       "name" : "Paso 3: Ingresar datos en el campo Password del formulario de registro",
       "time" : {
@@ -87,10 +87,10 @@
       "steps" : [ ],
       "attachments" : [ ],
       "parameters" : [ ],
-      "shouldDisplayMessage" : false,
-      "attachmentsCount" : 0,
       "stepsCount" : 0,
-      "hasContent" : false
+      "hasContent" : false,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
     }, {
       "name" : "Paso 4: Presionar el boton Login para realizar el registro",
       "time" : {
@@ -102,10 +102,10 @@
       "steps" : [ ],
       "attachments" : [ ],
       "parameters" : [ ],
-      "shouldDisplayMessage" : false,
-      "attachmentsCount" : 0,
       "stepsCount" : 0,
-      "hasContent" : false
+      "hasContent" : false,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
     }, {
       "name" : "Paso 13: Validaciones luego de realizar el login",
       "time" : {
@@ -117,10 +117,10 @@
       "steps" : [ ],
       "attachments" : [ ],
       "parameters" : [ ],
-      "shouldDisplayMessage" : false,
-      "attachmentsCount" : 0,
       "stepsCount" : 0,
-      "hasContent" : false
+      "hasContent" : false,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
     }, {
       "name" : "Paso 7: Cerrar instancia del navegador",
       "time" : {
@@ -132,23 +132,23 @@
       "steps" : [ ],
       "attachments" : [ ],
       "parameters" : [ ],
-      "shouldDisplayMessage" : false,
-      "attachmentsCount" : 0,
       "stepsCount" : 0,
-      "hasContent" : false
+      "hasContent" : false,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
     } ],
     "attachments" : [ {
-      "uid" : "c4b37ed410f2935e",
+      "uid" : "24cc0e2b09c839d5",
       "name" : "stdout",
-      "source" : "c4b37ed410f2935e.txt",
+      "source" : "24cc0e2b09c839d5.txt",
       "type" : "text/plain",
       "size" : 6086
     } ],
     "parameters" : [ ],
-    "shouldDisplayMessage" : false,
-    "attachmentsCount" : 1,
     "stepsCount" : 7,
-    "hasContent" : true
+    "hasContent" : true,
+    "attachmentsCount" : 1,
+    "shouldDisplayMessage" : false
   },
   "afterStages" : [ {
     "name" : "_unittest_setUpClass_fixture_Test::0",
@@ -161,10 +161,10 @@
     "steps" : [ ],
     "attachments" : [ ],
     "parameters" : [ ],
-    "shouldDisplayMessage" : false,
-    "attachmentsCount" : 0,
     "stepsCount" : 0,
-    "hasContent" : false
+    "hasContent" : false,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
   } ],
   "labels" : [ {
     "name" : "feature",
@@ -215,6 +215,6 @@
     "categories" : [ ],
     "tags" : [ ]
   },
-  "source" : "91096403c35c7d15.json",
+  "source" : "88b4d349059de4e5.json",
   "parameterValues" : [ ]
 }
