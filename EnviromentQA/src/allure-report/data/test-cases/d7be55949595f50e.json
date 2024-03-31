@@ -1,12 +1,12 @@
 {
-  "uid" : "d07adff097d9d6e1",
+  "uid" : "d7be55949595f50e",
   "name" : "test_001",
   "fullName" : "src.test37.Test#test_001",
   "historyId" : "b91999340ee2fb035dda2c1d133d191b",
   "time" : {
-    "start" : 1707598505976,
-    "stop" : 1707598537320,
-    "duration" : 31344
+    "start" : 1707597789144,
+    "stop" : 1707597821234,
+    "duration" : 32090
   },
   "description" : "Caso de prueba para verificar el</br>\nlogin y </br>\nregistro en el aplicativo web de pruebas",
   "descriptionHtml" : "<p>Caso de prueba para verificar el</br>\nlogin y </br>\nregistro en el aplicativo web de pruebas</p>\n",
@@ -15,18 +15,18 @@
   "beforeStages" : [ {
     "name" : "_unittest_setUpClass_fixture_Test",
     "time" : {
-      "start" : 1707598505976,
-      "stop" : 1707598505976,
+      "start" : 1707597789143,
+      "stop" : 1707597789143,
       "duration" : 0
     },
     "status" : "passed",
     "steps" : [ ],
     "attachments" : [ ],
     "parameters" : [ ],
-    "shouldDisplayMessage" : false,
-    "attachmentsCount" : 0,
     "stepsCount" : 0,
-    "hasContent" : false
+    "hasContent" : false,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
   } ],
   "testStage" : {
     "description" : "Caso de prueba para verificar el</br>\nlogin y </br>\nregistro en el aplicativo web de pruebas",
@@ -34,264 +34,264 @@
     "steps" : [ {
       "name" : "Paso 1: Abrir el navegador y obtener el archivo JSON",
       "time" : {
-        "start" : 1707598505976,
-        "stop" : 1707598507727,
-        "duration" : 1751
+        "start" : 1707597789144,
+        "stop" : 1707597791147,
+        "duration" : 2003
       },
       "status" : "passed",
       "steps" : [ ],
       "attachments" : [ ],
       "parameters" : [ ],
-      "shouldDisplayMessage" : false,
-      "attachmentsCount" : 0,
       "stepsCount" : 0,
-      "hasContent" : false
+      "hasContent" : false,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
     }, {
       "name" : "Paso 2: Ir al sitio de la aplicacion de pruebas",
       "time" : {
-        "start" : 1707598507728,
-        "stop" : 1707598512381,
-        "duration" : 4653
+        "start" : 1707597791147,
+        "stop" : 1707597797392,
+        "duration" : 6245
       },
       "status" : "passed",
       "steps" : [ ],
       "attachments" : [ ],
       "parameters" : [ ],
-      "shouldDisplayMessage" : false,
-      "attachmentsCount" : 0,
       "stepsCount" : 0,
-      "hasContent" : false
+      "hasContent" : false,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
     }, {
       "name" : "Paso 3: Ingresar datos en el campo First Name del formulario de registro",
       "time" : {
-        "start" : 1707598512382,
-        "stop" : 1707598515218,
-        "duration" : 2836
+        "start" : 1707597797392,
+        "stop" : 1707597800152,
+        "duration" : 2760
       },
       "status" : "passed",
       "steps" : [ ],
       "attachments" : [ ],
       "parameters" : [ ],
-      "shouldDisplayMessage" : false,
-      "attachmentsCount" : 0,
       "stepsCount" : 0,
-      "hasContent" : false
+      "hasContent" : false,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
     }, {
       "name" : "Paso 4: Ingresar datos en el campo Last Name del formulario de registro",
       "time" : {
-        "start" : 1707598515218,
-        "stop" : 1707598517318,
-        "duration" : 2100
+        "start" : 1707597800153,
+        "stop" : 1707597802274,
+        "duration" : 2121
       },
       "status" : "passed",
       "steps" : [ ],
       "attachments" : [ ],
       "parameters" : [ ],
-      "shouldDisplayMessage" : false,
-      "attachmentsCount" : 0,
       "stepsCount" : 0,
-      "hasContent" : false
+      "hasContent" : false,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
     }, {
       "name" : "Paso 5: Ingresar datos en el campo Email del formulario de registro",
       "time" : {
-        "start" : 1707598517318,
-        "stop" : 1707598519458,
-        "duration" : 2140
+        "start" : 1707597802274,
+        "stop" : 1707597804355,
+        "duration" : 2081
       },
       "status" : "passed",
       "steps" : [ ],
       "attachments" : [ ],
       "parameters" : [ ],
-      "shouldDisplayMessage" : false,
-      "attachmentsCount" : 0,
       "stepsCount" : 0,
-      "hasContent" : false
+      "hasContent" : false,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
     }, {
       "name" : "Paso 6: Ingresar datos en el campo Telefono del formulario de registro",
       "time" : {
-        "start" : 1707598519458,
-        "stop" : 1707598521561,
-        "duration" : 2103
+        "start" : 1707597804355,
+        "stop" : 1707597806433,
+        "duration" : 2078
       },
       "status" : "passed",
       "steps" : [ ],
       "attachments" : [ ],
       "parameters" : [ ],
-      "shouldDisplayMessage" : false,
-      "attachmentsCount" : 0,
       "stepsCount" : 0,
-      "hasContent" : false
+      "hasContent" : false,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
     }, {
       "name" : "Paso 7: Ingresar datos en el campo Password del formulario de registro",
       "time" : {
-        "start" : 1707598521561,
-        "stop" : 1707598523690,
-        "duration" : 2129
+        "start" : 1707597806433,
+        "stop" : 1707597808557,
+        "duration" : 2124
       },
       "status" : "passed",
       "steps" : [ ],
       "attachments" : [ ],
       "parameters" : [ ],
-      "shouldDisplayMessage" : false,
-      "attachmentsCount" : 0,
       "stepsCount" : 0,
-      "hasContent" : false
+      "hasContent" : false,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
     }, {
       "name" : "Paso 8: Ingresar datos en el campo Password Confirm del formulario de registro",
       "time" : {
-        "start" : 1707598523690,
-        "stop" : 1707598526047,
-        "duration" : 2357
+        "start" : 1707597808557,
+        "stop" : 1707597810978,
+        "duration" : 2421
       },
       "status" : "passed",
       "steps" : [ ],
       "attachments" : [ {
-        "uid" : "4c2ca48888177ac9",
+        "uid" : "458f47d818eae86",
         "name" : "Formulario con datos",
-        "source" : "4c2ca48888177ac9.png",
+        "source" : "458f47d818eae86.png",
         "type" : "image/png",
-        "size" : 86862
+        "size" : 86839
       } ],
       "parameters" : [ ],
-      "shouldDisplayMessage" : false,
-      "attachmentsCount" : 1,
       "stepsCount" : 0,
-      "hasContent" : true
+      "hasContent" : true,
+      "attachmentsCount" : 1,
+      "shouldDisplayMessage" : false
     }, {
       "name" : "Paso 9: Marcar el campo Suscribe del formulario de registro",
       "time" : {
-        "start" : 1707598526047,
-        "stop" : 1707598528126,
-        "duration" : 2079
+        "start" : 1707597810978,
+        "stop" : 1707597813430,
+        "duration" : 2452
       },
       "status" : "passed",
       "steps" : [ ],
       "attachments" : [ ],
       "parameters" : [ ],
-      "shouldDisplayMessage" : false,
-      "attachmentsCount" : 0,
       "stepsCount" : 0,
-      "hasContent" : false
+      "hasContent" : false,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
     }, {
       "name" : "Paso 10: Marcar el campo Privacy Policy del formulario de registro",
       "time" : {
-        "start" : 1707598528126,
-        "stop" : 1707598530244,
-        "duration" : 2118
+        "start" : 1707597813430,
+        "stop" : 1707597815769,
+        "duration" : 2339
       },
       "status" : "passed",
       "steps" : [ ],
       "attachments" : [ ],
       "parameters" : [ ],
-      "shouldDisplayMessage" : false,
-      "attachmentsCount" : 0,
       "stepsCount" : 0,
-      "hasContent" : false
+      "hasContent" : false,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
     }, {
       "name" : "Paso 11: Presionar el boton Continuar para realizar el registro",
       "time" : {
-        "start" : 1707598530244,
-        "stop" : 1707598533077,
-        "duration" : 2833
+        "start" : 1707597815769,
+        "stop" : 1707597818578,
+        "duration" : 2809
       },
       "status" : "passed",
       "steps" : [ ],
       "attachments" : [ ],
       "parameters" : [ ],
-      "shouldDisplayMessage" : false,
-      "attachmentsCount" : 0,
       "stepsCount" : 0,
-      "hasContent" : false
+      "hasContent" : false,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
     }, {
       "name" : "Paso 12: Validaciones en el registro: Elemento se muestra en pantalla",
       "time" : {
-        "start" : 1707598533077,
-        "stop" : 1707598535106,
-        "duration" : 2029
+        "start" : 1707597818578,
+        "stop" : 1707597820606,
+        "duration" : 2028
       },
       "status" : "passed",
       "steps" : [ ],
       "attachments" : [ ],
       "parameters" : [ ],
-      "shouldDisplayMessage" : false,
-      "attachmentsCount" : 0,
       "stepsCount" : 0,
-      "hasContent" : false
+      "hasContent" : false,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
     }, {
       "name" : "Paso 13: Validaciones en el registro: Registro Exitoso",
       "time" : {
-        "start" : 1707598535106,
-        "stop" : 1707598535315,
-        "duration" : 209
+        "start" : 1707597820606,
+        "stop" : 1707597820828,
+        "duration" : 222
       },
       "status" : "passed",
       "steps" : [ ],
       "attachments" : [ {
-        "uid" : "e345955cb815138e",
+        "uid" : "f69d1b5bb4e0cc2d",
         "name" : "Resultado del registro",
-        "source" : "e345955cb815138e.png",
+        "source" : "f69d1b5bb4e0cc2d.png",
         "type" : "image/png",
         "size" : 137388
       } ],
       "parameters" : [ ],
-      "shouldDisplayMessage" : false,
-      "attachmentsCount" : 1,
       "stepsCount" : 0,
-      "hasContent" : true
+      "hasContent" : true,
+      "attachmentsCount" : 1,
+      "shouldDisplayMessage" : false
     }, {
       "name" : "Paso 7: Cerrar instancia del navegador",
       "time" : {
-        "start" : 1707598535315,
-        "stop" : 1707598537319,
-        "duration" : 2004
+        "start" : 1707597820828,
+        "stop" : 1707597821233,
+        "duration" : 405
       },
       "status" : "passed",
       "steps" : [ ],
       "attachments" : [ ],
       "parameters" : [ ],
-      "shouldDisplayMessage" : false,
-      "attachmentsCount" : 0,
       "stepsCount" : 0,
-      "hasContent" : false
+      "hasContent" : false,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
     } ],
     "attachments" : [ {
-      "uid" : "cb6954b5d24cd307",
+      "uid" : "68ec38cd985b7eac",
       "name" : "stdout",
-      "source" : "cb6954b5d24cd307.txt",
+      "source" : "68ec38cd985b7eac.txt",
       "type" : "text/plain",
       "size" : 9721
     } ],
     "parameters" : [ ],
-    "shouldDisplayMessage" : false,
-    "attachmentsCount" : 3,
     "stepsCount" : 14,
-    "hasContent" : true
+    "hasContent" : true,
+    "attachmentsCount" : 3,
+    "shouldDisplayMessage" : false
   },
   "afterStages" : [ {
     "name" : "_unittest_setUpClass_fixture_Test::0",
     "time" : {
-      "start" : 1707598558130,
-      "stop" : 1707598558130,
+      "start" : 1707597842737,
+      "stop" : 1707597842737,
       "duration" : 0
     },
     "status" : "passed",
     "steps" : [ ],
     "attachments" : [ ],
     "parameters" : [ ],
-    "shouldDisplayMessage" : false,
-    "attachmentsCount" : 0,
     "stepsCount" : 0,
-    "hasContent" : false
+    "hasContent" : false,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
   } ],
   "labels" : [ {
-    "name" : "severity",
-    "value" : "critical"
+    "name" : "story",
+    "value" : "Realizar Registro y Login"
   }, {
     "name" : "feature",
     "value" : "Pruebas"
   }, {
-    "name" : "story",
-    "value" : "Realizar Registro y Login"
+    "name" : "severity",
+    "value" : "critical"
   }, {
     "name" : "parentSuite",
     "value" : "src"
@@ -306,7 +306,7 @@
     "value" : "Efrain-CD"
   }, {
     "name" : "thread",
-    "value" : "16408-MainThread"
+    "value" : "15660-MainThread"
   }, {
     "name" : "framework",
     "value" : "pytest"
@@ -332,6 +332,6 @@
     "categories" : [ ],
     "tags" : [ ]
   },
-  "source" : "d07adff097d9d6e1.json",
+  "source" : "d7be55949595f50e.json",
   "parameterValues" : [ ]
 }

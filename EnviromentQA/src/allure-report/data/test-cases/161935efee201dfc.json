@@ -1,12 +1,12 @@
 {
-  "uid" : "732235cadeaced66",
+  "uid" : "161935efee201dfc",
   "name" : "test_002",
-  "fullName" : "src.test37.Test#test_002",
-  "historyId" : "263c828ee17df8303c24065d67af5faf",
+  "fullName" : "test37.Test#test_002",
+  "historyId" : "aeb7491dbd04d3e4520f9480e76774be",
   "time" : {
-    "start" : 1707597821242,
-    "stop" : 1707597840594,
-    "duration" : 19352
+    "start" : 1711737628321,
+    "stop" : 1711737640239,
+    "duration" : 11918
   },
   "description" : "Caso de prueba para verificar el</br>\nlogin y </br>\nregistro en el aplicativo web de pruebas",
   "descriptionHtml" : "<p>Caso de prueba para verificar el</br>\nlogin y </br>\nregistro en el aplicativo web de pruebas</p>\n",
@@ -15,18 +15,18 @@
   "beforeStages" : [ {
     "name" : "_unittest_setUpClass_fixture_Test",
     "time" : {
-      "start" : 1707597789143,
-      "stop" : 1707597789143,
+      "start" : 1711737607558,
+      "stop" : 1711737607558,
       "duration" : 0
     },
     "status" : "passed",
     "steps" : [ ],
     "attachments" : [ ],
     "parameters" : [ ],
-    "shouldDisplayMessage" : false,
-    "attachmentsCount" : 0,
     "stepsCount" : 0,
-    "hasContent" : false
+    "hasContent" : false,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
   } ],
   "testStage" : {
     "description" : "Caso de prueba para verificar el</br>\nlogin y </br>\nregistro en el aplicativo web de pruebas",
@@ -34,150 +34,147 @@
     "steps" : [ {
       "name" : "Paso 1: Abrir el navegador y obtener el archivo JSON",
       "time" : {
-        "start" : 1707597821243,
-        "stop" : 1707597823116,
-        "duration" : 1873
+        "start" : 1711737628321,
+        "stop" : 1711737629686,
+        "duration" : 1365
       },
       "status" : "passed",
       "steps" : [ ],
       "attachments" : [ ],
       "parameters" : [ ],
-      "shouldDisplayMessage" : false,
-      "attachmentsCount" : 0,
       "stepsCount" : 0,
-      "hasContent" : false
+      "hasContent" : false,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
     }, {
       "name" : "Paso 1: Ir al sitio de la aplicacion de pruebas",
       "time" : {
-        "start" : 1707597823116,
-        "stop" : 1707597831120,
-        "duration" : 8004
+        "start" : 1711737629687,
+        "stop" : 1711737634836,
+        "duration" : 5149
       },
       "status" : "passed",
       "steps" : [ ],
       "attachments" : [ ],
       "parameters" : [ ],
-      "shouldDisplayMessage" : false,
-      "attachmentsCount" : 0,
       "stepsCount" : 0,
-      "hasContent" : false
+      "hasContent" : false,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
     }, {
       "name" : "Paso 2: Ingresar datos en el campo Email_Usuario del formulario de registro",
       "time" : {
-        "start" : 1707597831120,
-        "stop" : 1707597833241,
-        "duration" : 2121
+        "start" : 1711737634836,
+        "stop" : 1711737635965,
+        "duration" : 1129
       },
       "status" : "passed",
       "steps" : [ ],
       "attachments" : [ ],
       "parameters" : [ ],
-      "shouldDisplayMessage" : false,
-      "attachmentsCount" : 0,
       "stepsCount" : 0,
-      "hasContent" : false
+      "hasContent" : false,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
     }, {
       "name" : "Paso 3: Ingresar datos en el campo Password del formulario de registro",
       "time" : {
-        "start" : 1707597833241,
-        "stop" : 1707597835336,
-        "duration" : 2095
+        "start" : 1711737635965,
+        "stop" : 1711737637078,
+        "duration" : 1113
       },
       "status" : "passed",
       "steps" : [ ],
       "attachments" : [ ],
       "parameters" : [ ],
-      "shouldDisplayMessage" : false,
-      "attachmentsCount" : 0,
       "stepsCount" : 0,
-      "hasContent" : false
+      "hasContent" : false,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
     }, {
       "name" : "Paso 4: Presionar el boton Login para realizar el registro",
       "time" : {
-        "start" : 1707597835336,
-        "stop" : 1707597838077,
-        "duration" : 2741
+        "start" : 1711737637079,
+        "stop" : 1711737638572,
+        "duration" : 1493
       },
       "status" : "passed",
       "steps" : [ ],
       "attachments" : [ ],
       "parameters" : [ ],
-      "shouldDisplayMessage" : false,
-      "attachmentsCount" : 0,
       "stepsCount" : 0,
-      "hasContent" : false
+      "hasContent" : false,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
     }, {
       "name" : "Paso 13: Validaciones luego de realizar el login",
       "time" : {
-        "start" : 1707597838077,
-        "stop" : 1707597840139,
-        "duration" : 2062
+        "start" : 1711737638573,
+        "stop" : 1711737639851,
+        "duration" : 1278
       },
       "status" : "passed",
       "steps" : [ ],
       "attachments" : [ ],
       "parameters" : [ ],
-      "shouldDisplayMessage" : false,
-      "attachmentsCount" : 0,
       "stepsCount" : 0,
-      "hasContent" : false
+      "hasContent" : false,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
     }, {
       "name" : "Paso 7: Cerrar instancia del navegador",
       "time" : {
-        "start" : 1707597840139,
-        "stop" : 1707597840593,
-        "duration" : 454
+        "start" : 1711737639851,
+        "stop" : 1711737640239,
+        "duration" : 388
       },
       "status" : "passed",
       "steps" : [ ],
       "attachments" : [ ],
       "parameters" : [ ],
-      "shouldDisplayMessage" : false,
-      "attachmentsCount" : 0,
       "stepsCount" : 0,
-      "hasContent" : false
+      "hasContent" : false,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
     } ],
     "attachments" : [ {
-      "uid" : "e51fa291f94fb9bc",
+      "uid" : "e1c3d43ed385bd6",
       "name" : "stdout",
-      "source" : "e51fa291f94fb9bc.txt",
+      "source" : "e1c3d43ed385bd6.txt",
       "type" : "text/plain",
-      "size" : 6086
+      "size" : 5742
     } ],
     "parameters" : [ ],
-    "shouldDisplayMessage" : false,
-    "attachmentsCount" : 1,
     "stepsCount" : 7,
-    "hasContent" : true
+    "hasContent" : true,
+    "attachmentsCount" : 1,
+    "shouldDisplayMessage" : false
   },
   "afterStages" : [ {
     "name" : "_unittest_setUpClass_fixture_Test::0",
     "time" : {
-      "start" : 1707597842737,
-      "stop" : 1707597842737,
+      "start" : 1711737642317,
+      "stop" : 1711737642317,
       "duration" : 0
     },
     "status" : "passed",
     "steps" : [ ],
     "attachments" : [ ],
     "parameters" : [ ],
-    "shouldDisplayMessage" : false,
-    "attachmentsCount" : 0,
     "stepsCount" : 0,
-    "hasContent" : false
+    "hasContent" : false,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
   } ],
   "labels" : [ {
-    "name" : "story",
-    "value" : "Realizar Registro y Login"
-  }, {
     "name" : "feature",
     "value" : "Pruebas"
   }, {
+    "name" : "story",
+    "value" : "Realizar Registro y Login"
+  }, {
     "name" : "severity",
     "value" : "critical"
-  }, {
-    "name" : "parentSuite",
-    "value" : "src"
   }, {
     "name" : "suite",
     "value" : "test37"
@@ -189,7 +186,7 @@
     "value" : "Efrain-CD"
   }, {
     "name" : "thread",
-    "value" : "15660-MainThread"
+    "value" : "17624-MainThread"
   }, {
     "name" : "framework",
     "value" : "pytest"
@@ -198,7 +195,7 @@
     "value" : "cpython3"
   }, {
     "name" : "package",
-    "value" : "src.test37"
+    "value" : "test37"
   }, {
     "name" : "resultFormat",
     "value" : "allure2"
@@ -207,14 +204,16 @@
   "links" : [ {
     "name" : "Test Case",
     "url" : "Test Case",
-    "type" : "tms"
+    "type" : "test_case"
   } ],
-  "hidden" : true,
-  "retry" : true,
+  "hidden" : false,
+  "retry" : false,
   "extra" : {
+    "severity" : "critical",
+    "retries" : [ ],
     "categories" : [ ],
     "tags" : [ ]
   },
-  "source" : "732235cadeaced66.json",
+  "source" : "161935efee201dfc.json",
   "parameterValues" : [ ]
 }

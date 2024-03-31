@@ -1,5 +1,5 @@
 echo ## Ir a la carpeta del archivo ##
-cd "C:\Users\dmefr\Desktop\Carpeta MEGA\Framework Pruebas Automatizadas\EnviromentQA\src"
+cd "C:\Users\dmefr\Desktop\FW_Pruebas_Python_Selenium\FW_Pruebas_Python_Selenium\EnviromentQA\src"
 
 echo ## Ejecucion del Archivo desde la Consola ##
 allure open --port 5000
