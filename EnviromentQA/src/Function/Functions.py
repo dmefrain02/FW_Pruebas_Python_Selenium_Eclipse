@@ -51,7 +51,7 @@ class Functions(Inicializar):
             self.driver = webdriver.Edge(service=service)
             self.driver.maximize_window()
             
-        if navegador == ("Chrome"):
+        elif navegador == ("Chrome"):
             #Cambio por version de Selenium, en la manera de utilizar el executable path
             service = Service(executable_path=Inicializar.BaseDir + "\\Drivers\\chromedriver.exe")
             options = OpcionesChrome()
@@ -64,7 +64,7 @@ class Functions(Inicializar):
             options.add_argument('start-maximized')
             self.driver = webdriver.Chrome(service=service, options=options)         
             
-        if navegador ==("Firefox"):
+        elif navegador ==("Firefox"):
             #Cambio por version de Selenium, en la manera de utilizar el executable path
             service = Service(executable_path=Inicializar.BaseDir+"\\Drivers\\geckodriver.exe")
             options = OpcionesFirefox()
@@ -737,36 +737,36 @@ class Functions(Inicializar):
         
         imagen_cortada = imagen_cortada.crop((left,top,right,bottom))
         imagen_cortada.save(f'{Ruta_Img_Cortada}\imagen_cortada.png')
-        
+    
     def Select_Fecha_DTPickerDinamico(self,AvanzarMes,Meses_Avanzar,FechaIda,FechaVuelta,DiaIda,DiaVuelta):
-        #Contador avanzar
-        avanzar=0
-        
-        #Click DatetimePicker Fecha Ida
-        Functions.click_en_elemento(self, FechaIda)
-        Functions.esperar_elemento(self,3)
-        
-        #Click en Avanzar Mes
-        while(avanzar<Meses_Avanzar):
-            Functions.click_en_elemento(self,AvanzarMes)
-            avanzar = avanzar +1
-        
-        #Seleccionar Dia del DatetimePicker FechaIda
-        Functions.click_en_elemento(self,DiaIda)
-        Functions.esperar_elemento(self,2)
-        avanzar = 0
-        
-        #Click en Avanzar Mes
-        while(avanzar<Meses_Avanzar):
-            Functions.click_en_elemento(self,AvanzarMes)
-            avanzar = avanzar +1
-        
-        #Seleccionar Dia del DatetimePicker FechaVuelta
-        Functions.click_en_elemento(self, FechaVuelta)
-        Functions.esperar_elemento(self,2)
-
-        #Seleccionar Dia del DatetimePicker FechaVuelta
-        Functions.click_en_elemento(self,DiaVuelta)
-        Functions.esperar_elemento(self,2)
-        
-        
+      #Contador para avanzar en el calendario
+      avanzar = 0  
+      
+      #Click en control fecha ida
+      Functions.click_en_elemento(self, FechaIda)
+      Functions.esperar_elemento(self)
+      
+      #Avanzar en los meses del calendario     
+      while (avanzar < Meses_Avanzar):
+          Functions.click_en_elemento(self,AvanzarMes)
+          avanzar = avanzar+1
+    
+      Functions.click_en_elemento(self, DiaIda)
+      Functions.esperar_elemento(self)
+      avanzar = 0
+      
+      #Avanzar en los meses del calendario  
+      while (avanzar < Meses_Avanzar):
+          Functions.click_en_elemento(self,AvanzarMes)
+          avanzar = avanzar+1
+          
+      #Click en control fecha vuelta
+      Functions.click_en_elemento(self, FechaVuelta)
+      Functions.esperar_elemento(self)
+      
+      #Seleccionar dia vuelta
+      Functions.click_en_elemento(self, DiaVuelta)
+      Functions.esperar_elemento(self)
+      
+    
+      
