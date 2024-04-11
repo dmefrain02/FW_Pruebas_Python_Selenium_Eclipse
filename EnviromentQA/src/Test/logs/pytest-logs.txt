@@ -1,4 +1,0 @@
-2023-02-25 09:33:25 INFO Inside Setup
-2023-02-25 09:33:25 INFO  Hurray !!
-2023-02-25 09:33:25 INFO Inside Test 1
-2023-02-25 09:33:25 INFO Inside Test 2
