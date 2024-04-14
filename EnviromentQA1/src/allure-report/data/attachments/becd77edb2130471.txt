@@ -1,0 +1,41 @@
+Directorio Base:C:\Users\dmefr\Desktop\Carpeta MEGA\Videos QA\Curso Automatizacion Pruebas\Framework Pruebas Automatizadas\Entornos Virtuales\EnviromentQA\Framework Automatizacion Pruebas\src
+-------------------------------------------
+Chrome
+-------------------------------------------
+Obtener Archivo Json: C:\Users\dmefr\Desktop\Carpeta MEGA\Videos QA\Curso Automatizacion Pruebas\Framework Pruebas Automatizadas\Entornos Virtuales\EnviromentQA\Framework Automatizacion Pruebas\src\Pages/Localizadores_Spotify.json
+{'Lista_Mes': {'GetFieldBy': 'xpath', 'ValueToFind': "//select[@id='month']"}, 'Mes': {'GetFieldBy': 'xpath', 'ValueToFind': "//option[@value='05']"}, 'txt_busqueda_google': {'GetFieldBy': 'name', 'ValueToFind': 'q'}, 'carga_archivo': {'GetFieldBy': 'xpath', 'ValueToFind': "//input[@id='file-upload']"}, 'btn_carga_archivo': {'GetFieldBy': 'xpath', 'ValueToFind': "//input[@id='file-submit']"}, 'archivo_cargado': {'GetFieldBy': 'xpath', 'ValueToFind': "//h3[contains(text(),'File Uploaded!')]"}, 'video_QA': {'GetFieldBy': 'xpath', 'ValueToFind': "//h3[contains(text(),'QA Technology CR')]"}, 'Primer_Nivel_Menu': {'GetFieldBy': 'xpath', 'ValueToFind': "//a[@id='nav-hamburger-menu']"}, 'Segundo_Nivel_Menu': {'GetFieldBy': 'xpath', 'ValueToFind': "//div[contains(text(),'Amazon Music')]"}, 'Tercer_Nivel_Menu': {'GetFieldBy': 'xpath', 'ValueToFind': "//a[@class='hmenu-item' and text()='Amazon Music Unlimited']"}, 'Texto_H3_Amazon': {'GetFieldBy': 'xpath', 'ValueToFind': "//h3[text()='Unlimited access to 100 million songs']"}, 'draggable': {'GetFieldBy': 'xpath', 'ValueToFind': "//div[@id='draggable']"}, 'droppable': {'GetFieldBy': 'xpath', 'ValueToFind': "//div[@id='simpleDropContainer']//div[@id='droppable']"}, 'text_drop': {'GetFieldBy': 'xpath', 'ValueToFind': "//p[contains(text(),'Dropped!')]"}, 'texto_Selenium': {'GetFieldBy': 'xpath', 'ValueToFind': "//span[contains(text(),'Selenium (software)')]"}, 'img_wikipedia': {'GetFieldBy': 'xpath', 'ValueToFind': '//header/div[1]/a[1]/span[1]/img[1]'}, 'wikipedia': {'GetFieldBy': 'LinkText', 'ValueToFind': 'Wikipedia'}, 'caption_selenium': {'GetFieldBy': 'xpath', 'ValueToFind': "//caption[contains(text(),'Selenium')]"}, 'img_aeropost': {'GetFieldBy': 'xpath', 'ValueToFind': "//img[@src='https://res.cloudinary.com/aeropost-inc/image/upload/public/uploads/website/aeropost_mobile_logo_1684477207.png']"}, 'Descargar_Archivo': {'GetFieldBy': 'xpath', 'ValueToFind': "//a[contains(text(),'requirements.txt')]"}, 'First_Name': {'GetFieldBy': 'xpath', 'ValueToFind': "//input[@id='input-firstname']"}, 'Last_Name': {'GetFieldBy': 'xpath', 'ValueToFind': "//input[@id='input-lastname']"}, 'Email': {'GetFieldBy': 'xpath', 'ValueToFind': "//input[@id='input-email']"}, 'Telefono': {'GetFieldBy': 'xpath', 'ValueToFind': "//input[@id='input-telephone']"}, 'Password': {'GetFieldBy': 'xpath', 'ValueToFind': "//input[@id='input-password']"}, 'Password_Conf': {'GetFieldBy': 'xpath', 'ValueToFind': "//input[@id='input-confirm']"}, 'Suscribe': {'GetFieldBy': 'xpath', 'ValueToFind': "//body/div[@id='account-register']/div[1]/div[1]/form[1]/fieldset[3]/div[1]/div[1]/label[2]/input[1]"}, 'Privacy_Policy': {'GetFieldBy': 'xpath', 'ValueToFind': '//body[1]/div[2]/div[1]/div[1]/form[1]/div[1]/div[1]/input[1]'}, 'Btn_Continuar': {'GetFieldBy': 'xpath', 'ValueToFind': "//body/div[@id='account-register']/div[1]/div[1]/form[1]/div[1]/div[1]/input[2]"}, 'Register_Success': {'GetFieldBy': 'xpath', 'ValueToFind': "//p[contains(text(),'Congratulations! Your new account has been success')]"}, 'Email_Login': {'GetFieldBy': 'xpath', 'ValueToFind': "//input[@id='input-email']"}, 'Password_Login': {'GetFieldBy': 'xpath', 'ValueToFind': "//input[@id='input-password']"}, 'Btn_Login': {'GetFieldBy': 'xpath', 'ValueToFind': "//body/div[@id='account-login']/div[1]/div[1]/div[1]/div[2]/div[1]/form[1]/input[1]"}, 'My_Account': {'GetFieldBy': 'xpath', 'ValueToFind': "//h2[contains(text(),'My Account')]"}}
+Inicia Espera: 2
+Tiempo total actual de espera: 1
+Tiempo total actual de espera: 2
+Espera: Carga Finalizada
+--------------------------------------------------
+El libro de excel utilizado es: C:\Users\dmefr\Desktop\Carpeta MEGA\Videos QA\Curso Automatizacion Pruebas\Framework Pruebas Automatizadas\Entornos Virtuales\EnviromentQA\Framework Automatizacion Pruebas\src\Data\Pruebas1.xlsx
+El valor de la celda es: dm18@gmail.com
+--------------------------------------------------
+Se encontro la entidad: Email_Login con los valores: //input[@id='input-email'] y xpath
+Escribir texto en:  //input[@id='input-email'] con el texto: dm18@gmail.com
+Inicia Espera: 2
+Tiempo total actual de espera: 1
+Tiempo total actual de espera: 2
+Espera: Carga Finalizada
+--------------------------------------------------
+El libro de excel utilizado es: C:\Users\dmefr\Desktop\Carpeta MEGA\Videos QA\Curso Automatizacion Pruebas\Framework Pruebas Automatizadas\Entornos Virtuales\EnviromentQA\Framework Automatizacion Pruebas\src\Data\Pruebas1.xlsx
+El valor de la celda es: 123456789
+--------------------------------------------------
+Se encontro la entidad: Password_Login con los valores: //input[@id='input-password'] y xpath
+Escribir texto en:  //input[@id='input-password'] con el texto: 123456789
+Inicia Espera: 2
+Tiempo total actual de espera: 1
+Tiempo total actual de espera: 2
+Espera: Carga Finalizada
+Se encontro la entidad: Btn_Login con los valores: //body/div[@id='account-login']/div[1]/div[1]/div[1]/div[2]/div[1]/form[1]/input[1] y xpath
+Elemento click en: //body/div[@id='account-login']/div[1]/div[1]/div[1]/div[2]/div[1]/form[1]/input[1]
+Inicia Espera: 2
+Tiempo total actual de espera: 1
+Tiempo total actual de espera: 2
+Espera: Carga Finalizada
+Se encontro la entidad: My_Account con los valores: //h2[contains(text(),'My Account')] y xpath
+Obtener Elemento: se encontro el elemento, //h2[contains(text(),'My Account')]
+Se encontro la entidad: My_Account con los valores: //h2[contains(text(),'My Account')] y xpath
+Obtener texto, se encontro el elemento: //h2[contains(text(),'My Account')]
+Text Value:My Account
