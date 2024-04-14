@@ -1,0 +1,98 @@
+{
+  "a5f5aa280614c713d30f97eba7c5836f" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 1,
+      "skipped" : 0,
+      "passed" : 0,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "dd7fe93718984277",
+      "status" : "broken",
+      "statusDetails" : "AttributeError: 'NoneType' object has no attribute 'is_displayed'",
+      "time" : {
+        "start" : 1711737607650,
+        "stop" : 1711737628082,
+        "duration" : 20432
+      }
+    } ]
+  },
+  "aeb7491dbd04d3e4520f9480e76774be" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "161935efee201dfc",
+      "status" : "passed",
+      "time" : {
+        "start" : 1711737628321,
+        "stop" : 1711737640239,
+        "duration" : 11918
+      }
+    } ]
+  },
+  "263c828ee17df8303c24065d67af5faf" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "e129ad7e28c9b55",
+      "status" : "passed",
+      "time" : {
+        "start" : 1707602530834,
+        "stop" : 1707602549104,
+        "duration" : 18270
+      }
+    } ]
+  },
+  "b91999340ee2fb035dda2c1d133d191b" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "c2d1784ee89317a9",
+      "status" : "passed",
+      "time" : {
+        "start" : 1707602498156,
+        "stop" : 1707602530804,
+        "duration" : 32648
+      }
+    } ]
+  },
+  "443cdcddc6d0d6befa3b5d7bb751ca00" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "9e67f58ea21c35cf",
+      "status" : "passed",
+      "time" : {
+        "start" : 1694376389505,
+        "stop" : 1694376399566,
+        "duration" : 10061
+      }
+    } ]
+  }
+}

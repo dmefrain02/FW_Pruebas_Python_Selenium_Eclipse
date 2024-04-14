@@ -1,0 +1,1 @@
+from htmlrunner.runner import Runner, Result, HTMLRunner

@@ -1,0 +1,25 @@
+{
+  "uid" : "4b4757e66a1912dae1a509f688f20b0f",
+  "name" : "categories",
+  "children" : [ {
+    "name" : "Test defects",
+    "children" : [ {
+      "name" : "AttributeError: 'NoneType' object has no attribute 'is_displayed'",
+      "children" : [ {
+        "name" : "test_001",
+        "uid" : "dd7fe93718984277",
+        "parentUid" : "6caed0d51272f8a17d686ca3e111376b",
+        "status" : "broken",
+        "time" : {
+          "start" : 1711737607650,
+          "stop" : 1711737628082,
+          "duration" : 20432
+        },
+        "flaky" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "6caed0d51272f8a17d686ca3e111376b"
+    } ],
+    "uid" : "bdbf199525818fae7a8651db9eafe741"
+  } ]
+}

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="2" failures="0" skipped="0" tests="2" time="0.209" timestamp="2023-07-23T10:28:29.271065" hostname="Efrain-CD"><testcase classname="" name="src.Test.Test17" time="0.000"><error message="collection failure">ImportError while importing test module 'C:\Users\dmefr\Desktop\Carpeta MEGA\Videos QA\Curso Automatizacion Pruebas\Framework Pruebas Automatizadas\Entornos Virtuales\EnviromentQA\Framework Automatizacion Pruebas\src\Test\Test17.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+C:\Python\Lib\importlib\__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+Test17.py:3: in &lt;module&gt;
+    from Function.Functions import Functions as Selenium
+E   ModuleNotFoundError: No module named 'Function'</error></testcase><testcase classname="" name="src.Test.Test18" time="0.000"><error message="collection failure">ImportError while importing test module 'C:\Users\dmefr\Desktop\Carpeta MEGA\Videos QA\Curso Automatizacion Pruebas\Framework Pruebas Automatizadas\Entornos Virtuales\EnviromentQA\Framework Automatizacion Pruebas\src\Test\Test18.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+C:\Python\Lib\importlib\__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+Test18.py:3: in &lt;module&gt;
+    from Function.Functions import Functions as Selenium
+E   ModuleNotFoundError: No module named 'Function'</error></testcase></testsuite></testsuites>
