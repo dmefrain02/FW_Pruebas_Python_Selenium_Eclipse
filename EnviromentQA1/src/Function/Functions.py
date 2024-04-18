@@ -51,6 +51,11 @@ from http.cookiejar import Cookie
 from PIL import Image #Pillow - Manejo de Imagenes
 from io import BytesIO #Para conocer tamaños en bytes, ya esta instalado en Python
 
+import pyautogui
+import cv2
+import numpy as np
+from pyautogui import _pyautogui_win
+
 class Functions(Inicializar):
     
     #Abrir Navegador
@@ -841,6 +846,34 @@ class Functions(Inicializar):
     
       Functions.click_en_elemento(self, Dia)
       Functions.esperar_elemento(self)
-      
+     
+    #Variable donde almacenamos el videowriter inicializado
+    salida = cv2.VideoWriter()
+    def inicializar_video(self,height_size_screen, width_size_screen,fps,nombre_arch_video,Ruta_Grabacion = Inicializar.Ruta_Grabacion):
+        self.screen_size = (width_size_screen, height_size_screen)
+        self.fps = fps
+        self.output_filename = Ruta_Grabacion + f'\{nombre_arch_video}'
+        
+        self.format = cv2.VideoWriter_fourcc(*'mp4v')
+        self.salida = cv2.VideoWriter(self.output_filename, self.format, self.fps, self.screen_size)
+        print('se inicializo la grabacion')
     
-      
+    def grabar(self): 
+
+       #Capturar Contenido Pantalla
+        self.frame = pyautogui.screenshot()
+        self.frame = np.array(self.frame)
+    
+        #Convert Formato BGR (utilizado por OpenCV) a Formato RGB
+        self.frame += cv2.cvtColor(self.frame, cv2.COLOR_BGR2RGB)
+    
+        #Escribir el Frame en el archivo del video
+        self.salida.write(self.frame)
+        
+        print('se inicio la grabacion')
+        
+    def terminar_grabacion(self):
+        #Liberar el VideoWrite y Cerrar el OpenCV Windows
+        self.salida.release()
+        cv2.destroyAllWindows()
+        print('se finaliza la grabacion')
