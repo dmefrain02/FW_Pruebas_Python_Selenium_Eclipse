@@ -52,7 +52,6 @@ from io import BytesIO #Para conocer tamaños en bytes, ya esta instalado en Pyt
 import pyautogui
 import cv2
 import numpy as np
-from webdriver_manager.drivers.firefox import GeckoDriver
 
 class Functions(Inicializar):
     
@@ -848,31 +847,26 @@ class Functions(Inicializar):
       Functions.click_en_elemento(self, Dia)
       Functions.esperar_elemento(self)
      
-    def inicializar_video(self,height_size_screen, width_size_screen,fps,nombre_arch_video,Ruta_Grabacion = Inicializar.Ruta_Grabacion):
-        self.screen_size = (height_size_screen, width_size_screen)
+    def inicializar_video(self,height_size, width_size,fps,nombre_arh_video,Ruta_Grabacion=Inicializar.Ruta_Grabacion):
+        self.screen_size = (height_size,width_size)
         self.fps = fps
-        self.output_filename = Ruta_Grabacion + f'\{nombre_arch_video}'
+        self.output_filename = Ruta_Grabacion + f'\{nombre_arh_video}'
         
-        self.fourcc = cv2.VideoWriter_fourcc(*"XVID")
-        self.salida = cv2.VideoWriter(self.output_filename, self.fourcc, self.fps, self.screen_size)
-        
-        print('se inicializo la grabacion')
-        return self.salida    
+        self.format = cv2.VideoWriter_fourcc(*"XVID")
+        self.salida = cv2.VideoWriter(self.output_filename,self.format,self.fps,self.screen_size)
+        print('Se inicializo la grabacion')
+        return self.salida
     
-    def grabar(self, salida): 
-       #Capturar Contenido Pantalla
+    def grabar(self,salida):
         self.frame = pyautogui.screenshot()
         self.frame = np.array(self.frame)
-    
-        #Convert Formato BGR (utilizado por OpenCV) a Formato RGB
-        self.frame = cv2.cvtColor(self.frame, cv2.COLOR_BGR2RGB)
-    
-        #Escribir el Frame en el archivo del video
+        
+        self.frame = cv2.cvtColor(self.frame,cv2.COLOR_BGR2RGB)
+        
         salida.write(self.frame)
         return salida
-        
-    def terminar_grabacion(self, salida):
-        #Liberar el VideoWrite y Cerrar el OpenCV Windows
+    
+    def terminar_grabacion(self,salida):
         salida.release()
         cv2.destroyAllWindows()
         print('Se finaliza la grabación del video')
