@@ -1,6 +1,5 @@
 #Libreria Selenium
 import selenium
-
 #Libreria Webdriver
 from selenium import webdriver
 
@@ -8,15 +7,14 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService 
 from selenium.webdriver.firefox.service import Service as FirefoxService
 from selenium.webdriver.edge.service import Service as EdgeService
+#Librerias Webdrivers options de los navegadores
+from selenium.webdriver.chrome.options import Options as OpcionesChrome
+from selenium.webdriver.firefox.options import Options as OpcionesFirefox
 
 #Librerias Webdrivers Manager de los navegadores
 from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.firefox import GeckoDriverManager
 from webdriver_manager.microsoft import EdgeChromiumDriverManager
-
-#Librerias Webdrivers options de los navegadores
-from selenium.webdriver.chrome.options import Options as OpcionesChrome
-from selenium.webdriver.firefox.options import Options as OpcionesFirefox
 
 #Librerias Webdrivers funcionalidades
 from selenium.webdriver.common.action_chains import ActionChains
@@ -54,7 +52,7 @@ from io import BytesIO #Para conocer tamaños en bytes, ya esta instalado en Pyt
 import pyautogui
 import cv2
 import numpy as np
-from pyautogui import _pyautogui_win
+from webdriver_manager.drivers.firefox import GeckoDriver
 
 class Functions(Inicializar):
     
@@ -66,29 +64,32 @@ class Functions(Inicializar):
         print("-------------------------------------------")
         
         if navegador ==("Edge"):
-            self.driver = webdriver.Edge(service=EdgeService(EdgeChromiumDriverManager().install()))
+            #Implementacion del Webdriver Manager            
+            self.driver = webdriver.Edge(service =EdgeService(EdgeChromiumDriverManager().install()))
             self.driver.maximize_window()
             
-        elif navegador == ("Chrome"):
+        if navegador == ("Chrome"):
+            #Implementacion del WebdriverManager
             options = OpcionesChrome()
             prefs = {
-                     "profile.default_content_settings.popups": 0,
-                     "download.default_directory": Inicializar.Ruta_Descarga,
-                     "directory_upgrade":True 
-                }
+                 "profile.default_content_settings.popups": 0,
+                 "download.default_directory": Inicializar.Ruta_Descarga,
+                 "directory_upgrade":True 
+            }
             options.add_experimental_option("prefs", prefs)
             options.add_argument('start-maximized')
-            self.driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=options)
             
-        elif navegador ==("Firefox"):
+            self.driver = webdriver.Chrome(service =ChromeService(ChromeDriverManager().install()),options=options)         
+            
+        if navegador ==("Firefox"):
+            #Implementacion WebDriver Manager
             options = OpcionesFirefox()
-            options.add_argument('start-maximized')
-            self.driver = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install(),options=options))
-            self.driver.maximize_window() 
+            options.add_argument('--window-size=800,800')
+
+            self.driver = webdriver.Firefox(service = FirefoxService(GeckoDriverManager().install()),options=options)   
         return self.driver
 
-    #Dirigir a la URL del sitio de pruebas
-    
+    #Dirigir a la URL del sitio de pruebas  
     def get_url_driver(self,URL):
         return self.driver.get(URL)
     
@@ -838,7 +839,7 @@ class Functions(Inicializar):
       Functions.esperar_elemento(self)
       
     #Seleccionar fechas DTimePicker Dinamico
-    def Select_Fecha_DTPickerDinamico(self,FechaIda,Dia): 
+    def Select_Fechas_DTPickerDinamicoUnico(self,FechaIda,Dia): 
       
       #Click en control fecha ida
       Functions.click_en_elemento(self, FechaIda)

@@ -15,6 +15,9 @@ class Test(unittest.TestCase):
             self.out = Selenium.grabar(self, self.salida)
             Selenium.esperar_elemento(self,2)
             
+            Selenium.Realizar_Scroll_JS(self, "DateTimeIda")
+            self.out = Selenium.grabar(self, self.salida)
+            
             Selenium.escribir_texto(self, "DateTimeIda", "San Jose, San Jose, Costa Rica")
             self.out = Selenium.grabar(self, self.salida)
             
