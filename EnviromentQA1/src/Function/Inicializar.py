@@ -3,31 +3,34 @@ import os
 
 class Inicializar():
     
+    #Directorio Base - Obtiene la ruta del directorio src del proyecto
+    BaseDir = os.path.abspath(os.path.join(__file__,"../.."))
+    
+    #Tiempo de espera utilizado dentro del Framework
     Tiempo_Espera = 1
+    
     #Pagina en nuevo tab abierto
     Page_Tab = 'about:blank'
-    Archivo_Cargar = "C:\\Users\\dmefr\\Desktop\\Carpeta MEGA\\Videos QA\\software-quality.png"
-    Ruta_Descarga = "C:\\Users\\dmefr\\Desktop\\Carpeta MEGA\\Videos QA\\Curso Automatizacion Pruebas\\Framework Pruebas Automatizadas\\Entornos Virtuales\\EnviromentQA\\Framework Automatizacion Pruebas Python\\src\\Archivos Descargados"
+    
+    #Rutas utilizadas dentro del Framework
+    Archivo_Cargar = BaseDir + u'\Archivos a Cargar\software-quality.png'
+    Ruta_Descarga = BaseDir + u'\Archivos Descargados'
     Archivo_Descargado = "requirements.txt"
-    Bitacora= "C:\\Users\\dmefr\\Desktop\\Carpeta MEGA\\Videos QA\\Curso Automatizacion Pruebas\\Framework Pruebas Automatizadas\\Entornos Virtuales\\EnviromentQA\\Framework Automatizacion Pruebas Python\\src\\Archivos Descargados\\Pruebas Descargas Archivos.txt"
-    
-    #Directorio Base
-    BaseDir = os.path.abspath(os.path.join(__file__,"../.."))#Obtiene la ruta del directorio src del proyecto
-    
+    Bitacora= BaseDir + u'\Archivos Descargados\Pruebas Descargas Archivos.txt'
     Imagenes_Cortadas = BaseDir + u'\Data\Imagenes Cortadas'
-    
-    DateFormat = '%d-%m-%Y'
-    HourFormat = '%H%M%S'
+    Ruta_Grabacion= BaseDir + u'\Data\Grabaciones'
+    Path_Evidencias = BaseDir + u'\Data\Capturas'
     
     #DirectorioJson
     Json = BaseDir + u'\Pages'
     JsonRespondata = BaseDir + u'\Data\Json'
     
+    #Formato Hora y Fecha
+    DateFormat = '%d-%m-%Y'
+    HourFormat = '%H%M%S'
+    
     #Navegador a Utilizar
     Navegador = u'Chrome'
-    
-    #Directorio de Pruebas
-    Path_Evidencias = BaseDir + u'\Data\Capturas'
     
     #Ruta Excel para escribir resultados o leer datos
     Excel_Leer_Escribir = BaseDir + u'\Data\Pruebas1.xlsx'
