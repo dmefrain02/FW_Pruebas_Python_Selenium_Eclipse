@@ -847,9 +847,8 @@ class Functions(Inicializar):
       Functions.click_en_elemento(self, Dia)
       Functions.esperar_elemento(self)
      
-    #Variable donde almacenamos el videowriter inicializado
     def inicializar_video(self,height_size_screen, width_size_screen,fps,nombre_arch_video,Ruta_Grabacion = Inicializar.Ruta_Grabacion):
-        self.screen_size = (width_size_screen, height_size_screen)
+        self.screen_size = (height_size_screen, width_size_screen)
         self.fps = fps
         self.output_filename = Ruta_Grabacion + f'\{nombre_arch_video}'
         
@@ -860,22 +859,19 @@ class Functions(Inicializar):
         return self.salida    
     
     def grabar(self, salida): 
-
        #Capturar Contenido Pantalla
         self.frame = pyautogui.screenshot()
         self.frame = np.array(self.frame)
     
         #Convert Formato BGR (utilizado por OpenCV) a Formato RGB
-        self.frame += cv2.cvtColor(self.frame, cv2.COLOR_BGR2RGB)
+        self.frame = cv2.cvtColor(self.frame, cv2.COLOR_BGR2RGB)
     
         #Escribir el Frame en el archivo del video
         salida.write(self.frame)
         return salida
         
-        print('se inicio la grabacion')
-        
     def terminar_grabacion(self, salida):
         #Liberar el VideoWrite y Cerrar el OpenCV Windows
         salida.release()
         cv2.destroyAllWindows()
-        print('se finaliza la grabacion')
+        print('Se finaliza la grabación del video')
