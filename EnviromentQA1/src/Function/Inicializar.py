@@ -3,6 +3,8 @@ import os
 
 class Inicializar():
     
+    URL_SeleniumGrid = "http://localhost:4444/wd/hub"
+    
     #Directorio Base - Obtiene la ruta del directorio src del proyecto
     BaseDir = os.path.abspath(os.path.join(__file__,"../.."))
     
