@@ -99,6 +99,7 @@ class Functions(Inicializar):
             self.driver = webdriver.Remote(URL_SeleniumGrid,options=options)
         elif navegador == ("Firefox_Remote"):
             options = OpcionesFirefox()
+            options.binary_location = URL_SeleniumGrid
             options.add_argument('--window-size=800,800')
             self.driver = webdriver.Remote(URL_SeleniumGrid,options=options)
             

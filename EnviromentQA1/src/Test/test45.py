@@ -8,6 +8,7 @@ class Test(unittest.TestCase):
        Selenium.obtener_archivo_json(self, 'Localizadores_Spotify')
        self.out = Selenium.inicializar_video(self,1920, 1080,30,"prueba1.avi")
        
+    
     def test001(self):
         
         while True:
