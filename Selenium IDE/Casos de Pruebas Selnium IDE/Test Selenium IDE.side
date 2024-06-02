@@ -4,10 +4,6 @@
   "name": "Proyecto Casos de Pruebas Selenium IDE",
   "url": "https://demoqa.com",
   "tests": [{
-    "id": "5a15bb9a-0a2f-4644-838c-a5ef3101f8d0",
-    "name": "Untitled",
-    "commands": []
-  }, {
     "id": "b7cdd2bc-f9b5-4e89-90fd-1333e2f12b41",
     "name": "demo QA",
     "commands": [{
@@ -118,7 +114,7 @@
     "persistSession": false,
     "parallel": false,
     "timeout": 300,
-    "tests": ["5a15bb9a-0a2f-4644-838c-a5ef3101f8d0"]
+    "tests": []
   }],
   "urls": ["https://demoqa.com/"],
   "plugins": []
