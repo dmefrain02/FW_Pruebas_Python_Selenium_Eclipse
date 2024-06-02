@@ -1,27 +1,27 @@
 {
-  "id": "820176e1-b100-42ba-9e27-da25c9768bda",
+  "id": "5cc14118-7ed1-4ba5-88ea-f255ebd7857a",
   "version": "2.0",
-  "name": "Test Selenium IDE",
-  "url": "https://demoqa.com/text-box",
+  "name": "Proyecto Casos de Pruebas Selenium IDE",
+  "url": "https://demoqa.com",
   "tests": [{
-    "id": "d512e693-eae3-4417-848d-e978afa14ba5",
+    "id": "b7cdd2bc-f9b5-4e89-90fd-1333e2f12b41",
     "name": "demo QA",
     "commands": [{
-      "id": "8480adbc-1138-4615-a121-4a441d0433a1",
+      "id": "beae3864-c856-4656-9a1a-331d5e7748a4",
       "comment": "",
       "command": "open",
-      "target": "https://demoqa.com/text-box",
+      "target": "/text-box",
       "targets": [],
       "value": ""
     }, {
-      "id": "0c7ba1a4-4c08-4691-b237-df1d085b857b",
+      "id": "f32177af-c4ed-4eac-b01d-3e8fa092a833",
       "comment": "",
       "command": "setWindowSize",
       "target": "1296x688",
       "targets": [],
       "value": ""
     }, {
-      "id": "1124c02c-77bd-477d-b5fd-2539e5b3a9a7",
+      "id": "3f3f290f-6ca8-4fcb-a759-0a2d0e2ec0b1",
       "comment": "",
       "command": "click",
       "target": "id=userName",
@@ -34,7 +34,7 @@
       ],
       "value": ""
     }, {
-      "id": "852807d1-3948-4e7d-8fb9-456c5e0e0ffc",
+      "id": "82ac2bfa-c88b-4a5b-bd00-de53c8367c05",
       "comment": "",
       "command": "type",
       "target": "id=userName",
@@ -45,22 +45,9 @@
         ["xpath=//div[@id='userName-wrapper']/div[2]/input", "xpath:idRelative"],
         ["xpath=//input", "xpath:position"]
       ],
-      "value": "ECD"
+      "value": "QA Tecnology CRC"
     }, {
-      "id": "d707f359-7382-47fb-9967-26990865ddd2",
-      "comment": "",
-      "command": "click",
-      "target": "id=userEmail",
-      "targets": [
-        ["id=userEmail", "id"],
-        ["css=#userEmail", "css:finder"],
-        ["xpath=//input[@id='userEmail']", "xpath:attributes"],
-        ["xpath=//div[@id='userEmail-wrapper']/div[2]/input", "xpath:idRelative"],
-        ["xpath=//div[2]/div[2]/input", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "006aa1d9-3938-4bea-a07b-8507b6957ca6",
+      "id": "39260db9-c414-401e-9ed2-61940ea3c3c4",
       "comment": "",
       "command": "type",
       "target": "id=userEmail",
@@ -71,22 +58,9 @@
         ["xpath=//div[@id='userEmail-wrapper']/div[2]/input", "xpath:idRelative"],
         ["xpath=//div[2]/div[2]/input", "xpath:position"]
       ],
-      "value": "dmefrain.02@gmail.com"
+      "value": "prueba@prueba.com"
     }, {
-      "id": "6ab90884-5aee-413e-bc3f-e769d315f8dd",
-      "comment": "",
-      "command": "click",
-      "target": "id=currentAddress",
-      "targets": [
-        ["id=currentAddress", "id"],
-        ["css=#currentAddress", "css:finder"],
-        ["xpath=//textarea[@id='currentAddress']", "xpath:attributes"],
-        ["xpath=//div[@id='currentAddress-wrapper']/div[2]/textarea", "xpath:idRelative"],
-        ["xpath=//textarea", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "70907990-bb09-4414-b1db-4abfbc552adc",
+      "id": "75b0a7d4-7b24-4924-ae1a-5cafe78076b7",
       "comment": "",
       "command": "type",
       "target": "id=currentAddress",
@@ -97,22 +71,9 @@
         ["xpath=//div[@id='currentAddress-wrapper']/div[2]/textarea", "xpath:idRelative"],
         ["xpath=//textarea", "xpath:position"]
       ],
-      "value": "ECD"
+      "value": "Direccion"
     }, {
-      "id": "b405e7ae-66c2-4606-9d8d-6f65a3ee38d0",
-      "comment": "",
-      "command": "click",
-      "target": "id=permanentAddress",
-      "targets": [
-        ["id=permanentAddress", "id"],
-        ["css=#permanentAddress", "css:finder"],
-        ["xpath=//textarea[@id='permanentAddress']", "xpath:attributes"],
-        ["xpath=//div[@id='permanentAddress-wrapper']/div[2]/textarea", "xpath:idRelative"],
-        ["xpath=//div[4]/div[2]/textarea", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "4fad6b8a-acaf-4c41-9ee8-e3704af2b03b",
+      "id": "2d02b23d-f128-47d5-8e2b-a64e75a1c02e",
       "comment": "",
       "command": "type",
       "target": "id=permanentAddress",
@@ -123,9 +84,9 @@
         ["xpath=//div[@id='permanentAddress-wrapper']/div[2]/textarea", "xpath:idRelative"],
         ["xpath=//div[4]/div[2]/textarea", "xpath:position"]
       ],
-      "value": "ECD"
+      "value": "Direccion Completa"
     }, {
-      "id": "197b11a3-95bf-4fc3-9fd0-8fd82b0dacc9",
+      "id": "97ab7f39-9f91-477b-9a07-fd2bc44add38",
       "comment": "",
       "command": "click",
       "target": "id=submit",
@@ -139,22 +100,22 @@
       ],
       "value": ""
     }, {
-      "id": "10fb89bc-0f3b-4ef5-a297-f9fb07022b88",
+      "id": "2c75e57e-fc6c-48ff-9842-1f911749a0fa",
       "comment": "",
       "command": "assertText",
       "target": "css=.border > #permanentAddress",
       "targets": [],
-      "value": "Permananet Address :ECD"
+      "value": "Permananet Address :Direccion Completa"
     }]
   }],
   "suites": [{
-    "id": "b4b48027-84ea-4ecc-91fa-5e20e8587a5a",
+    "id": "7223744a-e756-4369-a2c7-431d92c396e0",
     "name": "Default Suite",
     "persistSession": false,
     "parallel": false,
     "timeout": 300,
     "tests": []
   }],
-  "urls": ["https://www.mercadolibre.co.cr/", "https://demoqa.com/text-box"],
+  "urls": ["https://demoqa.com/"],
   "plugins": []
 }
