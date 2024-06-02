@@ -16,8 +16,6 @@ from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.firefox import GeckoDriverManager
 from webdriver_manager.microsoft import EdgeChromiumDriverManager
 
-from selenium.webdriver.remote import remote_connection
-
 #Librerias Webdrivers funcionalidades
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
@@ -58,7 +56,7 @@ import numpy as np
 class Functions(Inicializar):
     
     #Abrir Navegador
-    def abrir_navegador(self,navegador=Inicializar.Navegador,URL_SeleniumGrid = Inicializar.URL_SeleniumGrid):
+    def abrir_navegador(self,navegador=Inicializar.Navegador):
         print(u"Directorio Base:" + Inicializar.BaseDir)
         print("-------------------------------------------")
         print(navegador)
@@ -68,7 +66,8 @@ class Functions(Inicializar):
             #Implementacion del Webdriver Manager            
             self.driver = webdriver.Edge(service =EdgeService(EdgeChromiumDriverManager().install()))
             self.driver.maximize_window()
-        elif navegador == ("Chrome"):
+            
+        if navegador == ("Chrome"):
             #Implementacion del WebdriverManager
             options = OpcionesChrome()
             prefs = {
@@ -79,30 +78,14 @@ class Functions(Inicializar):
             options.add_experimental_option("prefs", prefs)
             options.add_argument('start-maximized')
             
-            self.driver = webdriver.Chrome(service =ChromeService(ChromeDriverManager().install()),options=options)            
-        elif navegador ==("Firefox"):
+            self.driver = webdriver.Chrome(service =ChromeService(ChromeDriverManager().install()),options=options)         
+            
+        if navegador ==("Firefox"):
             #Implementacion WebDriver Manager
             options = OpcionesFirefox()
             options.add_argument('--window-size=800,800')
 
             self.driver = webdriver.Firefox(service = FirefoxService(GeckoDriverManager().install()),options=options)   
-            
-        elif navegador ==("Chrome_Remote"):
-            options = OpcionesChrome()
-            prefs = {
-                 "profile.default_content_settings.popups": 0,
-                 "download.default_directory": Inicializar.Ruta_Descarga,
-                 "directory_upgrade":True 
-            }
-            options.add_experimental_option("prefs", prefs)
-            options.add_argument('start-maximized')
-            self.driver = webdriver.Remote(URL_SeleniumGrid,options=options)
-        elif navegador == ("Firefox_Remote"):
-            options = OpcionesFirefox()
-            #options.binary_location = URL_SeleniumGrid
-            options.add_argument('--window-size=800,800')
-            self.driver = webdriver.Remote(URL_SeleniumGrid,options=options)
-            
         return self.driver
 
     #Dirigir a la URL del sitio de pruebas  
