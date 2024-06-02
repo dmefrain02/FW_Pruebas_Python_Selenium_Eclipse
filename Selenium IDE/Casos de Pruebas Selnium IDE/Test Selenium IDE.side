@@ -1,0 +1,121 @@
+{
+  "id": "5cc14118-7ed1-4ba5-88ea-f255ebd7857a",
+  "version": "2.0",
+  "name": "Proyecto Casos de Pruebas Selenium IDE",
+  "url": "https://demoqa.com",
+  "tests": [{
+    "id": "b7cdd2bc-f9b5-4e89-90fd-1333e2f12b41",
+    "name": "demo QA",
+    "commands": [{
+      "id": "beae3864-c856-4656-9a1a-331d5e7748a4",
+      "comment": "",
+      "command": "open",
+      "target": "/text-box",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f32177af-c4ed-4eac-b01d-3e8fa092a833",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1296x688",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "3f3f290f-6ca8-4fcb-a759-0a2d0e2ec0b1",
+      "comment": "",
+      "command": "click",
+      "target": "id=userName",
+      "targets": [
+        ["id=userName", "id"],
+        ["css=#userName", "css:finder"],
+        ["xpath=//input[@id='userName']", "xpath:attributes"],
+        ["xpath=//div[@id='userName-wrapper']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "82ac2bfa-c88b-4a5b-bd00-de53c8367c05",
+      "comment": "",
+      "command": "type",
+      "target": "id=userName",
+      "targets": [
+        ["id=userName", "id"],
+        ["css=#userName", "css:finder"],
+        ["xpath=//input[@id='userName']", "xpath:attributes"],
+        ["xpath=//div[@id='userName-wrapper']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "QA Tecnology CRC"
+    }, {
+      "id": "39260db9-c414-401e-9ed2-61940ea3c3c4",
+      "comment": "",
+      "command": "type",
+      "target": "id=userEmail",
+      "targets": [
+        ["id=userEmail", "id"],
+        ["css=#userEmail", "css:finder"],
+        ["xpath=//input[@id='userEmail']", "xpath:attributes"],
+        ["xpath=//div[@id='userEmail-wrapper']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/input", "xpath:position"]
+      ],
+      "value": "prueba@prueba.com"
+    }, {
+      "id": "75b0a7d4-7b24-4924-ae1a-5cafe78076b7",
+      "comment": "",
+      "command": "type",
+      "target": "id=currentAddress",
+      "targets": [
+        ["id=currentAddress", "id"],
+        ["css=#currentAddress", "css:finder"],
+        ["xpath=//textarea[@id='currentAddress']", "xpath:attributes"],
+        ["xpath=//div[@id='currentAddress-wrapper']/div[2]/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": "Direccion"
+    }, {
+      "id": "2d02b23d-f128-47d5-8e2b-a64e75a1c02e",
+      "comment": "",
+      "command": "type",
+      "target": "id=permanentAddress",
+      "targets": [
+        ["id=permanentAddress", "id"],
+        ["css=#permanentAddress", "css:finder"],
+        ["xpath=//textarea[@id='permanentAddress']", "xpath:attributes"],
+        ["xpath=//div[@id='permanentAddress-wrapper']/div[2]/textarea", "xpath:idRelative"],
+        ["xpath=//div[4]/div[2]/textarea", "xpath:position"]
+      ],
+      "value": "Direccion Completa"
+    }, {
+      "id": "97ab7f39-9f91-477b-9a07-fd2bc44add38",
+      "comment": "",
+      "command": "click",
+      "target": "id=submit",
+      "targets": [
+        ["id=submit", "id"],
+        ["css=#submit", "css:finder"],
+        ["xpath=//button[@id='submit']", "xpath:attributes"],
+        ["xpath=//form[@id='userForm']/div[5]/div/button", "xpath:idRelative"],
+        ["xpath=//div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Submit')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "2c75e57e-fc6c-48ff-9842-1f911749a0fa",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.border > #permanentAddress",
+      "targets": [],
+      "value": "Permananet Address :Direccion Completa"
+    }]
+  }],
+  "suites": [{
+    "id": "7223744a-e756-4369-a2c7-431d92c396e0",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": []
+  }],
+  "urls": ["https://demoqa.com/"],
+  "plugins": []
+}
