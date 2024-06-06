@@ -10,6 +10,7 @@ from selenium.webdriver.edge.service import Service as EdgeService
 #Librerias Webdrivers options de los navegadores
 from selenium.webdriver.chrome.options import Options as OpcionesChrome
 from selenium.webdriver.firefox.options import Options as OpcionesFirefox
+from selenium.webdriver.edge.options import Options as OpcionesEdge
 
 #Librerias Webdrivers Manager de los navegadores
 from webdriver_manager.chrome import ChromeDriverManager
@@ -97,10 +98,11 @@ class Functions(Inicializar):
             options.add_experimental_option("prefs", prefs)
             options.add_argument('start-maximized')
             self.driver = webdriver.Remote(URL_SeleniumGrid,options=options)
-        elif navegador == ("Firefox_Remote"):
-            options = OpcionesFirefox()
-            #options.binary_location = URL_SeleniumGrid
-            options.add_argument('--window-size=800,800')
+        elif navegador == ("Edge_Remote"):
+            options = OpcionesEdge();
+            options.add_argument("start-maximized")
+            #options.add_argument("inprivate")
+            #options.add_argument("headless")
             self.driver = webdriver.Remote(URL_SeleniumGrid,options=options)
             
         return self.driver

@@ -18,9 +18,10 @@ class Test(unittest.TestCase):
             Selenium.Selects_Fechas_DTPickerDinamico(self,'AvanzarMes',1,'FechaIda','FechaVuelta','DiaIda','DiaVuelta')
             Selenium.capturar_pantalla(self);
             Selenium.esperar_elemento(self,2)
+            Selenium.cerrar_driver_navegador(self)
 
     def tearDown(self):
-        Selenium.cerrar_driver_navegador(self)
+        pass
 
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']

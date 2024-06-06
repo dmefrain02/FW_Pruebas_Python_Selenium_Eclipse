@@ -1,19 +1,25 @@
 {
   "capabilities":
-  [
-    {
-      "browserName": "firefox",
-      "maxInstances": 1,
-      "seleniumProtocol": "WebDriver",
-      "platform": "WIN10"
-    },
-    {
-      "browserName": "chrome",
-      "maxInstances": 1,
-      "seleniumProtocol": "WebDriver",
-	  "platform": "WIN10"
-    }
-  ],
+	  [
+		{
+		"browserName": "firefox",
+		"maxInstances": 2,
+		"seleniumProtocol": "WebDriver",
+		"platform": "WIN10"
+		},
+		{
+		"browserName":"MicrosoftEdge",
+		"platform": "WINDOWS",
+		"maxInstances": 3,
+		"seleniumProtocol": "WebDriver"
+		},
+		{
+		"browserName": "chrome",
+		"maxInstances": 3,
+		"seleniumProtocol": "WebDriver",
+		"platform": "WIN10"
+		}
+	  ],
   "proxy": "org.openqa.grid.selenium.proxy.DefaultRemoteProxy",
   "maxSession": 5,
   "port": 5556,
