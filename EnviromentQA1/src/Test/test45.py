@@ -4,11 +4,10 @@ import unittest
 class Test(unittest.TestCase):
 
     def setUp(self):
-       Selenium.abrir_navegador(self,"Chrome_Remote")
+       Selenium.abrir_navegador(self,"Chrome")
        Selenium.obtener_archivo_json(self, 'Localizadores_Spotify')
        self.out = Selenium.inicializar_video(self,1920, 1080,30,"prueba1.avi")
        
-    
     def test001(self):
         
         while True:

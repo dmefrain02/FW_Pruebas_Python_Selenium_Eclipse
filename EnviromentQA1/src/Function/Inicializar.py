@@ -3,11 +3,19 @@ import os
 
 class Inicializar():
     
+<<<<<<< HEAD
     URL_SeleniumGrid = "http://localhost:4444/wd/hub"
     Navegadores_Sel_Grid = ["Edge_Remote","Chrome_Remote"]
     
+=======
+>>>>>>> main
     #Directorio Base - Obtiene la ruta del directorio src del proyecto
     BaseDir = os.path.abspath(os.path.join(__file__,"../.."))
+    
+    #Variable en el archivo inicializar
+    URL_SeleniumGrid = "http://localhost:4444/wd/hub"
+    Navegadores_Sel_Grid = ["Edge_Remote","Chrome_Remote"]
+    
     
     #Tiempo de espera utilizado dentro del Framework
     Tiempo_Espera = 1
