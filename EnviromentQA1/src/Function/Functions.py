@@ -100,9 +100,15 @@ class Functions(Inicializar):
             options.add_argument('start-maximized')
             self.driver = webdriver.Remote(URL_SeleniumGrid,options=options)
         elif navegador == ("Edge_Remote"):
+<<<<<<< HEAD
+            options = OpcionesEdge();
+            options.add_argument("start-maximized")
+            #options.add_argument("inprivate")
+=======
             options = OpcionesEdge()
             options.add_argument("start-maximized")
             options.add_argument("inprivate")
+>>>>>>> main
             #options.add_argument("headless")
             self.driver = webdriver.Remote(URL_SeleniumGrid,options=options)
                
