@@ -1,0 +1,183 @@
+{
+  "id": "57775a73-3c4e-438e-92d1-0eebd2c195ef",
+  "version": "2.0",
+  "name": "Selenium IDE",
+  "url": "https://demoqa.com/radio-button",
+  "tests": [{
+    "id": "b3ef8dff-16c0-4822-874f-9515658256ea",
+    "name": "Test Demo QA - Rellenar Formulario",
+    "commands": [{
+      "id": "a8442147-1b77-4711-a467-ad6fcbc3e808",
+      "comment": "",
+      "command": "open",
+      "target": "https://demoqa.com/text-box",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "10becd8b-5751-4405-8428-40a5d41972dd",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1296x688",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "7a1f1c51-a773-4df2-9865-0542b8d819a6",
+      "comment": "",
+      "command": "type",
+      "target": "id=userName",
+      "targets": [
+        ["id=userName", "id"],
+        ["css=#userName", "css:finder"],
+        ["xpath=//input[@id='userName']", "xpath:attributes"],
+        ["xpath=//div[@id='userName-wrapper']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "ECD"
+    }, {
+      "id": "8c32d31a-983f-4c85-9e72-e18f3e4c2ed6",
+      "comment": "",
+      "command": "type",
+      "target": "id=userEmail",
+      "targets": [
+        ["id=userEmail", "id"],
+        ["css=#userEmail", "css:finder"],
+        ["xpath=//input[@id='userEmail']", "xpath:attributes"],
+        ["xpath=//div[@id='userEmail-wrapper']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/input", "xpath:position"]
+      ],
+      "value": "Prueba@mail.com"
+    }, {
+      "id": "fe07ed0e-cd6b-410a-b505-15ba5207587f",
+      "comment": "",
+      "command": "type",
+      "target": "id=currentAddress",
+      "targets": [
+        ["id=currentAddress", "id"],
+        ["css=#currentAddress", "css:finder"],
+        ["xpath=//textarea[@id='currentAddress']", "xpath:attributes"],
+        ["xpath=//div[@id='currentAddress-wrapper']/div[2]/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": "Prueba"
+    }, {
+      "id": "f89f65a4-10fd-4c1f-863c-b00ca5dd64ee",
+      "comment": "",
+      "command": "type",
+      "target": "id=permanentAddress",
+      "targets": [
+        ["id=permanentAddress", "id"],
+        ["css=#permanentAddress", "css:finder"],
+        ["xpath=//textarea[@id='permanentAddress']", "xpath:attributes"],
+        ["xpath=//div[@id='permanentAddress-wrapper']/div[2]/textarea", "xpath:idRelative"],
+        ["xpath=//div[4]/div[2]/textarea", "xpath:position"]
+      ],
+      "value": "Prueba Datos"
+    }, {
+      "id": "c96c5a17-01ee-49fd-8bc7-2022edfe1e83",
+      "comment": "",
+      "command": "executeScript",
+      "target": "id=submit",
+      "targets": [],
+      "value": "\"arguments[0].scrollIntoView();\""
+    }, {
+      "id": "bba44c4f-ba9e-4c24-b963-fec9d3057890",
+      "comment": "",
+      "command": "click",
+      "target": "id=submit",
+      "targets": [
+        ["id=submit", "id"],
+        ["css=#submit", "css:finder"],
+        ["xpath=//button[@id='submit']", "xpath:attributes"],
+        ["xpath=//form[@id='userForm']/div[5]/div/button", "xpath:idRelative"],
+        ["xpath=//div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Submit')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "b57bcfd5-8335-40f4-9a3b-7c3248c542c9",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.border > #permanentAddress",
+      "targets": [
+        ["css=.border > #permanentAddress", "css:finder"],
+        ["xpath=//p[@id='permanentAddress']", "xpath:attributes"],
+        ["xpath=//div[@id='output']/div/p[4]", "xpath:idRelative"],
+        ["xpath=//p[4]", "xpath:position"],
+        ["xpath=//p[contains(.,'Permananet Address :Prueba Datos')]", "xpath:innerText"]
+      ],
+      "value": "Permananet Address :Prueba Datos"
+    }, {
+      "id": "087a87a5-f9f8-42b0-b6c3-fa83425fe8de",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "f5833eb6-aa7f-4eda-b5e0-4d31fd78aa41",
+    "name": "Test Demo QA - Radiobutton",
+    "commands": [{
+      "id": "ce6dddee-f2da-426d-83a6-b7e909be3359",
+      "comment": "",
+      "command": "open",
+      "target": "https://demoqa.com/radio-button",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c377191b-754a-4da8-aa40-4b89472dd27f",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1296x688",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f16c0b04-dc01-4c3d-ac89-e736bf1d1057",
+      "comment": "",
+      "command": "click",
+      "target": "css=.col-md-6",
+      "targets": [
+        ["css=.col-md-6", "css:finder"],
+        ["xpath=//div[@id='app']/div/div/div/div[2]", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div/div/div[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "23ae09e6-6a46-43f6-8b4c-6cfc425785ac",
+      "comment": "",
+      "command": "click",
+      "target": "css=.custom-control:nth-child(3) > .custom-control-label",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "1a9c5507-8ab3-4dbb-b900-1d188faedf4a",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.mt-3",
+      "targets": [
+        ["css=.mt-3", "css:finder"],
+        ["xpath=//div[@id='app']/div/div/div/div[2]/div[2]/p", "xpath:idRelative"],
+        ["xpath=//p", "xpath:position"],
+        ["xpath=//p[contains(.,'You have selected Impressive')]", "xpath:innerText"]
+      ],
+      "value": "You have selected Impressive"
+    }, {
+      "id": "cdb9619d-f3ee-415f-bebe-6111180db94a",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "336cef83-4427-483a-882b-0a854aead76a",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["b3ef8dff-16c0-4822-874f-9515658256ea"]
+  }],
+  "urls": ["https://demoqa.com/", "https://demoqa.com/text-box", "https://www.google.co.cr/", "https://demoqa.com/radio-button"],
+  "plugins": []
+}

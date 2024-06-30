@@ -11,7 +11,7 @@ class Inicializar():
     
     #Variable en el archivo inicializar
     URL_SeleniumGrid = "http://localhost:4444/wd/hub"
-    Navegadores_Sel_Grid = ["Edge_Remote","Chrome_Remote"]
+    Navegadores_Sel_Grid = ["Chrome","Edge_Remote","Chrome_Remote"]
     
     
     #Tiempo de espera utilizado dentro del Framework
@@ -29,7 +29,7 @@ class Inicializar():
     Ruta_Grabacion= BaseDir + u'\Data\Grabaciones'
     Path_Evidencias = BaseDir + u'\Data\Capturas'
     
-    #DirectorioJson
+    #Directorio Json
     Json = BaseDir + u'\Pages'
     JsonRespondata = BaseDir + u'\Data\Json'
     
