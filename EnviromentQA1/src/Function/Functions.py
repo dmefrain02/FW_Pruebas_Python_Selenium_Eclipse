@@ -28,6 +28,8 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.wait import WebDriverWait
 
 from selenium.webdriver.remote import remote_connection
+from selenium.webdriver.common.print_page_options import PrintOptions as PrintOptions
+import base64
 
 from Function.Inicializar import Inicializar
 from selenium.common.exceptions import NoSuchElementException,NoAlertPresentException,NoSuchWindowException,TimeoutException
@@ -56,6 +58,7 @@ import pyautogui
 import cv2
 import numpy as np
 from _ast import If
+from dill._dill import OutputType
 
 class Functions(Inicializar):
     
@@ -83,6 +86,7 @@ class Functions(Inicializar):
             }
             options.add_experimental_option("prefs", prefs)
             options.add_argument('start-maximized')
+            options.add_argument("headless")
             
             self.driver = webdriver.Chrome(service =ChromeService(ChromeDriverManager().install()),options=options)         
             
@@ -893,3 +897,7 @@ class Functions(Inicializar):
         salida.release()
         cv2.destroyAllWindows()
         print('Se finaliza la grabación del video')
+        
+    def print_page_pdf(self):
+        pdf = self.driver.print_page()
+        pdf.write(Path.get(f'{Inicializar.Path_Evidencias}/selenium.pdf'),OutputType.BYTES.convertFromBase64Png(pdf.getContent))
