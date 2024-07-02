@@ -28,6 +28,7 @@ class Inicializar():
     Imagenes_Cortadas = BaseDir + u'\Data\Imagenes Cortadas'
     Ruta_Grabacion= BaseDir + u'\Data\Grabaciones'
     Path_Evidencias = BaseDir + u'\Data\Capturas'
+    TestCase_x_Context = "S"
     
     #Directorio Json
     Json = BaseDir + u'\Pages'

@@ -55,6 +55,7 @@ from io import BytesIO #Para conocer tamaños en bytes, ya esta instalado en Pyt
 import pyautogui
 import cv2
 import numpy as np
+from _ast import If
 
 class Functions(Inicializar):
     
@@ -116,7 +117,7 @@ class Functions(Inicializar):
     
     #Cerrar la instancia del navegador
     def cerrar_driver_navegador(self):
-        return self.driver.close()
+        return self.driver.quit()
     
     #Encontrando elementos en el DOM por medio de XPATH
     def elementos_del_DOM_x_XPATH(self, XPATH):
@@ -499,15 +500,16 @@ class Functions(Inicializar):
         TestCase =self.__class__.__name__
         HoraActual = Functions.obtener_hora_actual(self)
         
-        if (GeneralPath != ""):
+        if (Inicializar.TestCase_x_Context =="S"):
+            path = f"{GeneralPath}\{fecha}\Pruebas\{TestCase}\{DriverTest}\{HoraActual}"
+        elif (GeneralPath != ""):
             path =f"{GeneralPath}\{fecha}\{TestCase}\{DriverTest}\{HoraActual}"
-            if not os.path.exists(path):
-                os.makedirs(path)
         else:
-            print(f'No se logro establecer ruta para la guardar la captura de pantalla, se guardara en la carpeta raiz de capturas: {GeneralPath}')
             path = f'{Inicializar.BaseDir}\Capturas\{fecha}\{TestCase}\{DriverTest}\{HoraActual}'
-            if not os.path.exists(path):
-                os.makedirs(path)   
+            print(f'No se logro establecer ruta para la guardar la captura de pantalla, se guardara en la carpeta raiz del framework de pruebas.\nEn: {path}')
+        
+        if not os.path.exists(path):
+            os.makedirs(path)  
         return path
     
     #Realizar captura de pantalla

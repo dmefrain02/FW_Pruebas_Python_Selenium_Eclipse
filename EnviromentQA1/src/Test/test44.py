@@ -2,7 +2,7 @@ from Function.Functions import Functions as Selenium
 import unittest
 from Function.Inicializar import Inicializar
 
-class Test(unittest.TestCase):
+class Pruebas_PaginaCompras(unittest.TestCase):
 
     def setUp(self):
         Selenium.obtener_archivo_json(self, 'Localizadores_Spotify')
