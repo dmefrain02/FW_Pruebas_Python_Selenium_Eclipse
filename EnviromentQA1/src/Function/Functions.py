@@ -57,8 +57,7 @@ from io import BytesIO #Para conocer tamaños en bytes, ya esta instalado en Pyt
 import pyautogui
 import cv2
 import numpy as np
-from _ast import If
-from dill._dill import OutputType
+
 
 class Functions(Inicializar):
     
@@ -86,7 +85,7 @@ class Functions(Inicializar):
             }
             options.add_experimental_option("prefs", prefs)
             options.add_argument('start-maximized')
-            options.add_argument("headless")
+            #options.add_argument("headless")
             
             self.driver = webdriver.Chrome(service =ChromeService(ChromeDriverManager().install()),options=options)         
             
@@ -531,20 +530,32 @@ class Functions(Inicializar):
         allure.attach(self.driver.get_screenshot_as_png(),Descripcion,allure.attachment_type.PNG)
     
     #Realizar conexion a BD     
-    def pyodbc_conexionBD(self,Env=Inicializar.Enviroment,_Servidor = Inicializar.DB_HOST, _dbName = Inicializar.DB_DATABASE, _user=Inicializar.DB_USER, _pass = Inicializar.DB_PASS):
+    def pyodbc_conexionBD(self,Env):
         
             try:
-                conn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server}; SERVER='+ _Servidor +';DATABASE='+ _dbName +';UID='+_user+';PWD='+_pass)
+                if Env == 'DEV':
+                    conn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server};SERVER=' + Inicializar.DB_HOST_Dev +';DATABASE='+ Inicializar.DB_DATABASE_Dev +';UID='+Inicializar.DB_USER_Dev+';PWD=' +Inicializar.DB_USER_Dev)
+                elif Env == 'QA':
+                    conn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server}; SERVER='+ Inicializar.DB_HOST_QA +';DATABASE='+ Inicializar.DB_DATABASE_QA +';UID='+ Inicializar.DB_USER_QA +';PWD='+ Inicializar.DB_USER_QA)
+                    print(conn)
+                elif Env == 'UAT':
+                    conn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server}; SERVER='+ Inicializar.DB_HOST_UAT +';DATABASE='+ Inicializar.DB_DATABASE_UAT +';UID='+ Inicializar.DB_USER_UAT+';PWD='+ Inicializar.DB_USER_UAT)
+                elif Env == 'PROD':
+                    conn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server}; SERVER='+ Inicializar.DB_HOST_PROD +';DATABASE='+ Inicializar.DB_DATABASE_PROD +';UID='+Inicializar.DB_USER_PROD+';PWD='+ Inicializar.DB_USER_PROD)
+                else:
+                    print('No se logro establecer la cadena de conexion con la base de datos.')
+                    
                 self.cursor = conn.cursor()
                 print("Conexion Exitosa")
                 return self.cursor
             except (pyodbc.OperationalError) as Error:
                 self.cursor = None
+                print("Conexion Fallida")
                 pytest.skip("Error en la conexion a la BD: ", str(Error))
     
     #Realizar consulta a BD         
-    def pyodbc_ConsultaBD(self,consulta_query):
-        self.cursor = Functions.pyodbc_conexionBD(self)
+    def pyodbc_ConsultaBD(self,Enviroment,consulta_query):
+        self.cursor = Functions.pyodbc_conexionBD(self,Enviroment)
         if self.cursor is not None:
             try:
                 self.cursor.execute(consulta_query)
@@ -898,6 +909,6 @@ class Functions(Inicializar):
         cv2.destroyAllWindows()
         print('Se finaliza la grabación del video')
         
-    def print_page_pdf(self):
-        pdf = self.driver.print_page()
-        pdf.write(Path.get(f'{Inicializar.Path_Evidencias}/selenium.pdf'),OutputType.BYTES.convertFromBase64Png(pdf.getContent))
+   # def print_page_pdf(self):
+    #    pdf = self.driver.print_page()
+     #   pdf.write(Path.get(f'{Inicializar.Path_Evidencias}/selenium.pdf'),OutputType.BYTES.convertFromBase64Png(pdf.getContent))

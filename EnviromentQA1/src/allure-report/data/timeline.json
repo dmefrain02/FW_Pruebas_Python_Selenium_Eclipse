@@ -1,0 +1,25 @@
+{
+  "uid" : "ab17fc5a4eb3bca4b216b548c7f9fcbc",
+  "name" : "timeline",
+  "children" : [ {
+    "name" : "Efrain-CD",
+    "children" : [ {
+      "name" : "13388-MainThread",
+      "children" : [ {
+        "name" : "test001",
+        "uid" : "20981128442fdd38",
+        "parentUid" : "7f1a92d1b5ff706257857e1a4b3ffed7",
+        "status" : "passed",
+        "time" : {
+          "start" : 1721939898352,
+          "stop" : 1721939939860,
+          "duration" : 41508
+        },
+        "flaky" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "7f1a92d1b5ff706257857e1a4b3ffed7"
+    } ],
+    "uid" : "ecc88ebf2aeb082416075a56769c8fef"
+  } ]
+}

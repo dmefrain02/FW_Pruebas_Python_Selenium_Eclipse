@@ -48,20 +48,36 @@ class Inicializar():
     Excel_Crear = BaseDir + u'\Data'
     
     #Ambientes de Pruebas
-    Enviroment = 'Test'
-    if Enviroment == 'Dev':
-        URL = f'' #La f solo va si requerimos pasarle parametros en el link
-        USER = ''
-        DB_HOST = 'EFRAIN-CD'
-        DB_PORT = '1433'
-        DB_DATABASE = 'Pruebas_Automatizadas_Python'
-        DB_USER = 'EFRAINCD'
-        DB_PASS = 'EfCastaned-2023' 
-    if Enviroment == 'Test':
-        URL = f'' #La f solo va si requerimos pasarle parametros en el link
-        USER = ''
-        DB_HOST = 'EFRAIN-CD'
-        DB_PORT = ''
-        DB_DATABASE = 'Pruebas_Automatizadas_Python'
-        DB_USER = 'EFRAINCD'
-        DB_PASS = 'EfCastaned-2023' 
+    #Enviroment == 'Dev':
+    URL_Dev = f'' #La f solo va si requerimos pasarle parametros en el link
+    USER_Dev = ''
+    DB_HOST_Dev = 'EFRAIN-CD\EFRAINCD'
+    DB_PORT_Dev = '1433'
+    DB_DATABASE_Dev = 'Pruebas_Automatizadas_Python_DEV'
+    DB_USER_Dev = 'EFRAIN_ACD'
+    DB_PASS_Dev = '114660137'
+    
+    #Enviroment == 'QA':    
+    URL_QA = f'' #La f solo va si requerimos pasarle parametros en el link
+    USER_QA = ''
+    DB_HOST_QA = 'EFRAIN-CD\EFRAINCD'
+    DB_PORT_QA = '1433'
+    DB_DATABASE_QA = 'Pruebas_Automatizadas_Python_QA'
+    DB_USER_QA = 'EFRAIN_ACD'
+    DB_PASS_QA = '114660137' 
+    #Enviroment == 'UAT':
+    URL_UAT = f'' #La f solo va si requerimos pasarle parametros en el link
+    USER_UAT = ''
+    DB_HOST_UAT = 'EFRAIN-CD\EFRAINCD'
+    DB_PORT_UAT = '1433'
+    DB_DATABASE_UAT = 'Pruebas_Automatizadas_Python_UAT'
+    DB_USER_UAT = ''
+    DB_PASS_UAT = '' 
+    #Enviroment == 'PROD':
+    URL_PROD = f'' #La f solo va si requerimos pasarle parametros en el link
+    USER_PROD = ''
+    DB_HOST_PROD = 'EFRAIN-CD\EFRAINCD'
+    DB_PORT_PROD = '1433'
+    DB_DATABASE_PROD = 'Pruebas_Automatizadas_Python_PROD'
+    DB_USER_PROD = ''
+    DB_PASS_PROD = '' 
