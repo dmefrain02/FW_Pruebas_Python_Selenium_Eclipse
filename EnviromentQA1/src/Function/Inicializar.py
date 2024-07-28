@@ -51,16 +51,16 @@ class Inicializar():
     if Enviroment == 'Dev':
         URL = f'' #La f solo va si requerimos pasarle parametros en el link
         USER = ''
-        DB_HOST = 'EFRAIN-CD'
+        DB_HOST = 'EFRAIN-CD\EFRAINCD'
         DB_PORT = '1433'
-        DB_DATABASE = 'Pruebas_Automatizadas_Python'
-        DB_USER = 'EFRAINCD'
-        DB_PASS = 'EfCastaned-2023' 
+        DB_DATABASE = 'Pruebas_Automatizadas_Python_QA'
+        DB_USER = 'EFRAIN_ACD'
+        DB_PASS = '114660137' 
     if Enviroment == 'Test':
         URL = f'' #La f solo va si requerimos pasarle parametros en el link
         USER = ''
-        DB_HOST = 'EFRAIN-CD'
-        DB_PORT = ''
-        DB_DATABASE = 'Pruebas_Automatizadas_Python'
-        DB_USER = 'EFRAINCD'
-        DB_PASS = 'EfCastaned-2023' 
+        DB_HOST = 'EFRAIN-CD\EFRAINCD'
+        DB_PORT = '1433'
+        DB_DATABASE = 'Pruebas_Automatizadas_Python_QA'
+        DB_USER = 'EFRAIN_ACD'
+        DB_PASS = '114660137' 
