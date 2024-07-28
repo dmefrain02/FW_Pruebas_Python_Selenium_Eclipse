@@ -4,170 +4,169 @@
   "name": "Selenium IDE",
   "url": "https://demoqa.com/radio-button",
   "tests": [{
-    "id": "b3ef8dff-16c0-4822-874f-9515658256ea",
-    "name": "Test Demo QA - Rellenar Formulario",
+    "id": "d6aa2a26-40fc-4b35-adf0-da38cadc2086",
+    "name": "Mercado Libre CRC",
     "commands": [{
-      "id": "a8442147-1b77-4711-a467-ad6fcbc3e808",
+      "id": "7befa242-606f-41d5-a0d0-1703c00b171d",
       "comment": "",
       "command": "open",
-      "target": "https://demoqa.com/text-box",
+      "target": "https://www.mercadolibre.co.cr/",
       "targets": [],
       "value": ""
     }, {
-      "id": "10becd8b-5751-4405-8428-40a5d41972dd",
+      "id": "8b3fa452-8b92-40dd-9d01-216b7b93fc9b",
       "comment": "",
       "command": "setWindowSize",
       "target": "1296x688",
       "targets": [],
       "value": ""
     }, {
-      "id": "7a1f1c51-a773-4df2-9865-0542b8d819a6",
-      "comment": "",
-      "command": "type",
-      "target": "id=userName",
-      "targets": [
-        ["id=userName", "id"],
-        ["css=#userName", "css:finder"],
-        ["xpath=//input[@id='userName']", "xpath:attributes"],
-        ["xpath=//div[@id='userName-wrapper']/div[2]/input", "xpath:idRelative"],
-        ["xpath=//input", "xpath:position"]
-      ],
-      "value": "ECD"
-    }, {
-      "id": "8c32d31a-983f-4c85-9e72-e18f3e4c2ed6",
-      "comment": "",
-      "command": "type",
-      "target": "id=userEmail",
-      "targets": [
-        ["id=userEmail", "id"],
-        ["css=#userEmail", "css:finder"],
-        ["xpath=//input[@id='userEmail']", "xpath:attributes"],
-        ["xpath=//div[@id='userEmail-wrapper']/div[2]/input", "xpath:idRelative"],
-        ["xpath=//div[2]/div[2]/input", "xpath:position"]
-      ],
-      "value": "Prueba@mail.com"
-    }, {
-      "id": "fe07ed0e-cd6b-410a-b505-15ba5207587f",
-      "comment": "",
-      "command": "type",
-      "target": "id=currentAddress",
-      "targets": [
-        ["id=currentAddress", "id"],
-        ["css=#currentAddress", "css:finder"],
-        ["xpath=//textarea[@id='currentAddress']", "xpath:attributes"],
-        ["xpath=//div[@id='currentAddress-wrapper']/div[2]/textarea", "xpath:idRelative"],
-        ["xpath=//textarea", "xpath:position"]
-      ],
-      "value": "Prueba"
-    }, {
-      "id": "f89f65a4-10fd-4c1f-863c-b00ca5dd64ee",
-      "comment": "",
-      "command": "type",
-      "target": "id=permanentAddress",
-      "targets": [
-        ["id=permanentAddress", "id"],
-        ["css=#permanentAddress", "css:finder"],
-        ["xpath=//textarea[@id='permanentAddress']", "xpath:attributes"],
-        ["xpath=//div[@id='permanentAddress-wrapper']/div[2]/textarea", "xpath:idRelative"],
-        ["xpath=//div[4]/div[2]/textarea", "xpath:position"]
-      ],
-      "value": "Prueba Datos"
-    }, {
-      "id": "c96c5a17-01ee-49fd-8bc7-2022edfe1e83",
-      "comment": "",
-      "command": "executeScript",
-      "target": "id=submit",
-      "targets": [],
-      "value": "\"arguments[0].scrollIntoView();\""
-    }, {
-      "id": "bba44c4f-ba9e-4c24-b963-fec9d3057890",
+      "id": "64b427ad-67d6-4533-9014-d33369faac5a",
       "comment": "",
       "command": "click",
-      "target": "id=submit",
+      "target": "id=cb1-edit",
       "targets": [
-        ["id=submit", "id"],
-        ["css=#submit", "css:finder"],
-        ["xpath=//button[@id='submit']", "xpath:attributes"],
-        ["xpath=//form[@id='userForm']/div[5]/div/button", "xpath:idRelative"],
-        ["xpath=//div/button", "xpath:position"],
-        ["xpath=//button[contains(.,'Submit')]", "xpath:innerText"]
+        ["id=cb1-edit", "id"],
+        ["name=as_word", "name"],
+        ["css=#cb1-edit", "css:finder"],
+        ["xpath=//input[@id='cb1-edit']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
       ],
       "value": ""
     }, {
-      "id": "b57bcfd5-8335-40f4-9a3b-7c3248c542c9",
+      "id": "4118f54e-4e55-4f1b-a0f7-f45df623b1d1",
+      "comment": "",
+      "command": "type",
+      "target": "id=cb1-edit",
+      "targets": [
+        ["id=cb1-edit", "id"],
+        ["name=as_word", "name"],
+        ["css=#cb1-edit", "css:finder"],
+        ["xpath=//input[@id='cb1-edit']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Carros Usados"
+    }, {
+      "id": "a874180a-bae1-4b29-91c3-9aa3d4c9db36",
+      "comment": "",
+      "command": "sendKeys",
+      "target": "id=cb1-edit",
+      "targets": [
+        ["id=cb1-edit", "id"],
+        ["name=as_word", "name"],
+        ["css=#cb1-edit", "css:finder"],
+        ["xpath=//input[@id='cb1-edit']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "${KEY_ENTER}"
+    }, {
+      "id": "9c88faf0-2414-4842-9914-a09e76a34489",
       "comment": "",
       "command": "assertText",
-      "target": "css=.border > #permanentAddress",
-      "targets": [
-        ["css=.border > #permanentAddress", "css:finder"],
-        ["xpath=//p[@id='permanentAddress']", "xpath:attributes"],
-        ["xpath=//div[@id='output']/div/p[4]", "xpath:idRelative"],
-        ["xpath=//p[4]", "xpath:position"],
-        ["xpath=//p[contains(.,'Permananet Address :Prueba Datos')]", "xpath:innerText"]
-      ],
-      "value": "Permananet Address :Prueba Datos"
-    }, {
-      "id": "087a87a5-f9f8-42b0-b6c3-fa83425fe8de",
-      "comment": "",
-      "command": "close",
-      "target": "",
+      "target": "css=.ui-search-breadcrumb__title",
       "targets": [],
-      "value": ""
+      "value": "Carros usados"
     }]
   }, {
-    "id": "f5833eb6-aa7f-4eda-b5e0-4d31fd78aa41",
-    "name": "Test Demo QA - Radiobutton",
+    "id": "75dc2f02-6bf9-4bff-b229-52fb44c7f793",
+    "name": "Mercado Libre CRC (1)",
     "commands": [{
-      "id": "ce6dddee-f2da-426d-83a6-b7e909be3359",
+      "id": "08a4a9d3-818e-4b37-8e27-b261647c2c20",
+      "comment": "",
+      "command": "open",
+      "target": "https://www.mercadolibre.co.cr/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ab5895f2-fb15-485d-8c53-3ae63c2123c8",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1296x688",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "591f45ec-80f2-459c-9e8c-428996908891",
+      "comment": "",
+      "command": "click",
+      "target": "id=cb1-edit",
+      "targets": [
+        ["id=cb1-edit", "id"],
+        ["name=as_word", "name"],
+        ["css=#cb1-edit", "css:finder"],
+        ["xpath=//input[@id='cb1-edit']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5f58e8fe-01ae-4594-9bef-c09739164c0b",
+      "comment": "",
+      "command": "type",
+      "target": "id=cb1-edit",
+      "targets": [
+        ["id=cb1-edit", "id"],
+        ["name=as_word", "name"],
+        ["css=#cb1-edit", "css:finder"],
+        ["xpath=//input[@id='cb1-edit']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Videojuegos PS4"
+    }, {
+      "id": "55878430-ccf2-4dcb-9089-ec321a7cd45c",
+      "comment": "",
+      "command": "sendKeys",
+      "target": "id=cb1-edit",
+      "targets": [
+        ["id=cb1-edit", "id"],
+        ["name=as_word", "name"],
+        ["css=#cb1-edit", "css:finder"],
+        ["xpath=//input[@id='cb1-edit']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "${KEY_ENTER}"
+    }, {
+      "id": "7e14af82-3f29-4ade-b282-e45f97bf0119",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.ui-search-breadcrumb__title",
+      "targets": [],
+      "value": "Videojuegos ps4"
+    }]
+  }, {
+    "id": "752e28f7-a626-4ae9-b6cc-94401be11e11",
+    "name": "Demo QA",
+    "commands": [{
+      "id": "2dd8f2f1-8c61-48c5-9383-858f023345ed",
       "comment": "",
       "command": "open",
       "target": "https://demoqa.com/radio-button",
       "targets": [],
       "value": ""
     }, {
-      "id": "c377191b-754a-4da8-aa40-4b89472dd27f",
+      "id": "0edfda7f-4169-4dd9-9575-bb5a55c02237",
       "comment": "",
       "command": "setWindowSize",
       "target": "1296x688",
       "targets": [],
       "value": ""
     }, {
-      "id": "f16c0b04-dc01-4c3d-ac89-e736bf1d1057",
-      "comment": "",
-      "command": "click",
-      "target": "css=.col-md-6",
-      "targets": [
-        ["css=.col-md-6", "css:finder"],
-        ["xpath=//div[@id='app']/div/div/div/div[2]", "xpath:idRelative"],
-        ["xpath=//div[2]/div/div/div/div[2]", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "23ae09e6-6a46-43f6-8b4c-6cfc425785ac",
+      "id": "cf5984d9-f06d-489c-a7e6-b3a0f22ea61f",
       "comment": "",
       "command": "click",
       "target": "css=.custom-control:nth-child(3) > .custom-control-label",
-      "targets": [],
+      "targets": [
+        ["css=.custom-control:nth-child(3) > .custom-control-label", "css:finder"],
+        ["xpath=//div[@id='app']/div/div/div/div[2]/div[2]/div[3]/label", "xpath:idRelative"],
+        ["xpath=//div[3]/label", "xpath:position"],
+        ["xpath=//label[contains(.,'Impressive')]", "xpath:innerText"]
+      ],
       "value": ""
     }, {
-      "id": "1a9c5507-8ab3-4dbb-b900-1d188faedf4a",
+      "id": "ae9dcdd0-2fe6-4099-ae47-4e4bf5053a55",
       "comment": "",
       "command": "assertText",
       "target": "css=.mt-3",
-      "targets": [
-        ["css=.mt-3", "css:finder"],
-        ["xpath=//div[@id='app']/div/div/div/div[2]/div[2]/p", "xpath:idRelative"],
-        ["xpath=//p", "xpath:position"],
-        ["xpath=//p[contains(.,'You have selected Impressive')]", "xpath:innerText"]
-      ],
-      "value": "You have selected Impressive"
-    }, {
-      "id": "cdb9619d-f3ee-415f-bebe-6111180db94a",
-      "comment": "",
-      "command": "close",
-      "target": "",
       "targets": [],
-      "value": ""
+      "value": "You have selected Impressive"
     }]
   }],
   "suites": [{
@@ -176,7 +175,7 @@
     "persistSession": false,
     "parallel": false,
     "timeout": 300,
-    "tests": ["b3ef8dff-16c0-4822-874f-9515658256ea"]
+    "tests": []
   }],
   "urls": ["https://demoqa.com/", "https://demoqa.com/text-box", "https://www.google.co.cr/", "https://demoqa.com/radio-button"],
   "plugins": []
