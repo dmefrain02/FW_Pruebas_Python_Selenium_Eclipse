@@ -531,17 +531,36 @@ class Functions(Inicializar):
     
     #Realizar conexion a BD     
     def pyodbc_conexionBD(self,Env):
-        
+            
             try:
                 if Env == 'DEV':
-                    conn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server};SERVER=' + Inicializar.DB_HOST_Dev +';DATABASE='+ Inicializar.DB_DATABASE_Dev +';UID='+Inicializar.DB_USER_Dev+';PWD=' +Inicializar.DB_USER_Dev)
+                    _Servidor = Inicializar.DB_HOST_Dev, 
+                    _dbName = Inicializar.DB_DATABASE_Dev, 
+                    _user=Inicializar.DB_USER_Dev, 
+                    _pass = Inicializar.DB_PASS_Dev
+                    conn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server}; SERVER='+_Servidor + ';DATABASE='+ _dbName +';UID='+_user+';PWD='+_pass)
+                    print(conn)
                 elif Env == 'QA':
-                    conn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server}; SERVER='+ Inicializar.DB_HOST_QA +';DATABASE='+ Inicializar.DB_DATABASE_QA +';UID='+ Inicializar.DB_USER_QA +';PWD='+ Inicializar.DB_USER_QA)
+                    _Servidor = Inicializar.DB_HOST_QA, 
+                    _dbName = Inicializar.DB_DATABASE_QA, 
+                    _user=Inicializar.DB_USER_QA, 
+                    _pass = Inicializar.DB_PASS_QA
+                    conn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server}; SERVER='+_Servidor + ';DATABASE='+ _dbName +';UID='+_user+';PWD='+_pass)
                     print(conn)
                 elif Env == 'UAT':
-                    conn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server}; SERVER='+ Inicializar.DB_HOST_UAT +';DATABASE='+ Inicializar.DB_DATABASE_UAT +';UID='+ Inicializar.DB_USER_UAT+';PWD='+ Inicializar.DB_USER_UAT)
+                    _Servidor = Inicializar.DB_HOST_UAT, 
+                    _dbName = Inicializar.DB_DATABASE_UAT, 
+                    _user=Inicializar.DB_USER_UAT, 
+                    _pass = Inicializar.DB_PASS_UAT
+                    conn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server}; SERVER='+_Servidor + ';DATABASE='+ _dbName +';UID='+_user+';PWD='+_pass)
+                    print(conn)
                 elif Env == 'PROD':
-                    conn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server}; SERVER='+ Inicializar.DB_HOST_PROD +';DATABASE='+ Inicializar.DB_DATABASE_PROD +';UID='+Inicializar.DB_USER_PROD+';PWD='+ Inicializar.DB_USER_PROD)
+                    _Servidor = Inicializar.DB_HOST_PROD, 
+                    _dbName = Inicializar.DB_DATABASE_PROD, 
+                    _user=Inicializar.DB_USER_PROD, 
+                    _pass = Inicializar.DB_PASS_PROD
+                    conn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server}; SERVER='+_Servidor + ';DATABASE='+ _dbName +';UID='+_user+';PWD='+_pass)
+                    print(conn)
                 else:
                     print('No se logro establecer la cadena de conexion con la base de datos.')
                     
@@ -554,8 +573,8 @@ class Functions(Inicializar):
                 pytest.skip("Error en la conexion a la BD: ", str(Error))
     
     #Realizar consulta a BD         
-    def pyodbc_ConsultaBD(self,Enviroment,consulta_query):
-        self.cursor = Functions.pyodbc_conexionBD(self,Enviroment)
+    def pyodbc_ConsultaBD(self,Env,consulta_query):
+        self.cursor = Functions.pyodbc_conexionBD(self,Env)
         if self.cursor is not None:
             try:
                 self.cursor.execute(consulta_query)
