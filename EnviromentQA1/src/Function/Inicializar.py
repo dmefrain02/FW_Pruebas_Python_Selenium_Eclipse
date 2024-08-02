@@ -29,7 +29,7 @@ class Inicializar():
     Ruta_Grabacion= BaseDir + u'\Data\Grabaciones'
     #Path_Evidencias = BaseDir + u'\Data\Capturas'
     Path_Evidencias = ""
-    TestCase_x_Context = "N"
+    TestCase_x_Context = "N" #S o N
     
     #Directorio Json
     Json = BaseDir + u'\Pages'
