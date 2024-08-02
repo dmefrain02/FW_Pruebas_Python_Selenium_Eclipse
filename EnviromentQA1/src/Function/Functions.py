@@ -538,7 +538,8 @@ class Functions(Inicializar):
                     _dbName = Inicializar.DB_DATABASE_Dev, 
                     _user=Inicializar.DB_USER_Dev, 
                     _pass = Inicializar.DB_PASS_Dev
-                    conn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server}; SERVER='+_Servidor + ';DATABASE='+ _dbName +';UID='+_user+';PWD='+_pass)
+                     #                     'DRIVER={ODBC Driver 17 for SQL Server}; SERVER='+ _Servidor + ';DATABASE='+ _dbName +';UID='+_user+';PWD='+_pass
+                    conn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server}; SERVER='+ _Servidor + ';DATABASE='+ _dbName +';UID='+_user+';PWD='+_pass)
                     print(conn)
                 elif Env == 'QA':
                     _Servidor = Inicializar.DB_HOST_QA, 
