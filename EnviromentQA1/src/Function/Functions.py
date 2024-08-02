@@ -505,11 +505,11 @@ class Functions(Inicializar):
         
         if (Inicializar.TestCase_x_Context =="S"):
             path = f"{GeneralPath}\{fecha}\Pruebas\{TestCase}\{DriverTest}\{HoraActual}"
-        elif (GeneralPath != ""):
+        elif (GeneralPath == "N"):
             path =f"{GeneralPath}\{fecha}\{TestCase}\{DriverTest}\{HoraActual}"
         else:
             path = f'{Inicializar.BaseDir}\Capturas\{fecha}\{TestCase}\{DriverTest}\{HoraActual}'
-            print(f'No se logro establecer ruta para la guardar la captura de pantalla, se guardara en la carpeta raiz del framework de pruebas.\nEn: {path}')
+            print(f'No se encuentra establecida la ruta para guardar la captura de pantalla, se guardara en la carpeta raiz del framework de pruebas.\nEn: {path}')
         
         if not os.path.exists(path):
             os.makedirs(path)  
