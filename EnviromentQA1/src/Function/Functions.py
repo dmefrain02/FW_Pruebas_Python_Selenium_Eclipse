@@ -57,6 +57,7 @@ from io import BytesIO #Para conocer tamaños en bytes, ya esta instalado en Pyt
 import pyautogui
 import cv2
 import numpy as np
+from unittest.case import skip
 
 
 class Functions(Inicializar):
@@ -503,27 +504,38 @@ class Functions(Inicializar):
         TestCase =self.__class__.__name__
         HoraActual = Functions.obtener_hora_actual(self)
         
-        if (Inicializar.TestCase_x_Context =="S"):
+        if   ((Inicializar.TestCase_x_Context =="S") and (GeneralPath != "")):
             path = f"{GeneralPath}\{fecha}\Pruebas\{TestCase}\{DriverTest}\{HoraActual}"
-        elif (GeneralPath == "N"):
+        elif ((Inicializar.TestCase_x_Context == "N") and (GeneralPath != "")):
             path =f"{GeneralPath}\{fecha}\{TestCase}\{DriverTest}\{HoraActual}"
-        else:
+        elif (((Inicializar.TestCase_x_Context == "N") or (Inicializar.TestCase_x_Context == "S")) and (GeneralPath == "")):
             path = f'{Inicializar.BaseDir}\Capturas\{fecha}\{TestCase}\{DriverTest}\{HoraActual}'
             print(f'No se encuentra establecida la ruta para guardar la captura de pantalla, se guardara en la carpeta raiz del framework de pruebas.\nEn: {path}')
+        elif (((Inicializar.TestCase_x_Context !="S") or (Inicializar.TestCase_x_Context !="N") or (Inicializar.TestCase_x_Context == "")) and (GeneralPath == "")): 
+            path = ""
+            print(f'No se logro crear el path para guardar la captura de pantalla. Variables de "TestCase_x_Context" y "GeneralPath" no se han configurado correctamente: Tienen el valor: {GeneralPath} y {Inicializar.TestCase_x_Context}')
         
-        if not os.path.exists(path):
-            os.makedirs(path)  
-        return path
-    
+        if (path != ""):
+            if not os.path.exists(path):
+                os.makedirs(path)
+            
+            return path
+        else:
+            return "Error: Sin configurar el Path y el contexto para las capturas de pantalla."
+                
     #Realizar captura de pantalla
     def capturar_pantalla(self):
         Path=Functions.crear_path(self)
         TestCase =self.__class__.__name__
-        img = f'{Path}\{TestCase}\
-        ('+Functions.obtener_fecha_actual(self)+' - '+ Functions.obtener_hora_actual(self)+')'+'.png'
         
-        print(f'Se realizo captura de pantalla de la prueba: {img}')
-        return self.driver.get_screenshot_as_file(img)
+        if Path != "Error: Sin configurar el Path y el contexto para las capturas de pantalla.":
+            img = f'{Path}\{TestCase}\
+            ('+Functions.obtener_fecha_actual(self)+' - '+ Functions.obtener_hora_actual(self)+')'+'.png'
+            
+            print(f'Se realizo captura de pantalla de la prueba: {img}')
+            return self.driver.get_screenshot_as_file(img)
+        else:
+            print("Error: No se logro generar la captura de pantalla. No se encuentra configurada el Path y variable contexto.")
     
     #Realizar captura de pantalla en reporte Allure
     def captura_pantalla_allure(self,Descripcion):

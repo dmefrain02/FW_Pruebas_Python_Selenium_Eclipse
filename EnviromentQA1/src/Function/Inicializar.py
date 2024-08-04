@@ -27,9 +27,9 @@ class Inicializar():
     Bitacora= BaseDir + u'\Archivos Descargados\Pruebas Descargas Archivos.txt'
     Imagenes_Cortadas = BaseDir + u'\Data\Imagenes Cortadas'
     Ruta_Grabacion= BaseDir + u'\Data\Grabaciones'
-    #Path_Evidencias = BaseDir + u'\Data\Capturas'
-    Path_Evidencias = ""
-    TestCase_x_Context = "N" #S o N
+    Path_Evidencias = BaseDir + u'\Data\Capturas'
+    #Path_Evidencias = ""
+    TestCase_x_Context = "S" #S o N
     
     #Directorio Json
     Json = BaseDir + u'\Pages'
