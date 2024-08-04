@@ -546,34 +546,13 @@ class Functions(Inicializar):
             
             try:
                 if Env == 'DEV':
-                    _Servidor = Inicializar.DB_HOST_Dev, 
-                    _dbName = Inicializar.DB_DATABASE_Dev, 
-                    _user=Inicializar.DB_USER_Dev, 
-                    _pass = Inicializar.DB_PASS_Dev
-                     #                     'DRIVER={ODBC Driver 17 for SQL Server}; SERVER='+ _Servidor + ';DATABASE='+ _dbName +';UID='+_user+';PWD='+_pass
-                    conn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server}; SERVER='+ _Servidor + ';DATABASE='+ _dbName +';UID='+_user+';PWD='+_pass)
-                    print(conn)
+                    conn = pyodbc.connect(Inicializar.Cadena_Conexion_Dev)
                 elif Env == 'QA':
-                    _Servidor = Inicializar.DB_HOST_QA, 
-                    _dbName = Inicializar.DB_DATABASE_QA, 
-                    _user=Inicializar.DB_USER_QA, 
-                    _pass = Inicializar.DB_PASS_QA
-                    conn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server}; SERVER='+_Servidor + ';DATABASE='+ _dbName +';UID='+_user+';PWD='+_pass)
-                    print(conn)
+                    conn = pyodbc.connect(Inicializar.Cadena_Conexion_QA)
                 elif Env == 'UAT':
-                    _Servidor = Inicializar.DB_HOST_UAT, 
-                    _dbName = Inicializar.DB_DATABASE_UAT, 
-                    _user=Inicializar.DB_USER_UAT, 
-                    _pass = Inicializar.DB_PASS_UAT
-                    conn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server}; SERVER='+_Servidor + ';DATABASE='+ _dbName +';UID='+_user+';PWD='+_pass)
-                    print(conn)
+                    conn = pyodbc.connect(Inicializar.Cadena_Conexion_UAT)
                 elif Env == 'PROD':
-                    _Servidor = Inicializar.DB_HOST_PROD, 
-                    _dbName = Inicializar.DB_DATABASE_PROD, 
-                    _user=Inicializar.DB_USER_PROD, 
-                    _pass = Inicializar.DB_PASS_PROD
-                    conn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server}; SERVER='+_Servidor + ';DATABASE='+ _dbName +';UID='+_user+';PWD='+_pass)
-                    print(conn)
+                    conn = pyodbc.connect(Inicializar.Cadena_Conexion_Prod)
                 else:
                     print('No se logro establecer la cadena de conexion con la base de datos.')
                     

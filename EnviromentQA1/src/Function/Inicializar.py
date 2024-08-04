@@ -52,33 +52,19 @@ class Inicializar():
     #Enviroment == 'Dev':
     URL_Dev = f'' #La f solo va si requerimos pasarle parametros en el link
     USER_Dev = ''
-    DB_HOST_Dev = 'EFRAIN-CD\EFRAINCD'
-    DB_PORT_Dev = '1433'
-    DB_DATABASE_Dev = 'Pruebas_Automatizadas_Python_DEV'
-    DB_USER_Dev = 'EFRAIN_ACD'
-    DB_PASS_Dev = '114660137'
-    
+    Cadena_Conexion_Dev = 'DRIVER={ODBC Driver 17 for SQL Server}; SERVER=EFRAIN-CD\EFRAINCD;DATABASE=Pruebas_Automatizadas_Python_DEV;UID=EFRAIN_ACD;PWD=114660137'
+
     #Enviroment == 'QA':    
     URL_QA = f'' #La f solo va si requerimos pasarle parametros en el link
-    USER_QA = ''
-    DB_HOST_QA = 'EFRAIN-CD\EFRAINCD'
-    DB_PORT_QA = '1433'
-    DB_DATABASE_QA = 'Pruebas_Automatizadas_Python_QA'
-    DB_USER_QA = 'EFRAIN_ACD'
-    DB_PASS_QA = '114660137' 
+    USER_QA = '' 
+    Cadena_Conexion_QA = 'DRIVER={ODBC Driver 17 for SQL Server}; SERVER=EFRAIN-CD\EFRAINCD;DATABASE=Pruebas_Automatizadas_Python_QA;UID=EFRAIN_ACD;PWD=114660137'
+    
     #Enviroment == 'UAT':
     URL_UAT = f'' #La f solo va si requerimos pasarle parametros en el link
     USER_UAT = ''
-    DB_HOST_UAT = 'EFRAIN-CD\EFRAINCD'
-    DB_PORT_UAT = '1433'
-    DB_DATABASE_UAT = 'Pruebas_Automatizadas_Python_UAT'
-    DB_USER_UAT = ''
-    DB_PASS_UAT = '' 
+    Cadena_Conexion_UAT = 'DRIVER={ODBC Driver 17 for SQL Server}; SERVER=EFRAIN-CD\EFRAINCD;DATABASE=Pruebas_Automatizadas_Python_UAT;UID=EFRAIN_ACD;PWD=114660137'
+
     #Enviroment == 'PROD':
     URL_PROD = f'' #La f solo va si requerimos pasarle parametros en el link
     USER_PROD = ''
-    DB_HOST_PROD = 'EFRAIN-CD\EFRAINCD'
-    DB_PORT_PROD = '1433'
-    DB_DATABASE_PROD = 'Pruebas_Automatizadas_Python_PROD'
-    DB_USER_PROD = ''
-    DB_PASS_PROD = '' 
+    Cadena_Conexion_Prod = 'DRIVER={ODBC Driver 17 for SQL Server}; SERVER=EFRAIN-CD\EFRAINCD;DATABASE=Pruebas_Automatizadas_Python_PROD;UID=EFRAIN_ACD;PWD=114660137'

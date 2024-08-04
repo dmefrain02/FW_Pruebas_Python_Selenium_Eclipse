@@ -8,7 +8,6 @@ class Pruebas_PaginaCompras(unittest.TestCase):
         Selenium.obtener_archivo_json(self, 'Localizadores_Spotify')
     
     def test001(self):
-        #for Nav_Sel_Grid in Inicializar.Navegadores_Sel_Grid:
         Selenium.abrir_navegador(self,"Edge")
         Selenium.get_url_driver(self, "https://www.bestday.com.mx/")
         Selenium.esperar_elemento(self)
@@ -18,8 +17,6 @@ class Pruebas_PaginaCompras(unittest.TestCase):
         Selenium.Selects_Fechas_DTPickerDinamico(self,'AvanzarMes',1,'FechaIda','FechaVuelta','DiaIda','DiaVuelta')
         Selenium.capturar_pantalla(self);
         Selenium.esperar_elemento(self,2)
-        #Selenium.print_page_pdf(self)
-        
 
     def tearDown(self):
         Selenium.cerrar_driver_navegador(self)

@@ -18,7 +18,7 @@ class Test(unittest.TestCase):
 
     def setUp(self):
         with allure.step(u'Paso 1: Abrir el navegador y obtener el archivo JSON'):
-            Selenium.abrir_navegador(self,"Edge","Dev")
+            Selenium.abrir_navegador(self,"Edge")
             Selenium.obtener_archivo_json(self, 'Localizadores')
 
     def test_001(self):
@@ -32,7 +32,7 @@ class Test(unittest.TestCase):
         with allure.step(u'Paso 4: Escribir en elemento obtenido de la aplicacion web'):
             try: 
                 #Selenium.escribir_texto(self, 'TxtCampoBusquedaMercadoLibre', 'Consola Video Juegos')
-                Selenium.escribir_texto(self,'TxtCampoBusquedaMercadoLibre', Selenium.pyodbc_ConsultaBD(self,'DEV', 'select DP.Valor_Dato_Prueba from Datos_Pruebas DP WHERE Id_Caso_Prueba = 15'))
+                Selenium.escribir_texto(self,'TxtCampoBusquedaMercadoLibre', Selenium.pyodbc_ConsultaBD(self,'QA', 'select DP.Valor_Dato_Prueba from Datos_Pruebas DP WHERE Id_Caso_Prueba = 15'))
                 Selenium.captura_pantalla_allure(self, 'Texto escrito en elemento de la pagina')
                
             except (pyodbc.OperationalError) as error:
