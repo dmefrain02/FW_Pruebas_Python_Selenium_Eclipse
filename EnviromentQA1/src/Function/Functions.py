@@ -28,8 +28,11 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.wait import WebDriverWait
 
 from selenium.webdriver.remote import remote_connection
-from selenium.webdriver.common.print_page_options import PrintOptions as PrintOptions
-import base64
+
+#from selenium.webdriver.common.print_page_options import PrintOptions as PrintOptions
+#import base64
+#import aspose.pdf as ap
+#import urllib3
 
 from Function.Inicializar import Inicializar
 from selenium.common.exceptions import NoSuchElementException,NoAlertPresentException,NoSuchWindowException,TimeoutException
@@ -919,7 +922,3 @@ class Functions(Inicializar):
         salida.release()
         cv2.destroyAllWindows()
         print('Se finaliza la grabación del video')
-        
-   # def print_page_pdf(self):
-    #    pdf = self.driver.print_page()
-     #   pdf.write(Path.get(f'{Inicializar.Path_Evidencias}/selenium.pdf'),OutputType.BYTES.convertFromBase64Png(pdf.getContent))

@@ -1,0 +1,2464 @@
+﻿import aspose.pdf
+import aspose.pydrawing
+import datetime
+import decimal
+import io
+import uuid
+from typing import Iterable
+
+class BDC(aspose.pdf.Operator):
+    '''class representing BDC operator (Begin marked-content sequence)'''
+    
+    def __init__(self, tag: str):
+        '''Initializes operator.
+        
+        :param tag: Tag value.'''
+        ...
+    
+    @overload
+    def __init__(self, tag: str, properties: aspose.pdf.facades.BDCProperties):
+        ...
+
+    def accept(self, visitor: aspose.pdf.IOperatorSelector) -> None:
+        '''Accepts visitor object to process operator.
+        
+        :param visitor: Visitor object.'''
+        ...
+    
+    @property
+    def properties(self) -> aspose.pdf.facades.BDCProperties:
+        ...
+
+    @property
+    def tag(self) -> str:
+        '''Gets or sets marked content tag'''
+        ...
+    
+    @tag.setter
+    def tag(self, value: str):
+        ...
+    
+    ...
+
+class BI(aspose.pdf.Operator):
+    '''Class representing BI operator (Begin inline image obect).'''
+    
+    def __init__(self):
+        '''Initializes operator.'''
+        ...
+    
+    def accept(self, visitor: aspose.pdf.IOperatorSelector) -> None:
+        '''Accepts visitor object to process operator.
+        
+        :param visitor: Visitor object.'''
+        ...
+    
+    ...
+
+class BMC(aspose.pdf.Operator):
+    '''Class representing BMC operator (Begin marked-content sequence).'''
+    
+    def __init__(self, tag: str):
+        '''Initializes operator.
+        
+        :param tag: Marked content tag.'''
+        ...
+    
+    def accept(self, visitor: aspose.pdf.IOperatorSelector) -> None:
+        '''Accepts visitor object to process operator.
+        
+        :param visitor: Visitor object.'''
+        ...
+    
+    @property
+    def tag(self) -> str:
+        '''Gets or sets marked content tag'''
+        ...
+    
+    @tag.setter
+    def tag(self, value: str):
+        ...
+    
+    ...
+
+class BT(aspose.pdf.operators.BlockTextOperator):
+    '''Class representing BT operator (Begin of text block).'''
+    
+    def __init__(self):
+        '''Initializes operator.'''
+        ...
+    
+    def accept(self, visitor: aspose.pdf.IOperatorSelector) -> None:
+        '''Accepts visitor object to process operator.
+        
+        :param visitor: Visitor object.'''
+        ...
+    
+    ...
+
+class BX(aspose.pdf.Operator):
+    '''Class representing BX operator (begin compatibility section).'''
+    
+    def __init__(self):
+        '''Initializes operator.'''
+        ...
+    
+    def accept(self, visitor: aspose.pdf.IOperatorSelector) -> None:
+        '''Accepts visitor object to process operator.
+        
+        :param visitor: Visitor object.'''
+        ...
+    
+    ...
+
+class BasicSetColorAndPatternOperator(aspose.pdf.operators.BasicSetColorOperator):
+    '''Base operator for all Set Color operators.'''
+    
+    @property
+    def pattern_name(self) -> str:
+        '''Gets Pattern Name.'''
+        ...
+    
+    ...
+
+class BasicSetColorOperator(aspose.pdf.operators.SetColorOperator):
+    '''Base class for set color operators.'''
+    
+    @property
+    def r(self) -> float:
+        '''Gets red component of color'''
+        ...
+    
+    @property
+    def g(self) -> float:
+        '''Gets green component of color'''
+        ...
+    
+    @property
+    def b(self) -> float:
+        '''Gets red component of color'''
+        ...
+    
+    @property
+    def c(self) -> float:
+        '''Gets cyan component of CMYK color.'''
+        ...
+    
+    @property
+    def m(self) -> float:
+        '''Gets magenta component of CMYK color.'''
+        ...
+    
+    @property
+    def y(self) -> float:
+        '''Gets yellow component of CMYK color.'''
+        ...
+    
+    @property
+    def k(self) -> float:
+        '''Gets black component of CMYK color.'''
+        ...
+    
+    @property
+    def gray(self) -> float:
+        '''Gets black component of gray color.'''
+        ...
+    
+    @property
+    def color(self) -> list[float]:
+        '''Gets array of color components.'''
+        ...
+    
+    ...
+
+class BlockTextOperator(aspose.pdf.operators.TextOperator):
+    '''Abstract base class for text block operators i.e.  Begin and End text operators (BT/ET)'''
+    
+    @overload
+    def __init__(self):
+        '''Initializes operator.'''
+        ...
+    
+    @overload
+    def __init__(self, text_properties: aspose.pdf.facades.TextProperties):
+        '''Initializes BlockTextOperator which accepts TextProperties.
+        
+        :param text_properties: Text properties.'''
+        ...
+    
+    ...
+
+class Clip(aspose.pdf.Operator):
+    '''Class representing W operator (set clipping path using non-zero winding rule).'''
+    
+    def __init__(self):
+        '''Initializes operator.'''
+        ...
+    
+    def accept(self, visitor: aspose.pdf.IOperatorSelector) -> None:
+        '''Accepts visitor object to process operator.
+        
+        :param visitor: Visitor object.'''
+        ...
+    
+    ...
+
+class ClosePath(aspose.pdf.Operator):
+    '''Class representing h operator (close path).'''
+    
+    def __init__(self):
+        '''Initializes operator.'''
+        ...
+    
+    def accept(self, visitor: aspose.pdf.IOperatorSelector) -> None:
+        '''Accepts visitor object to process operator.
+        
+        :param visitor: Visitor object.'''
+        ...
+    
+    ...
+
+class ClosePathEOFillStroke(aspose.pdf.Operator):
+    '''Class representing b\* operator (close, fill and stroke path using even-odd rule).'''
+    
+    def __init__(self):
+        '''Initializes operator.'''
+        ...
+    
+    def accept(self, visitor: aspose.pdf.IOperatorSelector) -> None:
+        '''Accepts visitor object to process operator.
+        
+        :param visitor: Visitor object.'''
+        ...
+    
+    ...
+
+class ClosePathFillStroke(aspose.pdf.Operator):
+    '''Class representing b operator (close, fill and stroke path with nonzer winding rule).'''
+    
+    def __init__(self):
+        '''Initializes operator.'''
+        ...
+    
+    def accept(self, visitor: aspose.pdf.IOperatorSelector) -> None:
+        '''Accepts visitor object to process operator.
+        
+        :param visitor: Visitor object.'''
+        ...
+    
+    ...
+
+class ClosePathStroke(aspose.pdf.Operator):
+    '''Class representing s operator (Close and stroke path).'''
+    
+    def __init__(self):
+        '''Initializes operator.'''
+        ...
+    
+    def accept(self, visitor: aspose.pdf.IOperatorSelector) -> None:
+        '''Accepts visitor object to process operator.
+        
+        :param visitor: Visitor object.'''
+        ...
+    
+    ...
+
+class ConcatenateMatrix(aspose.pdf.Operator):
+    '''Class representing cm operator (concatenate matrix to current transformation matrix).'''
+    
+    @overload
+    def __init__(self, a: float, b: float, c: float, d: float, e: float, f: float):
+        '''Initializes operator.
+        
+        :param a: A coefficient
+        :param b: B coefficient
+        :param c: C coefficient
+        :param d: D coefficient
+        :param e: E coefficient
+        :param f: F coefficient'''
+        ...
+    
+    @overload
+    def __init__(self, m: aspose.pdf.Matrix):
+        '''Initializes operator by matrix.
+        
+        :param m: Transfomation matrix.'''
+        ...
+    
+    def accept(self, visitor: aspose.pdf.IOperatorSelector) -> None:
+        '''Accepts visitor object to process operator.
+        
+        :param visitor: Visitor object.'''
+        ...
+    
+    @property
+    def matrix(self) -> aspose.pdf.Matrix:
+        '''Matrix argument of the operator.'''
+        ...
+    
+    @matrix.setter
+    def matrix(self, value: aspose.pdf.Matrix):
+        ...
+    
+    ...
+
+class CurveTo(aspose.pdf.Operator):
+    '''Class representing c operator (append curve to path).'''
+    
+    def __init__(self, x1: float, y1: float, x2: float, y2: float, x3: float, y3: float):
+        '''Initializes curve operator.
+        
+        :param x1: Abscissa of first point.
+        :param y1: Ordinate of first point.
+        :param x2: Abscissa of second point.
+        :param y2: Ordinate of second point.
+        :param x3: Abscissa of third point.
+        :param y3: Ordinate of third point.'''
+        ...
+    
+    def accept(self, visitor: aspose.pdf.IOperatorSelector) -> None:
+        '''Accepts visitor object to process operator.
+        
+        :param visitor: Visitor object.'''
+        ...
+    
+    @property
+    def points(self) -> list[aspose.pdf.Point]:
+        '''Points of the curve.'''
+        ...
+    
+    ...
+
+class CurveTo1(aspose.pdf.Operator):
+    '''Class representing v operator (append curve to path, initial point replicated).'''
+    
+    def __init__(self, x2: float, y2: float, x3: float, y3: float):
+        '''Initializes curve operator.
+        
+        :param x2: Abscissa of second point.
+        :param y2: Ordinate of second point.
+        :param x3: Abscissa of third point.
+        :param y3: Ordinate of third point.'''
+        ...
+    
+    def accept(self, visitor: aspose.pdf.IOperatorSelector) -> None:
+        '''Accepts operator selector.
+        
+        :param visitor: Visitor object'''
+        ...
+    
+    @property
+    def points(self) -> list[aspose.pdf.Point]:
+        '''Points of the curve.'''
+        ...
+    
+    ...
+
+class CurveTo2(aspose.pdf.Operator):
+    '''Class representing y operator (append curve to path, final point replicated).'''
+    
+    def __init__(self, x1: float, y1: float, x3: float, y3: float):
+        '''Initializes curve operator.
+        
+        :param x1: Abscissa of second point.
+        :param y1: Ordinate of second point.
+        :param x3: Abscissa of third point.
+        :param y3: Ordinate of third point.'''
+        ...
+    
+    def accept(self, visitor: aspose.pdf.IOperatorSelector) -> None:
+        '''Accepts visitor object to process operator.
+        
+        :param visitor: Visitor object.'''
+        ...
+    
+    @property
+    def points(self) -> list[aspose.pdf.Point]:
+        '''Points of the curve.'''
+        ...
+    
+    ...
+
+class DP(aspose.pdf.Operator):
+    '''Class represeting DP operator (designamte marked content point).'''
+    
+    def __init__(self, tag: str):
+        '''Initializes operator.
+        
+        :param tag: Tag value.'''
+        ...
+    
+    def accept(self, visitor: aspose.pdf.IOperatorSelector) -> None:
+        '''Accepts visitor object to process operator.
+        
+        :param visitor: Visitor object.'''
+        ...
+    
+    @property
+    def tag(self) -> str:
+        '''Gets or sets marked content tag'''
+        ...
+    
+    @tag.setter
+    def tag(self, value: str):
+        ...
+    
+    ...
+
+class Do(aspose.pdf.Operator):
+    '''Class representing Do operator (Invoke XObject).'''
+    
+    @overload
+    def __init__(self, name: str):
+        '''Constructs new Do operator.
+        
+        :param name: Name of invoked XObject.'''
+        ...
+    
+    @overload
+    def __init__(self):
+        '''Constructs new Do operator.
+        Used for retrieving all Do operators, i.e. without checking their argument names.'''
+        ...
+    
+    def accept(self, visitor: aspose.pdf.IOperatorSelector) -> None:
+        '''Accepts visitor object to process operator.
+        
+        :param visitor: Visitor object.'''
+        ...
+    
+    @property
+    def name(self) -> str:
+        '''Name of XObject argument of the operator.'''
+        ...
+    
+    @name.setter
+    def name(self, value: str):
+        ...
+    
+    ...
+
+class EI(aspose.pdf.Operator):
+    '''Class representing EI operator (End inline image object).'''
+    
+    def __init__(self):
+        '''Initializes operator.'''
+        ...
+    
+    def accept(self, visitor: aspose.pdf.IOperatorSelector) -> None:
+        '''Accepts visitor object to process operator.
+        
+        :param visitor: Visitor object.'''
+        ...
+    
+    ...
+
+class EMC(aspose.pdf.Operator):
+    '''Clsss representing EMC oeprator (End of marked-content sequence).'''
+    
+    def __init__(self):
+        '''Initializes operator.'''
+        ...
+    
+    def accept(self, visitor: aspose.pdf.IOperatorSelector) -> None:
+        '''Accepts visitor object to process operator.
+        
+        :param visitor: Visitor object.'''
+        ...
+    
+    ...
+
+class EOClip(aspose.pdf.Operator):
+    '''Class representing W\* operator (set clipping path using even-odd rule).'''
+    
+    def __init__(self):
+        '''Initializes operator.'''
+        ...
+    
+    def accept(self, visitor: aspose.pdf.IOperatorSelector) -> None:
+        '''Accepts visitor object to process operator.
+        
+        :param visitor: Visitor object.'''
+        ...
+    
+    ...
+
+class EOFill(aspose.pdf.Operator):
+    '''Class representing f\* operator (fill path using even-odd rule).'''
+    
+    def __init__(self):
+        '''Initializes operator.'''
+        ...
+    
+    def accept(self, visitor: aspose.pdf.IOperatorSelector) -> None:
+        '''Accepts visitor object to process operator.
+        
+        :param visitor: Visitor object.'''
+        ...
+    
+    ...
+
+class EOFillStroke(aspose.pdf.Operator):
+    '''Class representing B\* operator (fill and stroke path usign even-odd rule).'''
+    
+    def __init__(self):
+        '''Initializes operator.'''
+        ...
+    
+    def accept(self, visitor: aspose.pdf.IOperatorSelector) -> None:
+        '''Accepts visitor object to process operator.
+        
+        :param visitor: Visitor object.'''
+        ...
+    
+    ...
+
+class ET(aspose.pdf.operators.BlockTextOperator):
+    '''Class representing operator ET (End of text block).'''
+    
+    def __init__(self):
+        '''Initializes operator.'''
+        ...
+    
+    def accept(self, visitor: aspose.pdf.IOperatorSelector) -> None:
+        '''Accepts visitor object to process operator.
+        
+        :param visitor: Visitor object.'''
+        ...
+    
+    ...
+
+class EX(aspose.pdf.Operator):
+    '''Class representing EX operator (End of compatibility section).'''
+    
+    def __init__(self):
+        '''Initializes operator.'''
+        ...
+    
+    def accept(self, visitor: aspose.pdf.IOperatorSelector) -> None:
+        '''Accepts visitor object to process operator.
+        
+        :param visitor: Visitor object.'''
+        ...
+    
+    ...
+
+class EndPath(aspose.pdf.Operator):
+    '''Class representing n operator (end path without filling or stroking).'''
+    
+    def __init__(self):
+        '''Initializes operator.'''
+        ...
+    
+    def accept(self, visitor: aspose.pdf.IOperatorSelector) -> None:
+        '''Accepts visitor object to process operator.
+        
+        :param visitor: Visitor object.'''
+        ...
+    
+    ...
+
+class Fill(aspose.pdf.Operator):
+    '''Class representing f operator (fill path with nonzero winding number rule).'''
+    
+    def __init__(self):
+        '''Initilizes new f operator.'''
+        ...
+    
+    def accept(self, visitor: aspose.pdf.IOperatorSelector) -> None:
+        '''Accepts visitor object to process operator.
+        
+        :param visitor: Visitor object.'''
+        ...
+    
+    ...
+
+class FillStroke(aspose.pdf.Operator):
+    '''Class representing B operator (fill and stroke path using nonzero winding rule)'''
+    
+    def __init__(self):
+        '''Initializes operator.'''
+        ...
+    
+    def accept(self, visitor: aspose.pdf.IOperatorSelector) -> None:
+        '''Accepts visitor object to process operator.
+        
+        :param visitor: Visitor object.'''
+        ...
+    
+    ...
+
+class GRestore(aspose.pdf.Operator):
+    '''Class representing Q operator (restore graphics state).'''
+    
+    def __init__(self):
+        '''Initializes Q operator.'''
+        ...
+    
+    def accept(self, visitor: aspose.pdf.IOperatorSelector) -> None:
+        '''Accepts visitor object to process operator.
+        
+        :param visitor: Visitor object.'''
+        ...
+    
+    ...
+
+class GS(aspose.pdf.Operator):
+    '''Class representing gs operator (set parameters from graphic state parameter dictionary).'''
+    
+    def __init__(self, name: str):
+        '''Initializes gs operator.
+        
+        :param name: Name of graphic state.'''
+        ...
+    
+    def accept(self, visitor: aspose.pdf.IOperatorSelector) -> None:
+        '''Accepts visitor object to process operator.
+        
+        :param visitor: Visitor object.'''
+        ...
+    
+    @property
+    def name(self) -> str:
+        '''Gets or sets name of graphic state resource.'''
+        ...
+    
+    @name.setter
+    def name(self, value: str):
+        ...
+    
+    ...
+
+class GSave(aspose.pdf.Operator):
+    '''Class representing q operator (save graphics state).'''
+    
+    def __init__(self):
+        '''Initializes q operator.'''
+        ...
+    
+    def accept(self, visitor: aspose.pdf.IOperatorSelector) -> None:
+        '''Accepts visitor object to process operator.
+        
+        :param visitor: Visitor object.'''
+        ...
+    
+    ...
+
+class GlyphPosition:
+    '''Class describes text and position to use with operator TJ (set glyph with position)'''
+    
+    @overload
+    def __init__(self, text: str, position: float):
+        '''Constructs glyph position.
+        
+        :param text: Text value.
+        :param position: Position value.'''
+        ...
+    
+    @overload
+    def __init__(self, text: str):
+        '''Constructor for Glyph Position.
+        
+        :param text: Text calue.'''
+        ...
+    
+    @property
+    def text(self) -> str:
+        '''Text of operator.'''
+        ...
+    
+    @property
+    def position(self) -> float:
+        '''Position off the text in the operator.'''
+        ...
+    
+    ...
+
+class ID(aspose.pdf.Operator):
+    '''Class representing ID operator (Begin inline image data).'''
+    
+    def __init__(self):
+        '''Initializes operator.'''
+        ...
+    
+    def accept(self, visitor: aspose.pdf.IOperatorSelector) -> None:
+        '''Accepts visitor object to process operator.
+        
+        :param visitor: Visitor object.'''
+        ...
+    
+    ...
+
+class LineTo(aspose.pdf.Operator):
+    '''Class representing l operator (add line to the path).'''
+    
+    def __init__(self, x: float, y: float):
+        '''Initializes line operator.
+        
+        :param x: X coordinate.
+        :param y: Y coordinate.'''
+        ...
+    
+    def accept(self, visitor: aspose.pdf.IOperatorSelector) -> None:
+        '''Accepts visitor object to process operator.
+        
+        :param visitor: Visitor object.'''
+        ...
+    
+    @property
+    def x(self) -> float:
+        '''X coordinate of line point.'''
+        ...
+    
+    @x.setter
+    def x(self, value: float):
+        ...
+    
+    @property
+    def y(self) -> float:
+        '''Y coordinate of line point.'''
+        ...
+    
+    @y.setter
+    def y(self, value: float):
+        ...
+    
+    ...
+
+class MP(aspose.pdf.Operator):
+    '''Class representing MP operator (define marked-content point).'''
+    
+    def __init__(self, tag: str):
+        '''Initializes operator.
+        
+        :param tag: Marked content tag.'''
+        ...
+    
+    def accept(self, visitor: aspose.pdf.IOperatorSelector) -> None:
+        '''Accepts visitor object to process operator.
+        
+        :param visitor: Visitor object.'''
+        ...
+    
+    @property
+    def tag(self) -> str:
+        '''Gets or sets marked content tag'''
+        ...
+    
+    @tag.setter
+    def tag(self, value: str):
+        ...
+    
+    ...
+
+class MoveTextPosition(aspose.pdf.operators.TextPlaceOperator):
+    '''Class representing Td operator (move text position).'''
+    
+    def __init__(self, x: float, y: float):
+        '''Initializes operator.
+        
+        :param x: X coordinate of text position.
+        :param y: Y coordinate of text position.'''
+        ...
+    
+    def accept(self, visitor: aspose.pdf.IOperatorSelector) -> None:
+        '''Accepts visitor object to process operator.
+        
+        :param visitor: Visitor object.'''
+        ...
+    
+    @property
+    def x(self) -> float:
+        '''X coordinate of text position.'''
+        ...
+    
+    @x.setter
+    def x(self, value: float):
+        ...
+    
+    @property
+    def y(self) -> float:
+        '''Y coordinate of text position.'''
+        ...
+    
+    @y.setter
+    def y(self, value: float):
+        ...
+    
+    ...
+
+class MoveTextPositionSetLeading(aspose.pdf.operators.TextPlaceOperator):
+    '''Class representing TD operator (move position and set leading).'''
+    
+    def __init__(self, x: float, y: float):
+        '''Initializes operator.
+        
+        :param x: X coordinate of text position.
+        :param y: Y coordinate of text position.'''
+        ...
+    
+    def accept(self, visitor: aspose.pdf.IOperatorSelector) -> None:
+        '''Accepts visitor object to process operator.
+        
+        :param visitor: Visitor object.'''
+        ...
+    
+    @property
+    def x(self) -> float:
+        '''X coordinate of text position.'''
+        ...
+    
+    @x.setter
+    def x(self, value: float):
+        ...
+    
+    @property
+    def y(self) -> float:
+        '''Y coordinate of text position.'''
+        ...
+    
+    @y.setter
+    def y(self, value: float):
+        ...
+    
+    ...
+
+class MoveTo(aspose.pdf.Operator):
+    '''Class representing m operator (move to and begin new subpath).'''
+    
+    def __init__(self, x: float, y: float):
+        '''Inintalizes new (move to) operator.
+        
+        :param x: The x-coordinate.
+        :param y: The y-coordinate.'''
+        ...
+    
+    def accept(self, visitor: aspose.pdf.IOperatorSelector) -> None:
+        '''Accepts visitor object to process operator.
+        
+        :param visitor: Visitor object.'''
+        ...
+    
+    @property
+    def x(self) -> float:
+        '''X coordinate'''
+        ...
+    
+    @x.setter
+    def x(self, value: float):
+        ...
+    
+    @property
+    def y(self) -> float:
+        '''Y coordinate'''
+        ...
+    
+    @y.setter
+    def y(self, value: float):
+        ...
+    
+    ...
+
+class MoveToNextLine(aspose.pdf.operators.TextPlaceOperator):
+    '''Class  representing T\* operator (Move to start of the next line).'''
+    
+    def __init__(self):
+        '''Initializes operator.'''
+        ...
+    
+    def accept(self, visitor: aspose.pdf.IOperatorSelector) -> None:
+        '''Accepts visitor object to process operator.
+        
+        :param visitor: Visitor object.'''
+        ...
+    
+    ...
+
+class MoveToNextLineShowText(aspose.pdf.operators.TextShowOperator):
+    '''Class representing ' operator (move to next line and show text).'''
+    
+    @overload
+    def __init__(self):
+        '''Initializes operator.'''
+        ...
+    
+    @overload
+    def __init__(self, text: str):
+        '''Initializes operator.
+        
+        :param text: The text.'''
+        ...
+    
+    def accept(self, visitor: aspose.pdf.IOperatorSelector) -> None:
+        '''Accepts visitor object to process operator.
+        
+        :param visitor: Visitor object.'''
+        ...
+    
+    @property
+    def text(self) -> str:
+        '''Gets operator text.'''
+        ...
+    
+    @text.setter
+    def text(self, value: str):
+        ...
+    
+    ...
+
+class ObsoleteFill(aspose.pdf.Operator):
+    '''Class representing F operator (fill path using nonzero winding rule).'''
+    
+    def __init__(self):
+        '''Initializes operator.'''
+        ...
+    
+    def accept(self, visitor: aspose.pdf.IOperatorSelector) -> None:
+        '''Accepts visitor object to process operator.
+        
+        :param visitor: Visitor object.'''
+        ...
+    
+    ...
+
+class Re(aspose.pdf.Operator):
+    '''Class representing re operator (add rectangle to the path).'''
+    
+    @overload
+    def __init__(self):
+        '''Initializes operator.'''
+        ...
+    
+    @overload
+    def __init__(self, x: float, y: float, width: float, height: float):
+        '''Initializes operator.
+        
+        :param x: The x-coordinate of the bottom-left corner of the rectangle.
+        :param y: The y-coordinate of the bottom-left corner of the rectangle.
+        :param width: The width of the rectangle.
+        :param height: The height of the rectangle.'''
+        ...
+    
+    def accept(self, visitor: aspose.pdf.IOperatorSelector) -> None:
+        '''Accepts visitor object to process operator.
+        
+        :param visitor: Visitor object.'''
+        ...
+    
+    @property
+    def x(self) -> float:
+        '''X coordinate of most left side of rectangle.'''
+        ...
+    
+    @x.setter
+    def x(self, value: float):
+        ...
+    
+    @property
+    def y(self) -> float:
+        '''Y corrdinate of bottom side of rectangle.'''
+        ...
+    
+    @y.setter
+    def y(self, value: float):
+        ...
+    
+    @property
+    def width(self) -> float:
+        '''Width of the rectangle.'''
+        ...
+    
+    @width.setter
+    def width(self, value: float):
+        ...
+    
+    @property
+    def height(self) -> float:
+        '''Height of the rectangle.'''
+        ...
+    
+    @height.setter
+    def height(self, value: float):
+        ...
+    
+    ...
+
+class SelectFont(aspose.pdf.operators.TextStateOperator):
+    '''Class representing Tf operator (set text font and size).'''
+    
+    def __init__(self, res_name: str, size: float):
+        '''Initializes operator.
+        
+        :param res_name: The name of font resource, e.g. F1, F2 etc.
+        :param size: Size of the font.'''
+        ...
+    
+    def accept(self, visitor: aspose.pdf.IOperatorSelector) -> None:
+        '''Accepts visitor object to process operator.
+        
+        :param visitor: Visitor object.'''
+        ...
+    
+    @property
+    def name(self) -> str:
+        '''Name of font.'''
+        ...
+    
+    @property
+    def size(self) -> float:
+        '''Size of text.'''
+        ...
+    
+    ...
+
+class SetAdvancedColor(aspose.pdf.operators.BasicSetColorAndPatternOperator):
+    '''Class representing scn operator (set color for non-stroking operations).'''
+    
+    @overload
+    def __init__(self):
+        '''Initializes operator.'''
+        ...
+    
+    @overload
+    def __init__(self, g: float, pattern_name: str):
+        '''Constructor for scn operator.
+        
+        :param g: Color value.
+        :param pattern_name: Pattern name.'''
+        ...
+    
+    @overload
+    def __init__(self, g: float):
+        '''Constructor for scn operator.
+        
+        :param g: Color value.'''
+        ...
+    
+    @overload
+    def __init__(self, r: float, g: float, b: float, pattern_name: str):
+        '''Constructor for scn operator.
+        
+        :param r: Red component of the color.
+        :param g: Green component of the color.
+        :param b: Blue component of the color.
+        :param pattern_name: Pattern name.'''
+        ...
+    
+    @overload
+    def __init__(self, c: float, m: float, y: float, k: float, pattern_name: str):
+        '''Constructor for scn operator.
+        
+        :param c: Cyan component of the color.
+        :param m: Magenta component of the color.
+        :param y: Yellow component of the color.
+        :param k: Black component of the color.
+        :param pattern_name: Pattern name.'''
+        ...
+    
+    @overload
+    def __init__(self, pattern_name: str):
+        '''Constructor for scn operator.
+        
+        :param pattern_name: Pattern name.'''
+        ...
+    
+    @overload
+    def __init__(self, colors: list[float], pattern_name: str):
+        '''Constructor for scn operator.
+        
+        :param pattern_name: Pattern name.
+        :param colors: Color array.'''
+        ...
+
+    def accept(self, visitor: aspose.pdf.IOperatorSelector) -> None:
+        '''Accepts visitor object to process operator.
+        
+        :param visitor: Visitor object.'''
+        ...
+    
+    def get_color(self) -> aspose.pydrawing.Color:
+        '''Returns color specified by operator.
+        
+        :returns: Color set by operator.'''
+        ...
+    
+    ...
+
+class SetAdvancedColorStroke(aspose.pdf.operators.BasicSetColorAndPatternOperator):
+    '''Class representing SCN operator (set color for stroking operations).'''
+    
+    @overload
+    def __init__(self):
+        '''Initializes operator.'''
+        ...
+    
+    @overload
+    def __init__(self, g: float):
+        '''Constructor for scn operator
+        
+        :param g: Gray color value.'''
+        ...
+    
+    @overload
+    def __init__(self, g: float, pattern_name: str):
+        '''Constructor for scn operator.
+        
+        :param g: Gray color value.
+        :param pattern_name: Name of the pattern.'''
+        ...
+    
+    @overload
+    def __init__(self, r: float, g: float, b: float, pattern_name: str):
+        '''Constructor for scn operator.
+        
+        :param r: Red component of the color/
+        :param g: Green component of the color.
+        :param b: Blue component of the color.
+        :param pattern_name: Name of the pattern.'''
+        ...
+    
+    @overload
+    def __init__(self, c: float, m: float, y: float, k: float, pattern_name: str):
+        '''Constructor for scn operator.
+        
+        :param c: Cyan component of the color.
+        :param m: Magenta component of the color.
+        :param y: Yellow component of the color.
+        :param k: Black component of the color
+        :param pattern_name: Name of the pattern.'''
+        ...
+    
+    @overload
+    def __init__(self, colors: list[float], pattern_name: str):
+        '''Constructor for scn operator.
+        
+        :param pattern_name: Pattern name.
+        :param colors: Color array.'''
+        ...
+
+    def accept(self, visitor: aspose.pdf.IOperatorSelector) -> None:
+        '''Accepts visitor object to process operator.
+        
+        :param visitor: Visitor object.'''
+        ...
+    
+    def get_color(self) -> aspose.pydrawing.Color:
+        '''Returns color specified by operator.
+        
+        :returns: Color specifid by operator.'''
+        ...
+    
+    ...
+
+class SetCMYKColor(aspose.pdf.operators.SetColorOperator):
+    '''Class representing k operator (set CMYK color for non-stroking operations).'''
+    
+    def __init__(self, c: float, m: float, y: float, k: float):
+        '''Initializes operator.
+        
+        :param c: The level of cyan from 0.0 to 1.0
+        :param m: The level of magenta from 0.0 to 1.0
+        :param y: The level of yellow from 0.0 to 1.0
+        :param k: The level of black from 0.0 to 1.0'''
+        ...
+    
+    def accept(self, visitor: aspose.pdf.IOperatorSelector) -> None:
+        '''Accepts visitor object to process operator.
+        
+        :param visitor: Visitor object.'''
+        ...
+    
+    def get_color(self) -> aspose.pydrawing.Color:
+        '''Returns color.
+        
+        :returns: Color specified by operator.'''
+        ...
+    
+    @property
+    def c(self) -> float:
+        '''Gets or sets the cyan component.'''
+        ...
+    
+    @c.setter
+    def c(self, value: float):
+        ...
+    
+    @property
+    def m(self) -> float:
+        '''Gets or sets the magenta component.'''
+        ...
+    
+    @m.setter
+    def m(self, value: float):
+        ...
+    
+    @property
+    def y(self) -> float:
+        '''Gets or sets the yellow component.'''
+        ...
+    
+    @y.setter
+    def y(self, value: float):
+        ...
+    
+    @property
+    def k(self) -> float:
+        '''Gets or sets the black component.'''
+        ...
+    
+    @k.setter
+    def k(self, value: float):
+        ...
+    
+    ...
+
+class SetCMYKColorStroke(aspose.pdf.operators.SetColorOperator):
+    '''Class representing K operator (set CMYK color for stroking operations).'''
+    
+    def __init__(self, c: float, m: float, y: float, k: float):
+        '''Initializes operator.
+        
+        :param c: The level of cyan from 0.0 to 1.0
+        :param m: The level of magenta from 0.0 to 1.0
+        :param y: The level of yellow from 0.0 to 1.0
+        :param k: The level of black from 0.0 to 1.0'''
+        ...
+    
+    def accept(self, visitor: aspose.pdf.IOperatorSelector) -> None:
+        '''Accepts visitor object to process operator.
+        
+        :param visitor: Visitor object.'''
+        ...
+    
+    def get_color(self) -> aspose.pydrawing.Color:
+        '''Returns the RGB color
+        
+        :returns: Color specified by operator.'''
+        ...
+    
+    @property
+    def c(self) -> float:
+        '''Gets or sets the cyan component.'''
+        ...
+    
+    @c.setter
+    def c(self, value: float):
+        ...
+    
+    @property
+    def m(self) -> float:
+        '''Gets or sets the magenta component.'''
+        ...
+    
+    @m.setter
+    def m(self, value: float):
+        ...
+    
+    @property
+    def y(self) -> float:
+        '''Gets or sets the yellow component.'''
+        ...
+    
+    @y.setter
+    def y(self, value: float):
+        ...
+    
+    @property
+    def k(self) -> float:
+        '''Gets or sets the black component.'''
+        ...
+    
+    @k.setter
+    def k(self, value: float):
+        ...
+    
+    ...
+
+class SetCharWidth(aspose.pdf.Operator):
+    '''Class representing d0 operator (set glyph width).'''
+    
+    def __init__(self, wx: float, wy: float):
+        '''Constructor.
+        
+        :param wx: Horizontal displacement of glyph.
+        :param wy: Vertical displacement of glyph.'''
+        ...
+    
+    def accept(self, visitor: aspose.pdf.IOperatorSelector) -> None:
+        '''Accepts visitor object to process operator.
+        
+        :param visitor: Visitor object.'''
+        ...
+    
+    @property
+    def wx(self) -> float:
+        '''Horizontal displacement of glyph coordinate.'''
+        ...
+    
+    @property
+    def wy(self) -> float:
+        '''Vertical displacement of glyph coordinate.'''
+        ...
+    
+    ...
+
+class SetCharWidthBoundingBox(aspose.pdf.Operator):
+    '''Class representing d1 operator (set glyph and bounding box).'''
+    
+    def __init__(self, wx: float, wy: float, llx: float, lly: float, urx: float, ury: float):
+        '''Initializes SetCharWidthBoundingBox operator.
+        
+        :param wx: Denotes the horizontal displacement in the glyph coordinate.
+        :param wy: Denotes the vertical displacement in the glyph coordinate. Shall be 0.
+        :param llx: Denotes X coordinate of the lower-left corner.
+        :param lly: Denotes Y coordinate of the lower-left corner.
+        :param urx: Denotes X coordinate of upper-right corner.
+        :param ury: Denotes Y coordinate of upper-right corner.'''
+        ...
+    
+    def accept(self, visitor: aspose.pdf.IOperatorSelector) -> None:
+        '''Accepts visitor object to process operator.
+        
+        :param visitor: Visitor object.'''
+        ...
+    
+    @property
+    def wx(self) -> float:
+        '''Horizontal displacement of glyph.'''
+        ...
+    
+    @property
+    def wy(self) -> float:
+        '''Vertical displacement of glyph.'''
+        ...
+    
+    @property
+    def llx(self) -> float:
+        '''Lower-left horizontal coordinate of bounding rectangle.'''
+        ...
+    
+    @property
+    def lly(self) -> float:
+        '''Lower-left vertical coordinate of bounding rectangle.'''
+        ...
+    
+    @property
+    def urx(self) -> float:
+        '''Upper-right horizontal coordinate of bounding rectangle.'''
+        ...
+    
+    @property
+    def ury(self) -> float:
+        '''Upper-right vertical coordinate of bounding rectangle.'''
+        ...
+    
+    ...
+
+class SetCharacterSpacing(aspose.pdf.operators.TextStateOperator):
+    '''Class representing Tc operator (set character spacing).'''
+    
+    def __init__(self, char_spacing: float):
+        '''Initializes operator.
+        
+        :param char_spacing: Character spacing.'''
+        ...
+    
+    def accept(self, visitor: aspose.pdf.IOperatorSelector) -> None:
+        '''Accepts visitor object to process operator.
+        
+        :param visitor: Visitor object.'''
+        ...
+    
+    @property
+    def char_spacing(self) -> float:
+        '''Gets or sets the character spacing.'''
+        ...
+    
+    @char_spacing.setter
+    def char_spacing(self, value: float):
+        ...
+    
+    ...
+
+class SetColor(aspose.pdf.operators.BasicSetColorOperator):
+    '''Represents class for sc operator (set color for non-stroking operations).'''
+    
+    @overload
+    def __init__(self):
+        '''Initializes operator.'''
+        ...
+    
+    @overload
+    def __init__(self, g: float):
+        '''Set color for stroking operators for DeviceGrey, CalGrey and Indexed color spaces.
+        
+        :param g: Color value.'''
+        ...
+    
+    @overload
+    def __init__(self, r: float, g: float, b: float):
+        '''Set color for stroking operator for DeviceRGB, CalRGB, and Lab color spaces
+        
+        :param r: Red component.
+        :param g: Green component.
+        :param b: Blue component.'''
+        ...
+    
+    @overload
+    def __init__(self, c: float, m: float, y: float, k: float):
+        '''Set color for non-stroking operator for CMYK color space
+        
+        :param c: Cyan component.
+        :param m: Magenta component.
+        :param y: Yellow component.
+        :param k: Black component.'''
+        ...
+    
+    @overload
+    def __init__(self, color: list[float]):
+        '''Constructor which allows to specify color components.
+        
+        :param color: Array of color components.'''
+        ...
+    
+    def accept(self, visitor: aspose.pdf.IOperatorSelector) -> None:
+        '''Accepts visitor object to process operator.
+        
+        :param visitor: Visitor object.'''
+        ...
+    
+    def get_color(self) -> aspose.pydrawing.Color:
+        '''Returns color specified by the operator.
+        
+        :returns: Operator color.'''
+        ...
+    
+    @property
+    def r(self) -> float:
+        '''Gets or sets the red component.'''
+        ...
+    
+    @r.setter
+    def r(self, value: float):
+        ...
+    
+    @property
+    def g(self) -> float:
+        '''Gets or sets the green component.'''
+        ...
+    
+    @g.setter
+    def g(self, value: float):
+        ...
+    
+    @property
+    def b(self) -> float:
+        '''Gets or sets the blue component.'''
+        ...
+    
+    @b.setter
+    def b(self, value: float):
+        ...
+    
+    @property
+    def c(self) -> float:
+        '''Gets or sets the cyan component.'''
+        ...
+    
+    @c.setter
+    def c(self, value: float):
+        ...
+    
+    @property
+    def m(self) -> float:
+        '''Gets or sets the magenta component.'''
+        ...
+    
+    @m.setter
+    def m(self, value: float):
+        ...
+    
+    @property
+    def y(self) -> float:
+        '''Gets or sets the yellow component.'''
+        ...
+    
+    @y.setter
+    def y(self, value: float):
+        ...
+    
+    @property
+    def k(self) -> float:
+        '''Gets or sets the black component.'''
+        ...
+    
+    @k.setter
+    def k(self, value: float):
+        ...
+    
+    ...
+
+class SetColorOperator(aspose.pdf.Operator):
+    '''Class representing set color operation.'''
+    
+    def get_color(self) -> aspose.pydrawing.Color:
+        '''Retirns color specified by the operator.
+        
+        :returns: Color specified by operator.'''
+        ...
+    
+    ...
+
+class SetColorRenderingIntent(aspose.pdf.Operator):
+    '''Class representing ri operator (set color rendering intent).'''
+    
+    def __init__(self, intent_name: str):
+        '''Set Color Rendering Intent operator constructor.
+        
+        :param intent_name: Color Rendering Intent.'''
+        ...
+    
+    def accept(self, visitor: aspose.pdf.IOperatorSelector) -> None:
+        '''Accepts visitor object to process operator.
+        
+        :param visitor: Visitor object.'''
+        ...
+    
+    @property
+    def intent_name(self) -> str:
+        '''Gets or sets color rendering intent name.'''
+        ...
+    
+    @intent_name.setter
+    def intent_name(self, value: str):
+        ...
+    
+    ...
+
+class SetColorSpace(aspose.pdf.Operator):
+    '''Class representing cs operator (set colorspace for non-stroking operations)'''
+    
+    def __init__(self, name: str):
+        '''Initializes operator.
+        
+        :param name: Color space name.'''
+        ...
+    
+    def accept(self, visitor: aspose.pdf.IOperatorSelector) -> None:
+        '''Accepts visitor object to process operator.
+        
+        :param visitor: Visitor object.'''
+        ...
+    
+    @property
+    def name(self) -> str:
+        '''Gets or sets color space name.'''
+        ...
+    
+    @name.setter
+    def name(self, value: str):
+        ...
+    
+    ...
+
+class SetColorSpaceStroke(aspose.pdf.Operator):
+    '''Class representing CS operator (set color for stroking operations).'''
+    
+    def __init__(self, name: str):
+        '''Initializes operator.
+        
+        :param name: Color space name.'''
+        ...
+    
+    def accept(self, visitor: aspose.pdf.IOperatorSelector) -> None:
+        '''Accepts visitor object to process operator.
+        
+        :param visitor: Visitor object.'''
+        ...
+    
+    @property
+    def name(self) -> str:
+        '''Gets or sets color space name.'''
+        ...
+    
+    @name.setter
+    def name(self, value: str):
+        ...
+    
+    ...
+
+class SetColorStroke(aspose.pdf.operators.BasicSetColorOperator):
+    '''Class representing SC operator set color for stroking color operators.'''
+    
+    @overload
+    def __init__(self):
+        '''Initializes operator.'''
+        ...
+    
+    @overload
+    def __init__(self, g: float):
+        '''Set color for stroking operators for DeviceGrey, CalGrey and Indexed color spaces.
+        
+        :param g: Color value.'''
+        ...
+    
+    @overload
+    def __init__(self, r: float, g: float, b: float):
+        '''Set color for stroking operator for DeviceRGB, CalRGB, and Lab color spaces
+        
+        :param r: Red component.
+        :param g: Green component.
+        :param b: Blue component.'''
+        ...
+    
+    @overload
+    def __init__(self, color: list[float]):
+        '''Constructor which allows to set color components.
+        
+        :param color: Array of color components.'''
+        ...
+    
+    @overload
+    def __init__(self, c: float, m: float, y: float, k: float):
+        '''Set color for stroking operator for CMYK color space
+        
+        :param c: Cyan component.
+        :param m: Magenta component.
+        :param y: Yellow component.
+        :param k: Black component.'''
+        ...
+    
+    def accept(self, visitor: aspose.pdf.IOperatorSelector) -> None:
+        '''Accepts visitor object to process operator.
+        
+        :param visitor: Visitor object.'''
+        ...
+    
+    def get_color(self) -> aspose.pydrawing.Color:
+        '''Returns color specified by operator.
+        
+        :returns: Color specified by operator.'''
+        ...
+    
+    @property
+    def r(self) -> float:
+        '''Gets or sets the red component.'''
+        ...
+    
+    @r.setter
+    def r(self, value: float):
+        ...
+    
+    @property
+    def g(self) -> float:
+        '''Gets or sets the green component.'''
+        ...
+    
+    @g.setter
+    def g(self, value: float):
+        ...
+    
+    @property
+    def b(self) -> float:
+        '''Gets or sets the blue component.'''
+        ...
+    
+    @b.setter
+    def b(self, value: float):
+        ...
+    
+    @property
+    def c(self) -> float:
+        '''Gets or sets the cyan component.'''
+        ...
+    
+    @c.setter
+    def c(self, value: float):
+        ...
+    
+    @property
+    def m(self) -> float:
+        '''Gets or sets the magenta component.'''
+        ...
+    
+    @m.setter
+    def m(self, value: float):
+        ...
+    
+    @property
+    def y(self) -> float:
+        '''Gets or sets the yellow component.'''
+        ...
+    
+    @y.setter
+    def y(self, value: float):
+        ...
+    
+    @property
+    def k(self) -> float:
+        '''Gets or sets the black component.'''
+        ...
+    
+    @k.setter
+    def k(self, value: float):
+        ...
+    
+    ...
+
+class SetDash(aspose.pdf.Operator):
+    '''Class representing d operator (set line dash pattern).'''
+    
+    def __init__(self, pattern: list[int], phase: int):
+        '''Creates set dash pattern operator.
+        
+        :param pattern: Array which defines dash pattern.
+        :param phase: Dash phase.'''
+        ...
+    
+    def accept(self, visitor: aspose.pdf.IOperatorSelector) -> None:
+        '''Accepts visitor object to process operator.
+        
+        :param visitor: Visitor object.'''
+        ...
+    
+    @property
+    def pattern(self) -> list[int]:
+        '''Dash pattern. Array�s elements shall be numbers that specify the lengths of alternating dashes and gaps.
+        In case of one element array dash and gap lengths are equal.'''
+        ...
+    
+    @pattern.setter
+    def pattern(self, value: list[int]):
+        ...
+    
+    @property
+    def phase(self) -> int:
+        '''Dash phase. Before beginning to stroke a path, the dash array shall be cycled through, adding up the lengths of dashes and gaps.
+        When the accumulated length equals the value specified by the dash phase, stroking of the path shall begin,
+        and the dash array shall be used cyclically from that point onward.'''
+        ...
+    
+    @phase.setter
+    def phase(self, value: int):
+        ...
+    
+    ...
+
+class SetFlat(aspose.pdf.Operator):
+    '''Class representing i operator (set flatness tolerance).'''
+    
+    def __init__(self, flatness: float):
+        '''Initializes operator.
+        
+        :param flatness: The value of flatness.'''
+        ...
+    
+    def accept(self, visitor: aspose.pdf.IOperatorSelector) -> None:
+        '''Accepts visitor object to process operator.
+        
+        :param visitor: Visitor object.'''
+        ...
+    
+    @property
+    def flatness(self) -> float:
+        '''Gets or sets the flatness.'''
+        ...
+    
+    @flatness.setter
+    def flatness(self, value: float):
+        ...
+    
+    ...
+
+class SetGlyphsPositionShowText(aspose.pdf.operators.TextShowOperator):
+    '''Class representing TJ operator (show text with glyph positioning).'''
+    
+    def __init__(self, glyph_positions: Iterable[aspose.pdf.operators.GlyphPosition]):
+        '''Constructor for TJ operator.
+        
+        :param glyph_positions: List of Glyph Positions.'''
+        ...
+    
+    def accept(self, visitor: aspose.pdf.IOperatorSelector) -> None:
+        '''Accepts visitor object to process operator.
+        
+        :param visitor: Visitor object.'''
+        ...
+    
+    @property
+    def text(self) -> str:
+        '''Gets text from operator argument (glyph positioning is ignored).'''
+        ...
+    
+    @text.setter
+    def text(self, value: str):
+        ...
+    
+    @property
+    def glyph_positions(self) -> Iterable[aspose.pdf.operators.GlyphPosition]:
+        '''Returns  positions of glyphs.'''
+        ...
+    
+    ...
+
+class SetGray(aspose.pdf.operators.SetColorOperator):
+    '''Set gray level for non-stroking operations.'''
+    
+    def __init__(self, gray: float):
+        '''Initializes operator.
+        
+        :param gray: The level of gray value.'''
+        ...
+    
+    def accept(self, visitor: aspose.pdf.IOperatorSelector) -> None:
+        '''Accepts visitor object to process operator.
+        
+        :param visitor: Visitor object.'''
+        ...
+    
+    def get_color(self) -> aspose.pydrawing.Color:
+        '''Returns color specified by operator.
+        
+        :returns: Color specified by operator.'''
+        ...
+    
+    @property
+    def gray(self) -> float:
+        '''Gets or sets the level of gray value.'''
+        ...
+    
+    @gray.setter
+    def gray(self, value: float):
+        ...
+    
+    ...
+
+class SetGrayStroke(aspose.pdf.operators.SetColorOperator):
+    '''Class representing gray level for stroking operations.'''
+    
+    def __init__(self, gray: float):
+        '''Initializes operator with the specified color.
+        
+        :param gray: The level of gray value.'''
+        ...
+    
+    def accept(self, visitor: aspose.pdf.IOperatorSelector) -> None:
+        '''Accepts visitor object to process operator.
+        
+        :param visitor: Visitor object.'''
+        ...
+    
+    def get_color(self) -> aspose.pydrawing.Color:
+        '''Returns color specified by operator.
+        
+        :returns: Color specified by operator.'''
+        ...
+    
+    @property
+    def gray(self) -> float:
+        '''Gets or sets the level of gray value.'''
+        ...
+    
+    @gray.setter
+    def gray(self, value: float):
+        ...
+    
+    ...
+
+class SetHorizontalTextScaling(aspose.pdf.operators.TextStateOperator):
+    '''Class representing Tz operator (set horizontal text scaling).'''
+    
+    def __init__(self, horizintal_scaling: float):
+        '''Initializes operator.
+        
+        :param horizintal_scaling: Horizontal scaling.'''
+        ...
+    
+    def accept(self, visitor: aspose.pdf.IOperatorSelector) -> None:
+        '''Accepts visitor object to process operator.
+        
+        :param visitor: Visitor object.'''
+        ...
+    
+    @property
+    def horizontal_scaling(self) -> float:
+        '''Gets or sets the horizontal scaling.'''
+        ...
+    
+    @horizontal_scaling.setter
+    def horizontal_scaling(self, value: float):
+        ...
+    
+    ...
+
+class SetLineCap(aspose.pdf.Operator):
+    '''Class representing J operator (set line cap style).'''
+    
+    def __init__(self, cap: aspose.pdf.operators.LineCap):
+        '''Initializes SetLineCap operator
+        
+        :param cap: Line cap style.'''
+        ...
+    
+    def accept(self, visitor: aspose.pdf.IOperatorSelector) -> None:
+        '''Accepts visitor object to process operator.
+        
+        :param visitor: Visitor object.'''
+        ...
+    
+    @property
+    def cap(self) -> aspose.pdf.operators.LineCap:
+        '''Gets or sets line caps style.'''
+        ...
+    
+    @cap.setter
+    def cap(self, value: aspose.pdf.operators.LineCap):
+        ...
+    
+    ...
+
+class SetLineJoin(aspose.pdf.Operator):
+    '''Class representing j operator (set line join style).'''
+    
+    @overload
+    def __init__(self):
+        '''Initializes operator.'''
+        ...
+    
+    @overload
+    def __init__(self, join: aspose.pdf.operators.LineJoin):
+        '''Initializes operator.'''
+        ...
+    
+    def accept(self, visitor: aspose.pdf.IOperatorSelector) -> None:
+        '''Accepts visitor object to process operator.
+        
+        :param visitor: Visitor object.'''
+        ...
+    
+    @property
+    def join(self) -> aspose.pdf.operators.LineJoin:
+        ...
+    
+    @join.setter
+    def join(self, value: aspose.pdf.operators.LineJoin):
+        ...
+    
+    ...
+
+class SetLineWidth(aspose.pdf.Operator):
+    '''Class representing w operator (set line width).'''
+    
+    def __init__(self, width: float):
+        '''Initializes operator with width value.
+        
+        :param width: Line width.'''
+        ...
+    
+    def accept(self, visitor: aspose.pdf.IOperatorSelector) -> None:
+        '''Accepts visitor object to process operator.
+        
+        :param visitor: Visitor object.'''
+        ...
+    
+    @property
+    def width(self) -> float:
+        '''Gets or sets width of the line.'''
+        ...
+    
+    @width.setter
+    def width(self, value: float):
+        ...
+    
+    ...
+
+class SetMiterLimit(aspose.pdf.Operator):
+    '''Class representing M operator (set miter limit).'''
+    
+    def __init__(self, miter_limit: float):
+        '''Initializes operator.
+        
+        :param miter_limit: Mitel limit.'''
+        ...
+    
+    def accept(self, visitor: aspose.pdf.IOperatorSelector) -> None:
+        '''Accepts visitor object to process operator.
+        
+        :param visitor: Visitor object.'''
+        ...
+    
+    @property
+    def miter_limit(self) -> float:
+        '''Gets or sets the miter limit.'''
+        ...
+    
+    @miter_limit.setter
+    def miter_limit(self, value: float):
+        ...
+    
+    ...
+
+class SetRGBColor(aspose.pdf.operators.SetColorOperator):
+    '''Class representing rg operator (set RGB color for non-stroking operators).'''
+    
+    @overload
+    def __init__(self, r: float, g: float, b: float):
+        '''Initializes operator.
+        
+        :param r: The level of red from 0.0 to 1.0
+        :param g: The level of green from 0.0 to 1.0
+        :param b: The level of blue from 0.0 to 1.0'''
+        ...
+    
+    @overload
+    def __init__(self, color: aspose.pydrawing.Color):
+        '''Initializes operator with color.
+        
+        :param color: Specified color.'''
+        ...
+    
+    def accept(self, visitor: aspose.pdf.IOperatorSelector) -> None:
+        '''Accepts visitor object to process operator.
+        
+        :param visitor: Visitor object.'''
+        ...
+    
+    def get_color(self) -> aspose.pydrawing.Color:
+        '''Returns color specified by operator.
+        
+        :returns: Color specified by operator.'''
+        ...
+    
+    @property
+    def r(self) -> float:
+        '''Gets or sets the red component.'''
+        ...
+    
+    @r.setter
+    def r(self, value: float):
+        ...
+    
+    @property
+    def g(self) -> float:
+        '''Gets or sets the green component.'''
+        ...
+    
+    @g.setter
+    def g(self, value: float):
+        ...
+    
+    @property
+    def b(self) -> float:
+        '''Gets or sets the blue component.'''
+        ...
+    
+    @b.setter
+    def b(self, value: float):
+        ...
+    
+    ...
+
+class SetRGBColorStroke(aspose.pdf.operators.SetColorOperator):
+    '''Class representing RG operator (set RGB color for stroking operators).'''
+    
+    @overload
+    def __init__(self, r: float, g: float, b: float):
+        '''Initializes operator.
+        
+        :param r: The level of red from 0.0 to 1.0
+        :param g: The level of green from 0.0 to 1.0
+        :param b: The level of blue from 0.0 to 1.0'''
+        ...
+    
+    @overload
+    def __init__(self, color: aspose.pydrawing.Color):
+        '''Initializes operator with color.
+        
+        :param color: Operator color.'''
+        ...
+    
+    def accept(self, visitor: aspose.pdf.IOperatorSelector) -> None:
+        '''Accepts visitor object to process operator.
+        
+        :param visitor: Visitor object.'''
+        ...
+    
+    def get_color(self) -> aspose.pydrawing.Color:
+        '''Returns color specified by operator.
+        
+        :returns: Color specified by operator.'''
+        ...
+    
+    @property
+    def r(self) -> float:
+        '''Gets or sets the red component.'''
+        ...
+    
+    @r.setter
+    def r(self, value: float):
+        ...
+    
+    @property
+    def g(self) -> float:
+        '''Gets or sets the green component.'''
+        ...
+    
+    @g.setter
+    def g(self, value: float):
+        ...
+    
+    @property
+    def b(self) -> float:
+        '''Gets or sets the blue component.'''
+        ...
+    
+    @b.setter
+    def b(self, value: float):
+        ...
+    
+    ...
+
+class SetSpacingMoveToNextLineShowText(aspose.pdf.operators.TextShowOperator):
+    '''Class representing " operator (set word and character spacing, move to the next line and show text).'''
+    
+    def __init__(self, aw: float, ac: float, text: str):
+        '''Initializes operator.
+        
+        :param aw: Word spacing.
+        :param ac: Character spacing.
+        :param text: Text value.'''
+        ...
+    
+    def accept(self, visitor: aspose.pdf.IOperatorSelector) -> None:
+        '''Accepts visitor object to process operator.
+        
+        :param visitor: Visitor object.'''
+        ...
+    
+    @property
+    def text(self) -> str:
+        '''Gets text of operator.'''
+        ...
+    
+    @text.setter
+    def text(self, value: str):
+        ...
+    
+    @property
+    def aw(self) -> float:
+        '''Gets word spacing.'''
+        ...
+    
+    @property
+    def ac(self) -> float:
+        '''Get character spacing.'''
+        ...
+    
+    ...
+
+class SetTextLeading(aspose.pdf.operators.TextStateOperator):
+    '''Class represenging TL operator (set text leading).'''
+    
+    def __init__(self, leading: float):
+        '''Initializes text leading operator.
+        
+        :param leading: Text leading.'''
+        ...
+    
+    def accept(self, visitor: aspose.pdf.IOperatorSelector) -> None:
+        '''Accepts visitor object to process operator.
+        
+        :param visitor: Visitor object.'''
+        ...
+    
+    @property
+    def leading(self) -> float:
+        '''Gets or sets the text leading.'''
+        ...
+    
+    @leading.setter
+    def leading(self, value: float):
+        ...
+    
+    ...
+
+class SetTextMatrix(aspose.pdf.operators.TextPlaceOperator):
+    '''Class representing Tm operator (set text matrix).'''
+    
+    @overload
+    def __init__(self, a: float, b: float, c: float, d: float, e: float, f: float):
+        '''Initializes operator.
+        
+        :param a: A coefficient
+        :param b: B coefficient
+        :param c: C coefficient
+        :param d: D coefficient
+        :param e: E coefficient
+        :param f: F coefficient'''
+        ...
+    
+    @overload
+    def __init__(self, m: aspose.pdf.Matrix):
+        '''Initializes operator by matrix.
+        
+        :param m: Transfomation matrix.'''
+        ...
+    
+    def accept(self, visitor: aspose.pdf.IOperatorSelector) -> None:
+        '''Accepts visitor object to process operator.
+        
+        :param visitor: Visitor object.'''
+        ...
+    
+    @property
+    def matrix(self) -> aspose.pdf.Matrix:
+        '''Matrix argument of the operator.'''
+        ...
+    
+    @matrix.setter
+    def matrix(self, value: aspose.pdf.Matrix):
+        ...
+    
+    ...
+
+class SetTextRenderingMode(aspose.pdf.operators.TextStateOperator):
+    '''Class representing Tr operator (set text rendering mode).'''
+    
+    def __init__(self):
+        '''Initializes operator.'''
+        ...
+    
+    def accept(self, visitor: aspose.pdf.IOperatorSelector) -> None:
+        '''Accepts visitor object to process operator.
+        
+        :param visitor: Visitor object.'''
+        ...
+    
+    ...
+
+class SetTextRise(aspose.pdf.operators.TextStateOperator):
+    '''Class representing Ts operator (set text rise).'''
+    
+    def __init__(self, text_rise: float):
+        '''Initializes operator.
+        
+        :param text_rise: Text rise.'''
+        ...
+    
+    def accept(self, visitor: aspose.pdf.IOperatorSelector) -> None:
+        '''Accepts visitor object to process operator.
+        
+        :param visitor: Visitor object.'''
+        ...
+    
+    @property
+    def text_rise(self) -> float:
+        '''Gets or sets the text rise.'''
+        ...
+    
+    @text_rise.setter
+    def text_rise(self, value: float):
+        ...
+    
+    ...
+
+class SetWordSpacing(aspose.pdf.operators.TextStateOperator):
+    '''Class representing Tw operator (set word spacing).'''
+    
+    def __init__(self, word_spacing: float):
+        '''Initializes operator.
+        
+        :param word_spacing: Word spacing.'''
+        ...
+    
+    def accept(self, visitor: aspose.pdf.IOperatorSelector) -> None:
+        '''Accepts visitor object to process operator.
+        
+        :param visitor: Visitor object.'''
+        ...
+    
+    @property
+    def word_spacing(self) -> float:
+        '''Gets or sets the word spacing.'''
+        ...
+    
+    @word_spacing.setter
+    def word_spacing(self, value: float):
+        ...
+    
+    ...
+
+class ShFill(aspose.pdf.Operator):
+    '''Class representing sh operator (paint area with shading pattern).'''
+    
+    def __init__(self, shading_name: str):
+        '''Initializes operator.
+        
+        :param shading_name: Shading name.'''
+        ...
+    
+    def accept(self, visitor: aspose.pdf.IOperatorSelector) -> None:
+        '''Accepts visitor object to process operator.
+        
+        :param visitor: Visitor object.'''
+        ...
+    
+    @property
+    def name(self) -> str:
+        '''Gets or sets the shading name.'''
+        ...
+    
+    @name.setter
+    def name(self, value: str):
+        ...
+    
+    ...
+
+class ShowText(aspose.pdf.operators.TextShowOperator):
+    '''Class representing Tj operator (show text).'''
+    
+    @overload
+    def __init__(self, index: int, text: str):
+        '''Initializes Tj opearor.
+        
+        :param index: Index of operator in operators list.
+        :param text: argument of the operator.'''
+        ...
+    
+    @overload
+    def __init__(self, text: str):
+        '''Initializes Tj operator.
+        
+        :param text: argument of the operator.'''
+        ...
+    
+    @overload
+    def __init__(self, text: str, font: aspose.pdf.text.Font):
+        '''Initializes Tj opearor.
+        
+        :param text: text to add.
+        :param font: font that is used to draw the text.'''
+        ...
+    
+    @overload
+    def __init__(self):
+        '''Initializes Tj operator.'''
+        ...
+    
+    def accept(self, visitor: aspose.pdf.IOperatorSelector) -> None:
+        '''Accepts visitor object to process operator.
+        
+        :param visitor: Visitor object.'''
+        ...
+    
+    @property
+    def text(self) -> str:
+        '''Text of operator.'''
+        ...
+    
+    @text.setter
+    def text(self, value: str):
+        ...
+    
+    ...
+
+class Stroke(aspose.pdf.Operator):
+    '''Class representing S operator (stroke path).'''
+    
+    def __init__(self):
+        '''Initializes operator.'''
+        ...
+    
+    def accept(self, visitor: aspose.pdf.IOperatorSelector) -> None:
+        '''Accepts visitor object to process operator.
+        
+        :param visitor: Visitor object.'''
+        ...
+    
+    ...
+
+class TextOperator(aspose.pdf.Operator):
+    '''Abstract base class for text-related operators (TJ, Tj, Tm, BT, ET, etc).'''
+    
+    def accept(self, visitor: aspose.pdf.IOperatorSelector) -> None:
+        '''Accepts visitor object to process operator.
+        
+        :param visitor: Visitor object.'''
+        ...
+    
+    ...
+
+class TextPlaceOperator(aspose.pdf.operators.TextOperator):
+    '''Abstract base class for operators which changes text position (Tm, Td, etc).'''
+    
+    @overload
+    def __init__(self):
+        '''Initializes TextPlaceOperator.'''
+        ...
+    
+    @overload
+    def __init__(self, text_properties: aspose.pdf.facades.TextProperties):
+        '''Initializes TextPlaceOperator which accepts TextProperties.
+        
+        :param text_properties: Text properties.'''
+        ...
+    
+    ...
+
+class TextShowOperator(aspose.pdf.operators.TextOperator):
+    '''Abstract base class for all operators which used to out text (Tj, TJ, etc).'''
+    
+    @overload
+    def __init__(self):
+        '''Initializes TextShowOperator.'''
+        ...
+    
+    @overload
+    def __init__(self, text_properties: aspose.pdf.facades.TextProperties):
+        '''Initializes TextShowOperator which allows to pass TextProperties.
+        
+        :param text_properties: Text properties.'''
+        ...
+    
+    @property
+    def text(self) -> str:
+        '''Gets text which operator out on the page.'''
+        ...
+    
+    @text.setter
+    def text(self, value: str):
+        ...
+    
+    ...
+
+class TextStateOperator(aspose.pdf.operators.TextOperator):
+    '''Abstract base class for operators which changes current text state (Tc, Tf, TL, etc).'''
+    
+    @overload
+    def __init__(self):
+        '''Initializes TextStateOperator.'''
+        ...
+    
+    @overload
+    def __init__(self, text_properties: aspose.pdf.facades.TextProperties):
+        '''Initializes TextStateoperator which allows to pass TextProperties.
+        
+        :param text_properties: Text properties.'''
+        ...
+    
+    ...
+
+class LineCap:
+    '''The line cap style shall specify the shape that shall be used at the ends of open subpaths (and dashes, if any) when they are stroked.'''
+    
+    BUTT_CAP: LineCap
+    ROUND_CAP: LineCap
+    SQUARE_CAP: LineCap
+
+class LineJoin:
+    '''The line join style shall specify the shape to be used at the corners of paths that are stroked.'''
+    
+    MITER_JOIN: LineJoin
+    ROUND_JOIN: LineJoin
+    BEVEL_JOIN: LineJoin
+
