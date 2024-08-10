@@ -3,16 +3,12 @@ import os
 
 class Inicializar():
     
-    URL_SeleniumGrid = "http://localhost:4444/wd/hub"
-    Navegadores_Sel_Grid = ["Edge_Remote","Chrome_Remote"]
-    
     #Directorio Base - Obtiene la ruta del directorio src del proyecto
     BaseDir = os.path.abspath(os.path.join(__file__,"../.."))
     
     #Variable en el archivo inicializar
     URL_SeleniumGrid = "http://localhost:4444/wd/hub"
     Navegadores_Sel_Grid = ["Chrome","Edge_Remote","Chrome_Remote"]
-    
     
     #Tiempo de espera utilizado dentro del Framework
     Tiempo_Espera = 1
@@ -29,7 +25,9 @@ class Inicializar():
     Ruta_Grabacion= BaseDir + u'\Data\Grabaciones'
     Path_Evidencias = BaseDir + u'\Data\Capturas'
     #Path_Evidencias = ""
-    TestCase_x_Context = "S" #S o N
+    TestCase_x_Context = "" #S o N
+    Warning_Capturas = "Warning: Sin configurar el Path y el contexto para las capturas de pantalla."
+
     
     #Directorio Json
     Json = BaseDir + u'\Pages'

@@ -524,21 +524,21 @@ class Functions(Inicializar):
             
             return path
         else:
-            return "Error: Sin configurar el Path y el contexto para las capturas de pantalla."
-                
+            return Inicializar.Warning_Capturas
+            
     #Realizar captura de pantalla
     def capturar_pantalla(self):
         Path=Functions.crear_path(self)
         TestCase =self.__class__.__name__
         
-        if Path != "Error: Sin configurar el Path y el contexto para las capturas de pantalla.":
+        if Path != Inicializar.Warning_Capturas:
             img = f'{Path}\{TestCase}\
             ('+Functions.obtener_fecha_actual(self)+' - '+ Functions.obtener_hora_actual(self)+')'+'.png'
             
             print(f'Se realizo captura de pantalla de la prueba: {img}')
             return self.driver.get_screenshot_as_file(img)
         else:
-            print("Error: No se logro generar la captura de pantalla. No se encuentra configurada el Path y variable contexto.")
+            print("Warning: No se logro generar la captura de pantalla. No se encuentra configurada el Path y variable contexto.")
     
     #Realizar captura de pantalla en reporte Allure
     def captura_pantalla_allure(self,Descripcion):
