@@ -1,0 +1,218 @@
+﻿import aspose.pdf
+import aspose.pydrawing
+import datetime
+import decimal
+import io
+import uuid
+from typing import Iterable
+
+class ImageCompressionOptions:
+    '''Class contains set  options for image compression.'''
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def compress_images(self) -> bool:
+        '''If this flag is set to true images will be compressed in the document. compression level is specfied with ImageQuality property.'''
+        ...
+    
+    @compress_images.setter
+    def compress_images(self, value: bool):
+        ...
+    
+    @property
+    def resize_images(self) -> bool:
+        '''If this flag set to true and CompressImages is true images will be resized if image resoultion is greater then specified MaxResolution parameter.'''
+        ...
+    
+    @resize_images.setter
+    def resize_images(self, value: bool):
+        ...
+    
+    @property
+    def image_quality(self) -> int:
+        '''Specifies level of image compression when CompressIamges flag is used.'''
+        ...
+    
+    @image_quality.setter
+    def image_quality(self, value: int):
+        ...
+    
+    @property
+    def max_resolution(self) -> int:
+        '''Specifies maximum resolution of images. If image has higher resolition it will be scaled'''
+        ...
+    
+    @max_resolution.setter
+    def max_resolution(self, value: int):
+        ...
+    
+    @property
+    def version(self) -> aspose.pdf.optimization.ImageCompressionVersion:
+        '''Version of compression algorithm. Possible values are: 1. standard compression, 2. fast (improved compression which is faster then standard but may be applicable not for all images), 3. mixed (standard compression is applied to images which can not be compressed by  faster algorithm, this may give best compression but more slow then "fast" algorithm. Version "Fast" is not applicable for resizing images (standard method will be used). Default is "Standard".'''
+        ...
+    
+    @version.setter
+    def version(self, value: aspose.pdf.optimization.ImageCompressionVersion):
+        ...
+    
+    @property
+    def encoding(self) -> aspose.pdf.optimization.ImageEncoding:
+        '''Gets or sets encoding used to store images.'''
+        ...
+    
+    @encoding.setter
+    def encoding(self, value: aspose.pdf.optimization.ImageEncoding):
+        ...
+    
+    ...
+
+class OptimizationOptions:
+    '''Class which describes document optimization algorithm.
+    Instance of this class may be used as parameter of OptimizeResources() method.'''
+    
+    def __init__(self):
+        ...
+    
+    @staticmethod
+    def all(self) -> aspose.pdf.optimization.OptimizationOptions:
+        '''Creates optimization strategy will all options activated.
+        Please note that activated only options which does not change any functionality of the document.
+        I.e. image compressing and fonts unembedding will not enabled (and can be embedded manually).
+        
+        :returns: OptimizationOptions object.'''
+        ...
+    
+    @property
+    def link_duplcate_streams(self) -> bool:
+        '''If this flag is set to true, Resource streams will be analyzed. If duplicate streams are found (i.e. if stream contents is equal), then thes streams will be stored as one object.
+        This allows to decrease document size in some cases (for example, when same document was concatenedted multiple times).'''
+        ...
+    
+    @link_duplcate_streams.setter
+    def link_duplcate_streams(self, value: bool):
+        ...
+    
+    @property
+    def allow_reuse_page_content(self) -> bool:
+        '''If true page contents will be reused when document is optimized for equal pages.'''
+        ...
+    
+    @allow_reuse_page_content.setter
+    def allow_reuse_page_content(self, value: bool):
+        ...
+    
+    @property
+    def remove_unused_streams(self) -> bool:
+        '''If this flag set to true, every resource is checked on it's usage. If resource is never used, then resources is removed.
+        This may decrease document size for example when pages were extracted from document.'''
+        ...
+    
+    @remove_unused_streams.setter
+    def remove_unused_streams(self, value: bool):
+        ...
+    
+    @property
+    def remove_unused_objects(self) -> bool:
+        '''If this flag is set to true, all document objects will be checked and unused objects (i.e. objects which does not have any reference) are removed from document.'''
+        ...
+    
+    @remove_unused_objects.setter
+    def remove_unused_objects(self, value: bool):
+        ...
+    
+    @property
+    def image_compression_options(self) -> aspose.pdf.optimization.ImageCompressionOptions:
+        '''Set of options which describe will images in the document be compressed and parameters of the compression.'''
+        ...
+    
+    @property
+    def compress_images(self) -> bool:
+        '''If this flag is set to true images will be compressed in the document. compression level is specfied with ImageQuality property.'''
+        ...
+    
+    @compress_images.setter
+    def compress_images(self, value: bool):
+        ...
+    
+    @property
+    def resize_images(self) -> bool:
+        '''If this flag set to true and CompressImages is true images will be resized if image resoultion is greater then specified MaxResolution parameter.'''
+        ...
+    
+    @resize_images.setter
+    def resize_images(self, value: bool):
+        ...
+    
+    @property
+    def image_quality(self) -> int:
+        '''Specifies level of image compression when CompressIamges flag is used.'''
+        ...
+    
+    @image_quality.setter
+    def image_quality(self, value: int):
+        ...
+    
+    @property
+    def max_resoultion(self) -> int:
+        '''Specifies maximum resolution of images. If image has higher resolition it will be scaled. [Obsolete("Please use ImageCompressionOptions.MaxResolution instead.")]'''
+        ...
+    
+    @max_resoultion.setter
+    def max_resoultion(self, value: int):
+        ...
+    
+    @property
+    def unembed_fonts(self) -> bool:
+        '''Make fonts not embedded if set to true.'''
+        ...
+    
+    @unembed_fonts.setter
+    def unembed_fonts(self, value: bool):
+        ...
+    
+    @property
+    def subset_fonts(self) -> bool:
+        '''Fonts will be converted into subsets if set to true.'''
+        ...
+    
+    @subset_fonts.setter
+    def subset_fonts(self, value: bool):
+        ...
+    
+    @property
+    def remove_private_info(self) -> bool:
+        '''Remove private information (page piece info).'''
+        ...
+    
+    @remove_private_info.setter
+    def remove_private_info(self, value: bool):
+        ...
+    
+    @property
+    def image_encoding(self) -> aspose.pdf.optimization.ImageEncoding:
+        '''Image encodre which will be used.'''
+        ...
+    
+    @image_encoding.setter
+    def image_encoding(self, value: aspose.pdf.optimization.ImageEncoding):
+        ...
+    
+    ...
+
+class ImageCompressionVersion:
+    '''Describes versions of image compression algorithm.'''
+    
+    STANDARD: ImageCompressionVersion
+    FAST: ImageCompressionVersion
+    MIXED: ImageCompressionVersion
+
+class ImageEncoding:
+    '''Image encoding types.'''
+    
+    UNCHANGED: ImageEncoding
+    JPEG: ImageEncoding
+    FLATE: ImageEncoding
+    JPEG2000: ImageEncoding
+

@@ -1,0 +1,3177 @@
+﻿import aspose.pdf
+import aspose.pydrawing
+import datetime
+import decimal
+import io
+import uuid
+from typing import Iterable
+
+class AbsorbedCell:
+    '''Represents cell of table that exist on the page'''
+
+    def compare_to(self, other: aspose.pdf.text.AbsorbedCell) -> int:
+        '''Compares the current AbsorbedCell object with another AbsorbedCell object and returns an integer that indicates
+        whether the current object precedes, follows, or occurs in the same position in the sort order as the other object.
+        
+        :param other: An AbsorbedCell object to compare with this object.
+        :returns: A value that indicates the relative order of the objects being compared.'''
+        ...
+
+    @property
+    def text_fragments(self) -> aspose.pdf.text.TextFragmentCollection:
+        '''Gets collection of :class:`TextFragment` objects that describes text containing in the cell'''
+        ...
+    
+    @property
+    def rectangle(self) -> aspose.pdf.Rectangle:
+        '''Gets rectangle that describes position of the cell on page'''
+        ...
+
+    @property
+    def col_span(self) -> int:
+        '''Return the number of columns the cell should span when TableAbsorber.UseFlowEngine is true.'''
+        ...
+    
+    @property
+    def border_info(self) -> aspose.pdf.BorderInfo:
+        ...
+
+    ...
+
+class AbsorbedRow:
+    '''Represents row of table that exist on the page'''
+
+    def compare_to(self, other: aspose.pdf.text.AbsorbedRow) -> int:
+        '''Compares the current AbsorbedRow object with another AbsorbedRow object and returns an integer that indicates whether the current object precedes, follows, or occurs in the same position in the sort order as the other object.
+        
+        :param other: An AbsorbedRow object to compare with this object.
+        :returns: A value that indicates the relative order of the objects being compared.'''
+        ...
+
+    @property
+    def cell_list(self) -> list[aspose.pdf.text.AbsorbedCell]:
+        '''Gets readonly IList containing cells of the row'''
+        ...
+    
+    @property
+    def rectangle(self) -> aspose.pdf.Rectangle:
+        '''Gets rectangle that describes position of the row on page'''
+        ...
+    
+    ...
+
+class AbsorbedTable:
+    '''Represents table that exist on the page'''
+
+    def compare_to(self, other: aspose.pdf.text.AbsorbedTable) -> int:
+        '''Compares the current AbsorbedTable object with another AbsorbedTable object and returns an integer that indicates whether the current object precedes, follows, or occurs in the same position in the sort order as the other object.
+        
+        :param other: An AbsorbedTable object to compare with this object.
+        :returns: A value that indicates the relative order of the objects being compared.'''
+        ...
+
+    @property
+    def row_list(self) -> list[aspose.pdf.text.AbsorbedRow]:
+        '''Gets readonly IList containing rows of the table'''
+        ...
+    
+    @property
+    def rectangle(self) -> aspose.pdf.Rectangle:
+        '''Gets rectangle that describes position of the table on page'''
+        ...
+    
+    @property
+    def page_num(self) -> int:
+        '''Gets number of the page containing this table'''
+        ...
+    
+    ...
+
+class CharInfo:
+    '''Represents a character info object.
+    Provides character positioning information.'''
+    
+    @property
+    def position(self) -> aspose.pdf.text.Position:
+        '''Gets position of the character.'''
+        ...
+    
+    @property
+    def rectangle(self) -> aspose.pdf.Rectangle:
+        '''Gets rectangle of the character.'''
+        ...
+    
+    ...
+
+class CharInfoCollection:
+    '''Represents CharInfo objects collection.
+    
+    Provides access to positioning information of text segment characters.'''
+    
+    def __getitem__(self, index: int) -> aspose.pdf.text.CharInfo:
+        '''Gets the CharInfo element at the specified index.
+        
+        :param index: Index within the collection.
+        :returns: CharInfo object.'''
+        ...
+    
+    @property
+    def sync_root(self) -> object:
+        '''Gets an object that can be used to synchronize access to the collection.'''
+        ...
+    
+    @property
+    def is_synchronized(self) -> bool:
+        '''Gets a value indicating whether access to the collection is synchronized (thread safe).'''
+        ...
+    
+    ...
+
+class CustomFontSubstitutionBase(aspose.pdf.text.FontSubstitution):
+    '''Represents a base class for custom font substitution strategy.'''
+    
+    def __init__(self):
+        ...
+    
+    def try_substitute(self, original_font_specification, substitution_font: aspose.pdf.text.Font) -> bool:
+        '''Substitutes original font with another font.
+        
+        The class CustomFontSubstitutionBase should be inherited to implement custom font substitution logic.
+        TrySubstitute method should be overridden properly:
+        
+        Must return true in case substitution is required. substitutionFont must be set to valid Font object.
+        Must return false in case no substitution is required. substitutionFont may be set to null.
+        
+        :param original_font_specification: Original font specification.
+        :param substitution_font: Substitution font.
+        :returns: True in case substitution was successfull.'''
+        ...
+
+    class OriginalFontSpecification:
+          '''Represents original font specification.'''
+    
+    	  @property
+    	  def original_font_name(self) -> str:
+              '''Gets original font name.'''
+              ...
+          
+          @property
+    	  def is_embedded(self) -> bool:
+              '''Gets a value that indicates whether the font is embedded.'''
+              ...
+
+          @property
+    	  def is_substitution_unavoidable(self) -> bool:
+              '''Gets a value that indicates that the substitution is unavoidable. '''
+              ...
+
+    ...
+
+class FileFontSource(aspose.pdf.text.FontSource):
+    '''Represents single font file source.'''
+    
+    def __init__(self, file_path: str):
+        '''Initializes a new instance of :class:`FileFontSource` class.
+        
+        :param file_path: Path to the font file.'''
+        ...
+    
+    @property
+    def file_path(self) -> str:
+        '''Path to the font file.'''
+        ...
+    
+    @file_path.setter
+    def file_path(self, value: str):
+        ...
+    
+    ...
+
+class FolderFontSource(aspose.pdf.text.FontSource):
+    '''Represents the folder that contains font files.'''
+    
+    def __init__(self, folder_path: str):
+        '''Initializes a new instance of :class:`FolderFontSource` class.
+        
+        :param folder_path: Path to the folder.'''
+        ...
+    
+    @property
+    def folder_path(self) -> str:
+        '''Path to the folder that contains font files.'''
+        ...
+    
+    @folder_path.setter
+    def folder_path(self, value: str):
+        ...
+    
+    ...
+
+class Font:
+    '''Represents font object.'''
+    
+    def get_last_font_embedding_error(self) -> str:
+        '''An objective of this method - to return description of error if an attempt
+        to embed font was failed. If there are no error cases it returns empty string.
+        
+        :returns: Error description'''
+        ...
+    
+    def save(self, stream: Any) -> None:
+        '''Saves the font into the stream.
+        Note that the font is saved to intermediate TTF format intended to be used in a converted copy of the original document only.
+        The font file is not intended to be used outside the original document context.
+        
+        :param stream: Stream to save the font.'''
+        ...
+    
+    def measure_string(self, str: str, font_size: float) -> float:
+        '''Measures the string.
+        
+        :param str: The string.
+        :param font_size: Font size.
+        :returns: Width of the string represented with this font and the specified size.'''
+        ...
+    
+    @property
+    def font_name(self) -> str:
+        '''Gets font name of the :class:`Font` object.'''
+        ...
+    
+    @property
+    def decoded_font_name(self) -> str:
+        '''Sometimes PDF fonts(usually Chinese/Japanese/Korean fonts) could have specificical font name.
+        This name is value of PDF font property "BaseFont" and sometimes this property
+        could be represented in hexademical form. If read this name directly it could be represented
+        in non-readable form. To get readable form it's necessary to decode font's name by
+        rules specifical for this font.
+        This property returns decoded font name, so use it for cases when you meet
+        with a non-readable :attr:`Font.font_name`.
+        If property :attr:`Font.font_name` has readable form this property will be the same as
+        :attr:`Font.font_name`, so you can use this property for any cases when you need to
+        get font name in a readable form.'''
+        ...
+    
+    @property
+    def base_font(self) -> str:
+        '''Gets BaseFont value of PDF font object. Also known as PostScript name of the font.'''
+        ...
+    
+    @property
+    def is_embedded(self) -> bool:
+        '''Gets or sets a value that indicates whether the font is embedded.
+        Font based on IFont will automatically be subset and embedded'''
+        ...
+    
+    @is_embedded.setter
+    def is_embedded(self, value: bool):
+        ...
+    
+    @property
+    def is_subset(self) -> bool:
+        '''Gets or sets a value that indicates whether the font is a subset.
+        Font based on IFont will automatically be subset and embedded'''
+        ...
+    
+    @is_subset.setter
+    def is_subset(self, value: bool):
+        ...
+    
+    @property
+    def is_accessible(self) -> bool:
+        '''Gets indicating whether the font is present (installed) in the system.
+        
+        Some operations are not available with fonts that could not be found in the system.'''
+        ...
+    
+    @property
+    def font_options(self) -> aspose.pdf.text.IFontOptions:
+        '''Useful properties to tune Font behaviour'''
+        ...
+    
+    ...
+
+class FontAbsorber:
+    '''Represents an absorber object of fonts.
+    Performs search for fonts and provides access to search results via :attr:`FontAbsorber.fonts` collection.'''
+    
+    def __init__(self):
+        ...
+    
+    @overload
+    def visit(self, pdf: aspose.pdf.Document, start_page: int, page_count: int) -> None:
+        '''Performs  search in the specified range of pages of the document.
+        
+        :param pdf: Pdf pocument object.
+        :param start_page: Pdf pocument start page.
+        :param page_count: Pdf document page count'''
+        ...
+    
+    @overload
+    def visit(self, pdf: aspose.pdf.Document) -> None:
+        '''Performs search on the specified document.
+        
+        :param pdf: Pdf pocument object.'''
+        ...
+    
+    @property
+    def fonts(self) -> aspose.pdf.text.FontCollection:
+        '''Gets collection of search occurrences that are presented with :class:`Font` objects.'''
+        ...
+    
+    ...
+
+class FontCollection:
+    '''Represents font collection.
+    
+    Font collections represented by :class:`FontCollection` class are used in several scenarios.
+    For example, in resources with :attr:`aspose.pdf.Resources.fonts` property.'''
+    
+    def __getitem__(self, index: int) -> aspose.pdf.text.Font:
+        '''Gets the font element at the specified index.
+        
+        :param index: Index within the collection.
+        :returns: Font object.'''
+        ...
+    
+    def add(self, new_font: aspose.pdf.text.Font, res_name: str) -> None:
+        '''Adds new font to font resources and returns automatically assigned name of font resource.
+        
+        :param new_font: Font object.
+        :param res_name: The automatically assigned resource item name.'''
+        ...
+    
+    @property
+    def sync_root(self) -> object:
+        '''Gets an object that can be used to synchronize access to the collection.'''
+        ...
+    
+    @property
+    def is_synchronized(self) -> bool:
+        '''Gets a value indicating whether access to the collection is synchronized (thread safe).'''
+        ...
+    
+    ...
+
+class FontRepository:
+    '''Performs font search. Searches in system installed fonts and standard Pdf fonts.
+    Also provides functionality to open custom fonts.'''
+    
+    def __init__(self):
+        ...
+    
+    @overload
+    @staticmethod
+    def find_font(self, font_name: str) -> aspose.pdf.text.Font:
+        '''Searches and returns font with specified font name.
+        
+        :param font_name: Font name.
+        :returns: Font object.'''
+        ...
+    
+    @overload
+    @staticmethod
+    def find_font(self, font_name: str, ignore_case: bool) -> aspose.pdf.text.Font:
+        '''Searches and returns font with specified font name ignoring or honoring case sensitivity.
+        
+        :param font_name: Font name.
+        :param ignore_case: case sensitivity
+        :returns: Font object.'''
+        ...
+    
+    @overload
+    @staticmethod
+    def find_font(self, font_family_name: str, stl: aspose.pdf.text.FontStyles) -> aspose.pdf.text.Font:
+        '''Searches and returns font with specified font name and font style.
+        
+        :param font_family_name: Font family name.
+        :param stl: Font style value.
+        :returns: Font object corresponding to search request parameters.'''
+        ...
+    
+    @overload
+    @staticmethod
+    def find_font(self, font_family_name: str, stl: aspose.pdf.text.FontStyles, ignore_case: bool) -> aspose.pdf.text.Font:
+        '''Searches and returns font with specified font name and font style
+        ignoring or honoring case sensitivity.
+        
+        :param font_family_name: Font family name.
+        :param stl: Font style value.
+        :param ignore_case: case sensitivity
+        :returns: Font object corresponding to search request parameters.'''
+        ...
+    
+    @overload
+    @staticmethod
+    def open_font(self, font_stream: Any, font_type: aspose.pdf.text.FontTypes) -> aspose.pdf.text.Font:
+        '''Opens font with specified font stream.
+        
+        :param font_stream: Font stream.
+        :param font_type: Font type value.
+        :returns: Font object.'''
+        ...
+    
+    @overload
+    @staticmethod
+    def open_font(self, font_file_path: str) -> aspose.pdf.text.Font:
+        '''Opens font with specified font file path.
+        
+        :param font_file_path: Font file path.
+        :returns: Font object.'''
+        ...
+    
+    @overload
+    @staticmethod
+    def open_font(self, font_file_path: str, metrics_file_path: str) -> aspose.pdf.text.Font:
+        '''Opens font with specified font file path and metrics file path.
+        
+        :param font_file_path: Font file path.
+        :param metrics_file_path: Font metrics file patrh.
+        :returns: Font object.'''
+        ...
+    
+    @staticmethod
+    def load_fonts(self) -> None:
+        '''Loads system installed fonts and standard Pdf fonts. This method was designed to speed up font loading process.
+        By default fonts are loaded on first request for any font. Use of this method loads system and standard Pdf fonts
+        immediately before any Pdf document was open.'''
+        ...
+    
+    @staticmethod
+    def reload_fonts(self) -> None:
+        '''Reloads all fonts specified by property :attr:`FontRepository.sources`'''
+        ...
+    
+    substitutions: aspose.pdf.text.FontSubstitutionCollection
+    
+    sources: aspose.pdf.text.FontSourceCollection
+    
+    ...
+
+class FontSource:
+    '''Represents a base class fot font source.'''
+    
+    ...
+
+class FontSourceCollection:
+    '''Represents font sources collection.'''
+    
+    def __getitem__(self, index: int) -> aspose.pdf.text.FontSource:
+        '''Gets the font element at the specified index.
+        
+        :param index: Index within the collection.
+        :returns: Font source object.'''
+        ...
+    
+    def delete(self, font_source: aspose.pdf.text.FontSource) -> None:
+        '''Deletes the font source element.
+        
+        :param font_source: FontSource object that will be deleted.'''
+        ...
+    
+    @property
+    def sync_root(self) -> object:
+        '''Gets an object that can be used to synchronize access to the collection.'''
+        ...
+    
+    @property
+    def is_synchronized(self) -> bool:
+        '''Gets a value indicating whether access to the collection is synchronized (thread safe).'''
+        ...
+    
+    ...
+
+class FontSubstitution:
+    '''Represents a base class fot font substitution strategies.'''
+    
+    ...
+
+class FontSubstitutionCollection:
+    '''Represents font substitution strategies collection.'''
+    
+    def __getitem__(self, index: int) -> aspose.pdf.text.FontSubstitution:
+        '''Gets the font element at the specified index.
+        
+        :param index: Index within the collection.
+        :returns: FontSubstitution object.'''
+        ...
+    
+    @property
+    def sync_root(self) -> object:
+        '''Gets an object that can be used to synchronize access to the collection.'''
+        ...
+    
+    @property
+    def is_synchronized(self) -> bool:
+        '''Gets a value indicating whether access to the collection is synchronized (thread safe).'''
+        ...
+    
+    ...
+
+class IFontOptions:
+    '''Useful properties to tune Font behaviour'''
+    
+    @property
+    def notify_about_font_embedding_error(self) -> bool:
+        '''Sometimes it's not possible to embed desired font into document. There are many reasons, for example
+        license restrictions or when desired font was not found on destination computer.
+        When this situation comes it's not simply to detect, because desired font is embedded via set
+        of property flag Font.IsEmbedded = true; Of course it's possible to read this property immediately after it was set but
+        it's not convenient approach. Flag NotifyAboutFontEmbeddingError enforces exception mechanism
+        for cases when attempt to embed font became failed. If this flag is set an exception of type
+        :class:`aspose.pdf.FontEmbeddingException` will be thrown. By default false.'''
+        ...
+    
+    @notify_about_font_embedding_error.setter
+    def notify_about_font_embedding_error(self, value: bool):
+        ...
+    
+    ...
+
+class ITableElement:
+    '''This interface represents an element of existing table extracted by TableAbsorber.'''
+    
+    @property
+    def rectangle(self) -> aspose.pdf.Rectangle:
+        '''Gets rectangle that describes position of table element on the page'''
+        ...
+    
+    ...
+
+class MarkupParagraph:
+    '''Represents a paragraph.'''
+    
+    @property
+    def points(self) -> list[aspose.pdf.Point]:
+        '''Points of polygon that describes paragraph.
+        Starting point is lower left corner of the paragraph. And next points are in anti-clockwise sequence.'''
+        ...
+    
+    @property
+    def secondary_points(self) -> None:
+        '''Points of secondary polygon describes paragraph continuation. It will not be null if the paragraph is continued in the next column or page.
+        Starting point is lower left corner of the paragraph. And next points are in anti-clockwise sequence.'''
+        ...
+    
+    @property
+    def continuation_page_numbers(self) -> None:
+        '''List of page numbers on which the paragraph is continued. It will match with page where the paragraph started if it is continuing in the next column on the same page.'''
+        ...
+    
+    @property
+    def fragments(self) -> None:
+        '''Collection of not empty :class:`TextFragment` objects of the paragraph.
+        
+        The :class:`TextFragment` object provides access to the search occurrence text, text properties, and allows to edit text and change the text state (font, font size, color etc).'''
+        ...
+    
+    @property
+    def lines(self) -> None:
+        '''Lines of paragraph. Each line represented by list of text fragments.
+        
+        The :class:`TextFragment` object provides access to the search occurrence text, text properties, and allows to edit text and change the text state (font, font size, color etc).'''
+        ...
+    
+    @property
+    def text(self) -> str:
+        '''Gets System.String text object that the :class:`MarkupParagraph` object represents.'''
+        ...
+    
+    ...
+
+class MarkupSection:
+    '''Represents a markup section - the rectangular region of a page that contains text and can be visually divided from another text blocks.'''
+    
+    @property
+    def rectangle(self) -> aspose.pdf.Rectangle:
+        '''Section rectangle'''
+        ...
+    
+    @property
+    def fragments(self) -> None:
+        '''Collection of not empty :class:`TextFragment` objects that are inside the section.
+        
+        The :class:`TextFragment` object provides access to the search occurrence text, text properties, and allows to edit text and change the text state (font, font size, color etc).'''
+        ...
+    
+    @property
+    def paragraphs(self) -> None:
+        '''Collection of :class:`MarkupParagraph` objects that are inside the section.'''
+        ...
+    
+    ...
+
+class MemoryFontSource(aspose.pdf.text.FontSource):
+    '''Represents single font file source.'''
+    
+    def __init__(self, font_bytes: bytes):
+        '''Initializes a new instance of :class:`MemoryFontSource` class.
+        
+        :param font_bytes: Font file byte array.'''
+        ...
+    
+    @property
+    def font_bytes(self) -> bytes:
+        '''Font file byte array.'''
+        ...
+    
+    ...
+
+class PageMarkup:
+    '''Page markup represented by collections of :class:`MarkupSection` and :class:`MarkupParagraph`.'''
+    
+    @property
+    def number(self) -> int:
+        '''Gets processed page number.'''
+        ...
+    
+    @property
+    def rectangle(self) -> aspose.pdf.Rectangle:
+        '''Gets processed page rectangle.'''
+        ...
+    
+    @property
+    def sections(self) -> None:
+        '''Gets collection of :class:`MarkupSection` that was found on the page.'''
+        ...
+    
+    @property
+    def paragraphs(self) -> None:
+        '''Gets collection of :class:`MarkupParagraph` that was found on the page.'''
+        ...
+    
+    @property
+    def text_fragments(self) -> None:
+        '''Gets collection of :class:`TextFragment` that was found on the page.
+        
+        The :class:`TextFragment` object provides access to the search occurrence text, text properties, and allows to edit text and change the text state (font, font size, color etc).'''
+        ...
+    
+    @property
+    def is_multicolumn_paragraphs_allowed(self) -> bool:
+        '''Gets or sets value that indicates whether starting text lines of a next section may be treated as continuation of the last paragraph of a previous section.'''
+        ...
+    
+    @is_multicolumn_paragraphs_allowed.setter
+    def is_multicolumn_paragraphs_allowed(self, value: bool):
+        ...
+    
+    ...
+
+class ParagraphAbsorber:
+    '''Represents an absorber object of page structure objects such as sections and paragraphs.
+    Performs search for sections and paragraphs of text and provides access for rectangles and polydons that describes it in text coordinate space.
+    Also performs text segments search and provides access to search results via :class:`TextFragmentCollection` collections grouped by structure elements.
+    
+    When the search is completed the :attr:`ParagraphAbsorber.page_markups` collection will contains :class:`PageMarkup` objects that represents page structure by collections of :class:`MarkupSection` and :class:`MarkupParagraph`.
+    The :class:`TextFragment` object provides access to the search occurrence text, text properties, and allows to edit text and change the text state (font, font size, color etc).'''
+    
+    @overload
+    def __init__(self):
+        '''Initializes a new instance of the :class:`ParagraphAbsorber` that performs search for sections/paragraphs of the document or page.'''
+        ...
+    
+    @overload
+    def __init__(self, sections_search_depth: int):
+        '''Initializes a new instance of the :class:`ParagraphAbsorber` that performs search for sections/paragraphs of the document or page.
+        
+        See :attr:`ParagraphAbsorber.sections_search_depth` property for more hints about the parameter.
+        
+        :param sections_search_depth: Number of sequential searches for more fine elements of structure that will be performed.'''
+        ...
+    
+    @overload
+    def __init__(self, paragraph_absorber_options: aspose.pdf.text.ParagraphAbsorberOptions):
+        '''Initializes a new instance of the :class:`ParagraphAbsorber` that performs search for sections/paragraphs of the document or page
+        with the specified parameters.
+        
+        :param paragraph_absorber_options: The ParagraphAbsorberOptions.'''
+        ...
+    
+    @overload
+    def __init__(self, sections_search_depth: int, paragraph_absorber_options: aspose.pdf.text.ParagraphAbsorberOptions):
+        '''Initializes a new instance of the :class:`ParagraphAbsorber` that performs search for sections/paragraphs of the document or page
+        with the specified parameters.
+        
+        :param sections_search_depth: Number of sequential searches for more fine elements of structure that will be performed.
+        :param paragraph_absorber_options: The ParagraphAbsorberOptions.'''
+        ...
+
+    @overload
+    def visit(self, doc: aspose.pdf.Document) -> None:
+        '''Performs search for sections and paragraphs on the specified :class:`aspose.pdf.Document`.
+        
+        :param doc: Pdf document object.'''
+        ...
+    
+    @overload
+    def visit(self, page: aspose.pdf.Page) -> None:
+        '''Performs search on the specified :class:`aspose.pdf.Page`.
+        
+        :param page: Pdf document page object.'''
+        ...
+    
+    @property
+    def page_markups(self) -> None:
+        '''Gets collection of :class:`PageMarkup` that were absorbed.'''
+        ...
+    
+    @property
+    def sections_search_depth(self) -> int:
+        '''Gets or sets value that instructs how many times sequential searches for more fine elements of structure will be performed.
+        Default search depth is 3.
+        It means three searches for horizontally divided sections (headers, paragraphs etc) and three searches for vertically divided ones (columns).
+        
+        Increasing of this value may lead to minor decreasing performance with no visible changes in search result.
+        Decreasing of this value may lead to incorrect determination of paragraphs in sections.
+        We are not recommend to set value less than default if you aren't desire to get only 'rough' elements of page structure.'''
+        ...
+    
+    @sections_search_depth.setter
+    def sections_search_depth(self, value: int):
+        ...
+    
+    @property
+    def is_multicolumn_paragraphs_allowed(self) -> bool:
+        '''Gets or sets value that indicates whether starting text lines of a next section may be treated as continuation of the last paragraph of a previous section.'''
+        ...
+    
+    @is_multicolumn_paragraphs_allowed.setter
+    def is_multicolumn_paragraphs_allowed(self, value: bool):
+        ...
+
+    @property
+    def paragraph_absorber_options(self) -> aspose.pdf.text.ParagraphAbsorberOptions:
+        '''Gets or sets the ParagraphAbsorberOptions.'''
+        ...
+    
+    @paragraph_absorber_options.setter
+    def paragraph_absorber_options(self, value: aspose.pdf.text.ParagraphAbsorberOptions):
+        ...
+
+    @property
+    def text_replace_options(self) -> aspose.pdf.text.TextReplaceOptions:
+        '''Gets or sets the TextReplaceOptions.'''
+        ...
+    
+    @text_replace_options.setter
+    def text_replace_options(self, value: aspose.pdf.text.TextReplaceOptions):
+        ...
+    
+    ...
+
+class ParagraphAbsorberOptions:
+    '''Represents options for the :class:`ParagraphAbsorber`.'''
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def section_unbreaking_horizontal_override(self) -> float:
+        '''Gets or sets the maximum length of zone with 'zero filling level' that will not be treated
+        as actual horizontal section break (as a fraction of the width / height of a page).
+        The default value is 0.005.'''
+        ...
+    
+    @section_unbreaking_horizontal_override.setter
+    def section_unbreaking_horizontal_override(self, value: float):
+        ...
+    
+    @property
+    def section_unbreaking_vertical_override(self) -> float:
+        '''Gets or sets the maximum length of zone with 'zero filling level' that will not be treated
+        as actual vertical section break (as a fraction of the width / height of a page).
+        The default value is 0.005.'''
+        ...
+    
+    @section_unbreaking_vertical_override.setter
+    def section_unbreaking_vertical_override(self, value: float):
+        ...
+    
+    @property
+    def search_rectangle(self) -> aspose.pdf.Rectangle:
+        '''Gets or sets paragraph search rectangle.'''
+        ...
+    
+    @search_rectangle.setter
+    def search_rectangle(self, value: aspose.pdf.Rectangle):
+        ...
+    
+    ...
+
+class Position:
+    '''Represents a position object'''
+    
+    def __init__(self, x_indent: float, y_indent: float):
+        '''Initializes a new instance of :class:`Position` class
+        
+        :param x_indent: X coordinate value.
+        :param y_indent: Y coordinate value.'''
+        ...
+    
+    @property
+    def x_indent(self) -> float:
+        '''Gets the X coordinate of the object'''
+        ...
+    
+    @x_indent.setter
+    def x_indent(self, value: float):
+        ...
+    
+    @property
+    def y_indent(self) -> float:
+        '''Gets the Y coordinate of the object'''
+        ...
+    
+    @y_indent.setter
+    def y_indent(self, value: float):
+        ...
+    
+    ...
+
+class SimpleFontSubstitution(aspose.pdf.text.FontSubstitution):
+    '''Represents a class for simple font substitution strategy.'''
+    
+    def __init__(self, original_font_name: str, substitution_font_name: str, is_forced_by_save_option: bool):
+        '''Initializes a new instance of :class:`SimpleFontSubstitution` class.
+        
+        :param original_font_name: Original font name.
+        :param substitution_font_name: Substitution font name.
+        :param is_forced_by_save_option: Substitution forced by DefaultFontName save option.'''
+        ...
+    
+    @property
+    def original_font_name(self) -> str:
+        '''Gets original font name that should be substituted with :attr:`SimpleFontSubstitution.substitution_font_name`'''
+        ...
+    
+    @property
+    def substitution_font_name(self) -> str:
+        '''Gets font name that should substitute the :attr:`SimpleFontSubstitution.original_font_name`'''
+        ...
+    
+    ...
+
+class SystemFontSource(aspose.pdf.text.FontSource):
+    '''Represents all fonts installed to the system.'''
+    
+    def __init__(self):
+        ...
+    
+    ...
+
+class SystemFontsSubstitution(aspose.pdf.text.FontSubstitution):
+    '''Represents a class for font substitution strategy that substitutes fonts with system fonts.'''
+    
+    def __init__(self, font_categories: aspose.pdf.text.SubstitutionFontCategories):
+        '''Initializes a new instance of :class:`SystemFontsSubstitution` class.
+        
+        :param font_categories: Target font categories to substitute with system fonts'''
+        ...
+    
+    @property
+    def font_categories(self) -> aspose.pdf.text.SubstitutionFontCategories:
+        '''Gets or sets substitution font categories that should be substituted with system fonts.'''
+        ...
+    
+    @font_categories.setter
+    def font_categories(self, value: aspose.pdf.text.SubstitutionFontCategories):
+        ...
+    
+    @property
+    def default_font(self) -> aspose.pdf.text.Font:
+        '''Gets or sets default substitution font.
+        The font is used when no other valid substitution were found but initial font belongs to target substitution category (:attr:`SystemFontsSubstitution.font_categories`).'''
+        ...
+    
+    @default_font.setter
+    def default_font(self, value: aspose.pdf.text.Font):
+        ...
+    
+    ...
+
+class TabStop:
+    '''Represents a custom Tab stop position in a paragraph.'''
+    
+    @overload
+    def __init__(self):
+        '''Initializes a new instance of the :class:`TabStop` class.'''
+        ...
+    
+    @overload
+    def __init__(self, position: float):
+        '''Initializes a new instance of the :class:`TabStop` class with specified position.
+        
+        :param position: The position of the tab stop.'''
+        ...
+    
+    @property
+    def position(self) -> float:
+        '''Gets or sets a float value that indicates the tab stop position.'''
+        ...
+    
+    @position.setter
+    def position(self, value: float):
+        ...
+    
+    @property
+    def leader_type(self) -> aspose.pdf.text.TabLeaderType:
+        '''Gets or sets a :class:`TabLeaderType` enum that indicates the tab leader type.'''
+        ...
+    
+    @leader_type.setter
+    def leader_type(self, value: aspose.pdf.text.TabLeaderType):
+        ...
+    
+    @property
+    def alignment_type(self) -> aspose.pdf.text.TabAlignmentType:
+        '''Gets or sets a :attr:`TabStop.alignment_type` enum that indicates the tab tab alignment type.'''
+        ...
+    
+    @alignment_type.setter
+    def alignment_type(self, value: aspose.pdf.text.TabAlignmentType):
+        ...
+    
+    @property
+    def is_read_only(self) -> bool:
+        '''Gets value indicating that this :class:`TabStop` instance is already attached to :class:`TextFragment` and became readonly'''
+        ...
+    
+    ...
+
+class TabStops:
+    '''Represents a collection of :class:`TabStop` objects.'''
+    
+    def __init__(self):
+        ...
+    
+    def __getitem__(self, index: int) -> aspose.pdf.text.TabStop:
+        '''Gets or sets a :class:`TabStop` object from the collection according to TabStop index.
+        
+        :param index: Zero-based index of element in :class:`TabStops` collection.
+        :returns: :class:`TabStop` object.'''
+        ...
+    
+    def __setitem__(self, index: int, value: aspose.pdf.text.TabStop):
+        ...
+    
+    @overload
+    def add(self) -> aspose.pdf.text.TabStop:
+        '''Initializes a new instance of the :class:`TabStop` class and add it to the
+        TabStops collection.
+        
+        :returns: The new :class:`TabStop` object.'''
+        ...
+    
+    @overload
+    def add(self, position: float) -> aspose.pdf.text.TabStop:
+        '''Initializes a new instance of the :class:`TabStop` class with specified position and
+        add it to the TabStops collection.
+        
+        :param position: The position of the tab stop.
+        :returns: The new :class:`TabStop` object.'''
+        ...
+    
+    @overload
+    def add(self, tab_stop: aspose.pdf.text.TabStop) -> None:
+        '''Add instance of the :class:`TabStop` class to the TabStops collection.
+        
+        :param tab_stop: The :class:`TabStop` object.'''
+        ...
+    
+    @overload
+    def add(self, position: float, leader_type: aspose.pdf.text.TabLeaderType) -> aspose.pdf.text.TabStop:
+        '''Initializes a new instance of the :class:`TabStop` class with specified position and leader
+        type and add it to the TabStops collection.
+        
+        :param position: The position of the tab stop.
+        :param leader_type: The leader type of the tab stop.
+        :returns: The new :class:`TabStop` object.'''
+        ...
+    
+    def clone(self) -> object:
+        '''Clones a new :class:`TabStops` objects.
+        
+        :returns: The new :class:`TabStops` object.'''
+        ...
+    
+    @property
+    def is_read_only(self) -> bool:
+        '''Gets value indicating that this :class:`TabStops` instance is already attached to :class:`TextFragment` and became readonly.'''
+        ...
+    
+    @property
+    def count(self) -> int:
+        '''Gets count elements in TabStops collection.'''
+        ...
+    
+    ...
+
+class TableAbsorber:
+    '''Represents an absorber object of table elements.
+    Performs search and provides access to search results via :attr:`TableAbsorber.table_list` collection.'''
+    
+    @overload
+    def __init__(self, text_search_options: aspose.pdf.text.TextSearchOptions):
+        '''Initializes a new instance of the :class:`TableAbsorber` with text search options.
+        
+        Performs searching for tables and provides access to the tables via :attr:`TableAbsorber.table_list` object.
+        
+        :param text_search_options: Text search options'''
+        ...
+    
+    @overload
+    def __init__(self):
+        '''Initializes a new instance of the :class:`TableAbsorber`.
+        
+        Performs searching for tables and provides access to the tables via :attr:`TableAbsorber.table_list` object.'''
+        ...
+    
+    @overload
+    def visit(self, page: aspose.pdf.Page) -> None:
+        '''Extracts tables on the specified page
+        
+        :param page: Pdf pocument page object.'''
+        ...
+    
+    @overload
+    def visit(self, pdf: aspose.pdf.Document) -> None:
+        '''Extracts tables in the specified document.
+        
+        :param pdf: Pdf pocument object.'''
+        ...
+    
+    def remove(self, table: aspose.pdf.text.AbsorbedTable) -> None:
+        '''Removes an :class:`AbsorbedTable` from the page.
+        
+        :param table: :class:`AbsorbedTable` to remove.
+        
+        Please take into account it changes TableList collection. In case removing/replacing tables in loop please use copy of TableList collection.'''
+        ...
+    
+    def replace(self, page: aspose.pdf.Page, old_table: aspose.pdf.text.AbsorbedTable, new_table: aspose.pdf.Table) -> None:
+        '''Replaces an :class:`AbsorbedTable` with :class:`aspose.pdf.Table` on the page.
+        
+        :param page: Pdf pocument page object.
+        :param old_table: :class:`AbsorbedTable` to be replaced.
+        :param new_table: :class:`aspose.pdf.Table` to replace old table.
+        
+        Please take into account it changes TableList collection. In case removing/replacing tables in loop please use copy of TableList collection.'''
+        ...
+    
+    @property
+    def text_search_options(self) -> aspose.pdf.text.TextSearchOptions:
+        '''Gets or sets text search options.
+        
+        Allows to define several options that will be used during search text containing in tables.'''
+        ...
+    
+    @text_search_options.setter
+    def text_search_options(self, value: aspose.pdf.text.TextSearchOptions):
+        ...
+    
+    @property
+    def table_list(self) -> list[aspose.pdf.text.AbsorbedTable]:
+        '''Returns readonly IList containing tables that were found'''
+        ...
+    
+    @property
+    def use_flow_engine(self) -> bool:
+        '''\* Activate an early alfa version of alternative table recognition engine that could be used for conversion tables
+        without borders.
+        Doesn't support editing tables and getting text styles yet. Default value is false;'''
+        ...
+    
+    @use_flow_engine.setter
+    def use_flow_engine(self, value: bool):
+        ...
+    
+    ...
+
+class TextAbsorber:
+    '''Represents an absorber object of a text.
+    Performs text extraction and provides access to the result via :attr:`TextAbsorber.text` object.
+    
+    The :class:`TextAbsorber` object is used to extract text from a Pdf document or the document's page.'''
+    
+    @overload
+    def __init__(self):
+        '''Initializes a new instance of the :class:`TextAbsorber`.
+        
+        Performs text extraction and provides access to the extracted text via :attr:`TextAbsorber.text` object.'''
+        ...
+    
+    @overload
+    def __init__(self, extraction_options: aspose.pdf.text.TextExtractionOptions):
+        '''Initializes a new instance of the :class:`TextAbsorber` with extraction options.
+        
+        Performs text extraction and provides access to the extracted text via :attr:`TextAbsorber.text` object.
+        
+        :param extraction_options: Text extraction options'''
+        ...
+    
+    @overload
+    def __init__(self, extraction_options: aspose.pdf.text.TextExtractionOptions, text_search_options: aspose.pdf.text.TextSearchOptions):
+        '''Initializes a new instance of the :class:`TextAbsorber` with extraction and text search options.
+        
+        Performs text extraction and provides access to the extracted text via :attr:`TextAbsorber.text` object.
+        
+        :param extraction_options: Text extraction options
+        :param text_search_options: Text search options'''
+        ...
+    
+    @overload
+    def __init__(self, text_search_options: aspose.pdf.text.TextSearchOptions):
+        '''Initializes a new instance of the :class:`TextAbsorber` with text search options.
+        
+        Performs text extraction and provides access to the extracted text via :attr:`TextAbsorber.text` object.
+        
+        :param text_search_options: Text search options'''
+        ...
+    
+    @overload
+    def visit(self, page: aspose.pdf.Page) -> None:
+        '''Extracts text on the specified page
+        
+        :param page: Pdf pocument page object.'''
+        ...
+    
+    @overload
+    def visit(self, form: aspose.pdf.XForm) -> None:
+        '''Extracts text on the specified XForm.
+        
+        :param form: Pdf form object.'''
+        ...
+    
+    @overload
+    def visit(self, pdf: aspose.pdf.Document) -> None:
+        '''Extracts text on the specified document
+        
+        :param pdf: Pdf pocument object.'''
+        ...
+    
+    @property
+    def text(self) -> str:
+        '''Gets extracted text that the :class:`TextAbsorber` extracts on the PDF document or page.'''
+        ...
+    
+    @property
+    def has_errors(self) -> bool:
+        '''Value indicates whether errors were found during text extraction.
+        Searching for errors will performed only if TextSearchOptions.LogTextExtractionErrors = true; And it may decrease performance.'''
+        ...
+    
+    @property
+    def errors(self) -> None:
+        '''List of :class:`TextExtractionError` objects. It contain information about errors were found during text extraction.
+        Searching for errors will performed only if TextSearchOptions.LogTextExtractionErrors = true; And it may decrease performance.'''
+        ...
+    
+    @property
+    def extraction_options(self) -> aspose.pdf.text.TextExtractionOptions:
+        '''Gets or sets text extraction options.
+        
+        Allows to define text formatting mode :class:`TextExtractionOptions` during extraction.
+        The default mode is Aspose.Pdf.Text.TextExtractionOptions.TextFormattingMode.Pure'''
+        ...
+    
+    @extraction_options.setter
+    def extraction_options(self, value: aspose.pdf.text.TextExtractionOptions):
+        ...
+    
+    @property
+    def text_search_options(self) -> aspose.pdf.text.TextSearchOptions:
+        '''Gets or sets text search options.
+        
+        Allows to define rectangle which delimits the extracted text.
+        By default the rectangle is empty. That means page boundaries only defines the text extraction region.'''
+        ...
+    
+    @text_search_options.setter
+    def text_search_options(self, value: aspose.pdf.text.TextSearchOptions):
+        ...
+    
+    ...
+
+class TextBuilder:
+    '''Appends text object to Pdf page.'''
+    
+    @overload
+    def __init__(self, page: aspose.pdf.Page):
+        '''Initializes a new instance of :class:`TextBuilder` class for the Pdf page.
+        
+        The TextBuilder allows to append text objects to Pdf pages.
+        
+        :param page: Page object.'''
+        ...
+    
+    @overload
+    def __init__(self, page: aspose.pdf.Page, operator_collection: aspose.pdf.BaseOperatorCollection):
+        '''Initializes a new instance of :class:`TextBuilder` class for the Pdf page.
+        
+        The TextBuilder allows to append text objects to Pdf pages.
+        
+        :param page: Page object.
+        :param operator_collection: Operator collection.'''
+        ...
+    
+    @overload
+    def append_text(self, text_fragment: aspose.pdf.text.TextFragment) -> None:
+        '''Appends text fragment to Pdf page
+        
+        :param text_fragment: Text fragment object.'''
+        ...
+    
+    @overload
+    def append_text(self, text_fragments) -> None:
+        '''Appends list of text fragments to Pdf page.
+        
+        :param text_fragments: Collection of text fragments'''
+        ...
+    
+    def append_paragraph(self, text_paragraph: aspose.pdf.text.TextParagraph) -> None:
+        '''Appends text paragraph to Pdf page.
+        
+        :param text_paragraph: Text paragraph object.'''
+        ...
+    
+    ...
+
+class TextEditOptions(aspose.pdf.text.TextOptions):
+    '''Descubes options of text edit operations.'''
+    
+    @overload
+    def __init__(self, no_character_behavior):
+        '''Initializes new instance of the :class:`TextEditOptions` object for the specified no-character behavior mode.
+        
+        :param no_character_behavior: No-character behavior mode object.'''
+        ...
+    
+    @overload
+    def __init__(self, font_replace_behavior):
+        '''Initializes new instance of the :class:`TextEditOptions` object for the specified font replacement behavior mode.
+        
+        :param font_replace_behavior: Font replace behavior object.'''
+        ...
+    
+    @overload
+    def __init__(self, allow_language_transformation: bool):
+        '''Initializes new instance of the :class:`TextEditOptions` object for the specified language transformation permission.
+        
+        :param allow_language_transformation: Allows language transformation if set to true.'''
+        ...
+    
+    @overload
+    def __init__(self, language_transformation_behavior):
+        '''Initializes new instance of the :class:`TextEditOptions` object for the specified language transformation behavior mode.
+        
+        :param language_transformation_behavior: language transformation behavior object.'''
+        ...
+    
+    @property
+    def replacement_font(self) -> aspose.pdf.text.Font:
+        '''Gets or sets font used for replacing if user font does not contain required character'''
+        ...
+    
+    @replacement_font.setter
+    def replacement_font(self, value: aspose.pdf.text.Font):
+        ...
+    
+    @property
+    def no_character_behavior(self) -> None:
+        '''Gets or sets mode that defines behavior in case fonts don't contain requested characters.'''
+        ...
+    
+    @no_character_behavior.setter
+    def no_character_behavior(self, value: None):
+        ...
+    
+    @property
+    def font_replace_behavior(self) -> None:
+        '''Gets mode that defines behavior for fonts replacement scenarios.'''
+        ...
+    
+    @font_replace_behavior.setter
+    def font_replace_behavior(self, value: None):
+        ...
+    
+    @property
+    def allow_language_transformation(self) -> bool:
+        '''Gets or sets value that permits usage of language transformation during adding or editing of text.
+        true - language transformation will be applied if necessary (default value).
+        false - language transformation will NOT be applied.'''
+        ...
+    
+    @allow_language_transformation.setter
+    def allow_language_transformation(self, value: bool):
+        ...
+    
+    @property
+    def language_transformation_behavior(self) -> None:
+        '''Gets mode that defines behavior for language transformation scenarios.'''
+        ...
+    
+    @language_transformation_behavior.setter
+    def language_transformation_behavior(self, value: None):
+        ...
+    
+    @property
+    def clipping_paths_processing(self) -> None:
+        '''Gets mode for processing clipping path of the edited text.'''
+        ...
+    
+    @clipping_paths_processing.setter
+    def clipping_paths_processing(self, value: None):
+        ...
+    
+    @property
+    def to_attempt_get_underline_from_source(self) -> bool:
+        '''Gets or sets value that permits searching for text underlining on the page of source document.
+        (Obsolete) Please use TextSearchOptions.SearchForTextRelatedGraphics instead this.'''
+        ...
+    
+    @to_attempt_get_underline_from_source.setter
+    def to_attempt_get_underline_from_source(self, value: bool):
+        ...
+
+    class ClippingPathsProcessingMode:
+          '''Clipping path processing modes.'''
+
+          KEEP_INTACT: ClippingPathsProcessingMode
+          EXPAND: ClippingPathsProcessingMode
+          REMOVE: ClippingPathsProcessingMode
+
+    class FontReplace:
+          '''Font replacement behavior.'''
+
+          DEFAULT: FontReplace
+          REMOVE_UNUSED_FONTS: FontReplace
+
+    class LanguageTransformation:
+          '''Language transformation modes.'''
+
+          DEFAULT: LanguageTransformation
+          EXACTLY_AS_I_SEE: LanguageTransformation
+          NONE: LanguageTransformation
+
+    class NoCharacterAction:
+          '''Action to perform if font does not contain required character.'''
+
+          THROW_EXCEPTION: NoCharacterAction
+          USE_STANDARD_FONT: NoCharacterAction
+          REPLACE_ANYWAY: NoCharacterAction
+          USE_CUSTOM_REPLACEMENT_FONT: NoCharacterAction
+    
+    ...
+
+class TextExtractionError:
+    '''Describes the text extraction error has appeared in the PDF document.'''
+    
+    @property
+    def summary(self) -> str:
+        '''Brief description of the error.'''
+        ...
+    
+    @property
+    def description(self) -> str:
+        '''Expanded description of the error.'''
+        ...
+    
+    @property
+    def location(self) -> aspose.pdf.text.TextExtractionErrorLocation:
+        '''Location of the error.'''
+        ...
+    
+    @property
+    def font_key(self) -> str:
+        '''Key (PDF name) of the Font object that is used for showing text that causes extraction error.'''
+        ...
+    
+    @property
+    def font_name(self) -> str:
+        '''Readable (internal) name of the Font object that is used for showing text that causes extraction error.'''
+        ...
+    
+    @property
+    def extracted_text(self) -> str:
+        '''Text that was actually extracted.'''
+        ...
+    
+    ...
+
+class TextExtractionErrorLocation:
+    '''Represents the location in the PDF document where text extraction error has appeared.'''
+    
+    @property
+    def path(self) -> str:
+        '''Location of the PDF document where text extraction error has appeared.'''
+        ...
+    
+    @property
+    def page_number(self) -> int:
+        '''Number of the document page where text extraction error has located.'''
+        ...
+    
+    @property
+    def object_type(self) -> str:
+        '''Type of the PDF object (Page or xForm) in which contents stream text extraction error has located.'''
+        ...
+    
+    @property
+    def form_key(self) -> str:
+        '''Key (name) of the PDF Form XObject in which contents stream text extraction error has located. Not empty if ObjectType == 'xForm'.'''
+        ...
+    
+    @property
+    def operator_index(self) -> int:
+        '''Index of text showing operator in the contents stream (operator collection) that causes text extraction error.'''
+        ...
+    
+    @property
+    def operator_string(self) -> str:
+        '''Text showing operator that causes text extraction error.'''
+        ...
+    
+    @property
+    def font_used_key(self) -> str:
+        '''Key (name) of the PDF Font object that is used for showing of the operator that causes text extraction error.'''
+        ...
+    
+    @property
+    def text_start_point(self) -> aspose.pdf.Point:
+        '''Key (name) of the PDF Font object that is used for showing of the operator that causes text extraction error.'''
+        ...
+    
+    ...
+
+class TextExtractionOptions(aspose.pdf.text.TextOptions):
+    '''Represents text extraction options'''
+    
+    def __init__(self, formatting_mode):
+        '''Initializes new instance of the :class:`TextExtractionOptions` object for the specified text formatting mode.
+        
+        :param formatting_mode: Text formatting mode value.'''
+        ...
+    
+    @property
+    def formatting_mode(self) -> None:
+        '''Gets formatting mode.'''
+        ...
+    
+    @formatting_mode.setter
+    def formatting_mode(self, value: None):
+        ...
+    
+    @property
+    def scale_factor(self) -> float:
+        '''Gets or sets factor that will be applied to scale font size during extraction in pure mode.
+        Setting of less value leads to more spaces in the extracted text.
+        Default value is 1 - no scaling;
+        Setting value to zero allows algorithm choose scaling automatically.'''
+        ...
+    
+    @scale_factor.setter
+    def scale_factor(self, value: float):
+        ...
+    
+    class TextFormattingMode:
+          '''Defines different modes which can be used while converting pdf document into text. See <see cref="TextDevice"/> class.'''
+
+          PURE: TextFormattingMode
+          RAW: TextFormattingMode
+          FLATTEN: TextFormattingMode
+          MEMORY_SAVING: TextFormattingMode
+
+    ...
+
+class TextFormattingOptions(aspose.pdf.text.TextOptions):
+    '''Represents text formatting options'''
+    
+    @overload
+    def __init__(self, wrap_mode):
+        '''Initializes new instance of the :class:`TextFormattingOptions` object for the specified word wrap mode.
+        
+        :param wrap_mode: Word wrap mode.'''
+        ...
+    
+    @overload
+    def __init__(self):
+        '''Initializes new instance of the :class:`TextFormattingOptions` object with undefined word wrap mode.'''
+        ...
+    
+    @property
+    def wrap_mode(self) -> None:
+        '''Gets or sets word wrap mode.
+        Default value is WordWrapMode.NoWrap'''
+        ...
+    
+    @wrap_mode.setter
+    def wrap_mode(self, value: None):
+        ...
+    
+    @property
+    def line_spacing(self) -> None:
+        '''Gets or sets line spacing mode.
+        Default value is LineSpacingMode.FontSize'''
+        ...
+    
+    @line_spacing.setter
+    def line_spacing(self, value: None):
+        ...
+    
+    @property
+    def hyphen_symbol(self) -> str:
+        '''Gets or sets hyphen symbol that is used in hyphenation process.
+        
+        To eliminate hyphen drawing (with wrapping procedure still in place) please set empty string string.Empty for HyphenSymbol.'''
+        ...
+    
+    @hyphen_symbol.setter
+    def hyphen_symbol(self, value: str):
+        ...
+    
+    @property
+    def subsequent_lines_indent(self) -> float:
+        '''Gets or sets subsequent lines indent value.'''
+        ...
+    
+    @subsequent_lines_indent.setter
+    def subsequent_lines_indent(self, value: float):
+        ...
+    
+    @property
+    def first_line_indent(self) -> float:
+        '''Gets or sets first line indent value.'''
+        ...
+    
+    @first_line_indent.setter
+    def first_line_indent(self, value: float):
+        ...
+    
+    class LineSpacingMode:
+          '''Defines line spacing specifics.'''
+
+          FONT_SIZE: LineSpacingMode
+          FULL_SIZE: LineSpacingMode
+
+    class WordWrapMode:
+          '''Defines word wrapping strategies.'''
+
+          NO_WRAP: WordWrapMode
+          DISCRETIONARY_HYPHENATION: WordWrapMode
+          BY_WORDS: WordWrapMode
+          UNDEFINED: WordWrapMode
+
+    ...
+
+class TextFragment(aspose.pdf.BaseParagraph):
+    '''Represents fragment of Pdf text.
+    
+    In a few words, :class:`TextFragment` object contains list of :class:`TextSegment` objects.
+    
+    In details:
+    Text of pdf document in :mod:`aspose.pdf` is represented by two basic objects: :class:`TextFragment` and :class:`TextSegment`
+    
+    The differences between them is mostly context-dependent.
+    
+    Let's consider following scenario. User searches text "hello world" to operate with it, change it's properties, look etc.
+    
+    Document doc = new Document(docFile);
+    
+    TextFragmentAbsorber absorber = new TextFragmentAbsorber("hello world");
+    
+    doc.Pages[1].Accept(absorber);
+    
+    Phisycally pdf text's representation is very complex.
+    The text "hello world" may consist of several phisycally independent text segments.
+    
+    The Aspose.Pdf text model basically establishes that:class:`TextFragment` object
+    provides single logic operation set over physical :class:`TextSegment` objects set that represent user's query.
+    
+    In text search scenario, :class:`TextFragment` is logical "hello world" text representation,
+    and :class:`TextSegment` object collection represents all physical segments that construct "hello world" text object.
+    
+    So, :class:`TextFragment` is close to logical text representation.
+    And :class:`TextSegment` is close to physical text representation.
+    
+    Obviously each :class:`TextSegment` object may have it's own font, coloring, positioning properties.
+    
+    :class:`TextFragment` provides simple way to change text with it's properties: set font, set font size, set font color etc.
+    Meanwhile :class:`TextSegment` objects are accessible and users are able to operate with :class:`TextSegment` objects independently.
+    
+    Note that changing TextFragment properties may change inner :attr:`TextFragment.segments` collection because TextFragment is an aggregate object
+    and it may rearrange internal segments or merge them into single segment.
+    If your requirement is to leave the :attr:`TextFragment.segments` collection unchanged, please change inner segments individually.'''
+    
+    @overload
+    def __init__(self):
+        '''Initializes new instance of the :class:`TextFragment` object.'''
+        ...
+    
+    @overload
+    def __init__(self, tab_stops: aspose.pdf.text.TabStops):
+        '''Initializes new instance of the :class:`TextFragment` object with predefined :class:`TabStops` positions.
+        
+        :param tab_stops: Tabulation positions'''
+        ...
+    
+    @overload
+    def __init__(self, text: str):
+        '''Creates :class:`TextFragment` object with single :class:`TextSegment` object inside.
+        Specifies text string inside the segment.
+        
+        :param text: Text fragment's text.'''
+        ...
+    
+    @overload
+    def __init__(self, text: str, tab_stops: aspose.pdf.text.TabStops):
+        '''Creates :class:`TextFragment` object with single :class:`TextSegment` object inside and predefined :class:`TabStops` positions.
+        
+        :param text: Text fragment's text.
+        :param tab_stops: Tabulation positions'''
+        ...
+    
+    def clone(self) -> object:
+        '''Clone the fragment.
+        
+        :returns: The cloned object'''
+        ...
+    
+    def isolate_text_segments(self, start_index: int, length: int) -> aspose.pdf.text.TextSegmentCollection:
+        '''Gets :class:`TextSegment`(s) representing specified part of the :class:`TextFragment` text.
+        
+        :param start_index: Position in text from which new :class:`TextSegment`(s) will start.
+        :param length: Length of the text that will isolated into :class:`TextSegment`(s).
+        :returns: :class:`TextSegmentCollection` containing text segments represeting text substring starting at a specifing position and having a specified length.'''
+        ...
+    
+    def clone_with_segments(self) -> object:
+        '''Clone the fragment with all segments.
+        
+        :returns: The cloned object'''
+        ...
+    
+    @property
+    def vertical_alignment(self) -> aspose.pdf.VerticalAlignment:
+        '''Gets or sets a vertical alignment of text fragment.'''
+        ...
+    
+    @vertical_alignment.setter
+    def vertical_alignment(self, value: aspose.pdf.VerticalAlignment):
+        ...
+    
+    @property
+    def horizontal_alignment(self) -> aspose.pdf.HorizontalAlignment:
+        '''Gets or sets a horizontal alignment of text fragment.'''
+        ...
+    
+    @horizontal_alignment.setter
+    def horizontal_alignment(self, value: aspose.pdf.HorizontalAlignment):
+        ...
+    
+    @property
+    def hyperlink(self) -> aspose.pdf.Hyperlink:
+        '''Sets the fragment hyperlink'''
+        ...
+    
+    @hyperlink.setter
+    def hyperlink(self, value: aspose.pdf.Hyperlink):
+        ...
+    
+    @property
+    def replace_options(self) -> aspose.pdf.text.TextReplaceOptions:
+        '''Gets text replace options. The options define behavior when fragment text is replaced to more short/long.'''
+        ...
+    
+    @property
+    def text(self) -> str:
+        '''Gets or sets System.String text object that the :class:`TextFragment` object represents.'''
+        ...
+    
+    @text.setter
+    def text(self, value: str):
+        ...
+    
+    @property
+    def text_state(self) -> aspose.pdf.text.TextFragmentState:
+        '''Gets or sets text state for the text that :class:`TextFragment` object represents.
+        
+        Provides a way to change following properties of the text:
+        Font
+        FontSize
+        FontStyle
+        ForegroundColor
+        BackgroundColor'''
+        ...
+    
+    @property
+    def segments(self) -> aspose.pdf.text.TextSegmentCollection:
+        '''Gets text segments for current :class:`TextFragment`.
+        
+        In a few words, :class:`TextSegment` objects are children of :class:`TextFragment` object.
+        Advanced users may access segments directly to perform more complex text edit scenarios.
+        For details, please look at :class:`TextFragment` object description.'''
+        ...
+    
+    @segments.setter
+    def segments(self, value: aspose.pdf.text.TextSegmentCollection):
+        ...
+    
+    @property
+    def position(self) -> aspose.pdf.text.Position:
+        '''Gets or sets text position for text, represented with :class:`TextFragment` object.'''
+        ...
+    
+    @position.setter
+    def position(self, value: aspose.pdf.text.Position):
+        ...
+    
+    @property
+    def baseline_position(self) -> aspose.pdf.text.Position:
+        '''Gets text position for text, represented with :class:`TextFragment` object.
+        The YIndent of the Position structure represents baseline coordinate of the text fragment.'''
+        ...
+    
+    @baseline_position.setter
+    def baseline_position(self, value: aspose.pdf.text.Position):
+        ...
+    
+    @property
+    def rectangle(self) -> aspose.pdf.Rectangle:
+        '''Gets rectangle of the TextFragment'''
+        ...
+    
+    @property
+    def page(self) -> aspose.pdf.Page:
+        '''Gets page that contains the TextFragment
+        
+        The value can be null in case the TextFragment object doesn't belong to any page.'''
+        ...
+    
+    @property
+    def form(self) -> aspose.pdf.XForm:
+        '''Gets form object that contains the TextFragment
+        
+        The value can be null in case the TextFragment object doesn't belong to a form.'''
+        ...
+    
+    @property
+    def wrap_lines_count(self) -> int:
+        '''Gets or sets wrap lines count for this paragraph(for pdf generation only)'''
+        ...
+    
+    @wrap_lines_count.setter
+    def wrap_lines_count(self, value: int):
+        ...
+    
+    @property
+    def end_note(self) -> aspose.pdf.Note:
+        '''Gets or sets the paragraph end note.(for pdf generation only)'''
+        ...
+    
+    @end_note.setter
+    def end_note(self, value: aspose.pdf.Note):
+        ...
+    
+    @property
+    def foot_note(self) -> aspose.pdf.Note:
+        '''Gets or sets the paragraph foot note.(for pdf generation only)'''
+        ...
+    
+    @foot_note.setter
+    def foot_note(self, value: aspose.pdf.Note):
+        ...
+    
+    ...
+
+class TextFragmentAbsorber(aspose.pdf.text.TextAbsorber):
+    '''Represents an absorber object of text fragments.
+    Performs text search and provides access to search results via :attr:`TextFragmentAbsorber.text_fragments` collection.
+    
+    The :class:`TextFragmentAbsorber` object is basically used in text search scenario.
+    When the search is completed the occurrences are represented with :class:`TextFragment` objects that the :attr:`TextFragmentAbsorber.text_fragments` collection contains.
+    The :class:`TextFragment` object provides access to the search occurrence text, text properties, and allows to edit text and change the text state (font, font size, color etc).'''
+    
+    @overload
+    def __init__(self):
+        '''Initializes a new instance of the :class:`TextFragmentAbsorber` that performs search of all text segments of the document or page.
+        
+        Performs text search and provides access to search results via :attr:`TextFragmentAbsorber.text_fragments` collection.'''
+        ...
+    
+    @overload
+    def __init__(self, text_edit_options: aspose.pdf.text.TextEditOptions):
+        '''Initializes a new instance of the :class:`TextFragmentAbsorber` with text edit options, that performs search of all text segments of the document or page.
+        
+        Performs text search and provides access to search results via :attr:`TextFragmentAbsorber.text_fragments` collection.
+        
+        :param text_edit_options: Text edit options (Allows to turn on some edit features).'''
+        ...
+    
+    @overload
+    def __init__(self, phrase: str):
+        '''Initializes a new instance of the :class:`TextFragmentAbsorber` class for the specified text phrase.
+        
+        Performs text search of the specified phrase and provides access to search results via :attr:`TextFragmentAbsorber.text_fragments` collection.
+        
+        :param phrase: Phrase that the :class:`TextFragmentAbsorber` searches'''
+        ...
+    
+    @overload
+    def __init__(self, phrase: str, text_search_options: aspose.pdf.text.TextSearchOptions):
+        '''Initializes a new instance of the :class:`TextFragmentAbsorber` class for the specified text phrase and text search options.
+        
+        Performs text search of the specified phrase and provides access to search results via :attr:`TextFragmentAbsorber.text_fragments` collection.
+        
+        :param phrase: Phrase that the :class:`TextFragmentAbsorber` searches
+        :param text_search_options: Text search options (Allows to turn on some search features. For example, search with regular expression)'''
+        ...
+    
+    @overload
+    def __init__(self, phrase: str, text_search_options: aspose.pdf.text.TextSearchOptions, text_edit_options: aspose.pdf.text.TextEditOptions):
+        '''Initializes a new instance of the :class:`TextFragmentAbsorber` class for the specified text phrase, text search options and text edit options.
+        
+        Performs text search of the specified phrase and provides access to search results via :attr:`TextFragmentAbsorber.text_fragments` collection.
+        
+        :param phrase: Phrase that the :class:`TextFragmentAbsorber` searches
+        :param text_search_options: Text search options (Allows to turn on some search features. For example, search with regular expression)
+        :param text_edit_options: Text edit options (Allows to turn on some edit features).'''
+        ...
+    
+    @overload
+    def __init__(self, phrase: str, text_edit_options: aspose.pdf.text.TextEditOptions):
+        '''Initializes a new instance of the :class:`TextFragmentAbsorber` class for the specified text phrase and text edit options.
+        
+        Performs text search of the specified phrase and provides access to search results via :attr:`TextFragmentAbsorber.text_fragments` collection.
+        
+        :param phrase: Phrase that the :class:`TextFragmentAbsorber` searches
+        :param text_edit_options: Text edit options (Allows to turn on some edit features).'''
+        ...
+    
+    @overload
+    def visit(self, page: aspose.pdf.Page) -> None:
+        '''Performs search on the specified page.
+        
+        :param page: PDF document page object.'''
+        ...
+    
+    @overload
+    def visit(self, pdf: aspose.pdf.Document) -> None:
+        '''Performs search on the specified document.
+        
+        :param pdf: PDF document object.'''
+        ...
+    
+    @overload
+    def visit(self, x_form: aspose.pdf.XForm) -> None:
+        '''Performs search on the specified form object.
+        
+        :param x_form: Pdf form object.'''
+        ...
+    
+    @overload
+    def apply_for_all_fragments(self, font: aspose.pdf.text.Font) -> None:
+        '''Applies font for all text fragments that were absorbed. It works faster than looping through the fragments if all fragments on the page(s) were absorbed. Otherwise it works similar with looping.
+        
+        :param font: :class:`Font` of the text.'''
+        ...
+    
+    @overload
+    def apply_for_all_fragments(self, font_size: float) -> None:
+        '''Applies font size for all text fragments that were absorbed. It works faster than looping through the fragments if all fragments on the page(s) were absorbed. Otherwise it works similar with looping.
+        
+        :param font_size: Font size of the text.'''
+        ...
+    
+    @overload
+    def apply_for_all_fragments(self, font: aspose.pdf.text.Font, font_size: float) -> None:
+        '''Applies font and size for all text fragments that were absorbed. It works faster than looping through the fragments if all fragments on the page(s) were absorbed. Otherwise it works similar with looping.
+        
+        :param font: :class:`Font` of the text.
+        :param font_size: Font size of the text.'''
+        ...
+    
+    @overload
+    def remove_all_text(self, page: aspose.pdf.Page) -> None:
+        '''Removes all text from the specified page.
+        
+        :param page: PDF document page object.'''
+        ...
+    
+    @overload
+    def remove_all_text(self, page: aspose.pdf.Page, rect: aspose.pdf.Rectangle) -> None:
+        '''Removes text inside the specified rectangle from the specified page.
+        
+        :param page: PDF document page object.
+        :param rect: :class:`aspose.pdf.Rectangle` to remove text inside.'''
+        ...
+    
+    @overload
+    def remove_all_text(self, document: aspose.pdf.Document) -> None:
+        '''Removes all text from the document.
+        
+        :param document: PDF document object.'''
+        ...
+    
+    def reset(self) -> None:
+        '''Clears TextFragments collection of this :class:`TextFragmentAbsorber` object.'''
+        ...
+    
+    @property
+    def text(self) -> str:
+        '''Gets extracted text that the :class:`TextAbsorber` extracts on the PDF document or page.'''
+        ...
+    
+    @property
+    def has_errors(self) -> bool:
+        '''Value indicates whether errors were found during text extraction.
+        Searching for errors will performed only if TextSearchOptions.LogTextExtractionErrors = true; And it may decrease performance.'''
+        ...
+    
+    @property
+    def errors(self) -> None:
+        '''List of :class:`TextExtractionError` objects. It contain information about errors were found during text extraction.
+        Searching for errors will performed only if TextSearchOptions.LogTextExtractionErrors = true; And it may decrease performance.'''
+        ...
+    
+    @property
+    def extraction_options(self) -> aspose.pdf.text.TextExtractionOptions:
+        '''Gets or sets text extraction options.'''
+        ...
+    
+    @extraction_options.setter
+    def extraction_options(self, value: aspose.pdf.text.TextExtractionOptions):
+        ...
+    
+    @property
+    def text_search_options(self) -> aspose.pdf.text.TextSearchOptions:
+        '''Gets or sets search options. The options enable search using regular expressions.'''
+        ...
+    
+    @text_search_options.setter
+    def text_search_options(self, value: aspose.pdf.text.TextSearchOptions):
+        ...
+    
+    @property
+    def text_fragments(self) -> aspose.pdf.text.TextFragmentCollection:
+        '''Gets collection of search occurrences that are presented with :class:`TextFragment` objects.'''
+        ...
+    
+    @text_fragments.setter
+    def text_fragments(self, value: aspose.pdf.text.TextFragmentCollection):
+        ...
+    
+    @property
+    def phrase(self) -> str:
+        '''Gets or sets phrase that the :class:`TextFragmentAbsorber` searches on the PDF document or page.'''
+        ...
+    
+    @phrase.setter
+    def phrase(self, value: str):
+        ...
+    
+    @property
+    def text_edit_options(self) -> aspose.pdf.text.TextEditOptions:
+        '''Gets or sets text edit options. The options define special behavior when requested symbol cannot be written with font.'''
+        ...
+    
+    @text_edit_options.setter
+    def text_edit_options(self, value: aspose.pdf.text.TextEditOptions):
+        ...
+    
+    @property
+    def text_replace_options(self) -> aspose.pdf.text.TextReplaceOptions:
+        '''Gets or sets text replace options. The options define behavior when fragment text is replaced to more short/long.'''
+        ...
+    
+    @text_replace_options.setter
+    def text_replace_options(self, value: aspose.pdf.text.TextReplaceOptions):
+        ...
+    
+    ...
+
+class TextFragmentCollection:
+    '''Represents a text fragments collection'''
+    
+    def __getitem__(self, index: int) -> aspose.pdf.text.TextFragment:
+        '''Gets the text fragment element at the specified index.
+        
+        :param index: Index within the collection.
+        :returns: TextFragment object.'''
+        ...
+    
+    @property
+    def sync_root(self) -> object:
+        '''Gets an object that can be used to synchronize access to the collection.'''
+        ...
+    
+    @property
+    def is_synchronized(self) -> bool:
+        '''Gets a value indicating whether access to the collection is synchronized (thread safe).'''
+        ...
+    
+    ...
+
+class TextFragmentState(aspose.pdf.text.TextState):
+    '''Represents a text state of a text fragment.
+    
+    Provides a way to change following properties of the text:
+    font (:attr:`TextFragmentState.font` property)
+    font size (:attr:`TextFragmentState.font_size` property)
+    font style (:attr:`TextFragmentState.font_style` property)
+    foreground color (:attr:`TextFragmentState.foreground_color` property)
+    background color (:attr:`TextFragmentState.background_color` property)
+    
+    Note that changing :class:`TextFragmentState` properties may change inner :attr:`TextFragment.segments` collection because TextFragment is an aggregate object
+    and it may rearrange internal segments or merge them into single segment.
+    If your requirement is to leave the :attr:`TextFragment.segments` collection unchanged, please change inner segments individually.'''
+    
+    def __init__(self, fragment: aspose.pdf.text.TextFragment):
+        '''Initializes new instance of the :class:`TextFragmentState` object with specified :class:`TextFragment` object.
+        This :class:`TextFragmentState` initialization is not supported.
+        TextFragmentState is only available with :attr:`TextFragment.text_state` property.
+        
+        :param fragment: Text fragment object.'''
+        ...
+    
+    def apply_changes_from(self, text_state: aspose.pdf.text.TextState) -> None:
+        '''Applies settings from another textState.
+        
+        Only those properties will be copied that were changed explicitly.
+        
+        :param text_state: Text state object.'''
+        ...
+    
+    def measure_height(self, character: str) -> float:
+        '''Measures character height.
+        
+        :param character: Character to measure.
+        :returns: Height of the character if we could get it from font; otherwise 0.'''
+        ...
+
+    def measure_string(self, str: str) -> float:
+        '''Measures the string.
+        
+        :param str: The string.
+        :returns: Width of the string.'''
+        ...
+    
+    def is_fit_rectangle(self, str: str, rect: aspose.pdf.Rectangle) -> bool:
+        '''Checks if input string could be placed inside defined rectangle.
+        
+        :param str: String to check.
+        :param rect: Rectangle to check.
+        :returns: True if string fit rectangle; otherwise false.'''
+        ...
+
+    @property
+    def character_spacing(self) -> float:
+        '''Gets or sets character spacing of the text, represented by the :class:`TextFragment` object.'''
+        ...
+    
+    @character_spacing.setter
+    def character_spacing(self, value: float):
+        ...
+    
+    @property
+    def line_spacing(self) -> float:
+        '''Gets or sets line spacing of the text.
+        
+        Note that the value is not preserved as a text characteristic within the document.
+        The LineSpacing property getter works for an object in case it was explicitly set previously with LineSpacing setter for those object.
+        
+        The property is used by runtime in context of current generation/modification process.'''
+        ...
+    
+    @line_spacing.setter
+    def line_spacing(self, value: float):
+        ...
+    
+    @property
+    def horizontal_scaling(self) -> float:
+        '''Gets or sets horizontal scaling of the text, represented by the :class:`TextFragment` object.'''
+        ...
+    
+    @horizontal_scaling.setter
+    def horizontal_scaling(self, value: float):
+        ...
+    
+    @property
+    def subscript(self) -> bool:
+        '''Gets or sets subscript of the text, represented by the :class:`TextFragment` object.'''
+        ...
+    
+    @subscript.setter
+    def subscript(self, value: bool):
+        ...
+    
+    @property
+    def superscript(self) -> bool:
+        '''Gets or sets superscript of the text, represented by the :class:`TextFragment` object.'''
+        ...
+    
+    @superscript.setter
+    def superscript(self, value: bool):
+        ...
+    
+    @property
+    def word_spacing(self) -> float:
+        '''Gets or sets word spacing of the text.'''
+        ...
+    
+    @word_spacing.setter
+    def word_spacing(self, value: float):
+        ...
+    
+    @property
+    def invisible(self) -> bool:
+        '''Gets or sets invisibility of the text.'''
+        ...
+    
+    @invisible.setter
+    def invisible(self, value: bool):
+        ...
+    
+    @property
+    def rendering_mode(self) -> aspose.pdf.text.TextRenderingMode:
+        '''Gets or sets rendering mode of the text.'''
+        ...
+    
+    @rendering_mode.setter
+    def rendering_mode(self, value: aspose.pdf.text.TextRenderingMode):
+        ...
+    
+    @property
+    def font_size(self) -> float:
+        '''Gets or sets font size of the text, represented by the :class:`TextFragment` object'''
+        ...
+    
+    @font_size.setter
+    def font_size(self, value: float):
+        ...
+    
+    @property
+    def font(self) -> aspose.pdf.text.Font:
+        '''Gets or sets font of the text, represented by the :class:`TextFragment` object'''
+        ...
+    
+    @font.setter
+    def font(self, value: aspose.pdf.text.Font):
+        ...
+    
+    @property
+    def foreground_color(self) -> aspose.pdf.Color:
+        '''Gets or sets foreground color of the text, represented by the :class:`TextFragment` object'''
+        ...
+    
+    @foreground_color.setter
+    def foreground_color(self, value: aspose.pdf.Color):
+        ...
+    
+    @property
+    def stroking_color(self) -> aspose.pdf.Color:
+        '''Gets or sets color stroking operations of :class:`TextFragment` rendering (stroke text, rectangle border)'''
+        ...
+    
+    @stroking_color.setter
+    def stroking_color(self, value: aspose.pdf.Color):
+        ...
+    
+    @property
+    def underline(self) -> bool:
+        '''Gets or sets underline for the text, represented by the :class:`TextFragment` object'''
+        ...
+    
+    @underline.setter
+    def underline(self, value: bool):
+        ...
+    
+    @property
+    def strike_out(self) -> bool:
+        '''Sets strikeout for the text, represented by the :class:`TextFragment` object'''
+        ...
+    
+    @strike_out.setter
+    def strike_out(self, value: bool):
+        ...
+    
+    @property
+    def background_color(self) -> aspose.pdf.Color:
+        '''Sets background color of the text, represented by the :class:`TextFragment` object'''
+        ...
+    
+    @background_color.setter
+    def background_color(self, value: aspose.pdf.Color):
+        ...
+    
+    @property
+    def font_style(self) -> aspose.pdf.text.FontStyles:
+        '''Sets font style of the text, represented by the :class:`TextFragment` object'''
+        ...
+    
+    @font_style.setter
+    def font_style(self, value: aspose.pdf.text.FontStyles):
+        ...
+    
+    @property
+    def horizontal_alignment(self) -> aspose.pdf.HorizontalAlignment:
+        '''Gets or sets horizontal alignment for the text.
+        
+        HorizontalAlignment.None is equal to HorizontalAlignment.Left.
+        
+        Note that TextFragmentState.VerticalAlignment property works in new document generation scenarios only.'''
+        ...
+    
+    @horizontal_alignment.setter
+    def horizontal_alignment(self, value: aspose.pdf.HorizontalAlignment):
+        ...
+    
+    @property
+    def tab_stops(self) -> aspose.pdf.text.TabStops:
+        '''Gets tabstops for the text.
+        
+        Note that Tabstops property works in new document generation scenarios only.
+        Tabstops may be added during :class:`TextFragment` initialization. Tabstops must be constructed before the text.'''
+        ...
+    
+    @property
+    def formatting_options(self) -> aspose.pdf.text.TextFormattingOptions:
+        '''Gets or sets formatting options.
+        Setting of the options will be effective in generator scenarios only.'''
+        ...
+    
+    @formatting_options.setter
+    def formatting_options(self, value: aspose.pdf.text.TextFormattingOptions):
+        ...
+    
+    @property
+    def rotation(self) -> float:
+        '''Gets or sets rotation angle in degrees.'''
+        ...
+    
+    @rotation.setter
+    def rotation(self, value: float):
+        ...
+    
+    @property
+    def draw_text_rectangle_border(self) -> bool:
+        '''Gets or sets if text rectangle border drawn flag.'''
+        ...
+    
+    @draw_text_rectangle_border.setter
+    def draw_text_rectangle_border(self, value: bool):
+        ...
+    
+    ...
+
+class TextOptions:
+    '''Represents text processing options'''
+    
+    ...
+
+class TextParagraph:
+    '''Represents text paragraphs as multiline text object.'''
+    
+    def __init__(self):
+        ...
+    
+    @overload
+    def append_line(self, line: str) -> None:
+        '''Appends text line
+        
+        :param line: The new line's text.'''
+        ...
+    
+    @overload
+    def append_line(self, line: str, line_spacing: float) -> None:
+        '''Appends text line.
+        
+        :param line: The new line's text.
+        :param line_spacing: Additional spacing (0.0 is default and corresponds to default text line height).
+                             The spacing value is added to default line spacing for the particular line, so you may specify 12.0 to get empty row AFTER a text line drawn with 12pt font.'''
+        ...
+    
+    @overload
+    def append_line(self, line: str, text_state: aspose.pdf.text.TextState) -> None:
+        '''Appends text line with text state parameters.
+        
+        :param line: The new line's text.
+        :param text_state: Text state of the new line.'''
+        ...
+    
+    @overload
+    def append_line(self, line: str, text_state: aspose.pdf.text.TextState, line_spacing: float) -> None:
+        '''Appends text line with text state parameters
+        
+        :param line: The new line's text.
+        :param text_state: Text state of the new line.
+        :param line_spacing: Additional spacing (0.0 is default and corresponds to default text line height).
+                             The spacing value is added to default line spacing for the particular line, so you may specify 12.0 to get empty row AFTER a text line drawn with 12pt font.'''
+        ...
+    
+    @overload
+    def append_line(self, line: aspose.pdf.text.TextFragment) -> None:
+        '''Appends text line with text state parameters.
+        
+        :param line: The new line's text.'''
+        ...
+    
+    @overload
+    def append_line(self, line: aspose.pdf.text.TextFragment, text_state: aspose.pdf.text.TextState) -> None:
+        '''Appends text line with text state parameters.
+        
+        :param line: The new line's text.
+        :param text_state: Text state of the new line.'''
+        ...
+    
+    @overload
+    def append_line(self, line: aspose.pdf.text.TextFragment, text_state: aspose.pdf.text.TextState, line_spacing: float) -> None:
+        '''Appends text line with text state parameters
+        
+        :param line: The new line's text.
+        :param text_state: Text state of the new line.
+        :param line_spacing: Additional spacing (0.0 is default and corresponds to default text line height).
+                             The spacing value is added to default line spacing for the particular line, so you may specify 12.0 to get empty row AFTER a text line drawn with 12pt font.'''
+        ...
+    
+    def begin_edit(self) -> None:
+        '''Begins the editing of the TextParagraph.
+        
+        Improves performance of TextParagraph population.
+        Any layout calculation is suspended until EndEdit method is invoked.
+        
+        Note that method invoke can't be nested.'''
+        ...
+    
+    def end_edit(self) -> None:
+        '''Ends the editing of the TextParagraph.
+        
+        Improves performance of TextParagraph population.
+        Any layout calculation is suspended until EndEdit method is invoked.
+        
+        Note that method invoke can't be nested.'''
+        ...
+    
+    @property
+    def vertical_alignment(self) -> aspose.pdf.VerticalAlignment:
+        '''Gets or sets vertical alignment for the text inside paragrph's :attr:`TextParagraph.rectangle`.
+        
+        VerticalAlignment.None is equal to VerticalAlignment.Bottom.'''
+        ...
+    
+    @vertical_alignment.setter
+    def vertical_alignment(self, value: aspose.pdf.VerticalAlignment):
+        ...
+    
+    @property
+    def subsequent_lines_indent(self) -> float:
+        '''Gets or sets subsequent lines indent value.
+        If set to a non-zero value, it has an advantage over the FormattingOptions.SubsequentLinesIndent value.'''
+        ...
+    
+    @subsequent_lines_indent.setter
+    def subsequent_lines_indent(self, value: float):
+        ...
+    
+    @property
+    def first_line_indent(self) -> float:
+        '''Gets or sets subsequent lines indent value.
+        If set to a non-zero value, it has an advantage over the FormattingOptions.SubsequentLinesIndent value.'''
+        ...
+    
+    @first_line_indent.setter
+    def first_line_indent(self, value: float):
+        ...
+    
+    @property
+    def justify(self) -> bool:
+        '''Gets or sets value whether text is justified.'''
+        ...
+    
+    @justify.setter
+    def justify(self, value: bool):
+        ...
+    
+    @property
+    def horizontal_alignment(self) -> aspose.pdf.HorizontalAlignment:
+        '''Gets or sets horizontal alignment for the text inside paragrph's :attr:`TextParagraph.rectangle`.
+        
+        HorizontalAlignment.None is equal to HorizontalAlignment.Left.'''
+        ...
+    
+    @horizontal_alignment.setter
+    def horizontal_alignment(self, value: aspose.pdf.HorizontalAlignment):
+        ...
+    
+    @property
+    def formatting_options(self) -> aspose.pdf.text.TextFormattingOptions:
+        '''Gets or sets formatting options.'''
+        ...
+    
+    @formatting_options.setter
+    def formatting_options(self, value: aspose.pdf.text.TextFormattingOptions):
+        ...
+    
+    @property
+    def position(self) -> aspose.pdf.text.Position:
+        '''Gets or sets position of the paragraph.'''
+        ...
+    
+    @position.setter
+    def position(self, value: aspose.pdf.text.Position):
+        ...
+    
+    @property
+    def text_rectangle(self) -> aspose.pdf.Rectangle:
+        '''Gets rectangle of the text placed to the paragraph.'''
+        ...
+    
+    @property
+    def rectangle(self) -> aspose.pdf.Rectangle:
+        '''Gets or sets rectangle of the paragraph.'''
+        ...
+    
+    @rectangle.setter
+    def rectangle(self, value: aspose.pdf.Rectangle):
+        ...
+    
+    @property
+    def margin(self) -> aspose.pdf.MarginInfo:
+        '''Gets or sets the padding.'''
+        ...
+    
+    @margin.setter
+    def margin(self, value: aspose.pdf.MarginInfo):
+        ...
+    
+    @property
+    def rotation(self) -> float:
+        '''Gets or sets rotation angle in degrees.'''
+        ...
+    
+    @rotation.setter
+    def rotation(self, value: float):
+        ...
+    
+    ...
+
+class TextReplaceOptions(aspose.pdf.text.TextOptions):
+    '''Represents text replace options'''
+    
+    @overload
+    def __init__(self, scope):
+        '''Initializes new instance of the :class:`TextReplaceOptions` object for the specified scope.
+        
+        :param scope: Scope object.'''
+        ...
+    
+    @overload
+    def __init__(self, adjustment):
+        '''Initializes new instance of the :class:`TextReplaceOptions` object for the specified after replace action.
+        
+        :param adjustment: ReplaceAdjustment object.'''
+        ...
+    
+    @property
+    def replace_scope(self) -> None:
+        '''Gets or sets a scope where replace text operation is applied'''
+        ...
+    
+    @replace_scope.setter
+    def replace_scope(self, value: None):
+        ...
+    
+    @property
+    def replace_adjustment_action(self) -> None:
+        '''Gets or sets an action that will be done after replace of text fragment to more short.'''
+        ...
+    
+    @replace_adjustment_action.setter
+    def replace_adjustment_action(self, value: None):
+        ...
+    
+    @property
+    def adjustment_new_line_spacing(self) -> float:
+        '''Gets or sets value of line spacing that used if replace adjustment is forced to create new line of text.
+        The value expected is multiplier of font size of the replaced text. Default is 1.2.'''
+        ...
+    
+    @adjustment_new_line_spacing.setter
+    def adjustment_new_line_spacing(self, value: float):
+        ...
+    
+    @property
+    def right_adjustment(self) -> float:
+        '''Sets or gets right position adjustment for replaced text when using TextReplaceOptions:
+        - ReplaceAdjustmentAction = WholeWordsHyphenation;
+        - ReplaceAdjustmentAction = IsFormFillingMode.'''
+        ...
+    
+    @right_adjustment.setter
+    def right_adjustment(self, value: float):
+        ...
+
+    @property
+    def left_adjustment (self) -> float:
+        '''Sets or gets left position adjustment for replaced text when using TextReplaceOptions:
+        - ReplaceAdjustmentAction = IsFormFillingMode.'''
+        ...
+    
+    @left_adjustment.setter
+    def left_adjustment(self, value: float):
+        ...
+
+    @property
+    def ignore_paragraphs(self) -> bool:
+        ...
+    
+    @ignore_paragraphs.setter
+    def ignore_paragraphs(self, value: bool):
+        ...
+
+    class ReplaceAdjustment:
+          '''Determines action that will be done after replace of text fragment to more short.
+          None - no action, replaced text may overlaps rest of the line;
+          AdjustSpaceWidth - tries adjust spaces between words to keep line length;
+          WholeWordsHyphenation - tries distribute words between paragraph lines to keep paragraph's right field;
+          ShiftRestOfLine - shifts rest of the line according to changing length of text, length of the line may be changed;
+          Default value is ShiftRestOfLine.'''
+
+          NONE: ReplaceAdjustment
+          ADJUST_SPACE_WIDTH: ReplaceAdjustment 
+          WHOLE_WORDS_HYPHENATION: ReplaceAdjustment
+          IS_FORM_FILLING_MODE: ReplaceAdjustment
+          SHIFT_REST_OF_LINE: ReplaceAdjustment
+
+    class Scope:
+          '''Scope where replace text operation is applied.
+          REPLACE_FIRST by default.
+          This obsolete option was kept for compatibility. It affects to PdfContentEditor and has no effect to TextFragmentAbsorber.'''
+
+          REPLACE_FIRST: Scope
+          REPLACE_ALL: Scope
+
+    ...
+
+class TextSearchOptions(aspose.pdf.text.TextOptions):
+    '''Represents text search options'''
+    
+    @overload
+    def __init__(self, is_regular_expression_used: bool):
+        '''Initializes new instance of the :class:`TextSearchOptions` object.
+        Specifies regular expression usage mode.
+        
+        :param is_regular_expression_used: Value that indicates that regularexpression is used.'''
+        ...
+    
+    @overload
+    def __init__(self, rectangle: aspose.pdf.Rectangle):
+        '''Initializes new instance of the :class:`TextSearchOptions` object.
+        Specifies rectangle that delimits the searched text.
+        
+        :param rectangle: Rectangle that includes the extracted text.'''
+        ...
+    
+    @overload
+    def __init__(self, rectangle: aspose.pdf.Rectangle, is_regular_expression_used: bool):
+        '''Initializes new instance of the :class:`TextSearchOptions` object.
+        Specifies rectangle that delimits the searched text and regular expression usage mode.
+        
+        :param rectangle: Rectangle that includes the extracted text.
+        :param is_regular_expression_used: Value that indicates that regularexpression is used.'''
+        ...
+    
+    @property
+    def is_regular_expression_used(self) -> bool:
+        '''Gets or sets indication that regular expression is used.'''
+        ...
+    
+    @is_regular_expression_used.setter
+    def is_regular_expression_used(self, value: bool):
+        ...
+    
+    @property
+    def limit_to_page_bounds(self) -> bool:
+        '''Gets or sets indication that text is searched within the page bounds.'''
+        ...
+    
+    @limit_to_page_bounds.setter
+    def limit_to_page_bounds(self, value: bool):
+        ...
+    
+    @property
+    def rectangle(self) -> aspose.pdf.Rectangle:
+        '''Gets or sets rectangle that bounds the searched text.
+        
+        The property may be used in case it is required to delimit text extraction or text replace region.'''
+        ...
+    
+    @rectangle.setter
+    def rectangle(self, value: aspose.pdf.Rectangle):
+        ...
+    
+    @property
+    def use_font_engine_encoding(self) -> bool:
+        '''Gets or sets indication that text will be searched using font engine encoding.
+        true - means that font engine encoding will be used (try this if text search fails because of imperfect encoding in the document)
+        false - means that document font encoding will be used (default value)'''
+        ...
+    
+    @use_font_engine_encoding.setter
+    def use_font_engine_encoding(self, value: bool):
+        ...
+    
+    @property
+    def ignore_shadow_text(self) -> bool:
+        '''Gets or sets indication that text fragments representing shadow of normal text will be ignored during search.
+        true - means that shadow text will not be found (try this if text search returns duplicated fragments on the close positions)
+        false - means that shadow text will be found as well as normal text (default value)'''
+        ...
+    
+    @ignore_shadow_text.setter
+    def ignore_shadow_text(self, value: bool):
+        ...
+    
+    @property
+    def log_text_extraction_errors(self) -> bool:
+        '''Gets or sets indication that text extraction (decoding) errors will be logged in the text (fragment) absorber.
+        true - means that text extraction (decoding) errors will be loged. It may decrease performance.
+        false (default) - no error loging.'''
+        ...
+    
+    @log_text_extraction_errors.setter
+    def log_text_extraction_errors(self, value: bool):
+        ...
+    
+    @property
+    def ignore_resource_font_errors(self) -> bool:
+        '''Gets or sets indication that errors related to absence of font will be ignored by text (fragment) absorber.
+        true - means that errors of absence of font will be ignored. Text segments that refer to incorrect resources will be skipped during processing.
+        false (default) - absence of font error will terminate processing by throwing exception.'''
+        ...
+    
+    @ignore_resource_font_errors.setter
+    def ignore_resource_font_errors(self, value: bool):
+        ...
+    
+    @property
+    def search_for_text_related_graphics(self) -> bool:
+        '''Gets or sets value that permits searching for text related graphics (underlining, background etc.) during text search.
+        true - searching for text related graphics will be performed (default value).
+        false - graphic elements that may present in source document will be ignored. Set this in case of performance issues or no need to handle underlining, background, or clipping.'''
+        ...
+    
+    @search_for_text_related_graphics.setter
+    def search_for_text_related_graphics(self, value: bool):
+        ...
+    
+    @property
+    def stored_graphic_elements_max_count(self) -> int:
+        '''Gets or sets value that limits searching for text related graphics (underlining, background etc.) on a page for the speciefied number of elements.
+        The default is 250. Set lesser value in the case of performance problems, try larger value in the case some graphic elements wasn't found.'''
+        ...
+    
+    @stored_graphic_elements_max_count.setter
+    def stored_graphic_elements_max_count(self, value: int):
+        ...
+    
+    @property
+    def search_in_annotations(self) -> bool:
+        '''Gets or sets value that permits searching for text in Annotations.
+        true - text will be searched in Annotations.
+        false - text in Annotations won't be parsed by TextFragmentAbsorber.'''
+        ...
+    
+    @search_in_annotations.setter
+    def search_in_annotations(self, value: bool):
+        ...
+    
+    ...
+
+class TextSegment:
+    '''Represents segment of Pdf text.
+    
+    In a few words, :class:`TextSegment` objects are children of :class:`TextFragment` object.
+    
+    In details:
+    
+    Text of pdf document in :mod:`aspose.pdf` is represented by two basic objects: :class:`TextFragment` and :class:`TextSegment`
+    
+    The differences between them is mostly context-dependent.
+    
+    Let's consider following scenario. User searches text "hello world" to operate with it, change it's properties, look etc.
+    
+    Document doc = new Document(docFile);
+    
+    TextFragmentAbsorber absorber = new TextFragmentAbsorber("hello world");
+    
+    doc.Pages[1].Accept(absorber);
+    
+    Phisycally pdf text's representation is very complex.
+    The text "hello world" may consist of several phisycally independent text segments.
+    
+    The Aspose.Pdf text model basically establishes that:class:`TextFragment` object
+    provides single logic operation set over physical :class:`TextSegment` objects set that represent user's query.
+    
+    In text search scenario, :class:`TextFragment` is logical "hello world" text representation,
+    and :class:`TextSegment` object collection represents all physical segments that construct "hello world" text object.
+    
+    So, :class:`TextFragment` is close to logical text representation.
+    And :class:`TextSegment` is close to physical text representation.
+    
+    Obviously each :class:`TextSegment` object may have it's own font, coloring, positioning properties.
+    
+    :class:`TextFragment` provides simple way to change text with it's properties: set font, set font size, set font color etc.
+    Meanwhile :class:`TextSegment` objects are accessible and users are able to operate with :class:`TextSegment` objects independently.'''
+    
+    @overload
+    def __init__(self):
+        '''Creates TextSegment object.'''
+        ...
+    
+    @overload
+    def __init__(self, text: str):
+        '''Creates TextSegment object.
+        
+        :param text: Text segment's text.'''
+        ...
+    
+    @staticmethod
+    def my_html_encode(self, value: str) -> str:
+        '''Encodes string as html.
+        
+        :param value: String value to encode.
+        :returns: Html encoded string.'''
+        ...
+    
+    @property
+    def start_char_index(self) -> int:
+        '''Gets starting character index of current segment in the show text operator (Tj, TJ) segment.'''
+        ...
+    
+    @property
+    def end_char_index(self) -> int:
+        '''Gets ending character index of current segment in the show text operator (Tj, TJ) segment.'''
+        ...
+    
+    @property
+    def text(self) -> str:
+        '''Gets or sets System.String text object that the :class:`TextSegment` object represents.'''
+        ...
+    
+    @text.setter
+    def text(self, value: str):
+        ...
+    
+    @property
+    def text_state(self) -> aspose.pdf.text.TextState:
+        '''Gets or sets text state for the text that :class:`TextSegment` object represents.
+        
+        Provides a way to change following properties of the text:
+        Font
+        FontSize
+        FontStyle
+        ForegroundColor
+        BackgroundColor'''
+        ...
+    
+    @text_state.setter
+    def text_state(self, value: aspose.pdf.text.TextState):
+        ...
+    
+    @property
+    def position(self) -> aspose.pdf.text.Position:
+        '''Gets text position for text, represented with :class:`TextSegment` object.'''
+        ...
+    
+    @position.setter
+    def position(self, value: aspose.pdf.text.Position):
+        ...
+    
+    @property
+    def rectangle(self) -> aspose.pdf.Rectangle:
+        '''Gets rectangle of the TextSegment'''
+        ...
+    
+    @property
+    def baseline_position(self) -> aspose.pdf.text.Position:
+        '''Gets text position for text, represented with :class:`TextSegment` object.
+        The YIndent of the Position structure represents baseline coordinate of the text segment.'''
+        ...
+    
+    @baseline_position.setter
+    def baseline_position(self, value: aspose.pdf.text.Position):
+        ...
+    
+    @property
+    def text_edit_options(self) -> aspose.pdf.text.TextEditOptions:
+        '''Gets or sets text edit options. The options define special behavior when requested symbol cannot be written with font.'''
+        ...
+    
+    @text_edit_options.setter
+    def text_edit_options(self, value: aspose.pdf.text.TextEditOptions):
+        ...
+    
+    @property
+    def characters(self) -> aspose.pdf.text.CharInfoCollection:
+        '''Gets collection of CharInfo objects that represent information on characters in the text segment.'''
+        ...
+    
+    @property
+    def hyperlink(self) -> aspose.pdf.Hyperlink:
+        '''Gets or sets the segment hyperlink(for pdf generator).'''
+        ...
+    
+    @hyperlink.setter
+    def hyperlink(self, value: aspose.pdf.Hyperlink):
+        ...
+    
+    ...
+
+class TextSegmentCollection:
+    '''Represents a text segments collection'''
+    
+    def __getitem__(self, index: int) -> aspose.pdf.text.TextSegment:
+        '''Gets the text segment element at the specified index.
+        
+        :param index: Index within the collection.
+        :returns: TextSegment object.'''
+        ...
+    
+    @property
+    def sync_root(self) -> object:
+        '''Gets an object that can be used to synchronize access to the collection.'''
+        ...
+    
+    @property
+    def is_synchronized(self) -> bool:
+        '''Gets a value indicating whether access to the collection is synchronized (thread safe).'''
+        ...
+    
+    ...
+
+class TextState:
+    '''Represents a text state of a text'''
+    
+    @overload
+    def __init__(self):
+        '''Creates text state object.'''
+        ...
+    
+    @overload
+    def __init__(self, font_size: float):
+        '''Creates text state object with font size specification.
+        
+        :param font_size: Font size.'''
+        ...
+    
+    @overload
+    def __init__(self, foreground_color: aspose.pydrawing.Color):
+        '''Creates text state object with foreground color specification.
+        
+        :param foreground_color: Foreground color.'''
+        ...
+    
+    @overload
+    def __init__(self, foreground_color: aspose.pydrawing.Color, font_size: float):
+        '''Creates text state object with foreground color and font size specification.
+        
+        :param foreground_color: Foreground color.
+        :param font_size: Font size.'''
+        ...
+    
+    @overload
+    def __init__(self, font_family: str):
+        '''Creates text state object with font family specification.
+        
+        :param font_family: Font family.'''
+        ...
+    
+    @overload
+    def __init__(self, font_family: str, bold: bool, italic: bool):
+        '''Creates text state object with font family and font style specification.
+        
+        :param font_family: Font family.
+        :param bold: Bold font style.
+        :param italic: Italic font style.'''
+        ...
+    
+    @overload
+    def __init__(self, font_family: str, font_size: float):
+        '''Creates text state object with font family and font size specification.
+        
+        :param font_family: Font family.
+        :param font_size: Font size.'''
+        ...
+    
+    def apply_changes_from(self, text_state: aspose.pdf.text.TextState) -> None:
+        '''Applies settings from another textState.
+        
+        Only those properties will be copied that were changed explicitly.
+        
+        :param text_state: Text state object.'''
+        ...
+    
+    def measure_string(self, str: str) -> float:
+        '''Measures the string.
+        
+        :param str: The string.
+        :returns: Width of the string represented with this text state.'''
+        ...
+
+    def measure_height(self, character: str) -> float:
+        '''Measures character height.
+        
+        :param character: Character to measure.
+        :returns: Height of the character if we could get it from font; otherwise 0.'''
+        ...
+    
+    @property
+    def character_spacing(self) -> float:
+        '''Gets or sets character spacing of the text.'''
+        ...
+    
+    @character_spacing.setter
+    def character_spacing(self, value: float):
+        ...
+    
+    @property
+    def line_spacing(self) -> float:
+        '''Gets or sets line spacing of the text.
+        
+        Note that the value is not preserved as a text characteristic within the document.
+        The LineSpacing property getter works for an object in case it was explicitly set previously with LineSpacing setter for those object.
+        
+        The property is used by runtime in context of current generation/modification process.'''
+        ...
+    
+    @line_spacing.setter
+    def line_spacing(self, value: float):
+        ...
+    
+    @property
+    def horizontal_scaling(self) -> float:
+        '''Gets or sets horizontal scaling of the text.'''
+        ...
+    
+    @horizontal_scaling.setter
+    def horizontal_scaling(self, value: float):
+        ...
+    
+    @property
+    def subscript(self) -> bool:
+        '''Gets or sets subscript of the text.'''
+        ...
+    
+    @subscript.setter
+    def subscript(self, value: bool):
+        ...
+    
+    @property
+    def superscript(self) -> bool:
+        '''Gets or sets superscript of the text.'''
+        ...
+    
+    @superscript.setter
+    def superscript(self, value: bool):
+        ...
+    
+    @property
+    def word_spacing(self) -> float:
+        '''Gets or sets word spacing of the text.'''
+        ...
+    
+    @word_spacing.setter
+    def word_spacing(self, value: float):
+        ...
+    
+    @property
+    def invisible(self) -> bool:
+        '''Gets or sets the invisibility of text. This basically reflects the :attr:`TextState.rendering_mode` state, except for some special cases (like clipping).'''
+        ...
+    
+    @invisible.setter
+    def invisible(self, value: bool):
+        ...
+    
+    @property
+    def rendering_mode(self) -> aspose.pdf.text.TextRenderingMode:
+        '''Gets or sets rendering mode of text.'''
+        ...
+    
+    @rendering_mode.setter
+    def rendering_mode(self, value: aspose.pdf.text.TextRenderingMode):
+        ...
+    
+    @property
+    def font_size(self) -> float:
+        '''Gets or sets font size of the text.'''
+        ...
+    
+    @font_size.setter
+    def font_size(self, value: float):
+        ...
+    
+    @property
+    def font(self) -> aspose.pdf.text.Font:
+        '''Gets or sets font of the text.'''
+        ...
+    
+    @font.setter
+    def font(self, value: aspose.pdf.text.Font):
+        ...
+    
+    @property
+    def foreground_color(self) -> aspose.pdf.Color:
+        '''Gets or sets foreground color of the text.'''
+        ...
+    
+    @foreground_color.setter
+    def foreground_color(self, value: aspose.pdf.Color):
+        ...
+    
+    @property
+    def stroking_color(self) -> aspose.pdf.Color:
+        '''Gets or sets foreground color of the text.'''
+        ...
+    
+    @stroking_color.setter
+    def stroking_color(self, value: aspose.pdf.Color):
+        ...
+    
+    @property
+    def underline(self) -> bool:
+        '''Gets or sets underline for the text, represented by the :class:`TextFragment` object'''
+        ...
+    
+    @underline.setter
+    def underline(self, value: bool):
+        ...
+    
+    @property
+    def strike_out(self) -> bool:
+        '''Sets strikeout for the text, represented by the :class:`TextFragment` object'''
+        ...
+    
+    @strike_out.setter
+    def strike_out(self, value: bool):
+        ...
+    
+    @property
+    def background_color(self) -> aspose.pdf.Color:
+        '''Sets background color of the text.
+        
+        Note that the value is not preserved as a text characteristic within the document.
+        The BackgroundColor property getter works for an object in case it was explicitly set previously with BackgroundColor setter for those object.
+        
+        The property is used by runtime in context of current generation/modification process.'''
+        ...
+    
+    @background_color.setter
+    def background_color(self, value: aspose.pdf.Color):
+        ...
+    
+    @property
+    def font_style(self) -> aspose.pdf.text.FontStyles:
+        '''Sets font style of the text.'''
+        ...
+    
+    @font_style.setter
+    def font_style(self, value: aspose.pdf.text.FontStyles):
+        ...
+    
+    @property
+    def horizontal_alignment(self) -> aspose.pdf.HorizontalAlignment:
+        '''Gets or sets horizontal alignment for the text.
+        
+        HorizontalAlignment.None is equal to HorizontalAlignment.Left.
+        
+        Note that TextState.HorizontalAlignment property works in new document generation scenarios only.'''
+        ...
+    
+    @horizontal_alignment.setter
+    def horizontal_alignment(self, value: aspose.pdf.HorizontalAlignment):
+        ...
+    
+    @property
+    def coordinate_origin(self) -> aspose.pdf.text.CoordinateOrigin:
+        '''Gets or sets text CoordinateOrigin.
+        If CoordinateOrigin is Descender, the text Y coordinate corresponds to the font's lowest point.
+        If CoordinateOrigin is BaseLine, the text Y coordinate corresponds to the font's baseline.
+        The default value is Descender.
+        If the font's Descent value is too big, text can be rendered higher than other fonts.
+        In this case, CoordinateOrigin BaseLine can be selected for better text rendering.'''
+        ...
+    
+    @coordinate_origin.setter
+    def coordinate_origin(self, value: aspose.pdf.text.CoordinateOrigin):
+        ...
+
+    @property
+    def TAB_TAG(self) -> str:
+        '''You can place this tag in text to declare tabulation.
+        
+        It has effect only in couple with :class:`TabStops`.'''
+        ...
+    
+    @property
+    def TABSTOP_DEFAULT_VALUE(self) -> float:
+        '''Default value of tabulation in widths of space character of default font.'''
+        ...
+    
+    ...
+
+class CoordinateOrigin:
+    '''Text CoordinateOrigin enumeration.'''
+    
+    BASE_LINE: CoordinateOrigin
+    DESCENDER: CoordinateOrigin
+
+class FontStyles:
+    '''Specifies style information applied to text.
+    
+    This enumeration has a System.FlagsAttribute attribute that allows a combination of its member values.'''
+    
+    REGULAR: FontStyles
+    BOLD: FontStyles
+    ITALIC: FontStyles
+
+class FontTypes:
+    '''Supported font types enumeration.'''
+    
+    TTF: FontTypes
+    OTF: FontTypes
+
+class SubstitutionFontCategories:
+    '''Represents font categories that can be substituted.'''
+    
+    THE_SAME_NAMED_EMBEDDED_FONTS: SubstitutionFontCategories
+    ALL_EMBEDDED_FONTS: SubstitutionFontCategories
+
+class TabAlignmentType:
+    '''Enumerates the tab alignment types.'''
+    
+    LEFT: TabAlignmentType
+    CENTER: TabAlignmentType
+    RIGHT: TabAlignmentType
+
+class TabLeaderType:
+    '''Enumerates the tab leader types.'''
+    
+    SOLID: TabLeaderType
+    DASH: TabLeaderType
+    DOT: TabLeaderType
+    NONE: TabLeaderType
+
+class TextRenderingMode:
+    '''The text rendering mode, Tmode, determines whether showing text shall cause glyph outlines to be stroked, filled, used as a clipping boundary, or some combination of the three.'''
+    
+    FILL_TEXT: TextRenderingMode
+    STROKE_TEXT: TextRenderingMode
+    FILL_THEN_STROKE_TEXT: TextRenderingMode
+    INVISIBLE: TextRenderingMode
+    FILL_TEXT_AND_ADD_PATH_TO_CLIPPING: TextRenderingMode
+    STROKE_TEXT_AND_ADD_PATH_TO_CLIPPING: TextRenderingMode
+    FILL_THEN_STROKE_TEXT_AND_ADD_PATH_TO_CLIPPING: TextRenderingMode
+    ADD_PATH_TO_CLIPPING: TextRenderingMode
+

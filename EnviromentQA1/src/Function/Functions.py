@@ -29,6 +29,11 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 from selenium.webdriver.remote import remote_connection
 
+#from selenium.webdriver.common.print_page_options import PrintOptions as PrintOptions
+#import base64
+#import aspose.pdf as ap
+#import urllib3
+
 from Function.Inicializar import Inicializar
 from selenium.common.exceptions import NoSuchElementException,NoAlertPresentException,NoSuchWindowException,TimeoutException
 import json
@@ -55,9 +60,12 @@ from io import BytesIO #Para conocer tamaños en bytes, ya esta instalado en Pyt
 import pyautogui
 import cv2
 import numpy as np
+from unittest.case import skip
+
 
 class Functions(Inicializar):
     
+    Nav_utilizado_capturas = ""
     #Abrir Navegador
     def abrir_navegador(self,navegador=Inicializar.Navegador,URL_SeleniumGrid = Inicializar.URL_SeleniumGrid):
         print(u"Directorio Base:" + Inicializar.BaseDir)
@@ -65,6 +73,7 @@ class Functions(Inicializar):
         print(navegador)
         print("-------------------------------------------")
         
+        self.Nav_utilizado_capturas = navegador
         if navegador ==("Edge"):
             #Implementacion del Webdriver Manager            
             self.driver = webdriver.Edge(service =EdgeService(EdgeChromiumDriverManager().install()))
@@ -80,6 +89,7 @@ class Functions(Inicializar):
             }
             options.add_experimental_option("prefs", prefs)
             options.add_argument('start-maximized')
+            #options.add_argument("headless")
             
             self.driver = webdriver.Chrome(service =ChromeService(ChromeDriverManager().install()),options=options)         
             
@@ -105,7 +115,7 @@ class Functions(Inicializar):
             options.add_argument("inprivate")
             #options.add_argument("headless")
             self.driver = webdriver.Remote(URL_SeleniumGrid,options=options)
-               
+        
         return self.driver
 
     #Dirigir a la URL del sitio de pruebas  
@@ -114,7 +124,7 @@ class Functions(Inicializar):
     
     #Cerrar la instancia del navegador
     def cerrar_driver_navegador(self):
-        return self.driver.close()
+        return self.driver.quit()
     
     #Encontrando elementos en el DOM por medio de XPATH
     def elementos_del_DOM_x_XPATH(self, XPATH):
@@ -492,51 +502,74 @@ class Functions(Inicializar):
     def crear_path(self):
         fecha = Functions.obtener_fecha_actual(self)
         GeneralPath = Inicializar.Path_Evidencias
-        DriverTest = Inicializar.Navegador
+        DriverTest = self.Nav_utilizado_capturas
+            
         TestCase =self.__class__.__name__
         HoraActual = Functions.obtener_hora_actual(self)
         
-        X = re.search('Context', TestCase)
-        if(X):
-            path = f"{GeneralPath}\{fecha}\{DriverTest}\{HoraActual}"
-        else:
+        if   ((Inicializar.TestCase_x_Context =="S") and (GeneralPath != "")):
+            path = f"{GeneralPath}\{fecha}\Pruebas\{TestCase}\{DriverTest}\{HoraActual}"
+        elif ((Inicializar.TestCase_x_Context == "N") and (GeneralPath != "")):
             path =f"{GeneralPath}\{fecha}\{TestCase}\{DriverTest}\{HoraActual}"
+        elif (((Inicializar.TestCase_x_Context == "N") or (Inicializar.TestCase_x_Context == "S")) and (GeneralPath == "")):
+            path = f'{Inicializar.BaseDir}\Capturas\{fecha}\{TestCase}\{DriverTest}\{HoraActual}'
+            print(f'No se encuentra establecida la ruta para guardar la captura de pantalla, se guardara en la carpeta raiz del framework de pruebas.\nEn: {path}')
+        elif (((Inicializar.TestCase_x_Context !="S") or (Inicializar.TestCase_x_Context !="N") or (Inicializar.TestCase_x_Context == "")) and (GeneralPath == "")): 
+            path = ""
+            print(f'No se logro crear el path para guardar la captura de pantalla. Variables de "TestCase_x_Context" y "GeneralPath" no se han configurado correctamente: Tienen el valor: {GeneralPath} y {Inicializar.TestCase_x_Context}')
         
-        if not os.path.exists(path):
-            os.makedirs(path)
+        if (path != ""):
+            if not os.path.exists(path):
+                os.makedirs(path)
             
-        return path
-    
+            return path
+        else:
+            return Inicializar.Warning_Capturas
+            
     #Realizar captura de pantalla
     def capturar_pantalla(self):
         Path=Functions.crear_path(self)
         TestCase =self.__class__.__name__
-        img = f'{Path}\{TestCase}\
-        ('+Functions.obtener_fecha_actual(self)+' - '+ Functions.obtener_hora_actual(self)+')'+'.png'
         
-        #self.driver.get_screenshot_as_file(img)
-        print(img)
-        return self.driver.get_screenshot_as_file(img)
+        if Path != Inicializar.Warning_Capturas:
+            img = f'{Path}\{TestCase}\
+            ('+Functions.obtener_fecha_actual(self)+' - '+ Functions.obtener_hora_actual(self)+')'+'.png'
+            
+            print(f'Se realizo captura de pantalla de la prueba: {img}')
+            return self.driver.get_screenshot_as_file(img)
+        else:
+            print("Warning: No se logro generar la captura de pantalla. No se encuentra configurada el Path y variable contexto.")
     
     #Realizar captura de pantalla en reporte Allure
     def captura_pantalla_allure(self,Descripcion):
         allure.attach(self.driver.get_screenshot_as_png(),Descripcion,allure.attachment_type.PNG)
     
     #Realizar conexion a BD     
-    def pyodbc_conexionBD(self,Env=Inicializar.Enviroment,_Servidor = Inicializar.DB_HOST, _dbName = Inicializar.DB_DATABASE, _user=Inicializar.DB_USER, _pass = Inicializar.DB_PASS):
-        
+    def pyodbc_conexionBD(self,Env):
+            
             try:
-                conn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server}; SERVER='+ _Servidor +';DATABASE='+ _dbName +';UID='+_user+';PWD='+_pass)
+                if Env == 'DEV':
+                    conn = pyodbc.connect(Inicializar.Cadena_Conexion_Dev)
+                elif Env == 'QA':
+                    conn = pyodbc.connect(Inicializar.Cadena_Conexion_QA)
+                elif Env == 'UAT':
+                    conn = pyodbc.connect(Inicializar.Cadena_Conexion_UAT)
+                elif Env == 'PROD':
+                    conn = pyodbc.connect(Inicializar.Cadena_Conexion_Prod)
+                else:
+                    print('No se logro establecer la cadena de conexion con la base de datos.')
+                    
                 self.cursor = conn.cursor()
                 print("Conexion Exitosa")
                 return self.cursor
             except (pyodbc.OperationalError) as Error:
                 self.cursor = None
+                print("Conexion Fallida")
                 pytest.skip("Error en la conexion a la BD: ", str(Error))
     
     #Realizar consulta a BD         
-    def pyodbc_ConsultaBD(self,consulta_query):
-        self.cursor = Functions.pyodbc_conexionBD(self)
+    def pyodbc_ConsultaBD(self,Env,consulta_query):
+        self.cursor = Functions.pyodbc_conexionBD(self,Env)
         if self.cursor is not None:
             try:
                 self.cursor.execute(consulta_query)
@@ -775,9 +808,9 @@ class Functions(Inicializar):
     #Validar la descarga del archivo     
     def Assert_True_IsTrueDownload(self,contenido, msj):
         return self.assertTrue(Inicializar.Archivo_Descargado in contenido,msj)
-        Functions.esperar_elemento(self)  
+        Functions.esperar_elemento(self)           
     
-    #Escrbir en Archivo txt         
+    #Escribir en un archivo bitacora
     def write_file_txt(self,texto,archivo):
         bitacora_pruebas = open(archivo, 'a')
         bitacora_pruebas.write(f'\nPrueba: {Functions.obtener_fecha_actual(self)} - {Functions.obtener_hora_actual(self)} - {texto} \n')
@@ -867,6 +900,7 @@ class Functions(Inicializar):
       Functions.click_en_elemento(self, Dia)
       Functions.esperar_elemento(self)
      
+    #Metodos para grabar videos (screen record) en las pruebas.
     def inicializar_video(self,height_size, width_size,fps,nombre_arh_video,Ruta_Grabacion=Inicializar.Ruta_Grabacion):
         self.screen_size = (height_size,width_size)
         self.fps = fps
@@ -875,8 +909,7 @@ class Functions(Inicializar):
         self.format = cv2.VideoWriter_fourcc(*"XVID")
         self.salida = cv2.VideoWriter(self.output_filename,self.format,self.fps,self.screen_size)
         print('Se inicializo la grabacion')
-        return self.salida
-    
+        return self.salida   
     def grabar(self,salida):
         self.frame = pyautogui.screenshot()
         self.frame = np.array(self.frame)
@@ -884,8 +917,7 @@ class Functions(Inicializar):
         self.frame = cv2.cvtColor(self.frame,cv2.COLOR_BGR2RGB)
         
         salida.write(self.frame)
-        return salida
-    
+        return salida   
     def terminar_grabacion(self,salida):
         salida.release()
         cv2.destroyAllWindows()

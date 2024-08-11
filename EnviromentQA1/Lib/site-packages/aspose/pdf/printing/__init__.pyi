@@ -1,0 +1,816 @@
+﻿import aspose.pdf
+import aspose.pydrawing
+import datetime
+import decimal
+import io
+import uuid
+from typing import Iterable
+
+class CustomPrintEventArgs:
+    '''Provides data for the Aspose.Pdf.Facades.PdfViewer.CustomPrint event.'''
+    
+    def __init__(self, file_name: str, printer_settings: aspose.pdf.printing.PrinterSettings, page_settings: aspose.pdf.printing.PageSettings):
+        '''Initializes :class:`CustomPrintEventArgs` with the given printer and page settings.
+        
+        :param file_name: Name of the file that is being printed.
+        :param printer_settings: Information about the printer the document should be printed on.
+        :param page_settings: Settings that should be applied to each page of the document.'''
+        ...
+    
+    @property
+    def FILE_NAME(self) -> str:
+        '''Gets the name of the file that is being printed.'''
+        ...
+    
+    @property
+    def PRINTER_SETTINGS(self) -> aspose.pdf.printing.PrinterSettings:
+        '''Gets information about the printer the document should be printed on.'''
+        ...
+    
+    @property
+    def PAGE_SETTINGS(self) -> aspose.pdf.printing.PageSettings:
+        '''Gets settings that should be applied to each page of the document.'''
+        ...
+    
+    ...
+
+class PageSettings:
+    '''Specifies settings that apply to a single, printed page.'''
+    
+    @overload
+    def __init__(self):
+        '''Initializes a new instance of the :class:`PageSettings` class using the default printer.'''
+        ...
+    
+    @overload
+    def __init__(self, printer_settings: aspose.pdf.printing.PrinterSettings):
+        '''Initializes a new instance of the :class:`PageSettings` class using the specified printer.
+        
+        :param printer_settings: :attr:`PageSettings.printer_settings` object
+        :raises System.ArgumentNullException: is null.'''
+        ...
+    
+    @property
+    def bounds(self) -> aspose.pdf.Rectangle:
+        '''Gets the bounds of the page, taking into account the Landscape property.'''
+        ...
+    
+    @property
+    def color(self) -> bool:
+        '''Gets or sets a value indicating whether the page is printed in color.'''
+        ...
+    
+    @color.setter
+    def color(self, value: bool):
+        ...
+    
+    @property
+    def landscape(self) -> bool:
+        '''Gets or sets a value indicating whether the page should be printed in landscape or portrait orientation.'''
+        ...
+    
+    @landscape.setter
+    def landscape(self, value: bool):
+        ...
+    
+    @property
+    def margins(self) -> aspose.pdf.devices.Margins:
+        '''Gets or sets a value indicating the margins for this page.'''
+        ...
+    
+    @margins.setter
+    def margins(self, value: aspose.pdf.devices.Margins):
+        ...
+    
+    @property
+    def is_default_margins(self) -> bool:
+        ...
+    
+    @property
+    def paper_size(self) -> aspose.pdf.printing.PaperSize:
+        '''Gets or sets the paper size.'''
+        ...
+    
+    @paper_size.setter
+    def paper_size(self, value: aspose.pdf.printing.PaperSize):
+        ...
+    
+    @property
+    def paper_source(self) -> aspose.pdf.printing.PaperSource:
+        '''Gets or sets a value indicating the paper source (i.e. upper bin).'''
+        ...
+    
+    @paper_source.setter
+    def paper_source(self, value: aspose.pdf.printing.PaperSource):
+        ...
+    
+    @property
+    def printer_resolution(self) -> aspose.pdf.printing.PrinterResolution:
+        '''Gets or sets the printer resolution for the page.'''
+        ...
+    
+    @printer_resolution.setter
+    def printer_resolution(self, value: aspose.pdf.printing.PrinterResolution):
+        ...
+    
+    @property
+    def printer_settings(self) -> aspose.pdf.printing.PrinterSettings:
+        '''Gets or sets the associated printer settings.'''
+        ...
+    
+    @printer_settings.setter
+    def printer_settings(self, value: aspose.pdf.printing.PrinterSettings):
+        ...
+    
+    ...
+
+class PaperSize:
+    '''Specifies the size of a piece of paper.'''
+    
+    @overload
+    def __init__(self):
+        '''Initializes a new instance of the :class:`PaperSize` class with default properties.'''
+        ...
+    
+    @overload
+    def __init__(self, name: str, width: int, height: int):
+        '''Initializes a new instance of the :class:`PaperSize` class.
+        
+        :param name: The name of the paper.
+        :param width: The width of the paper, in hundredths of an inch.
+        :param height: The height of the paper, in hundredths of an inch.'''
+        ...
+    
+    @property
+    def height(self) -> int:
+        '''Gets or sets the height of the paper, in hundredths of an inch.'''
+        ...
+    
+    @height.setter
+    def height(self, value: int):
+        ...
+    
+    @property
+    def kind(self) -> aspose.pdf.printing.PaperKind:
+        '''Gets the type of paper.'''
+        ...
+    
+    @property
+    def paper_name(self) -> str:
+        '''Gets or sets the name of the type of paper.'''
+        ...
+    
+    @paper_name.setter
+    def paper_name(self, value: str):
+        ...
+    
+    @property
+    def width(self) -> int:
+        '''Gets or sets the width of the paper, in hundredths of an inch.'''
+        ...
+    
+    @width.setter
+    def width(self, value: int):
+        ...
+    
+    ...
+
+class PaperSizes:
+    '''Represents the standard paper sizes.'''
+    
+    LETTER: aspose.pdf.printing.PaperSize
+    
+    LETTER_SMALL: aspose.pdf.printing.PaperSize
+    
+    TABLOID: aspose.pdf.printing.PaperSize
+    
+    LEDGER: aspose.pdf.printing.PaperSize
+    
+    LEGAL: aspose.pdf.printing.PaperSize
+    
+    STATEMENT: aspose.pdf.printing.PaperSize
+    
+    EXECUTIVE: aspose.pdf.printing.PaperSize
+    
+    A3: aspose.pdf.printing.PaperSize
+    
+    A4: aspose.pdf.printing.PaperSize
+    
+    A4_SMALL: aspose.pdf.printing.PaperSize
+    
+    A5: aspose.pdf.printing.PaperSize
+    
+    B4: aspose.pdf.printing.PaperSize
+    
+    B5: aspose.pdf.printing.PaperSize
+    
+    FOLIO: aspose.pdf.printing.PaperSize
+    
+    QUARTO: aspose.pdf.printing.PaperSize
+    
+    STANDARD_10X14: aspose.pdf.printing.PaperSize
+    
+    STANDARD_11X17: aspose.pdf.printing.PaperSize
+    
+    NOTE: aspose.pdf.printing.PaperSize
+    
+    NUMBER_9_ENVELOPE: aspose.pdf.printing.PaperSize
+    
+    NUMBER_10_ENVELOPE: aspose.pdf.printing.PaperSize
+    
+    NUMBER_11_ENVELOPE: aspose.pdf.printing.PaperSize
+    
+    NUMBER_12_ENVELOPE: aspose.pdf.printing.PaperSize
+    
+    NUMBER_14_ENVELOPE: aspose.pdf.printing.PaperSize
+    
+    C_SHEET: aspose.pdf.printing.PaperSize
+    
+    D_SHEET: aspose.pdf.printing.PaperSize
+    
+    E_SHEET: aspose.pdf.printing.PaperSize
+    
+    DL_ENVELOPE: aspose.pdf.printing.PaperSize
+    
+    C5_ENVELOPE: aspose.pdf.printing.PaperSize
+    
+    C3_ENVELOPE: aspose.pdf.printing.PaperSize
+    
+    C4_ENVELOPE: aspose.pdf.printing.PaperSize
+    
+    C6_ENVELOPE: aspose.pdf.printing.PaperSize
+    
+    C65_ENVELOPE: aspose.pdf.printing.PaperSize
+    
+    B4_ENVELOPE: aspose.pdf.printing.PaperSize
+    
+    B5_ENVELOPE: aspose.pdf.printing.PaperSize
+    
+    B6_ENVELOPE: aspose.pdf.printing.PaperSize
+    
+    ITALY_ENVELOPE: aspose.pdf.printing.PaperSize
+    
+    MONARCH_ENVELOPE: aspose.pdf.printing.PaperSize
+    
+    PERSONAL_ENVELOPE: aspose.pdf.printing.PaperSize
+    
+    US_STANDARD_FANFOLD: aspose.pdf.printing.PaperSize
+    
+    GERMAN_STANDARD_FANFOLD: aspose.pdf.printing.PaperSize
+    
+    GERMAN_LEGAL_FANFOLD: aspose.pdf.printing.PaperSize
+    
+    ISO_B4: aspose.pdf.printing.PaperSize
+    
+    JAPANESE_POSTCARD: aspose.pdf.printing.PaperSize
+    
+    STANDARD_9X11: aspose.pdf.printing.PaperSize
+    
+    STANDARD_10X11: aspose.pdf.printing.PaperSize
+    
+    STANDARD_15X11: aspose.pdf.printing.PaperSize
+    
+    INVITE_ENVELOPE: aspose.pdf.printing.PaperSize
+    
+    LETTER_EXTRA: aspose.pdf.printing.PaperSize
+    
+    LEGAL_EXTRA: aspose.pdf.printing.PaperSize
+    
+    TABLOID_EXTRA: aspose.pdf.printing.PaperSize
+    
+    A4_EXTRA: aspose.pdf.printing.PaperSize
+    
+    LETTER_TRANSVERSE: aspose.pdf.printing.PaperSize
+    
+    A4_TRANSVERSE: aspose.pdf.printing.PaperSize
+    
+    LETTER_EXTRA_TRANSVERSE: aspose.pdf.printing.PaperSize
+    
+    A_PLUS: aspose.pdf.printing.PaperSize
+    
+    B_PLUS: aspose.pdf.printing.PaperSize
+    
+    LETTER_PLUS: aspose.pdf.printing.PaperSize
+    
+    A4_PLUS: aspose.pdf.printing.PaperSize
+    
+    A5_TRANSVERSE: aspose.pdf.printing.PaperSize
+    
+    B5_TRANSVERSE: aspose.pdf.printing.PaperSize
+    
+    A3_EXTRA: aspose.pdf.printing.PaperSize
+    
+    A5_EXTRA: aspose.pdf.printing.PaperSize
+    
+    B5_EXTRA: aspose.pdf.printing.PaperSize
+    
+    A2: aspose.pdf.printing.PaperSize
+    
+    A3_TRANSVERSE: aspose.pdf.printing.PaperSize
+    
+    A3_EXTRA_TRANSVERSE: aspose.pdf.printing.PaperSize
+    
+    JAPANESE_DOUBLE_POSTCARD: aspose.pdf.printing.PaperSize
+    
+    A6: aspose.pdf.printing.PaperSize
+    
+    JAPANESE_ENVELOPE_KAKU_NUMBER2: aspose.pdf.printing.PaperSize
+    
+    JAPANESE_ENVELOPE_KAKU_NUMBER3: aspose.pdf.printing.PaperSize
+    
+    JAPANESE_ENVELOPE_CHOU_NUMBER3: aspose.pdf.printing.PaperSize
+    
+    JAPANESE_ENVELOPE_CHOU_NUMBER4: aspose.pdf.printing.PaperSize
+    
+    LETTER_ROTATED: aspose.pdf.printing.PaperSize
+    
+    A3_ROTATED: aspose.pdf.printing.PaperSize
+    
+    A4_ROTATED: aspose.pdf.printing.PaperSize
+    
+    A5_ROTATED: aspose.pdf.printing.PaperSize
+    
+    B4_JIS_ROTATED: aspose.pdf.printing.PaperSize
+    
+    B5_JIS_ROTATED: aspose.pdf.printing.PaperSize
+    
+    JAPANESE_POSTCARD_ROTATED: aspose.pdf.printing.PaperSize
+    
+    JAPANESE_DOUBLE_POSTCARD_ROTATED: aspose.pdf.printing.PaperSize
+    
+    A6_ROTATED: aspose.pdf.printing.PaperSize
+    
+    JAPANESE_ENVELOPE_KAKU_NUMBER_2_ROTATED: aspose.pdf.printing.PaperSize
+    
+    JAPANESE_ENVELOPE_KAKU_NUMBER_3_ROTATED: aspose.pdf.printing.PaperSize
+    
+    JAPANESE_ENVELOPE_CHOU_NUMBER_3_ROTATED: aspose.pdf.printing.PaperSize
+    
+    JAPANESE_ENVELOPE_CHOU_NUMBER_4_ROTATED: aspose.pdf.printing.PaperSize
+    
+    B6_JIS: aspose.pdf.printing.PaperSize
+    
+    B6_JIS_ROTATED: aspose.pdf.printing.PaperSize
+    
+    STANDARD_12X11: aspose.pdf.printing.PaperSize
+    
+    JAPANESE_ENVELOPE_YOU_NUMBER4: aspose.pdf.printing.PaperSize
+    
+    JAPANESE_ENVELOPE_YOU_NUMBER_4_ROTATED: aspose.pdf.printing.PaperSize
+    
+    PRC_16K: aspose.pdf.printing.PaperSize
+    
+    PRC_32K: aspose.pdf.printing.PaperSize
+    
+    PRC_32K_BIG: aspose.pdf.printing.PaperSize
+    
+    PRC_ENVELOPE_NUMBER1: aspose.pdf.printing.PaperSize
+    
+    PRC_ENVELOPE_NUMBER2: aspose.pdf.printing.PaperSize
+    
+    PRC_ENVELOPE_NUMBER3: aspose.pdf.printing.PaperSize
+    
+    PRC_ENVELOPE_NUMBER4: aspose.pdf.printing.PaperSize
+    
+    PRC_ENVELOPE_NUMBER5: aspose.pdf.printing.PaperSize
+    
+    PRC_ENVELOPE_NUMBER6: aspose.pdf.printing.PaperSize
+    
+    PRC_ENVELOPE_NUMBER7: aspose.pdf.printing.PaperSize
+    
+    PRC_ENVELOPE_NUMBER8: aspose.pdf.printing.PaperSize
+    
+    PRC_ENVELOPE_NUMBER9: aspose.pdf.printing.PaperSize
+    
+    PRC_ENVELOPE_NUMBER10: aspose.pdf.printing.PaperSize
+    
+    PRC_16K_ROTATED: aspose.pdf.printing.PaperSize
+    
+    PRC_32K_ROTATED: aspose.pdf.printing.PaperSize
+    
+    PRC_32K_BIG_ROTATED: aspose.pdf.printing.PaperSize
+    
+    PRC_ENVELOPE_NUMBER_1_ROTATED: aspose.pdf.printing.PaperSize
+    
+    PRC_ENVELOPE_NUMBER_2_ROTATED: aspose.pdf.printing.PaperSize
+    
+    PRC_ENVELOPE_NUMBER_3_ROTATED: aspose.pdf.printing.PaperSize
+    
+    PRC_ENVELOPE_NUMBER_4_ROTATED: aspose.pdf.printing.PaperSize
+    
+    PRC_ENVELOPE_NUMBER_5_ROTATED: aspose.pdf.printing.PaperSize
+    
+    PRC_ENVELOPE_NUMBER_6_ROTATED: aspose.pdf.printing.PaperSize
+    
+    PRC_ENVELOPE_NUMBER_7_ROTATED: aspose.pdf.printing.PaperSize
+    
+    PRC_ENVELOPE_NUMBER_8_ROTATED: aspose.pdf.printing.PaperSize
+    
+    PRC_ENVELOPE_NUMBER_9_ROTATED: aspose.pdf.printing.PaperSize
+    
+    PRC_ENVELOPE_NUMBER_10_ROTATED: aspose.pdf.printing.PaperSize
+    
+    ...
+
+class PaperSource:
+    '''Specifies the paper tray from which the printer gets paper.'''
+    
+    def __init__(self):
+        '''Initializes a new instance of the :class:`PaperSource` class with default properties.'''
+        ...
+
+    @overload
+    def __init__(self, kind: aspose.pdf.printing.PaperSourceKind, name: str):
+        '''Initializes a new instance of the :class:`PaperSource` class with default properties.'''
+        ...
+
+    @property
+    def kind(self) -> aspose.pdf.printing.PaperSourceKind:
+        '''Gets a value indicating the type of paper source.'''
+        ...
+    
+    @property
+    def source_name(self) -> str:
+        '''Gets the name of the paper source.'''
+        ...
+    
+    @source_name.setter
+    def source_name(self, value: str):
+        ...
+    
+    ...
+
+class PaperSources:
+    '''Provides a set of predefined :class:`PaperSource` instances representing common paper sources.
+    
+    This class cannot be inherited.'''
+    
+    UPPER: aspose.pdf.printing.PaperSource
+    
+    LOWER: aspose.pdf.printing.PaperSource
+    
+    MIDDLE: aspose.pdf.printing.PaperSource
+    
+    MANUAL: aspose.pdf.printing.PaperSource
+    
+    ENVELOPE: aspose.pdf.printing.PaperSource
+    
+    MANUAL_FEED_ENVELOPE: aspose.pdf.printing.PaperSource
+    
+    AUTOMATIC_FEED: aspose.pdf.printing.PaperSource
+    
+    TRACTOR_FEED: aspose.pdf.printing.PaperSource
+    
+    SMALL_FORMAT: aspose.pdf.printing.PaperSource
+    
+    LARGE_FORMAT: aspose.pdf.printing.PaperSource
+    
+    LARGE_CAPACITY: aspose.pdf.printing.PaperSource
+    
+    CASSETTE: aspose.pdf.printing.PaperSource
+    
+    FORM_SOURCE: aspose.pdf.printing.PaperSource
+    
+    ...
+
+class PdfQueryPageSettingsEventArgs:
+    '''Provides data for the Aspose.Pdf.Facades.PdfViewer.PdfQueryPageSettings event.'''
+    
+    def __init__(self, page_settings: aspose.pdf.printing.PageSettings):
+        '''Initializes a new instance of the :class:`PdfQueryPageSettingsEventArgs` class.
+        
+        :param page_settings: The page settings for the page to be printed.'''
+        ...
+    
+    @property
+    def page_settings(self) -> aspose.pdf.printing.PageSettings:
+        '''Gets or sets the page settings for the page to be printed.'''
+        ...
+    
+    @page_settings.setter
+    def page_settings(self, value: aspose.pdf.printing.PageSettings):
+        ...
+    
+    ...
+
+class PrinterResolution:
+    '''Represents the resolution supported by a printer.'''
+    
+    def __init__(self):
+        '''Initializes a new instance of the :class:`PrinterResolution` class with default properties.'''
+        ...
+    
+    @property
+    def kind(self) -> aspose.pdf.printing.PrinterResolutionKind:
+        '''Gets a value indicating the kind of printer resolution.'''
+        ...
+    
+    @kind.setter
+    def kind(self, value: aspose.pdf.printing.PrinterResolutionKind):
+        ...
+    
+    @property
+    def x(self) -> int:
+        '''Gets the printer resolution in the horizontal direction, in dots per inch.'''
+        ...
+    
+    @x.setter
+    def x(self, value: int):
+        ...
+    
+    @property
+    def y(self) -> int:
+        '''Gets the printer resolution in the vertical direction, in dots per inch.'''
+        ...
+    
+    @y.setter
+    def y(self, value: int):
+        ...
+    
+    ...
+
+class PrinterSettings:
+    '''Specifies information about how a document is printed, including the printer that prints it.'''
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def copies(self) -> int:
+        '''Gets or sets the number of copies to print.'''
+        ...
+    
+    @copies.setter
+    def copies(self, value: int):
+        ...
+    
+    @property
+    def collate(self) -> bool:
+        '''Gets or sets a value indicating whether the print out is collated.'''
+        ...
+    
+    @collate.setter
+    def collate(self, value: bool):
+        ...
+    
+    @property
+    def default_page_settings(self) -> aspose.pdf.printing.PageSettings:
+        '''Gets the default page settings for this printer.'''
+        ...
+    
+    @property
+    def duplex(self) -> aspose.pdf.printing.Duplex:
+        '''Gets or sets the printer's duplex setting.'''
+        ...
+    
+    @duplex.setter
+    def duplex(self, value: aspose.pdf.printing.Duplex):
+        ...
+    
+    @property
+    def from_page(self) -> int:
+        '''Gets or sets the first page to print.'''
+        ...
+    
+    @from_page.setter
+    def from_page(self, value: int):
+        ...
+    
+    @property
+    def maximum_page(self) -> int:
+        '''Gets or sets the highest :attr:`PrinterSettings.from_page` or :attr:`PrinterSettings.to_page` which may be selected in a print dialog box.'''
+        ...
+    
+    @maximum_page.setter
+    def maximum_page(self, value: int):
+        ...
+    
+    @property
+    def minimum_page(self) -> int:
+        '''Gets or sets the lowest :attr:`PrinterSettings.from_page` or :attr:`PrinterSettings.to_page` which may be selected in a print dialog box.'''
+        ...
+    
+    @minimum_page.setter
+    def minimum_page(self, value: int):
+        ...
+    
+    @property
+    def print_file_name(self) -> str:
+        '''Indicates the name of the printerfile.'''
+        ...
+    
+    @print_file_name.setter
+    def print_file_name(self, value: str):
+        ...
+    
+    @property
+    def print_range(self) -> aspose.pdf.printing.PrintRange:
+        '''Gets or sets the pages the user has asked to print.'''
+        ...
+    
+    @print_range.setter
+    def print_range(self, value: aspose.pdf.printing.PrintRange):
+        ...
+    
+    @property
+    def print_to_file(self) -> bool:
+        '''Indicates whether to print to a file instead of a port.'''
+        ...
+    
+    @print_to_file.setter
+    def print_to_file(self, value: bool):
+        ...
+    
+    @property
+    def printer_name(self) -> str:
+        '''Gets or sets the name of the printer.'''
+        ...
+    
+    @printer_name.setter
+    def printer_name(self, value: str):
+        ...
+    
+    @property
+    def printer_uri(self) -> None:
+        '''Get or sets the URI of the network printer.'''
+        ...
+    
+    @printer_uri.setter
+    def printer_uri(self, value: None):
+        ...
+    
+    @property
+    def to_page(self) -> int:
+        '''Gets or sets the last page to print.'''
+        ...
+    
+    @to_page.setter
+    def to_page(self, value: int):
+        ...
+    
+    ...
+
+class Duplex:
+    '''Specifies the printer's duplex setting.'''
+    
+    DEFAULT: Duplex
+    SIMPLEX: Duplex
+    HORIZONTAL: Duplex
+    VERTICAL: Duplex
+
+class PaperKind:
+    '''Specifies the standard paper sizes.'''
+    
+    CUSTOM: PaperKind
+    LETTER: PaperKind
+    LETTER_SMALL: PaperKind
+    TABLOID: PaperKind
+    LEDGER: PaperKind
+    LEGAL: PaperKind
+    STATEMENT: PaperKind
+    EXECUTIVE: PaperKind
+    A3: PaperKind
+    A4: PaperKind
+    A4_SMALL: PaperKind
+    A5: PaperKind
+    B4: PaperKind
+    B5: PaperKind
+    FOLIO: PaperKind
+    QUARTO: PaperKind
+    STANDARD_10X14: PaperKind
+    STANDARD_11X17: PaperKind
+    NOTE: PaperKind
+    NUMBER_9_ENVELOPE: PaperKind
+    NUMBER_10_ENVELOPE: PaperKind
+    NUMBER_11_ENVELOPE: PaperKind
+    NUMBER_12_ENVELOPE: PaperKind
+    NUMBER_14_ENVELOPE: PaperKind
+    C_SHEET: PaperKind
+    D_SHEET: PaperKind
+    E_SHEET: PaperKind
+    DL_ENVELOPE: PaperKind
+    C5_ENVELOPE: PaperKind
+    C3_ENVELOPE: PaperKind
+    C4_ENVELOPE: PaperKind
+    C6_ENVELOPE: PaperKind
+    C65_ENVELOPE: PaperKind
+    B4_ENVELOPE: PaperKind
+    B5_ENVELOPE: PaperKind
+    B6_ENVELOPE: PaperKind
+    ITALY_ENVELOPE: PaperKind
+    MONARCH_ENVELOPE: PaperKind
+    PERSONAL_ENVELOPE: PaperKind
+    US_STANDARD_FANFOLD: PaperKind
+    GERMAN_STANDARD_FANFOLD: PaperKind
+    GERMAN_LEGAL_FANFOLD: PaperKind
+    ISO_B4: PaperKind
+    JAPANESE_POSTCARD: PaperKind
+    STANDARD_9X11: PaperKind
+    STANDARD_10X11: PaperKind
+    STANDARD_15X11: PaperKind
+    INVITE_ENVELOPE: PaperKind
+    LETTER_EXTRA: PaperKind
+    LEGAL_EXTRA: PaperKind
+    TABLOID_EXTRA: PaperKind
+    A4_EXTRA: PaperKind
+    LETTER_TRANSVERSE: PaperKind
+    A4_TRANSVERSE: PaperKind
+    LETTER_EXTRA_TRANSVERSE: PaperKind
+    A_PLUS: PaperKind
+    B_PLUS: PaperKind
+    LETTER_PLUS: PaperKind
+    A4_PLUS: PaperKind
+    A5_TRANSVERSE: PaperKind
+    B5_TRANSVERSE: PaperKind
+    A3_EXTRA: PaperKind
+    A5_EXTRA: PaperKind
+    B5_EXTRA: PaperKind
+    A2: PaperKind
+    A3_TRANSVERSE: PaperKind
+    A3_EXTRA_TRANSVERSE: PaperKind
+    JAPANESE_DOUBLE_POSTCARD: PaperKind
+    A6: PaperKind
+    JAPANESE_ENVELOPE_KAKU_NUMBER2: PaperKind
+    JAPANESE_ENVELOPE_KAKU_NUMBER3: PaperKind
+    JAPANESE_ENVELOPE_CHOU_NUMBER3: PaperKind
+    JAPANESE_ENVELOPE_CHOU_NUMBER4: PaperKind
+    LETTER_ROTATED: PaperKind
+    A3_ROTATED: PaperKind
+    A4_ROTATED: PaperKind
+    A5_ROTATED: PaperKind
+    B4_JIS_ROTATED: PaperKind
+    B5_JIS_ROTATED: PaperKind
+    JAPANESE_POSTCARD_ROTATED: PaperKind
+    JAPANESE_DOUBLE_POSTCARD_ROTATED: PaperKind
+    A6_ROTATED: PaperKind
+    JAPANESE_ENVELOPE_KAKU_NUMBER_2_ROTATED: PaperKind
+    JAPANESE_ENVELOPE_KAKU_NUMBER_3_ROTATED: PaperKind
+    JAPANESE_ENVELOPE_CHOU_NUMBER_3_ROTATED: PaperKind
+    JAPANESE_ENVELOPE_CHOU_NUMBER_4_ROTATED: PaperKind
+    B6_JIS: PaperKind
+    B6_JIS_ROTATED: PaperKind
+    STANDARD_12X11: PaperKind
+    JAPANESE_ENVELOPE_YOU_NUMBER4: PaperKind
+    JAPANESE_ENVELOPE_YOU_NUMBER_4_ROTATED: PaperKind
+    PRC_16K: PaperKind
+    PRC_32K: PaperKind
+    PRC_32K_BIG: PaperKind
+    PRC_ENVELOPE_NUMBER1: PaperKind
+    PRC_ENVELOPE_NUMBER2: PaperKind
+    PRC_ENVELOPE_NUMBER3: PaperKind
+    PRC_ENVELOPE_NUMBER4: PaperKind
+    PRC_ENVELOPE_NUMBER5: PaperKind
+    PRC_ENVELOPE_NUMBER6: PaperKind
+    PRC_ENVELOPE_NUMBER7: PaperKind
+    PRC_ENVELOPE_NUMBER8: PaperKind
+    PRC_ENVELOPE_NUMBER9: PaperKind
+    PRC_ENVELOPE_NUMBER10: PaperKind
+    PRC_16K_ROTATED: PaperKind
+    PRC_32K_ROTATED: PaperKind
+    PRC_32K_BIG_ROTATED: PaperKind
+    PRC_ENVELOPE_NUMBER_1_ROTATED: PaperKind
+    PRC_ENVELOPE_NUMBER_2_ROTATED: PaperKind
+    PRC_ENVELOPE_NUMBER_3_ROTATED: PaperKind
+    PRC_ENVELOPE_NUMBER_4_ROTATED: PaperKind
+    PRC_ENVELOPE_NUMBER_5_ROTATED: PaperKind
+    PRC_ENVELOPE_NUMBER_6_ROTATED: PaperKind
+    PRC_ENVELOPE_NUMBER_7_ROTATED: PaperKind
+    PRC_ENVELOPE_NUMBER_8_ROTATED: PaperKind
+    PRC_ENVELOPE_NUMBER_9_ROTATED: PaperKind
+    PRC_ENVELOPE_NUMBER_10_ROTATED: PaperKind
+
+class PaperSourceKind:
+    '''Standard paper sources.'''
+    
+    UPPER: PaperSourceKind
+    LOWER: PaperSourceKind
+    MIDDLE: PaperSourceKind
+    MANUAL: PaperSourceKind
+    ENVELOPE: PaperSourceKind
+    MANUAL_FEED: PaperSourceKind
+    AUTOMATIC_FEED: PaperSourceKind
+    TRACTOR_FEED: PaperSourceKind
+    SMALL_FORMAT: PaperSourceKind
+    LARGE_FORMAT: PaperSourceKind
+    LARGE_CAPACITY: PaperSourceKind
+    CASSETTE: PaperSourceKind
+    FORM_SOURCE: PaperSourceKind
+    CUSTOM: PaperSourceKind
+
+class PrintRange:
+    '''Specifies the option that designate the part of the document to print.'''
+    
+    ALL_PAGES: PrintRange
+    SOME_PAGES: PrintRange
+    SELECTION: PrintRange
+    CURRENT_PAGE: PrintRange
+
+class PrinterResolutionKind:
+    '''Specifies a printer resolution.'''
+    
+    HIGH: PrinterResolutionKind
+    MEDIUM: PrinterResolutionKind
+    LOW: PrinterResolutionKind
+    DRAFT: PrinterResolutionKind
+    CUSTOM: PrinterResolutionKind
+

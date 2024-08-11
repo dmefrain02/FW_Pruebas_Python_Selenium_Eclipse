@@ -1,0 +1,25 @@
+{
+  "uid" : "98d3104e051c652961429bf95fa0b5d6",
+  "name" : "suites",
+  "children" : [ {
+    "name" : "test44",
+    "children" : [ {
+      "name" : "Pruebas_PaginaCompras",
+      "children" : [ {
+        "name" : "test001",
+        "uid" : "20981128442fdd38",
+        "parentUid" : "f8b3edb047218f62966525f86d04bfe0",
+        "status" : "passed",
+        "time" : {
+          "start" : 1721939898352,
+          "stop" : 1721939939860,
+          "duration" : 41508
+        },
+        "flaky" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "f8b3edb047218f62966525f86d04bfe0"
+    } ],
+    "uid" : "aeacd89962114d0a1dde627d064a732d"
+  } ]
+}
