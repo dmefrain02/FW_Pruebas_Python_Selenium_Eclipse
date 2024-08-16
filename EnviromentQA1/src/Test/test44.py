@@ -8,7 +8,7 @@ class Pruebas_PaginaCompras(unittest.TestCase):
         Selenium.obtener_archivo_json(self, 'Localizadores_Spotify')
     
     def test001(self):
-        Selenium.abrir_navegador(self,"Edge")
+        Selenium.abrir_navegador(self)
         Selenium.get_url_driver(self, "https://www.bestday.com.mx/")
         Selenium.esperar_elemento(self)
         Selenium.Realizar_Scroll_JS(self, "DateTimeIda")

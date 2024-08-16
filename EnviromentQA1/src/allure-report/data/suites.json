@@ -2,24 +2,28 @@
   "uid" : "98d3104e051c652961429bf95fa0b5d6",
   "name" : "suites",
   "children" : [ {
-    "name" : "test44",
+    "name" : "Test",
     "children" : [ {
-      "name" : "Pruebas_PaginaCompras",
+      "name" : "test44",
       "children" : [ {
-        "name" : "test001",
-        "uid" : "20981128442fdd38",
-        "parentUid" : "f8b3edb047218f62966525f86d04bfe0",
-        "status" : "passed",
-        "time" : {
-          "start" : 1721939898352,
-          "stop" : 1721939939860,
-          "duration" : 41508
-        },
-        "flaky" : false,
-        "parameters" : [ ]
+        "name" : "Pruebas_PaginaCompras",
+        "children" : [ {
+          "name" : "test001",
+          "uid" : "8879b6e3e2e9bfb5",
+          "parentUid" : "b705b8583c8030c02f1a85601b25c950",
+          "status" : "broken",
+          "time" : {
+            "start" : 1723761326824,
+            "stop" : 1723761340554,
+            "duration" : 13730
+          },
+          "flaky" : true,
+          "parameters" : [ ]
+        } ],
+        "uid" : "b705b8583c8030c02f1a85601b25c950"
       } ],
-      "uid" : "f8b3edb047218f62966525f86d04bfe0"
+      "uid" : "0ef17ca04a0c60641b6a39fb17f4298a"
     } ],
-    "uid" : "aeacd89962114d0a1dde627d064a732d"
+    "uid" : "0b78c9c59ea4f706402d505dad753d3e"
   } ]
 }

@@ -38,7 +38,7 @@ class Inicializar():
     HourFormat = '%H%M%S'
     
     #Navegador a Utilizar
-    Navegador = u'Chrome'
+    Navegador = u'Edge'
     
     #Ruta Excel para escribir resultados o leer datos
     Excel_Leer_Escribir = BaseDir + u'\Data\Pruebas1.xlsx'
