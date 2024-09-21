@@ -1,6 +1,6 @@
+from __future__ import annotations
+
 from typing import Generator
-from typing import Optional
-from typing import Union
 
 from _pytest._io.saferepr import saferepr
 from _pytest.config import Config
@@ -58,7 +58,7 @@ def pytest_fixture_post_finalizer(
         if config.option.setupshow:
             _show_fixture_action(fixturedef, request.config, "TEARDOWN")
             if hasattr(fixturedef, "cached_param"):
-                del fixturedef.cached_param  # type: ignore[attr-defined]
+                del fixturedef.cached_param
 
 
 def _show_fixture_action(
@@ -87,7 +87,7 @@ def _show_fixture_action(
             tw.write(" (fixtures used: {})".format(", ".join(deps)))
 
     if hasattr(fixturedef, "cached_param"):
-        tw.write(f"[{saferepr(fixturedef.cached_param, maxsize=42)}]")  # type: ignore[attr-defined]
+        tw.write(f"[{saferepr(fixturedef.cached_param, maxsize=42)}]")
 
     tw.flush()
 
@@ -96,7 +96,7 @@ def _show_fixture_action(
 
 
 @pytest.hookimpl(tryfirst=True)
-def pytest_cmdline_main(config: Config) -> Optional[Union[int, ExitCode]]:
+def pytest_cmdline_main(config: Config) -> int | ExitCode | None:
     if config.option.setuponly:
         config.option.setupshow = True
     return None

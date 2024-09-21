@@ -15,6 +15,7 @@ __all__ = [
     "Range",
     "Rect",
     "Rect2i",
+    "Rect2f",
     "Rect2d",
     "Moments",
     "RotatedRect",
@@ -56,18 +57,18 @@ __all__ = [
     "map_int_and_double",
 ]
 
+import cv2.dnn
+import typing as _typing
 import cv2.mat_wrapper
 import numpy
-import cv2.dnn
-import cv2
-import typing as _typing
 import cv2.gapi.wip.draw
+import cv2
 
 
 if _typing.TYPE_CHECKING:
-    NumPyArrayGeneric = numpy.ndarray[_typing.Any, numpy.dtype[numpy.generic]]
+    NumPyArrayNumeric = numpy.ndarray[_typing.Any, numpy.dtype[numpy.integer[_typing.Any] | numpy.floating[_typing.Any]]]
 else:
-    NumPyArrayGeneric = numpy.ndarray
+    NumPyArrayNumeric = numpy.ndarray
 
 
 if _typing.TYPE_CHECKING:
@@ -90,7 +91,7 @@ else:
 
 IntPointer = int
 """Represents an arbitrary pointer"""
-MatLike = _typing.Union[cv2.mat_wrapper.Mat, NumPyArrayGeneric]
+MatLike = _typing.Union[cv2.mat_wrapper.Mat, NumPyArrayNumeric]
 MatShape = _typing.Sequence[int]
 Size = _typing.Sequence[int]
 """Required length is 2"""
@@ -117,10 +118,12 @@ Rect = _typing.Sequence[int]
 """Required length is 4"""
 Rect2i = _typing.Sequence[int]
 """Required length is 4"""
+Rect2f = _typing.Sequence[float]
+"""Required length is 4"""
 Rect2d = _typing.Sequence[float]
 """Required length is 4"""
 Moments = _typing.Dict[str, float]
-RotatedRect = _typing.Tuple[Point2f, Size, float]
+RotatedRect = _typing.Tuple[Point2f, Size2f, float]
 """Any type providing sequence protocol is supported"""
 TermCriteria = _typing.Tuple[TermCriteria_Type, int, float]
 """Any type providing sequence protocol is supported"""

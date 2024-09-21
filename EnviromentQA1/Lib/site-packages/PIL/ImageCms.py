@@ -299,6 +299,31 @@ class ImageCmsTransform(Image.ImagePointHandler):
         proof_intent: Intent = Intent.ABSOLUTE_COLORIMETRIC,
         flags: Flags = Flags.NONE,
     ):
+        supported_modes = (
+            "RGB",
+            "RGBA",
+            "RGBX",
+            "CMYK",
+            "I;16",
+            "I;16L",
+            "I;16B",
+            "YCbCr",
+            "LAB",
+            "L",
+            "1",
+        )
+        for mode in (input_mode, output_mode):
+            if mode not in supported_modes:
+                deprecate(
+                    mode,
+                    12,
+                    {
+                        "L;16": "I;16 or I;16L",
+                        "L:16B": "I;16B",
+                        "YCCA": "YCbCr",
+                        "YCC": "YCbCr",
+                    }.get(mode),
+                )
         if proof is None:
             self.transform = core.buildTransform(
                 input.profile, output.profile, input_mode, output_mode, intent, flags
@@ -704,12 +729,12 @@ def applyTransform(
     """
     (pyCMS) Applies a transform to a given image.
 
-    If ``im.mode != transform.inMode``, a :exc:`PyCMSError` is raised.
+    If ``im.mode != transform.input_mode``, a :exc:`PyCMSError` is raised.
 
-    If ``inPlace`` is ``True`` and ``transform.inMode != transform.outMode``, a
+    If ``inPlace`` is ``True`` and ``transform.input_mode != transform.output_mode``, a
     :exc:`PyCMSError` is raised.
 
-    If ``im.mode``, ``transform.inMode`` or ``transform.outMode`` is not
+    If ``im.mode``, ``transform.input_mode`` or ``transform.output_mode`` is not
     supported by pyCMSdll or the profiles you used for the transform, a
     :exc:`PyCMSError` is raised.
 
@@ -723,13 +748,13 @@ def applyTransform(
 
     If you want to modify im in-place instead of receiving a new image as
     the return value, set ``inPlace`` to ``True``.  This can only be done if
-    ``transform.inMode`` and ``transform.outMode`` are the same, because we can't
-    change the mode in-place (the buffer sizes for some modes are
+    ``transform.input_mode`` and ``transform.output_mode`` are the same, because we
+    can't change the mode in-place (the buffer sizes for some modes are
     different).  The default behavior is to return a new :py:class:`~PIL.Image.Image`
-    object of the same dimensions in mode ``transform.outMode``.
+    object of the same dimensions in mode ``transform.output_mode``.
 
-    :param im: An :py:class:`~PIL.Image.Image` object, and im.mode must be the same
-        as the ``inMode`` supported by the transform.
+    :param im: An :py:class:`~PIL.Image.Image` object, and ``im.mode`` must be the same
+        as the ``input_mode`` supported by the transform.
     :param transform: A valid CmsTransform class object
     :param inPlace: Bool.  If ``True``, ``im`` is modified in place and ``None`` is
         returned, if ``False``, a new :py:class:`~PIL.Image.Image` object with the
@@ -754,7 +779,7 @@ def applyTransform(
 
 
 def createProfile(
-    colorSpace: Literal["LAB", "XYZ", "sRGB"], colorTemp: SupportsFloat = -1
+    colorSpace: Literal["LAB", "XYZ", "sRGB"], colorTemp: SupportsFloat = 0
 ) -> core.CmsProfile:
     """
     (pyCMS) Creates a profile.
@@ -777,7 +802,7 @@ def createProfile(
     :param colorSpace: String, the color space of the profile you wish to
         create.
         Currently only "LAB", "XYZ", and "sRGB" are supported.
-    :param colorTemp: Positive integer for the white point for the profile, in
+    :param colorTemp: Positive number for the white point for the profile, in
         degrees Kelvin (i.e. 5000, 6500, 9600, etc.).  The default is for D50
         illuminant if omitted (5000k).  colorTemp is ONLY applied to LAB
         profiles, and is ignored for XYZ and sRGB.
@@ -838,8 +863,8 @@ def getProfileName(profile: _CmsProfileCompatible) -> str:
 
         if not (model or manufacturer):
             return (profile.profile.profile_description or "") + "\n"
-        if not manufacturer or len(model) > 30:  # type: ignore[arg-type]
-            return model + "\n"  # type: ignore[operator]
+        if not manufacturer or (model and len(model) > 30):
+            return f"{model}\n"
         return f"{model} - {manufacturer}\n"
 
     except (AttributeError, OSError, TypeError, ValueError) as v:
@@ -1089,7 +1114,7 @@ def isIntentSupported(
         raise PyCMSError(v) from v
 
 
-def versions() -> tuple[str, str, str, str]:
+def versions() -> tuple[str, str | None, str, str]:
     """
     (pyCMS) Fetches versions.
     """

@@ -19,7 +19,7 @@ def encode_list_path(value):
     return [encode_path(i) for i in value]
 
 
-def run():  # noqa: PLR0912
+def run():
     """Print debug data about the virtual environment."""
     try:
         from collections import OrderedDict  # noqa: PLC0415
@@ -95,7 +95,7 @@ def run():  # noqa: PLR0912
         except (ValueError, TypeError) as exception:  # pragma: no cover
             sys.stderr.write(repr(exception))
             sys.stdout.write(repr(result))  # pragma: no cover
-            raise SystemExit(1)  # noqa: TRY200, B904  # pragma: no cover
+            raise SystemExit(1)  # noqa: B904  # pragma: no cover
 
 
 if __name__ == "__main__":

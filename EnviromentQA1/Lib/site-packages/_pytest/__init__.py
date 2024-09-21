@@ -1,3 +1,6 @@
+from __future__ import annotations
+
+
 __all__ = ["__version__", "version_tuple"]
 
 try:
@@ -7,4 +10,4 @@ except ImportError:  # pragma: no cover
     # broken installation, we don't even try
     # unknown only works because we do poor mans version compare
     __version__ = "unknown"
-    version_tuple = (0, 0, "unknown")  # type:ignore[assignment]
+    version_tuple = (0, 0, "unknown")
