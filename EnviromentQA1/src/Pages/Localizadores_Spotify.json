@@ -163,5 +163,9 @@
 	"DiaVuelta":{
     	"GetFieldBy":"xpath",
     	"ValueToFind":"/html[1]/body[1]/div[4]/div[1]/div[1]/div[1]/div[1]/div[3]/div[10]/div[1]"
+	},
+	"Mercadolibre-Busqueda":{
+		"GetFieldBy":"xpath",
+		"ValueToFind":"//input[@id='cb1-edit']"
 	}
 }
