@@ -67,15 +67,6 @@ class Functions(Inicializar):
     
     Nav_utilizado_capturas = ""
     
-    def func(self, cant_hilos, url):
-        for _ in range(self.numero_multitareas):
-            i = Thread(target=func,args=(self.barrier,))
-            i.start()
-            self.threads.append(i)
-            
-        for _ in self.threads:
-            i.join()
-    
     #Abrir Navegador
     def abrir_navegador(self,navegador=Inicializar.Navegador,URL_SeleniumGrid = Inicializar.URL_SeleniumGrid):
         print(u"Directorio Base:" + Inicializar.BaseDir)
