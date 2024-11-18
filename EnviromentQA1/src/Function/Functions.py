@@ -61,11 +61,12 @@ import pyautogui
 import cv2
 import numpy as np
 from unittest.case import skip
-
+from threading import Thread,Barrier
 
 class Functions(Inicializar):
     
     Nav_utilizado_capturas = ""
+    
     #Abrir Navegador
     def abrir_navegador(self,navegador=Inicializar.Navegador,URL_SeleniumGrid = Inicializar.URL_SeleniumGrid):
         print(u"Directorio Base:" + Inicializar.BaseDir)
