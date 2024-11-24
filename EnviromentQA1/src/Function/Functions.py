@@ -86,7 +86,10 @@ class Functions(Inicializar):
             prefs = {
                  "profile.default_content_settings.popups": 0,
                  "download.default_directory": Inicializar.Ruta_Descarga,
-                 "directory_upgrade":True 
+                 "directory_upgrade":True ,
+                 "download.prompt_for_download": False, # Para que el navegador no pregunte al descargar
+                 #"plugins.always_open_pdf_externally": True}) # Para que el navegador no abra el PDF en una pestaña nueva
+                 #"plugins.plugins_disabled" : ["Chrome PDF Viewer"]
             }
             options.add_experimental_option("prefs", prefs)
             options.add_argument('start-maximized')
