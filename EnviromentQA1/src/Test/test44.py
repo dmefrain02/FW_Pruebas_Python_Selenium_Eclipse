@@ -33,7 +33,6 @@ class Pruebas_PaginaCompras(unittest.TestCase):
             threads.wait()
             Selenium.click_en_elemento(self, "Mercadolibre-Busqueda")
             Selenium.escribir_texto(self, "Mercadolibre-Busqueda", "ABC")
-            
         for _ in range(self.numero_multitareas):
             i = Thread(target=func,args=(self.barrier,))
             i.start()
