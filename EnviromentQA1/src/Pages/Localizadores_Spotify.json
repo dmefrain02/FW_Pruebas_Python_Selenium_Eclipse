@@ -167,5 +167,33 @@
 	"Mercadolibre-Busqueda":{
 		"GetFieldBy":"xpath",
 		"ValueToFind":"//input[@id='cb1-edit']"
-	}
+	},
+	"texto-OK":{
+		"GetFieldBy":"xpath",
+		"ValueToFind":"//span[@id='confirmResult']"
+	},
+	"texto-Cancel":{
+		"GetFieldBy":"xpath",
+		"ValueToFind":"//span[@id='confirmResult']"
+	},
+	"btn-accept":{
+		"GetFieldBy":"xpath",
+		"ValueToFind":"//button[@id='alertButton']"
+	},
+	"btn-time":{
+		"GetFieldBy":"xpath",
+		"ValueToFind":"//button[@id='timerAlertButton']"
+	},
+	"btn-OK-cancel":{
+		"GetFieldBy":"xpath",
+		"ValueToFind":"//button[@id='confirmButton']"
+	},
+	"btn-txt-ing":{
+		"GetFieldBy":"xpath",
+		"ValueToFind":"//button[@id='promtButton']"
+	},
+	"result-txt-ing":{
+			"GetFieldBy":"xpath",
+			"ValueToFind":"//span[@id='promptResult']"
+		}
 }

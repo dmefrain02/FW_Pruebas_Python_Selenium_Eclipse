@@ -11,7 +11,7 @@ class Test(unittest.TestCase):
 
     def setUp(self):
         self.Num1 = 5
-        self.Num2 = 15
+        self.Num2 = 16
 
     def test1(self):
         self.Resultado = self.Num1 + self.Num2

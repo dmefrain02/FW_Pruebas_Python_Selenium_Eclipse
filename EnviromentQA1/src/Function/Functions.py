@@ -24,8 +24,10 @@ from selenium.webdriver.remote.webelement import isDisplayed_js
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.keys import Keys 
+from selenium.webdriver.common.keys import Keys
+
 from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.common.alert import Alert
 
 from selenium.webdriver.remote import remote_connection
 
@@ -704,24 +706,21 @@ class Functions(Inicializar):
     #Realizar Assert True para validar texto       
     def Assert_True_Validar_Texto(self,elemento,texto_esperado,msj):
         return self.assertTrue(Functions.obtener_Texto(self, elemento)==texto_esperado, msj)
-        Functions.esperar_elemento(self)
         
      #Realizar Assert False para validar texto   
     def AssertFalse_Validar_Texto(self,elemento,texto_esperado,msj):
         return self.assertFalse(Functions.obtener_Texto(self, elemento)==texto_esperado, msj)
-        Functions.esperar_elemento(self)
     
     #Realizar Assert Equals para validar texto
     def Assert_Equals_Comparar_Textos(self,elemento,texto_esperado,msj):
         return self.assertEqual(Functions.obtener_Texto(self, elemento),texto_esperado, msj)
-        Functions.esperar_elemento(self) 
-     
     #Realizar IsDisplayed para validar elemento
     def Assert_True_IsDisplayer_Elemento(self,elemento, msj):
         elemento = Functions.obtener_elemento(self, elemento)
         return self.assertTrue(elemento.is_displayed()==True,msj)
-        Functions.esperar_elemento(self)
-    
+    def Assert_In_Elemento(self,texto_contenido, texto_ingresado):
+        return self.assertIn(texto_contenido, f'You entered {texto_ingresado}')
+                         
     #Mover Mouse en aplicativo web
     def Mover_Mouse_x_App_Web(self,entidad):
         action = ActionChains(self.driver)
@@ -926,3 +925,32 @@ class Functions(Inicializar):
         salida.release()
         cv2.destroyAllWindows()
         print('Se finaliza la grabación del video')
+        
+    #0= alert OK por defecto, 1= alert espera de 5 segundos, 2=  ok y cancel, 3=  ok y cancel, 4= texto ingresado
+    def alert_navegadores(self, espera, tipo_alert,elemento="", texto_ingresado = ""):
+        
+        self.alert = Alert(self.driver)
+        self.text_alert = self.alert.text
+        
+        if (tipo_alert == 0):
+            print('Mensaje de alert: ' + self.text_alert)
+            self.alert.accept()
+        elif (tipo_alert == 1):
+            print('Mensaje de alert: ' + self.text_alert)
+            self.alert.accept()
+        elif(tipo_alert == 2):
+            print('Mensaje de alert: ' + self.text_alert)
+            self.alert.accept()
+            self.assertEqual(Functions.obtener_Texto(self, elemento), "You selected Ok", "El texto de la alerta no se muestra correctamente")
+        elif(tipo_alert == 3):
+            print('Mensaje de alert: ' + self.text_alert)
+            self.alert.dismiss()
+            self.assertEqual(Functions.obtener_Texto(self, elemento), "You selected Cancel", "El texto de la alerta no se muestra correctamente")
+        elif(tipo_alert == 4):
+            print('Mensaje de alert: ' + self.text_alert)
+            self.alert.send_keys(texto_ingresado)
+            self.alert.accept()
+            self.assertIn('You entered ', Functions.obtener_Texto(self, elemento))
+            
+    def WebdriverWait(self,time):
+        WebDriverWait(self.driver,time)
