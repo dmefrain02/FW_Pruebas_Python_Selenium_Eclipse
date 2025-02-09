@@ -703,23 +703,18 @@ class Functions(Inicializar):
                 print(u'No se pudo cargar el archivo en el elemento: ' + entidad + ' con el valor: ' + self.json_ValueToFind)
                 Functions.cerrar_driver_navegador(self)   
     
-    #Realizar Assert True para validar texto       
-    def Assert_True_Validar_Texto(self,elemento,texto_esperado,msj):
-        return self.assertTrue(Functions.obtener_Texto(self, elemento)==texto_esperado, msj)
-        
-     #Realizar Assert False para validar texto   
-    def AssertFalse_Validar_Texto(self,elemento,texto_esperado,msj):
-        return self.assertFalse(Functions.obtener_Texto(self, elemento)==texto_esperado, msj)
-    
-    #Realizar Assert Equals para validar texto
-    def Assert_Equals_Comparar_Textos(self,elemento,texto_esperado,msj):
+    #Assert
+    def Assert_Equal(self,elemento,texto_esperado,msj):
         return self.assertEqual(Functions.obtener_Texto(self, elemento),texto_esperado, msj)
-    #Realizar IsDisplayed para validar elemento
-    def Assert_True_IsDisplayer_Elemento(self,elemento, msj):
+    def Assert_True(self,elemento,texto,msj):
+        return self.assertTrue(Functions.obtener_Texto(self, elemento)==texto, msj)
+    def AssertFalse(self,elemento,texto,msj):
+        return self.assertFalse(Functions.obtener_Texto(self, elemento)==texto, msj)
+    def Assert_True_IsDisplayer(self,elemento, msj):
         elemento = Functions.obtener_elemento(self, elemento)
         return self.assertTrue(elemento.is_displayed()==True,msj)
-    def Assert_In_Elemento(self,texto_contenido, texto_ingresado):
-        return self.assertIn(texto_contenido, f'You entered {texto_ingresado}')
+    def Assert_In_Elemento(self,texto_contenido, texto_ingresado_alert):
+        return self.assertIn(texto_contenido, f'You entered {texto_ingresado_alert}')
                          
     #Mover Mouse en aplicativo web
     def Mover_Mouse_x_App_Web(self,entidad):
@@ -941,16 +936,16 @@ class Functions(Inicializar):
         elif(tipo_alert == 2):
             print('Mensaje de alert: ' + self.text_alert)
             self.alert.accept()
-            self.assertEqual(Functions.obtener_Texto(self, elemento), "You selected Ok", "El texto de la alerta no se muestra correctamente")
+            Functions.Assert_Equal(self,elemento, "You selected Ok", "El texto de la alerta no se muestra correctamente")
         elif(tipo_alert == 3):
             print('Mensaje de alert: ' + self.text_alert)
             self.alert.dismiss()
-            self.assertEqual(Functions.obtener_Texto(self, elemento), "You selected Cancel", "El texto de la alerta no se muestra correctamente")
+            Functions.Assert_Equal(self,elemento, "You selected Cancel", "El texto de la alerta no se muestra correctamente")
         elif(tipo_alert == 4):
             print('Mensaje de alert: ' + self.text_alert)
             self.alert.send_keys(texto_ingresado)
             self.alert.accept()
-            self.assertIn('You entered ', Functions.obtener_Texto(self, elemento))
+            Functions.Assert_In_Elemento(self,'You entered ', Functions.obtener_Texto(self, elemento))
             
     def WebdriverWait(self,time):
         WebDriverWait(self.driver,time)
