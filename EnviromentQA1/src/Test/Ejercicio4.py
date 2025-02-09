@@ -5,12 +5,13 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.alert import Alert #Manejo de Alert
 import time
 import unittest
+from Function.Functions import Functions as Selenium
 
 class Test(unittest.TestCase):
 
     def setUp(self):
-        self.driver = webdriver.Chrome(executable_path="..\\Drivers\\chromedriver.exe")
-        self.driver.maximize_window()
+        Selenium.abrir_navegador(self)
+        Selenium.obtener_archivo_json(self, 'Localizadores')
         self.driver.implicitly_wait(10)
         
     def test_04(self):
@@ -24,7 +25,7 @@ class Test(unittest.TestCase):
         
         print('Mensaje de alert: ' + self.text_alert)
         self.alert.accept()
-        self.assertEquals(self.text_alert, "You clicked a button", "El texto de la alerta no se muestra correctamente")
+        self.assertEqual(self.text_alert, "You clicked a button", "El texto de la alerta no se muestra correctamente")
         WebDriverWait(self.driver,5)
 
     def tearDown(self):
