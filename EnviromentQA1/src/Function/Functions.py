@@ -714,7 +714,8 @@ class Functions(Inicializar):
         elemento = Functions.obtener_elemento(self, elemento)
         return self.assertTrue(elemento.is_displayed()==True,msj)
     def Assert_In_Elemento(self,texto_contenido, texto_ingresado_alert):
-        return self.assertIn(texto_contenido, f'You entered {texto_ingresado_alert}')
+        return self.assertIn(texto_contenido, f'{texto_ingresado_alert}')
+
                          
     #Mover Mouse en aplicativo web
     def Mover_Mouse_x_App_Web(self,entidad):
@@ -920,32 +921,35 @@ class Functions(Inicializar):
         salida.release()
         cv2.destroyAllWindows()
         print('Se finaliza la grabación del video')
-        
-    #0= alert OK por defecto, 1= alert espera de 5 segundos, 2=  ok y cancel, 3=  ok y cancel, 4= texto ingresado
-    def alert_navegadores(self, espera, tipo_alert,elemento="", texto_ingresado = ""):
-        
+   
+    def alert_navegadores(self,tipo_alert,texto_esperado="", msj="",texto_contenido ="", elemento="",texto_ingresado=""):
         self.alert = Alert(self.driver)
         self.text_alert = self.alert.text
-        
+        #0= alert OK por defecto, 1= alert espera de 5 segundos, 2=  ok y cancel, 3=  ok y cancel, 4= texto ingresado    
+        #Alert con boton OK
         if (tipo_alert == 0):
-            print('Mensaje de alert: ' + self.text_alert)
+            print('Mensaje de Alert: ' + self.text_alert)
             self.alert.accept()
-        elif (tipo_alert == 1):
-            print('Mensaje de alert: ' + self.text_alert)
+        #Alert con espera de tiempo
+        elif(tipo_alert == 1):
+            print('Mensaje de Alert: ' + self.text_alert)
             self.alert.accept()
+        #Alert con botones OK y Cancel
         elif(tipo_alert == 2):
-            print('Mensaje de alert: ' + self.text_alert)
+            print('Mensaje de Alert: ' + self.text_alert)
             self.alert.accept()
-            Functions.Assert_Equal(self,elemento, "You selected Ok", "El texto de la alerta no se muestra correctamente")
+            Functions.Assert_Equal(self,elemento, texto_esperado, msj)
+        #Alert con botones OK y Cancel
         elif(tipo_alert == 3):
-            print('Mensaje de alert: ' + self.text_alert)
+            print('Mensaje de Alert: ' + self.text_alert)
             self.alert.dismiss()
-            Functions.Assert_Equal(self,elemento, "You selected Cancel", "El texto de la alerta no se muestra correctamente")
+            Functions.Assert_Equal(self,elemento, texto_esperado, msj)
+        #Alert con ingreso de texto
         elif(tipo_alert == 4):
             print('Mensaje de alert: ' + self.text_alert)
             self.alert.send_keys(texto_ingresado)
             self.alert.accept()
-            Functions.Assert_In_Elemento(self,'You entered ', Functions.obtener_Texto(self, elemento))
-            
+            Functions.Assert_In_Elemento(self,texto_contenido, Functions.obtener_Texto(self, elemento))     
+    
     def WebdriverWait(self,time):
         WebDriverWait(self.driver,time)

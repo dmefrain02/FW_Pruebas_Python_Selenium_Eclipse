@@ -192,7 +192,7 @@
 		"GetFieldBy":"xpath",
 		"ValueToFind":"//button[@id='promtButton']"
 	},
-	"result-txt-ing":{
+	"texto-ing":{
 			"GetFieldBy":"xpath",
 			"ValueToFind":"//span[@id='promptResult']"
 		}
