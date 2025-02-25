@@ -37,6 +37,7 @@ from selenium.webdriver.remote import remote_connection
 #import urllib3
 
 from Function.Inicializar import Inicializar
+from Function.DriverFactory import DriverFactory
 from selenium.common.exceptions import NoSuchElementException,NoAlertPresentException,NoSuchWindowException,TimeoutException
 import json
 import pytest
@@ -64,65 +65,152 @@ import cv2
 import numpy as np
 from unittest.case import skip
 from threading import Thread,Barrier
+from numpy._core._multiarray_umath import rindex
+from selenium.webdriver.common import desired_capabilities
 
 class Functions(Inicializar):
     
     Nav_utilizado_capturas = ""
     
     #Abrir Navegador
-    def abrir_navegador(self,navegador=Inicializar.Navegador,URL_SeleniumGrid = Inicializar.URL_SeleniumGrid):
+    def abrir_navegador(self,navegador=Inicializar.Navegador,Remote = False, Capabilities = False, URL_SeleniumGrid = Inicializar.URL_SeleniumGrid):
         print(u"Directorio Base:" + Inicializar.BaseDir)
         print("-------------------------------------------")
         print(navegador)
         print("-------------------------------------------")
         
-        self.Nav_utilizado_capturas = navegador
+        self.Nav_utilizado_capturas = navegador          
         if navegador ==("Edge"):
-            #Implementacion del Webdriver Manager            
-            self.driver = webdriver.Edge(service =EdgeService(EdgeChromiumDriverManager().install()))
-            self.driver.maximize_window()
+            #Metodo para crear el driver de la instancia del Navegador
+            self.driver = Functions.get_driver(self,navegador,Remote,Capabilities,URL_SeleniumGrid)
             
         elif navegador == ("Chrome"):
-            #Implementacion del WebdriverManager
-            options = OpcionesChrome()
-            prefs = {
-                 "profile.default_content_settings.popups": 0,
-                 "download.default_directory": Inicializar.Ruta_Descarga,
-                 "directory_upgrade":True ,
-                 "download.prompt_for_download": False, # Para que el navegador no pregunte al descargar
-                 #"plugins.always_open_pdf_externally": True}) # Para que el navegador no abra el PDF en una pestaña nueva
-                 #"plugins.plugins_disabled" : ["Chrome PDF Viewer"]
-            }
-            options.add_experimental_option("prefs", prefs)
-            options.add_argument('start-maximized')
-            #options.add_argument("headless")
-            
-            self.driver = webdriver.Chrome(service =ChromeService(ChromeDriverManager().install()),options=options)         
+            #Metodo para crear el driver de la instancia del Navegador
+            self.driver = Functions.get_driver(self,navegador,Remote,Capabilities,URL_SeleniumGrid)
             
         elif navegador ==("Firefox"):
-            #Implementacion WebDriver Manager
-            options = OpcionesFirefox()
-            options.add_argument('--window-size=800,800')
-
-            self.driver = webdriver.Firefox(service = FirefoxService(GeckoDriverManager().install()),options=options)
+            #Metodo para crear el driver de la instancia del Navegador
+            self.driver = Functions.get_driver(self,navegador,Remote,Capabilities,URL_SeleniumGrid)
+            
         elif navegador == ("Chrome_Remote"):
-            options = OpcionesChrome()
-            prefs = {
-                 "profile.default_content_settings.popups": 0,
-                 "download.default_directory": Inicializar.Ruta_Descarga,
-                 "directory_upgrade":True 
-            }
-            options.add_experimental_option("prefs",prefs)
-            options.add_argument('start-maximized')
-            self.driver = webdriver.Remote(URL_SeleniumGrid,options=options)
+            #Metodo para crear el driver de la instancia del Navegador
+            self.driver = Functions.get_driver(self,navegador,Remote,Capabilities,URL_SeleniumGrid)
+            
         elif navegador == ("Edge_Remote"):
-            options = OpcionesEdge();
-            options.add_argument("start-maximized")
-            options.add_argument("inprivate")
-            #options.add_argument("headless")
-            self.driver = webdriver.Remote(URL_SeleniumGrid,options=options)
+            #Metodo para crear el driver de la instancia del Navegador
+            self.driver = Functions.get_driver(self,navegador,Remote,Capabilities,URL_SeleniumGrid)
         
         return self.driver
+
+    #Retorna el Driver de la instancia del navegador a utilizar en las pruebas.
+    def get_driver(self,navegador, remote, capabilities, URL_Sel_Grid):
+        self.driver = Functions._create_driver(self, navegador, remote, capabilities, URL_Sel_Grid)
+        return self.driver
+
+     #Crear y configurar el driver: local o remoto
+    def _create_driver(self, browser, remote, capabilities, grid_url):   
+        if remote:  #Instancia remota en Selenium Grid
+            if capabilities:
+                capabilities_nav = Functions._get_remote_capabilities(self,browser)
+                self.driver = Functions._create_remote_driver(self,capabilities_nav, grid_url)
+            else:
+                if browser == "Chrome_Remote":
+                    self.driver = Functions._create_chrome_remote_driver(self,grid_url)
+                elif browser == "Edge_Remote":
+                    self.driver = Functions._create_edge_remote_driver(self,grid_url)
+            return self.driver
+        else:  #Instancia Navegador Local
+            if browser == "Chrome":
+                self.driver = Functions._create_chrome_driver(self)
+                return self.driver
+            elif browser == "Firefox":
+                driver = Functions._create_firefox_driver(self)
+                return self.driver
+            elif browser == "Edge":
+                driver = Functions._create_edge_driver(self)
+                return self.driver
+            else:
+                raise ValueError(f"Navegador {browser} no soportado.")
+
+    #Crea y configura el driver de Chrome usando webdriver-manager
+    def _create_chrome_driver(self):
+        options = OpcionesChrome()
+        prefs = {
+             "profile.default_content_settings.popups": 0,
+             "download.default_directory": Inicializar.Ruta_Descarga,
+             "directory_upgrade":True ,
+             "download.prompt_for_download": False,#Para que el navegador no pregunte al descargar
+             #"plugins.always_open_pdf_externally": True}) # Para que el navegador no abra el PDF en una pestaña nueva
+             #"plugins.plugins_disabled" : ["Chrome PDF Viewer"]
+        }
+        options.add_experimental_option("prefs", prefs)
+        options.add_argument('start-maximized')
+        #options.add_argument("headless")
+        options.add_argument("--disable-extensions")#Deshabilita extensiones innecesarias
+        
+        chrome_driver_path = ChromeDriverManager().install() #Usa webdriver-manager para obtener la última versión compatible
+        self.driver = webdriver.Chrome(service=ChromeService(chrome_driver_path), options=options)
+        return self.driver
+    
+    #Crea y configura el driver de Firefox usando webdriver-manager
+    def _create_firefox_driver(self):
+        options = OpcionesFirefox()
+        options.add_argument('--window-size=1200,1200')# Maximiza la ventana
+        self.driver = webdriver.Firefox(service = FirefoxService(GeckoDriverManager().install()),options=options) #Usa webdriver-manager para obtener la última versión compatible
+        return self.driver
+    
+    #Crea y configura el driver de Edge de manera local usando webdriver-manager
+    def _create_edge_driver(self):
+        options = OpcionesEdge()
+        self.driver = webdriver.Edge(service =EdgeService(EdgeChromiumDriverManager().install()),options=options)
+        self.driver.maximize_window()
+        return self.driver
+    
+    #Crea y configura el driver de Chrome Remote de Selenium Grid
+    def _create_chrome_remote_driver(self, grid_url):
+        options = OpcionesChrome()
+        prefs = {
+             "profile.default_content_settings.popups": 0,
+             "download.default_directory": Inicializar.Ruta_Descarga,
+             "directory_upgrade":True 
+        }
+        options.add_experimental_option("prefs",prefs)
+        options.add_argument('start-maximized')
+        self.driver = webdriver.Remote(grid_url,options=options)
+        return self.driver 
+    
+    #Crea y configura el driver de Edge Remote de Selenium Grid
+    def _create_edge_remote_driver(self, grid_url):
+        options = OpcionesEdge();
+        options.add_argument("start-maximized")
+        options.add_argument("inprivate")
+        #options.add_argument("headless")
+    
+        self.driver = webdriver.Remote(grid_url,options=options)
+        return self.driver
+    
+    #Revisar metodos con la capabilities
+    #Devuelve las capacidades del navegador para la conexión remota en Selenium Grid
+    def _get_remote_capabilities(self, browser):
+        if browser == "Chrome_Remote":
+            capabilities = DesiredCapabilities.CHROME.copy()
+            capabilities['browserName'] = 'chrome'
+            capabilities['platform'] = 'Windows'  # Puede ser Windows, Linux, etc.
+        elif browser == "Firefox_Remote":
+            capabilities = DesiredCapabilities.FIREFOX.copy()
+            capabilities['browserName'] = 'edge'
+            capabilities['platform'] = 'Windows'
+        elif browser == "Edge_Remote":
+            capabilities = DesiredCapabilities.EDGE.copy()
+            capabilities['browserName'] = 'MicrosoftEdge'
+            capabilities['platform'] = 'Windows'
+        else:
+            raise ValueError(f"Navegador {browser} no soportado en Selenium Grid.")
+        return capabilities
+
+    #Crea el driver remoto conectado a Selenium Grid
+    def _create_remote_driver(self, capabilities, grid_url):
+        return webdriver.Remote(command_executor=grid_url, desired_capabilities=capabilities)
 
     #Dirigir a la URL del sitio de pruebas  
     def get_url_driver(self,URL):
@@ -130,7 +218,10 @@ class Functions(Inicializar):
     
     #Cerrar la instancia del navegador
     def cerrar_driver_navegador(self):
-        return self.driver.quit()
+        if self.driver:
+            self.driver.quit()
+        else:
+            print("No hay un driver activo para cerrar.")
     
     #Encontrando elementos en el DOM por medio de XPATH
     def elementos_del_DOM_x_XPATH(self, XPATH):
