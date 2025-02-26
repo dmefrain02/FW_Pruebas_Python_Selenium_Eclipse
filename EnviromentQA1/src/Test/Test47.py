@@ -8,7 +8,7 @@ class Test(unittest.TestCase):
     def setUp(self):
         Selenium.obtener_archivo_json(self, 'Localizadores_Spotify')
 
-    def Test_01(self):
+    def test_01(self):
         for Nav_Sel_Grid in Inicializar.Navegadores_Sel_Grid:
             Selenium.abrir_navegador(self,Nav_Sel_Grid, True)
             Selenium.get_url_driver(self,"https://demoqa.com/alerts")
@@ -27,7 +27,7 @@ class Test(unittest.TestCase):
         Selenium.alert_navegadores(self,1,"This alert appeared after 5 seconds","No se muestra el mensaje correcto")
         Selenium.cerrar_driver_navegador(self)
         
-    def Test_03(self):
+    def test_03(self):
         for Nav_Sel_Grid in Inicializar.Navegadores_Sel_Grid:
             Selenium.abrir_navegador(self,Nav_Sel_Grid, True)
             Selenium.get_url_driver(self,"https://demoqa.com/alerts")
