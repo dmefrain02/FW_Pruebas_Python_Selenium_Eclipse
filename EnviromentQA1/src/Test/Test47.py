@@ -18,7 +18,7 @@ class Test(unittest.TestCase):
             Selenium.WebdriverWait(self,2)
             Selenium.cerrar_driver_navegador(self)
         
-    def test_02(self):
+    def Test_02(self):
         Selenium.abrir_navegador(self,"Firefox")
         Selenium.get_url_driver(self,"https://demoqa.com/alerts")
         Selenium.WebdriverWait(self,2)
@@ -27,7 +27,7 @@ class Test(unittest.TestCase):
         Selenium.alert_navegadores(self,1,"This alert appeared after 5 seconds","No se muestra el mensaje correcto")
         Selenium.cerrar_driver_navegador(self)
         
-    def test_03(self):
+    def Test_03(self):
         for Nav_Sel_Grid in Inicializar.Navegadores_Sel_Grid:
             Selenium.abrir_navegador(self,Nav_Sel_Grid, True)
             Selenium.get_url_driver(self,"https://demoqa.com/alerts")

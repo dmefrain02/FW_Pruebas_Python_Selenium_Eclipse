@@ -1,1 +1,0 @@
-"""Pyinstaller hook folder"""

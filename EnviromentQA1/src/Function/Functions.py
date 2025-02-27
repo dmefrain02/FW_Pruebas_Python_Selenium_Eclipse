@@ -99,6 +99,11 @@ class Functions(Inicializar):
         elif navegador == ("Edge_Remote"):
             #Metodo para crear el driver de la instancia del Navegador
             self.driver = Functions.get_driver(self,navegador,Remote,URL_SeleniumGrid)
+        elif navegador == ("Firefox_Remote"):
+            #Metodo para crear el driver de la instancia del Navegador
+            self.driver = Functions.get_driver(self,navegador,Remote,URL_SeleniumGrid)
+        else:
+             raise ValueError(f"Navegador {navegador} no soportado.")
         
         return self.driver
 
@@ -114,6 +119,8 @@ class Functions(Inicializar):
                 self.driver = Functions._create_chrome_remote_driver(self,grid_url)
             elif browser == "Edge_Remote":
                 self.driver = Functions._create_edge_remote_driver(self,grid_url)
+            elif browser == "Firefox_Remote":
+                self.driver = Functions._create_firefox_remote_driver(self,grid_url)
             return self.driver
         else:  #Instancia Navegador Local
             if browser == "Chrome":
@@ -182,6 +189,16 @@ class Functions(Inicializar):
         options.add_argument("inprivate")
         #options.add_argument("headless")
     
+        self.driver = webdriver.Remote(grid_url,options=options)
+        return self.driver
+    
+    #Crea y configura el driver de Firefox Remote de Selenium Grid
+    def _create_firefox_remote_driver(self, grid_url):
+        options = OpcionesFirefox()
+        options.add_argument('--window-size=1200,1200')# Maximiza la ventana
+        #options.add_argument("inprivate")
+        #options.add_argument("headless")
+        
         self.driver = webdriver.Remote(grid_url,options=options)
         return self.driver
 

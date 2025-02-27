@@ -8,7 +8,7 @@ class Inicializar():
     
     #Variable en el archivo inicializar
     URL_SeleniumGrid = "http://localhost:4444/wd/hub"
-    Navegadores_Sel_Grid = ["Chrome_Remote","Edge_Remote"]
+    Navegadores_Sel_Grid = ["Firefox_Remote","Chrome_Remote","Edge_Remote"]
     #Navegadores_Sel_Grid = ["Chrome_Remote","Edge_Remote"]
     
     #Tiempo de espera utilizado dentro del Framework
