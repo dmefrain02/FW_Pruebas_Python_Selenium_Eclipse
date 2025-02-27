@@ -1,0 +1,52 @@
+﻿import aspose.pdf
+import aspose.pydrawing
+import datetime
+import decimal
+import io
+import uuid
+from typing import Iterable
+
+class BoundsOutOfRangeException(aspose.pdf.PdfException):
+    '''Represents an exception which occurs when an item doesn't fit within the given container dimensions.'''
+    
+    @overload
+    def __init__(self):
+        '''Initializes a new instance of the :class:`BoundsOutOfRangeException` class.'''
+        ...
+    
+    @overload
+    def __init__(self, message: str):
+        '''Initializes a new instance of the :class:`BoundsOutOfRangeException` class with a specified error message.
+        
+        :param message: The error message that explains the reason for the exception.'''
+        ...
+    
+    @overload
+    def __init__(self, message: str, container_width: float, container_height: float):
+        '''Initializes a new instance of the :class:`BoundsOutOfRangeException` class with a specified error message and item dimensions.
+        
+        :param message: The error message that explains the reason for the exception.
+        :param container_width: The width of the container.
+        :param container_height: The height of the container.'''
+        ...
+    
+    ...
+
+class IBoundsCheckableItem:
+    
+    def check_bounds(self, container_width: float, container_height: float) -> bool:
+        '''Checks if the item fits within the given container dimensions (inclusive).
+        
+        :param container_width: Width of the container.
+        :param container_height: Height of the container.
+        :returns: True if fits; otherwise, false.'''
+        ...
+    
+    ...
+
+class BoundsCheckMode:
+    '''Specifies the behavior for bounds checking when adding items to a collection.'''
+    
+    DEFAULT: BoundsCheckMode
+    THROW_EXCEPTION_IF_DOES_NOT_FIT: BoundsCheckMode
+
