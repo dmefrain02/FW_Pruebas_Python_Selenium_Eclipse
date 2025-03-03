@@ -1,0 +1,1879 @@
+﻿import aspose.pdf
+import aspose.pydrawing
+import datetime
+import decimal
+import io
+import uuid
+from typing import Iterable
+
+class AnnotElement(aspose.pdf.logicalstructure.AnnotationElement):
+    '''Represents Annot structure element in logical structure.'''
+    
+    def append_child(self, element: aspose.pdf.logicalstructure.Element) -> aspose.pdf.logicalstructure.Element:
+        ...
+    
+    ...
+
+class AnnotationElement(aspose.pdf.logicalstructure.ILSElement):
+    '''Represents a base class for annotation structure elements in logical structure.'''
+    
+    @property
+    def alternate_descriptions(self) -> str:
+        '''Gets or Sets the Alternate Descriptions for annotation.
+        Text that shall be displayed for the annotation or, if this type of annotation does not display text, an alternate description of the annotation's contents in human-readable form.'''
+        ...
+    
+    @alternate_descriptions.setter
+    def alternate_descriptions(self, value: str):
+        ...
+    
+    ...
+
+class ArtElement(aspose.pdf.logicalstructure.GroupingElement):
+    '''Represents Art structure element in logical structure.'''
+    
+    ...
+
+class AttributeKey:
+    '''Represents Standard Attribute Keys.'''
+    
+    @property
+    def key(self) -> str:
+        '''Get Attribute Key.'''
+        ...
+    
+    @property
+    def owner(self) -> aspose.pdf.logicalstructure.AttributeOwnerStandard:
+        '''Get Attribute Owner.'''
+        ...
+    
+    PLACEMENT: aspose.pdf.logicalstructure.AttributeKey
+    
+    WRITING_MODE: aspose.pdf.logicalstructure.AttributeKey
+    
+    BACKGROUND_COLOR: aspose.pdf.logicalstructure.AttributeKey
+    
+    BORDER_COLOR: aspose.pdf.logicalstructure.AttributeKey
+    
+    BORDER_STYLE: aspose.pdf.logicalstructure.AttributeKey
+    
+    BORDER_THICKNESS: aspose.pdf.logicalstructure.AttributeKey
+    
+    PADDING: aspose.pdf.logicalstructure.AttributeKey
+    
+    COLOR: aspose.pdf.logicalstructure.AttributeKey
+    
+    SPACE_BEFORE: aspose.pdf.logicalstructure.AttributeKey
+    
+    SPACE_AFTER: aspose.pdf.logicalstructure.AttributeKey
+    
+    START_INDENT: aspose.pdf.logicalstructure.AttributeKey
+    
+    END_INDENT: aspose.pdf.logicalstructure.AttributeKey
+    
+    TEXT_INDENT: aspose.pdf.logicalstructure.AttributeKey
+    
+    TEXT_ALIGN: aspose.pdf.logicalstructure.AttributeKey
+    
+    B_BOX: aspose.pdf.logicalstructure.AttributeKey
+    
+    WIDTH: aspose.pdf.logicalstructure.AttributeKey
+    
+    HEIGHT: aspose.pdf.logicalstructure.AttributeKey
+    
+    BLOCK_ALIGN: aspose.pdf.logicalstructure.AttributeKey
+    
+    INLINE_ALIGN: aspose.pdf.logicalstructure.AttributeKey
+    
+    T_BORDER_STYLE: aspose.pdf.logicalstructure.AttributeKey
+    
+    T_PADDING: aspose.pdf.logicalstructure.AttributeKey
+    
+    BASELINE_SHIFT: aspose.pdf.logicalstructure.AttributeKey
+    
+    LINE_HEIGHT: aspose.pdf.logicalstructure.AttributeKey
+    
+    TEXT_DECORATION_COLOR: aspose.pdf.logicalstructure.AttributeKey
+    
+    TEXT_DECORATION_THICKNESS: aspose.pdf.logicalstructure.AttributeKey
+    
+    TEXT_DECORATION_TYPE: aspose.pdf.logicalstructure.AttributeKey
+    
+    RUBY_ALIGN: aspose.pdf.logicalstructure.AttributeKey
+    
+    RUBY_POSITION: aspose.pdf.logicalstructure.AttributeKey
+    
+    GLYPH_ORIENTATION_VERTICAL: aspose.pdf.logicalstructure.AttributeKey
+    
+    COLUMN_COUNT: aspose.pdf.logicalstructure.AttributeKey
+    
+    COLUMN_GAP: aspose.pdf.logicalstructure.AttributeKey
+    
+    COLUMN_WIDTHS: aspose.pdf.logicalstructure.AttributeKey
+    
+    LIST_NUMBERING: aspose.pdf.logicalstructure.AttributeKey
+    
+    ROLE: aspose.pdf.logicalstructure.AttributeKey
+    
+    CHECKED: aspose.pdf.logicalstructure.AttributeKey
+    
+    DESC: aspose.pdf.logicalstructure.AttributeKey
+    
+    ROW_SPAN: aspose.pdf.logicalstructure.AttributeKey
+    
+    COL_SPAN: aspose.pdf.logicalstructure.AttributeKey
+    
+    HEADERS: aspose.pdf.logicalstructure.AttributeKey
+    
+    SCOPE: aspose.pdf.logicalstructure.AttributeKey
+    
+    SUMMARY: aspose.pdf.logicalstructure.AttributeKey
+    
+    ...
+
+class AttributeName:
+    '''Represents class for Attribute Name Values.'''
+    
+    @staticmethod
+    def from_name_attribute_key(self, name: str, attribute_key: aspose.pdf.logicalstructure.AttributeKey) -> aspose.pdf.logicalstructure.AttributeName:
+        '''Gets attribute name for attribute key.
+        
+        :param name: Attribute name
+        :param attribute_key: Attribute key
+        :returns: Attribute name'''
+        ...
+    
+    @property
+    def name(self) -> str:
+        '''Gets name value of attribute.'''
+        ...
+    
+    @property
+    def attribute_key(self) -> aspose.pdf.logicalstructure.AttributeKey:
+        '''Gets attribute key.'''
+        ...
+    
+    PLACEMENT_BLOCK: aspose.pdf.logicalstructure.AttributeName
+    
+    PLACEMENT_INLINE: aspose.pdf.logicalstructure.AttributeName
+    
+    PLACEMENT_BEFORE: aspose.pdf.logicalstructure.AttributeName
+    
+    PLACEMENT_START: aspose.pdf.logicalstructure.AttributeName
+    
+    PLACEMENT_END: aspose.pdf.logicalstructure.AttributeName
+    
+    WRITING_MODE_LR_TB: aspose.pdf.logicalstructure.AttributeName
+    
+    WRITING_MODE_RL_TB: aspose.pdf.logicalstructure.AttributeName
+    
+    WRITING_MODE_TB_RL: aspose.pdf.logicalstructure.AttributeName
+    
+    BORDER_STYLE_NONE: aspose.pdf.logicalstructure.AttributeName
+    
+    BORDER_STYLE_HIDDEN: aspose.pdf.logicalstructure.AttributeName
+    
+    BORDER_STYLE_DOTTED: aspose.pdf.logicalstructure.AttributeName
+    
+    BORDER_STYLE_DASHED: aspose.pdf.logicalstructure.AttributeName
+    
+    BORDER_STYLE_SOLID: aspose.pdf.logicalstructure.AttributeName
+    
+    BORDER_STYLE_DOUBLE: aspose.pdf.logicalstructure.AttributeName
+    
+    BORDER_STYLE_GROOVE: aspose.pdf.logicalstructure.AttributeName
+    
+    BORDER_STYLE_RIDGE: aspose.pdf.logicalstructure.AttributeName
+    
+    BORDER_STYLE_INSET: aspose.pdf.logicalstructure.AttributeName
+    
+    BORDER_STYLE_OUTSET: aspose.pdf.logicalstructure.AttributeName
+    
+    TEXT_ALIGN_START: aspose.pdf.logicalstructure.AttributeName
+    
+    TEXT_ALIGN_CENTER: aspose.pdf.logicalstructure.AttributeName
+    
+    TEXT_ALIGN_END: aspose.pdf.logicalstructure.AttributeName
+    
+    TEXT_ALIGN_JUSTIFY: aspose.pdf.logicalstructure.AttributeName
+    
+    WIDTH_AUTO: aspose.pdf.logicalstructure.AttributeName
+    
+    HEIGHT_AUTO: aspose.pdf.logicalstructure.AttributeName
+    
+    BLOCK_ALIGN_BEFORE: aspose.pdf.logicalstructure.AttributeName
+    
+    BLOCK_ALIGN_MIDDLE: aspose.pdf.logicalstructure.AttributeName
+    
+    BLOCK_ALIGN_AFTER: aspose.pdf.logicalstructure.AttributeName
+    
+    BLOCK_ALIGN_JUSTIFY: aspose.pdf.logicalstructure.AttributeName
+    
+    INLINE_ALIGN_START: aspose.pdf.logicalstructure.AttributeName
+    
+    INLINE_ALIGN_CENTER: aspose.pdf.logicalstructure.AttributeName
+    
+    INLINE_ALIGN_END: aspose.pdf.logicalstructure.AttributeName
+    
+    LINE_HEIGHT_NORMAL: aspose.pdf.logicalstructure.AttributeName
+    
+    LINE_HEIGHT_AUTO: aspose.pdf.logicalstructure.AttributeName
+    
+    TEXT_DECORATION_TYPE_NONE: aspose.pdf.logicalstructure.AttributeName
+    
+    TEXT_DECORATION_TYPE_UNDERLINE: aspose.pdf.logicalstructure.AttributeName
+    
+    TEXT_DECORATION_TYPE_OVERLINE: aspose.pdf.logicalstructure.AttributeName
+    
+    TEXT_DECORATION_TYPE_LINE_THROUGH: aspose.pdf.logicalstructure.AttributeName
+    
+    RUBY_ALIGN_START: aspose.pdf.logicalstructure.AttributeName
+    
+    RUBY_ALIGN_CENTER: aspose.pdf.logicalstructure.AttributeName
+    
+    RUBY_ALIGN_END: aspose.pdf.logicalstructure.AttributeName
+    
+    RUBY_ALIGN_JUSTIFY: aspose.pdf.logicalstructure.AttributeName
+    
+    RUBY_ALIGN_DISTRIBUTE: aspose.pdf.logicalstructure.AttributeName
+    
+    RUBY_POSITION_BEFORE: aspose.pdf.logicalstructure.AttributeName
+    
+    RUBY_POSITION_AFTER: aspose.pdf.logicalstructure.AttributeName
+    
+    RUBY_POSITION_WARICHU: aspose.pdf.logicalstructure.AttributeName
+    
+    RUBY_POSITION_INLINE: aspose.pdf.logicalstructure.AttributeName
+    
+    GLYPH_ORIENTATION_VERTICAL_AUTO: aspose.pdf.logicalstructure.AttributeName
+    
+    LIST_NUMBERING_NONE: aspose.pdf.logicalstructure.AttributeName
+    
+    LIST_NUMBERING_DISC: aspose.pdf.logicalstructure.AttributeName
+    
+    LIST_NUMBERING_CIRCLE: aspose.pdf.logicalstructure.AttributeName
+    
+    LIST_NUMBERING_SQUARE: aspose.pdf.logicalstructure.AttributeName
+    
+    LIST_NUMBERING_DECIMAL: aspose.pdf.logicalstructure.AttributeName
+    
+    LIST_NUMBERING_UPPER_ROMAN: aspose.pdf.logicalstructure.AttributeName
+    
+    LIST_NUMBERING_LOWER_ROMAN: aspose.pdf.logicalstructure.AttributeName
+    
+    LIST_NUMBERING_UPPER_ALPHA: aspose.pdf.logicalstructure.AttributeName
+    
+    LIST_NUMBERING_LOWER_ALPHA: aspose.pdf.logicalstructure.AttributeName
+    
+    ROLE_RB: aspose.pdf.logicalstructure.AttributeName
+    
+    ROLE_CB: aspose.pdf.logicalstructure.AttributeName
+    
+    ROLE_PB: aspose.pdf.logicalstructure.AttributeName
+    
+    ROLE_TV: aspose.pdf.logicalstructure.AttributeName
+    
+    CHECKED_ON: aspose.pdf.logicalstructure.AttributeName
+    
+    CHECKED_OFF: aspose.pdf.logicalstructure.AttributeName
+    
+    CHECKED_NEUTRAL: aspose.pdf.logicalstructure.AttributeName
+    
+    SCOPE_ROW: aspose.pdf.logicalstructure.AttributeName
+    
+    SCOPE_COLUMN: aspose.pdf.logicalstructure.AttributeName
+    
+    SCOPE_BOTH: aspose.pdf.logicalstructure.AttributeName
+    
+    ...
+
+class AttributeOwnerStandard:
+    '''Represents Standard Attribute Owners.'''
+    
+    @property
+    def owner(self) -> str:
+        '''Get Attribute Owner.'''
+        ...
+    
+    LAYOUT: aspose.pdf.logicalstructure.AttributeOwnerStandard
+    
+    LIST: aspose.pdf.logicalstructure.AttributeOwnerStandard
+    
+    PRINT_FIELD: aspose.pdf.logicalstructure.AttributeOwnerStandard
+    
+    TABLE: aspose.pdf.logicalstructure.AttributeOwnerStandard
+    
+    XML_100: aspose.pdf.logicalstructure.AttributeOwnerStandard
+    
+    HTML_320: aspose.pdf.logicalstructure.AttributeOwnerStandard
+    
+    HTML_401: aspose.pdf.logicalstructure.AttributeOwnerStandard
+    
+    OEB_100: aspose.pdf.logicalstructure.AttributeOwnerStandard
+    
+    RTF_105: aspose.pdf.logicalstructure.AttributeOwnerStandard
+    
+    CSS_100: aspose.pdf.logicalstructure.AttributeOwnerStandard
+    
+    CSS_200: aspose.pdf.logicalstructure.AttributeOwnerStandard
+    
+    ...
+
+class BLSElement(aspose.pdf.logicalstructure.StructureElement):
+    '''Represents a base class for block-level structure elements in logical structure.'''
+    
+    ...
+
+class BLSTextElement(aspose.pdf.logicalstructure.BLSElement):
+    '''Represents a base class for block-level text structure elements in logical structure.'''
+    
+    def set_text(self, text: str) -> None:
+        '''Appends text content to current text element.
+        
+        :param text: Text content'''
+        ...
+    
+    @property
+    def structure_text_state(self) -> aspose.pdf.logicalstructure.StructureTextState:
+        '''Gets :class:`StructureTextState` object for current element.'''
+        ...
+    
+    ...
+
+class BibEntryElement(aspose.pdf.logicalstructure.ILSElement):
+    '''Represents BibEntry structure element in logical structure.'''
+    
+    ...
+
+class BlockQuoteElement(aspose.pdf.logicalstructure.GroupingElement):
+    '''Represents BlockQuote structure element in logical structure.'''
+    
+    ...
+
+class CaptionElement(aspose.pdf.logicalstructure.GroupingElement):
+    '''Represents Caption structure element in logical structure.'''
+    
+    ...
+
+class CodeElement(aspose.pdf.logicalstructure.ILSTextElement):
+    '''Represents Code structure element in logical structure.'''
+    
+    ...
+
+class DivElement(aspose.pdf.logicalstructure.GroupingElement):
+    '''Represents Div structure element in logical structure.'''
+    
+    ...
+
+class DocumentElement(aspose.pdf.logicalstructure.GroupingElement):
+    '''Represents Document structure element in logical structure.'''
+    
+    ...
+
+class Element:
+    '''Represents a base class for element in logical structure.'''
+    
+    @overload
+    def tag(self, bdc: aspose.pdf.operators.BDC) -> aspose.pdf.logicalstructure.MCRElement:
+        '''Bind a structure element to the content stream BDC operator.
+        
+        :param bdc: Content stream bdc operator.
+        :returns: /Aspose.Pdf.LogicalStructure.MCRElementStructure element.'''
+        ...
+    
+    @overload
+    def tag(self, form: aspose.pdf.XForm) -> aspose.pdf.logicalstructure.OBJRElement:
+        '''Bind a structure element to the content stream XForm.
+        
+        :param form: Pdf form.
+        :returns: /Aspose.Pdf.LogicalStructure.OBJRElementStructure element.'''
+        ...
+    
+    @overload
+    def tag(self, image: aspose.pdf.XImage) -> aspose.pdf.logicalstructure.OBJRElement:
+        '''Bind a structure element to the XImage.
+        
+        :param image: Pdf image.
+        :returns: /Aspose.Pdf.LogicalStructure.OBJRElementStructure element.'''
+        ...
+    
+    @overload
+    def tag(self, artifact: aspose.pdf.Artifact) -> aspose.pdf.logicalstructure.MCRElement:
+        '''Bind a structure element to the Artifact.
+        
+        :param artifact: Pdf artifact.
+        :returns: /Aspose.Pdf.LogicalStructure.MCRElementStructure element.'''
+        ...
+    
+    @overload
+    def tag(self, annotation: aspose.pdf.annotations.Annotation) -> aspose.pdf.logicalstructure.OBJRElement:
+        '''Bind a structure element to the Annotation.
+        
+        :param annotation: Pdf annotation.
+        :returns: /Aspose.Pdf.LogicalStructure.OBJRElementStructure element.'''
+        ...
+
+    def append_child(self, element, check_if_can_be_appended: bool) -> None:
+        '''Append /Aspose.Pdf.LogicalStructure.Element to collection of children.
+        
+        :param element: /Aspose.Pdf.LogicalStructure.Element object to add.
+        :param check_if_can_be_appended: Check if can be appended.
+        :returns: /Aspose.Pdf.LogicalStructure.Element which has been added.
+        
+        :raises aspose.pdf.tagged.TaggedException:'''
+        ...
+    
+    def insert_child(self, element, index: int, check_if_can_be_inserted: bool) -> None:
+        '''Insert /Aspose.Pdf.LogicalStructure.Element to collection of children at specified index.
+        
+        :param element: /Aspose.Pdf.LogicalStructure.Element object to add.
+        :param index: Element index.
+        :param check_if_can_be_inserted: Check if can be inserted.
+        :returns: /Aspose.Pdf.LogicalStructure.Element which has been added.
+        
+        :raises aspose.pdf.tagged.TaggedException:'''
+        ...
+    
+    def remove_child(self, index: int) -> None:
+        '''Remove child at.
+        
+        :param index: Child element index.'''
+        ...
+    
+    def clear_childs(self) -> None:
+        '''Clear all childs.'''
+        ...
+    
+    @property
+    def parent_element(self) -> None:
+        '''Get parent element.'''
+        ...
+    
+    @property
+    def child_elements(self) -> aspose.pdf.logicalstructure.ElementList:
+        '''Gets children collection of :class:`Element` objects.'''
+        ...
+    
+    ...
+
+class ElementList:
+    '''Represents an ordered collection of elements.'''
+    
+    def __getitem__(self, index: int):
+        ...
+    
+    def item(self, index: int) -> None:
+        '''Retrieves a element at the given index.
+        
+        :param index: The index into the list of elements.
+        :returns: The :class:`Element` with the specified index in the collection. If index is greater than or equal to the number of elements in the list, this returns null.'''
+        ...
+    
+    @property
+    def count(self) -> int:
+        '''Gets the number of elements in the ElementList.'''
+        ...
+    
+    ...
+
+class FigureElement(aspose.pdf.logicalstructure.IllustrationElement):
+    '''Represents Figure structure element in logical structure.'''
+    
+    ...
+
+class FormElement(aspose.pdf.logicalstructure.IllustrationElement):
+    '''Represents Form structure element in logical structure.'''
+    
+    ...
+
+class FormulaElement(aspose.pdf.logicalstructure.IllustrationElement):
+    '''Represents Formula structure element in logical structure.'''
+    
+    ...
+
+class GroupingElement(aspose.pdf.logicalstructure.StructureElement):
+    '''Represents a base class for grouping structure elements in logical structure.'''
+    
+    ...
+
+class HeaderElement(aspose.pdf.logicalstructure.BLSTextElement):
+    '''Represents Header structure element in logical structure.'''
+    
+    ...
+
+class ILSElement(aspose.pdf.logicalstructure.StructureElement):
+    '''Represents a base class for inline-level structure elements in logical structure.'''
+    
+    ...
+
+class ILSTextElement(aspose.pdf.logicalstructure.ILSElement):
+    '''Represents a base class for inline-level text structure elements in logical structure.'''
+    
+    def set_text(self, text: str) -> None:
+        '''Appends text content to current text element.
+        
+        :param text: Text content.'''
+        ...
+    
+    @property
+    def structure_text_state(self) -> aspose.pdf.logicalstructure.StructureTextState:
+        '''Gets :class:`StructureTextState` object for current element.'''
+        ...
+    
+    ...
+
+class ITextElement:
+    '''Interface for presenting text structure elements.'''
+    
+    def set_text(self, text: str) -> None:
+        '''Appends text content to current text element.
+        
+        :param text: Text content'''
+        ...
+    
+    @property
+    def structure_text_state(self) -> aspose.pdf.logicalstructure.StructureTextState:
+        '''Gets :class:`StructureTextState` object for text structure element.'''
+        ...
+    
+    ...
+
+class IllustrationElement(aspose.pdf.logicalstructure.StructureElement):
+    '''Represents a base class for illustration structure elements in logical structure.'''
+    
+    @overload
+    def set_image(self, image_src: str, image_resolution: float) -> None:
+        '''Appends image to current illustration element.
+        
+        :param image_src: Image source.
+        :param image_resolution: (Optional) Image Resolution. Default: 300 DPI.'''
+        ...
+    
+    @overload
+    def set_image(self, image_src: str, image_width: float, image_height: float) -> None:
+        '''Appends image to current illustration element.
+        
+        :param image_src: Image source.
+        :param image_width: Image width.
+        :param image_height: Image height.'''
+        ...
+    
+    ...
+
+class IndexElement(aspose.pdf.logicalstructure.GroupingElement):
+    '''Represents Index structure element in logical structure.'''
+    
+    ...
+
+class LinkElement(aspose.pdf.logicalstructure.AnnotationElement):
+    '''Represents Link structure element in logical structure.'''
+    
+    def set_text(self, text: str) -> None:
+        '''Appends text content to current text element.
+        
+        :param text: Text content.'''
+        ...
+    
+    @property
+    def hyperlink(self) -> aspose.pdf.Hyperlink:
+        '''Gets or Sets Hyperlink for Link Element.'''
+        ...
+    
+    @hyperlink.setter
+    def hyperlink(self, value: aspose.pdf.Hyperlink):
+        ...
+    
+    @property
+    def structure_text_state(self) -> aspose.pdf.logicalstructure.StructureTextState:
+        '''Gets :class:`StructureTextState` object for current element.'''
+        ...
+    
+    ...
+
+class ListChildElement(aspose.pdf.logicalstructure.StructureElement):
+    '''Represents a base class for children elements of the List in logical structure.'''
+    
+    ...
+
+class ListElement(aspose.pdf.logicalstructure.BLSElement):
+    '''Represents List structure element in logical structure.'''
+    
+    ...
+
+class ListLBodyElement(aspose.pdf.logicalstructure.ListChildElement):
+    '''Represents LBody structure element in logical structure of the list.'''
+    
+    ...
+
+class ListLIElement(aspose.pdf.logicalstructure.ListChildElement):
+    '''Represents LI structure element in logical structure of the list.'''
+    
+    ...
+
+class ListLblElement(aspose.pdf.logicalstructure.ListChildElement):
+    '''Represents Lbl structure element in logical structure of the list.'''
+    
+    ...
+
+class MCRElement(aspose.pdf.logicalstructure.Element):
+    '''Represents marked-content reference object in logical structure.'''
+ 
+    @overload
+    def tag(self, bdc: aspose.pdf.operators.BDC) -> aspose.pdf.logicalstructure.MCRElement:
+        '''Bind a structure element to the content stream BDC operator.
+        
+        :param bdc: Content stream bdc operator.
+        :returns: /Aspose.Pdf.LogicalStructure.MCRElementStructure element.'''
+        ...
+    
+    @overload
+    def tag(self, form: aspose.pdf.XForm) -> aspose.pdf.logicalstructure.OBJRElement:
+        '''Bind a structure element to the content stream XForm.
+        
+        :param form: Pdf form.
+        :returns: /Aspose.Pdf.LogicalStructure.OBJRElementStructure element.'''
+        ...
+    
+    @overload
+    def tag(self, image: aspose.pdf.XImage) -> aspose.pdf.logicalstructure.OBJRElement:
+        '''Bind a structure element to the XImage.
+        
+        :param image: Pdf image.
+        :returns: /Aspose.Pdf.LogicalStructure.OBJRElementStructure element.'''
+        ...
+    
+    @overload
+    def tag(self, artifact: aspose.pdf.Artifact) -> aspose.pdf.logicalstructure.MCRElement:
+        '''Bind a structure element to the Artifact.
+        
+        :param artifact: Pdf artifact.
+        :returns: /Aspose.Pdf.LogicalStructure.MCRElementStructure element.'''
+        ...
+    
+    @overload
+    def tag(self, annotation: aspose.pdf.annotations.Annotation) -> aspose.pdf.logicalstructure.OBJRElement:
+        '''Bind a structure element to the Annotation.
+        
+        :param annotation: Pdf annotation.
+        :returns: /Aspose.Pdf.LogicalStructure.OBJRElementStructure element.'''
+        ...
+
+    @property
+    def image_src(self) -> str:
+        '''Gets image source for marked-content reference element.
+        
+        For just created :class:`IllustrationElement`. Is null in other cases.'''
+        ...
+    
+    @property
+    def content(self) -> str:
+        '''Gets text content for marked-content reference element.
+        
+        For just created object wich implement :class:`ITextElement`. Is null in other cases.'''
+        ...
+    
+    @property
+    def mcid(self) -> int:
+        '''Gets MCID of marked-content reference object.'''
+        ...
+    
+    ...
+
+class NonStructElement(aspose.pdf.logicalstructure.GroupingElement):
+    '''Represents NonStruct structure element in logical structure.'''
+    
+    ...
+
+class NoteElement(aspose.pdf.logicalstructure.ILSTextElement):
+    '''Represents Note structure element in logical structure.'''
+    
+    ...
+
+class OBJRElement(aspose.pdf.logicalstructure.Element):
+    '''Represents object reference entity in logical structure.'''
+    
+    @overload
+    def tag(self, bdc: aspose.pdf.operators.BDC) -> aspose.pdf.logicalstructure.MCRElement:
+        '''Bind a structure element to the content stream BDC operator.
+        
+        :param bdc: Content stream bdc operator.
+        :returns: /Aspose.Pdf.LogicalStructure.MCRElementStructure element.'''
+        ...
+    
+    @overload
+    def tag(self, form: aspose.pdf.XForm) -> aspose.pdf.logicalstructure.OBJRElement:
+        '''Bind a structure element to the content stream XForm.
+        
+        :param form: Pdf form.
+        :returns: /Aspose.Pdf.LogicalStructure.OBJRElementStructure element.'''
+        ...
+    
+    @overload
+    def tag(self, image: aspose.pdf.XImage) -> aspose.pdf.logicalstructure.OBJRElement:
+        '''Bind a structure element to the XImage.
+        
+        :param image: Pdf image.
+        :returns: /Aspose.Pdf.LogicalStructure.OBJRElementStructure element.'''
+        ...
+    
+    @overload
+    def tag(self, artifact: aspose.pdf.Artifact) -> aspose.pdf.logicalstructure.MCRElement:
+        '''Bind a structure element to the Artifact.
+        
+        :param artifact: Pdf artifact.
+        :returns: /Aspose.Pdf.LogicalStructure.MCRElementStructure element.'''
+        ...
+    
+    @overload
+    def tag(self, annotation: aspose.pdf.annotations.Annotation) -> aspose.pdf.logicalstructure.OBJRElement:
+        '''Bind a structure element to the Annotation.
+        
+        :param annotation: Pdf annotation.
+        :returns: /Aspose.Pdf.LogicalStructure.OBJRElementStructure element.'''
+        ...
+
+    ...
+
+class ParagraphElement(aspose.pdf.logicalstructure.BLSTextElement):
+    '''Represents Paragraph structure element in logical structure.'''
+    
+    ...
+
+class PartElement(aspose.pdf.logicalstructure.GroupingElement):
+    '''Represents Part structure element in logical structure.'''
+    
+    ...
+
+class PrivateElement(aspose.pdf.logicalstructure.GroupingElement):
+    '''Represents Private structure element in logical structure.'''
+    
+    ...
+
+class QuoteElement(aspose.pdf.logicalstructure.ILSTextElement):
+    '''Represents Quote structure element in logical structure.'''
+    
+    ...
+
+class ReferenceElement(aspose.pdf.logicalstructure.ILSElement):
+    '''Represents Reference structure element in logical structure.'''
+    
+    ...
+
+class RubyChildElement(aspose.pdf.logicalstructure.StructureElement):
+    '''Represents a base class for children elements of the Ruby in logical structure.'''
+    
+    ...
+
+class RubyElement(aspose.pdf.logicalstructure.ILSElement):
+    '''Represents Ruby structure element in logical structure.'''
+    
+    ...
+
+class RubyRBElement(aspose.pdf.logicalstructure.RubyChildElement):
+    '''Represents RB structure element in logical structure of the Ruby.'''
+    
+    ...
+
+class RubyRPElement(aspose.pdf.logicalstructure.RubyChildElement):
+    '''Represents RP structure element in logical structure of the Ruby.'''
+    
+    ...
+
+class RubyRTElement(aspose.pdf.logicalstructure.RubyChildElement):
+    '''Represents RT structure element in logical structure of the Ruby.'''
+    
+    ...
+
+class SectElement(aspose.pdf.logicalstructure.GroupingElement):
+    '''Represents Sect structure element in logical structure.'''
+    
+    ...
+
+class SpanElement(aspose.pdf.logicalstructure.ILSTextElement):
+    '''Represents Span structure element in logical structure.'''
+    
+    ...
+
+class StructTreeRootElement(aspose.pdf.logicalstructure.Element):
+    '''Represents StructTreeRoot object in logical structure.'''
+    
+    @overload
+    def tag(self, bdc: aspose.pdf.operators.BDC) -> aspose.pdf.logicalstructure.MCRElement:
+        '''Bind a structure element to the content stream BDC operator.
+        
+        :param bdc: Content stream bdc operator.
+        :returns: /Aspose.Pdf.LogicalStructure.MCRElementStructure element.'''
+        ...
+    
+    @overload
+    def tag(self, form: aspose.pdf.XForm) -> aspose.pdf.logicalstructure.OBJRElement:
+        '''Bind a structure element to the content stream XForm.
+        
+        :param form: Pdf form.
+        :returns: /Aspose.Pdf.LogicalStructure.OBJRElementStructure element.'''
+        ...
+    
+    @overload
+    def tag(self, image: aspose.pdf.XImage) -> aspose.pdf.logicalstructure.OBJRElement:
+        '''Bind a structure element to the XImage.
+        
+        :param image: Pdf image.
+        :returns: /Aspose.Pdf.LogicalStructure.OBJRElementStructure element.'''
+        ...
+    
+    @overload
+    def tag(self, artifact: aspose.pdf.Artifact) -> aspose.pdf.logicalstructure.MCRElement:
+        '''Bind a structure element to the Artifact.
+        
+        :param artifact: Pdf artifact.
+        :returns: /Aspose.Pdf.LogicalStructure.MCRElementStructure element.'''
+        ...
+    
+    @overload
+    def tag(self, annotation: aspose.pdf.annotations.Annotation) -> aspose.pdf.logicalstructure.OBJRElement:
+        '''Bind a structure element to the Annotation.
+        
+        :param annotation: Pdf annotation.
+        :returns: /Aspose.Pdf.LogicalStructure.OBJRElementStructure element.'''
+        ...
+    
+
+    ...
+
+class StructureAttribute:
+    '''Represents attribute of structure element.'''
+    
+    def __init__(self, attribute_key: aspose.pdf.logicalstructure.AttributeKey):
+        '''Initializes a new instance of the StructureAttribute.
+        
+        :param attribute_key: Attribute Key'''
+        ...
+    
+    def get_name_value(self) -> aspose.pdf.logicalstructure.AttributeName:
+        '''Gets Value Name.
+        
+        :returns: Value Name.'''
+        ...
+    
+    def get_string_value(self) -> str:
+        '''Gets Value String.
+        
+        :returns: Value String.'''
+        ...
+    
+    def get_number_value(self) -> float:
+        '''Gets Value Number.
+        
+        :returns: Value Number.'''
+        ...
+    
+    def get_array_value(self) -> list[aspose.pdf.logicalstructure.AttributeName]:
+        '''Gets Value Name Array.
+        
+        :returns: Value Name Array.'''
+        ...
+    
+    def get_array_number_value(self) -> list[float]:
+        '''Gets Value Number Array.
+        
+        :returns: Value Number Array.'''
+        ...
+    
+    def set_name_value(self, name: aspose.pdf.logicalstructure.AttributeName) -> None:
+        '''Sets Value Name.
+        
+        :param name: Allowable Value Name.'''
+        ...
+    
+    def set_string_value(self, value: str) -> None:
+        '''Sets Value String.
+        
+        :param value: Value String.'''
+        ...
+    
+    def set_number_value(self, number: float) -> None:
+        '''Sets Value Number.
+        
+        :param number: Value Number.'''
+        ...
+    
+    def set_array_value(self, array: list[aspose.pdf.logicalstructure.AttributeName]) -> None:
+        '''Sets Value Name Array.
+        
+        :param array: Array of allowable Value Names.'''
+        ...
+    
+    def set_array_number_value(self, array_number: list[float]) -> None:
+        ...
+    
+    def set_color_value(self, color: aspose.pdf.Color) -> None:
+        '''Sets Value Color.
+        
+        :param color: Color.'''
+        ...
+    
+    def set_rectangle_value(self, rectangle: aspose.pdf.Rectangle) -> None:
+        '''Sets Value Rectangle.
+        
+        :param rectangle: Rectangle.'''
+        ...
+    
+    @property
+    def key(self) -> aspose.pdf.logicalstructure.AttributeKey:
+        '''Gets attribute key.'''
+        ...
+    
+    @property
+    def is_initialized_value(self) -> bool:
+        '''Gets status of structure attribute value. True if value is set.'''
+        ...
+    
+    ...
+
+class StructureAttributeCollection:
+    '''Represents collection of attributes of structure elements.'''
+    
+    def get_attributes(self, owner_standard: aspose.pdf.logicalstructure.AttributeOwnerStandard) -> aspose.pdf.logicalstructure.StructureAttributes:
+        '''Return :class:`StructureAttributes` of structure element by standard attribute owner.
+        
+        :param owner_standard: Standard attribute owner.
+        :returns: :class:`StructureAttributes` of structure element. Return null if not found.'''
+        ...
+    
+    def create_attributes(self, owner_standard: aspose.pdf.logicalstructure.AttributeOwnerStandard) -> aspose.pdf.logicalstructure.StructureAttributes:
+        '''Create and return :class:`StructureAttributes` of structure element by standard attribute owner.
+        
+        :param owner_standard: Standard attribute owner.
+        :returns: :class:`StructureAttributes` of structure element. Structure Attributes will be created if it needed.'''
+        ...
+    
+    ...
+
+class StructureAttributes:
+    '''Represents attributes of structure element for standard attribute owners.'''
+    
+    def get_attribute(self, key: aspose.pdf.logicalstructure.AttributeKey) -> aspose.pdf.logicalstructure.StructureAttribute:
+        '''Gets StructureAttribute by AttributeKey.
+        
+        :param key: AttributeKey.
+        :returns: StructureAttribute'''
+        ...
+    
+    def set_attribute(self, attribute: aspose.pdf.logicalstructure.StructureAttribute) -> None:
+        '''Sets StructureAttribute into StructureAttributes.
+        
+        :param attribute: StructureAttribute.'''
+        ...
+    
+    @property
+    def owner(self) -> aspose.pdf.logicalstructure.AttributeOwnerStandard:
+        '''Gets standard attribute owner.'''
+        ...
+    
+    ...
+
+class StructureElement(aspose.pdf.logicalstructure.Element):
+    '''Represents a base class for structure elements in logical structure.'''
+    
+    @overload
+    def tag(self, bdc: aspose.pdf.operators.BDC) -> aspose.pdf.logicalstructure.MCRElement:
+        '''Bind a structure element to the content stream BDC operator.
+        
+        :param bdc: Content stream bdc operator.
+        :returns: /Aspose.Pdf.LogicalStructure.MCRElementStructure element.'''
+        ...
+    
+    @overload
+    def tag(self, form: aspose.pdf.XForm) -> aspose.pdf.logicalstructure.OBJRElement:
+        '''Bind a structure element to the content stream XForm.
+        
+        :param form: Pdf form.
+        :returns: /Aspose.Pdf.LogicalStructure.OBJRElementStructure element.'''
+        ...
+    
+    @overload
+    def tag(self, image: aspose.pdf.XImage) -> aspose.pdf.logicalstructure.OBJRElement:
+        '''Bind a structure element to the XImage.
+        
+        :param image: Pdf image.
+        :returns: /Aspose.Pdf.LogicalStructure.OBJRElementStructure element.'''
+        ...
+    
+    @overload
+    def tag(self, artifact: aspose.pdf.Artifact) -> aspose.pdf.logicalstructure.MCRElement:
+        '''Bind a structure element to the Artifact.
+        
+        :param artifact: Pdf artifact.
+        :returns: /Aspose.Pdf.LogicalStructure.MCRElementStructure element.'''
+        ...
+    
+    @overload
+    def tag(self, annotation: aspose.pdf.annotations.Annotation) -> aspose.pdf.logicalstructure.OBJRElement:
+        '''Bind a structure element to the Annotation.
+        
+        :param annotation: Pdf annotation.
+        :returns: /Aspose.Pdf.LogicalStructure.OBJRElementStructure element.'''
+        ...
+
+    def change_parent_element(self, new_parent_element: aspose.pdf.logicalstructure.StructureElement) -> None:
+        '''Change parent element for current structure element
+        
+        :param new_parent_element: New parent structure element'''
+        ...
+    
+    def remove(self) -> None:
+        '''Removes: an element from the structure, a reference to it from the parent object, references to it from child objects,
+        the corresponding object from the document.'''
+        ...
+
+    def remove_and_move_its_child_objects_to_its_parent(self, check_if_child_objects_can_be_moved_to_parent: bool) -> None:
+        '''Removes an element from the structure, a reference to it from the parent object, references to it from child objects,
+        and the corresponding object from the document. Inserts child objects of the removed object into its former parent child objects collection starting at the index of the removed object.
+        
+        :param check_if_child_objects_can_be_moved_to_parent: Check if child objects of removed object can be inserted into its parent child objects collection.'''
+        ...
+
+    def generate_id(self) -> None:
+        '''Generate ID for structure element.'''
+        ...
+    
+    def set_id(self, id: str) -> None:
+        '''Sets ID for structure element.
+        
+        :param id: ID value for structure element'''
+        ...
+    
+    def clear_id(self) -> None:
+        '''Clear ID for structure element.'''
+        ...
+    
+    def set_tag(self, new_tag: str) -> None:
+        '''Sets custom tag for structure element.
+        
+        :param new_tag: Tag name'''
+        ...
+     
+    @property
+    def default_attribute_owner(self) -> aspose.pdf.logicalstructure.AttributeOwnerStandard:
+        '''Gets :class:`AttributeOwnerStandard` object.'''
+        ...
+    
+    @property
+    def attributes(self) -> aspose.pdf.logicalstructure.StructureAttributeCollection:
+        '''Gets :class:`StructureAttributeCollection` object.'''
+        ...
+    
+    @property
+    def structure_type(self) -> aspose.pdf.logicalstructure.StructureTypeStandard:
+        '''Gets type of structure element.'''
+        ...
+    
+    @property
+    def id(self) -> str:
+        '''Gets the ID for structure element.'''
+        ...
+    
+    @property
+    def title(self) -> str:
+        '''Gets or sets the title for structure element.'''
+        ...
+    
+    @title.setter
+    def title(self, value: str):
+        ...
+    
+    @property
+    def language(self) -> str:
+        '''Gets or sets the language for structure element.'''
+        ...
+    
+    @language.setter
+    def language(self, value: str):
+        ...
+    
+    @property
+    def alternative_text(self) -> str:
+        '''Gets or sets the alternative text for structure element.'''
+        ...
+    
+    @alternative_text.setter
+    def alternative_text(self, value: str):
+        ...
+    
+    @property
+    def expansion_text(self) -> str:
+        '''Gets or sets the expansion text for structure element.'''
+        ...
+    
+    @expansion_text.setter
+    def expansion_text(self, value: str):
+        ...
+    
+    @property
+    def actual_text(self) -> str:
+        '''Gets or sets the actual text for structure element.'''
+        ...
+    
+    @actual_text.setter
+    def actual_text(self, value: str):
+        ...
+
+    @property
+    def page(self) -> aspose.pdf.Page:
+        '''Gets the page on which some or all child elements will be rendered.'''
+        ...
+    
+    ...
+
+class StructureTextState:
+    '''Represents text state settings for Text Structure Elements and TaggedContent (ITextElement, ITaggedContent)'''
+    
+    @property
+    def font(self) -> aspose.pdf.text.Font:
+        '''Gets or sets the font of text.
+        
+        Can be null. Use null to inherit ``Font`` property from parent structure element.'''
+        ...
+    
+    @font.setter
+    def font(self, value: aspose.pdf.text.Font):
+        ...
+    
+    @property
+    def font_size(self) -> float:
+        '''Gets or sets font size of the text.
+        
+        Can be null. Use null to inherit ``FontSize`` property from parent structure element.'''
+        ...
+    
+    @font_size.setter
+    def font_size(self, value: float):
+        ...
+    
+    @property
+    def font_style(self) -> aspose.pdf.text.FontStyles:
+        '''Gets or sets font style of the text.
+        
+        Can be null. Use null to inherit ``FontStyle`` property from parent structure element.'''
+        ...
+    
+    @font_style.setter
+    def font_style(self, value: aspose.pdf.text.FontStyles):
+        ...
+    
+    @property
+    def foreground_color(self) -> aspose.pdf.Color:
+        '''Gets or sets foreground color of the text.
+        
+        Can be null. Use null to inherit ``ForegroundColor`` property from parent structure element.'''
+        ...
+    
+    @foreground_color.setter
+    def foreground_color(self, value: aspose.pdf.Color):
+        ...
+    
+    @property
+    def background_color(self) -> aspose.pdf.Color:
+        '''Gets or sets background color of the text.
+        
+        Can be null. Use null to inherit ``BackgroundColor`` property from parent structure element.'''
+        ...
+    
+    @background_color.setter
+    def background_color(self, value: aspose.pdf.Color):
+        ...
+    
+    @property
+    def underline(self) -> bool:
+        '''Gets or sets underline for the text.
+        
+        Can be null. Use null to inherit ``Underline`` property from parent structure element.'''
+        ...
+    
+    @underline.setter
+    def underline(self, value: bool):
+        ...
+    
+    @property
+    def strike_out(self) -> bool:
+        '''Gets or sets strikeout for the text.
+        
+        Can be null. Use null to inherit ``StrikeOut`` property from parent structure element.'''
+        ...
+    
+    @strike_out.setter
+    def strike_out(self, value: bool):
+        ...
+    
+    @property
+    def superscript(self) -> bool:
+        '''Gets or sets superscript of the text.
+        
+        Can be null. Use null to inherit ``Superscript`` property from parent structure element.'''
+        ...
+    
+    @superscript.setter
+    def superscript(self, value: bool):
+        ...
+    
+    @property
+    def subscript(self) -> bool:
+        '''Gets or sets subscript of the text.
+        
+        Can be null. Use null to inherit ``Subscript`` property from parent structure element.'''
+        ...
+    
+    @subscript.setter
+    def subscript(self, value: bool):
+        ...
+    
+    @property
+    def horizontal_scaling(self) -> float:
+        '''Gets or sets horizontal scaling of the text.
+        
+        Can be null. Use null to inherit ``HorizontalScaling`` property from parent structure element.'''
+        ...
+    
+    @horizontal_scaling.setter
+    def horizontal_scaling(self, value: float):
+        ...
+    
+    @property
+    def line_spacing(self) -> float:
+        '''Gets or sets line spacing of the text.
+        
+        Can be null. Use null to inherit ``LineSpacing`` property from parent structure element.'''
+        ...
+    
+    @line_spacing.setter
+    def line_spacing(self, value: float):
+        ...
+    
+    @property
+    def character_spacing(self) -> float:
+        '''Gets or sets character spacing of the text.
+        
+        Can be null. Use null to inherit ``CharacterSpacing`` property from parent structure element.'''
+        ...
+    
+    @character_spacing.setter
+    def character_spacing(self, value: float):
+        ...
+    
+    @property
+    def word_spacing(self) -> float:
+        '''Gets or sets word spacing of the text.
+        
+        Can be null. Use null to inherit ``WordSpacing`` property from parent structure element.'''
+        ...
+    
+    @word_spacing.setter
+    def word_spacing(self, value: float):
+        ...
+    
+    @property
+    def margin_info(self) -> aspose.pdf.MarginInfo:
+        '''Gets or sets margin for block structure element.'''
+        ...
+    
+    @margin_info.setter
+    def margin_info(self, value: aspose.pdf.MarginInfo):
+        ...
+    
+    ...
+
+class StructureTypeCategory:
+    '''Represents Categories of Standard Structure Types.'''
+    
+    GROUPING_ELEMENTS: aspose.pdf.logicalstructure.StructureTypeCategory
+    
+    BLS_ES: aspose.pdf.logicalstructure.StructureTypeCategory
+    
+    ILS_ES: aspose.pdf.logicalstructure.StructureTypeCategory
+    
+    ILLUSTRATION_ELEMENTS: aspose.pdf.logicalstructure.StructureTypeCategory
+    
+    ...
+
+class StructureTypeStandard:
+    '''Represents Standard Structure Types.'''
+    
+    @property
+    def tag(self) -> str:
+        '''Gets tag name of :class:`StructureElement`.'''
+        ...
+    
+    @property
+    def category(self) -> aspose.pdf.logicalstructure.StructureTypeCategory:
+        '''Gets category of Standard Structure Type.'''
+        ...
+    
+    DOCUMENT: aspose.pdf.logicalstructure.StructureTypeStandard
+    
+    PART: aspose.pdf.logicalstructure.StructureTypeStandard
+    
+    ART: aspose.pdf.logicalstructure.StructureTypeStandard
+    
+    SECT: aspose.pdf.logicalstructure.StructureTypeStandard
+    
+    DIV: aspose.pdf.logicalstructure.StructureTypeStandard
+    
+    BLOCK_QUOTE: aspose.pdf.logicalstructure.StructureTypeStandard
+    
+    CAPTION: aspose.pdf.logicalstructure.StructureTypeStandard
+    
+    TOC: aspose.pdf.logicalstructure.StructureTypeStandard
+    
+    TOCI: aspose.pdf.logicalstructure.StructureTypeStandard
+    
+    INDEX: aspose.pdf.logicalstructure.StructureTypeStandard
+    
+    NON_STRUCT: aspose.pdf.logicalstructure.StructureTypeStandard
+    
+    PRIVATE: aspose.pdf.logicalstructure.StructureTypeStandard
+    
+    P: aspose.pdf.logicalstructure.StructureTypeStandard
+    
+    H: aspose.pdf.logicalstructure.StructureTypeStandard
+    
+    H1: aspose.pdf.logicalstructure.StructureTypeStandard
+    
+    H2: aspose.pdf.logicalstructure.StructureTypeStandard
+    
+    H3: aspose.pdf.logicalstructure.StructureTypeStandard
+    
+    H4: aspose.pdf.logicalstructure.StructureTypeStandard
+    
+    H5: aspose.pdf.logicalstructure.StructureTypeStandard
+    
+    H6: aspose.pdf.logicalstructure.StructureTypeStandard
+    
+    L: aspose.pdf.logicalstructure.StructureTypeStandard
+    
+    LI: aspose.pdf.logicalstructure.StructureTypeStandard
+    
+    LBL: aspose.pdf.logicalstructure.StructureTypeStandard
+    
+    L_BODY: aspose.pdf.logicalstructure.StructureTypeStandard
+    
+    TABLE: aspose.pdf.logicalstructure.StructureTypeStandard
+    
+    T_HEAD: aspose.pdf.logicalstructure.StructureTypeStandard
+    
+    T_BODY: aspose.pdf.logicalstructure.StructureTypeStandard
+    
+    T_FOOT: aspose.pdf.logicalstructure.StructureTypeStandard
+    
+    TR: aspose.pdf.logicalstructure.StructureTypeStandard
+    
+    TH: aspose.pdf.logicalstructure.StructureTypeStandard
+    
+    TD: aspose.pdf.logicalstructure.StructureTypeStandard
+    
+    SPAN: aspose.pdf.logicalstructure.StructureTypeStandard
+    
+    QUOTE: aspose.pdf.logicalstructure.StructureTypeStandard
+    
+    NOTE: aspose.pdf.logicalstructure.StructureTypeStandard
+    
+    REFERENCE: aspose.pdf.logicalstructure.StructureTypeStandard
+    
+    BIB_ENTRY: aspose.pdf.logicalstructure.StructureTypeStandard
+    
+    CODE: aspose.pdf.logicalstructure.StructureTypeStandard
+    
+    LINK: aspose.pdf.logicalstructure.StructureTypeStandard
+    
+    ANNOT: aspose.pdf.logicalstructure.StructureTypeStandard
+    
+    RUBY: aspose.pdf.logicalstructure.StructureTypeStandard
+    
+    RB: aspose.pdf.logicalstructure.StructureTypeStandard
+    
+    RT: aspose.pdf.logicalstructure.StructureTypeStandard
+    
+    RP: aspose.pdf.logicalstructure.StructureTypeStandard
+    
+    WARICHU: aspose.pdf.logicalstructure.StructureTypeStandard
+    
+    WT: aspose.pdf.logicalstructure.StructureTypeStandard
+    
+    WP: aspose.pdf.logicalstructure.StructureTypeStandard
+    
+    FIGURE: aspose.pdf.logicalstructure.StructureTypeStandard
+    
+    FORMULA: aspose.pdf.logicalstructure.StructureTypeStandard
+    
+    FORM: aspose.pdf.logicalstructure.StructureTypeStandard
+    
+    ...
+
+class TOCElement(aspose.pdf.logicalstructure.GroupingElement):
+    '''Represents TOC structure element in logical structure.'''
+    
+    ...
+
+class TOCIElement(aspose.pdf.logicalstructure.GroupingElement):
+    '''Represents TOCI structure element in logical structure.'''
+    
+    ...
+
+class TableCellElement(aspose.pdf.logicalstructure.TableChildElement):
+    '''Represents a base class for table cell elements (TH and TD) in logical structure.'''
+    
+    def set_text(self, text: str) -> None:
+        '''Appends text content to current text element.
+        
+        :param text: Text content'''
+        ...
+    
+    @property
+    def background_color(self) -> aspose.pdf.Color:
+        '''Gets or sets the cell background color.'''
+        ...
+    
+    @background_color.setter
+    def background_color(self, value: aspose.pdf.Color):
+        ...
+    
+    @property
+    def border(self) -> aspose.pdf.BorderInfo:
+        '''Gets or sets the cell border.'''
+        ...
+    
+    @border.setter
+    def border(self, value: aspose.pdf.BorderInfo):
+        ...
+    
+    @property
+    def is_no_border(self) -> bool:
+        '''Gets or sets the cell have border.'''
+        ...
+    
+    @is_no_border.setter
+    def is_no_border(self, value: bool):
+        ...
+    
+    @property
+    def margin(self) -> aspose.pdf.MarginInfo:
+        '''Gets or sets the padding.'''
+        ...
+    
+    @margin.setter
+    def margin(self, value: aspose.pdf.MarginInfo):
+        ...
+    
+    @property
+    def alignment(self) -> aspose.pdf.HorizontalAlignment:
+        '''Gets or sets the cell alignment.'''
+        ...
+    
+    @alignment.setter
+    def alignment(self, value: aspose.pdf.HorizontalAlignment):
+        ...
+    
+    @property
+    def default_cell_text_state(self) -> aspose.pdf.text.TextState:
+        '''Gets or sets the default cell text state.'''
+        ...
+    
+    @default_cell_text_state.setter
+    def default_cell_text_state(self, value: aspose.pdf.text.TextState):
+        ...
+    
+    @property
+    def is_word_wrapped(self) -> bool:
+        '''Gets or sets the cell's text word wrapped.'''
+        ...
+    
+    @is_word_wrapped.setter
+    def is_word_wrapped(self, value: bool):
+        ...
+    
+    @property
+    def vertical_alignment(self) -> aspose.pdf.VerticalAlignment:
+        '''Gets or sets the vertical alignment.'''
+        ...
+    
+    @vertical_alignment.setter
+    def vertical_alignment(self, value: aspose.pdf.VerticalAlignment):
+        ...
+    
+    @property
+    def col_span(self) -> int:
+        '''Gets or sets the column span.'''
+        ...
+    
+    @col_span.setter
+    def col_span(self, value: int):
+        ...
+    
+    @property
+    def row_span(self) -> int:
+        '''Gets or sets the row span.'''
+        ...
+    
+    @row_span.setter
+    def row_span(self, value: int):
+        ...
+    
+    @property
+    def structure_text_state(self) -> aspose.pdf.logicalstructure.StructureTextState:
+        '''Gets :class:`StructureTextState` object for current element.'''
+        ...
+    
+    ...
+
+class TableChildElement(aspose.pdf.logicalstructure.StructureElement):
+    '''Represents a base class for children elements of the Table in logical structure.'''
+    
+    ...
+
+class TableElement(aspose.pdf.logicalstructure.BLSElement):
+    '''Represents Table structure element in logical structure.'''
+    
+    def create_t_head(self) -> aspose.pdf.logicalstructure.TableTHeadElement:
+        '''Creates :class:`TableTHeadElement` and added it to current table.
+        
+        :returns: Created structure element.'''
+        ...
+    
+    def create_t_body(self) -> aspose.pdf.logicalstructure.TableTBodyElement:
+        '''Creates :class:`TableTHeadElement` and added it to current table.
+        
+        :returns: Created structure element.'''
+        ...
+    
+    def create_t_foot(self) -> aspose.pdf.logicalstructure.TableTFootElement:
+        '''Creates :class:`TableTFootElement` and added it to current table.
+        
+        :returns: Created structure element.'''
+        ...
+    
+    @property
+    def background_color(self) -> aspose.pdf.Color:
+        '''Gets or sets the table background color.'''
+        ...
+    
+    @background_color.setter
+    def background_color(self, value: aspose.pdf.Color):
+        ...
+    
+    @property
+    def border(self) -> aspose.pdf.BorderInfo:
+        '''Gets or sets the table border.'''
+        ...
+    
+    @border.setter
+    def border(self, value: aspose.pdf.BorderInfo):
+        ...
+    
+    @property
+    def alignment(self) -> aspose.pdf.HorizontalAlignment:
+        '''Gets or sets the table alignment.'''
+        ...
+    
+    @alignment.setter
+    def alignment(self, value: aspose.pdf.HorizontalAlignment):
+        ...
+    
+    @property
+    def corner_style(self) -> aspose.pdf.BorderCornerStyle:
+        '''Gets or sets the styles of the border corners'''
+        ...
+    
+    @corner_style.setter
+    def corner_style(self, value: aspose.pdf.BorderCornerStyle):
+        ...
+    
+    @property
+    def broken(self) -> aspose.pdf.TableBroken:
+        '''Gets or sets table vertial broken;'''
+        ...
+    
+    @broken.setter
+    def broken(self, value: aspose.pdf.TableBroken):
+        ...
+    
+    @property
+    def column_adjustment(self) -> aspose.pdf.ColumnAdjustment:
+        '''Gets or sets the table column adjustment.'''
+        ...
+    
+    @column_adjustment.setter
+    def column_adjustment(self, value: aspose.pdf.ColumnAdjustment):
+        ...
+    
+    @property
+    def column_widths(self) -> str:
+        '''Gets the column widths of the table.'''
+        ...
+    
+    @column_widths.setter
+    def column_widths(self, value: str):
+        ...
+    
+    @property
+    def default_cell_border(self) -> aspose.pdf.BorderInfo:
+        '''Gets default cell border.'''
+        ...
+    
+    @default_cell_border.setter
+    def default_cell_border(self, value: aspose.pdf.BorderInfo):
+        ...
+    
+    @property
+    def default_cell_padding(self) -> aspose.pdf.MarginInfo:
+        '''Gets or sets the default cell padding.'''
+        ...
+    
+    @default_cell_padding.setter
+    def default_cell_padding(self, value: aspose.pdf.MarginInfo):
+        ...
+    
+    @property
+    def default_cell_text_state(self) -> aspose.pdf.text.TextState:
+        '''Gets or sets the default cell text state.'''
+        ...
+    
+    @default_cell_text_state.setter
+    def default_cell_text_state(self, value: aspose.pdf.text.TextState):
+        ...
+    
+    @property
+    def default_column_width(self) -> str:
+        '''Gets or sets default column width.'''
+        ...
+    
+    @default_column_width.setter
+    def default_column_width(self, value: str):
+        ...
+    
+    @property
+    def is_broken(self) -> bool:
+        '''Gets or sets the table is broken - will be truncated for next page.'''
+        ...
+    
+    @is_broken.setter
+    def is_broken(self, value: bool):
+        ...
+    
+    @property
+    def is_borders_included(self) -> bool:
+        '''Gets or sets border included in column widhts.'''
+        ...
+    
+    @is_borders_included.setter
+    def is_borders_included(self, value: bool):
+        ...
+    
+    @property
+    def left(self) -> float:
+        '''Gets or sets the table left coordinate.'''
+        ...
+    
+    @left.setter
+    def left(self, value: float):
+        ...
+    
+    @property
+    def top(self) -> float:
+        '''Gets or sets the table top coordinate.'''
+        ...
+    
+    @top.setter
+    def top(self, value: float):
+        ...
+    
+    @property
+    def repeating_columns_count(self) -> int:
+        '''Gets or sets the maximum columns count for table.'''
+        ...
+    
+    @repeating_columns_count.setter
+    def repeating_columns_count(self, value: int):
+        ...
+    
+    @property
+    def repeating_rows_count(self) -> int:
+        '''Gets the first rows count repeated for several pages.'''
+        ...
+    
+    @repeating_rows_count.setter
+    def repeating_rows_count(self, value: int):
+        ...
+    
+    @property
+    def repeating_rows_style(self) -> aspose.pdf.text.TextState:
+        '''Gets the style for repeating rows.'''
+        ...
+    
+    @repeating_rows_style.setter
+    def repeating_rows_style(self, value: aspose.pdf.text.TextState):
+        ...
+    
+    ...
+
+class TableRowCollectionElement(aspose.pdf.logicalstructure.TableChildElement):
+    '''Represents a base class for children elements of the Table Head, Body and Foot in logical structure.'''
+    
+    def create_tr(self) -> aspose.pdf.logicalstructure.TableTRElement:
+        '''Creates :class:`TableTRElement` and added it to current table.
+        
+        :returns: Created structure element.'''
+        ...
+    
+    ...
+
+class TableTBodyElement(aspose.pdf.logicalstructure.TableRowCollectionElement):
+    '''Represents TBody structure element in logical structure of the table.'''
+    
+    ...
+
+class TableTDElement(aspose.pdf.logicalstructure.TableCellElement):
+    '''Represents TD structure element in logical structure of the table.'''
+    
+    ...
+
+class TableTFootElement(aspose.pdf.logicalstructure.TableRowCollectionElement):
+    '''Represents TFoot structure element in logical structure of the table.'''
+    
+    ...
+
+class TableTHElement(aspose.pdf.logicalstructure.TableCellElement):
+    '''Represents TH structure element in logical structure of the table.'''
+    
+    ...
+
+class TableTHeadElement(aspose.pdf.logicalstructure.TableRowCollectionElement):
+    '''Represents THead structure element in logical structure of the table.'''
+    
+    ...
+
+class TableTRElement(aspose.pdf.logicalstructure.TableChildElement):
+    '''Represents TR structure element in logical structure of the table.'''
+    
+    def create_th(self) -> aspose.pdf.logicalstructure.TableTHElement:
+        '''Creates :class:`TableTHElement` and added it to current table.
+        
+        :returns: Created structure element.'''
+        ...
+    
+    def create_td(self) -> aspose.pdf.logicalstructure.TableTDElement:
+        '''Creates :class:`TableTHElement` and added it to current table.
+        
+        :returns: Created structure element.'''
+        ...
+    
+    @property
+    def background_color(self) -> aspose.pdf.Color:
+        '''Gets or sets the row background color.'''
+        ...
+    
+    @background_color.setter
+    def background_color(self, value: aspose.pdf.Color):
+        ...
+    
+    @property
+    def border(self) -> aspose.pdf.BorderInfo:
+        '''Gets or sets the row border.'''
+        ...
+    
+    @border.setter
+    def border(self, value: aspose.pdf.BorderInfo):
+        ...
+    
+    @property
+    def default_cell_border(self) -> aspose.pdf.BorderInfo:
+        '''Gets default cell border.'''
+        ...
+    
+    @default_cell_border.setter
+    def default_cell_border(self, value: aspose.pdf.BorderInfo):
+        ...
+    
+    @property
+    def min_row_height(self) -> float:
+        '''Gets height for row.'''
+        ...
+    
+    @min_row_height.setter
+    def min_row_height(self, value: float):
+        ...
+    
+    @property
+    def fixed_row_height(self) -> float:
+        '''Gets fixed row height - row may have fixed height.'''
+        ...
+    
+    @fixed_row_height.setter
+    def fixed_row_height(self, value: float):
+        ...
+    
+    @property
+    def is_in_new_page(self) -> bool:
+        '''Gets fixed row is in new page - page with this property should be printed to next page Default false.'''
+        ...
+    
+    @is_in_new_page.setter
+    def is_in_new_page(self, value: bool):
+        ...
+    
+    @property
+    def is_row_broken(self) -> bool:
+        '''Gets is row can be broken between two pages.'''
+        ...
+    
+    @is_row_broken.setter
+    def is_row_broken(self, value: bool):
+        ...
+    
+    @property
+    def default_cell_text_state(self) -> aspose.pdf.text.TextState:
+        '''Gets or sets default text state for row cells'''
+        ...
+    
+    @default_cell_text_state.setter
+    def default_cell_text_state(self, value: aspose.pdf.text.TextState):
+        ...
+    
+    @property
+    def default_cell_padding(self) -> aspose.pdf.MarginInfo:
+        '''Gets or sets default margin for row cells.'''
+        ...
+    
+    @default_cell_padding.setter
+    def default_cell_padding(self, value: aspose.pdf.MarginInfo):
+        ...
+    
+    @property
+    def vertical_alignment(self) -> aspose.pdf.VerticalAlignment:
+        '''Gets or sets the vertical alignment.'''
+        ...
+    
+    @vertical_alignment.setter
+    def vertical_alignment(self, value: aspose.pdf.VerticalAlignment):
+        ...
+    
+    ...
+
+class WarichuChildElement(aspose.pdf.logicalstructure.StructureElement):
+    '''Represents a base class for children elements of the Warichu in logical structure.'''
+    
+    ...
+
+class WarichuElement(aspose.pdf.logicalstructure.ILSElement):
+    '''Represents Warichu structure element in logical structure.'''
+    
+    ...
+
+class WarichuWPElement(aspose.pdf.logicalstructure.WarichuChildElement):
+    '''Represents WP structure element in logical structure of the Warichu.'''
+    
+    ...
+
+class WarichuWTElement(aspose.pdf.logicalstructure.WarichuChildElement):
+    '''Represents WT structure element in logical structure of the Warichu.'''
+    
+    ...
+

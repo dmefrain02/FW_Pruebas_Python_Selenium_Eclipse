@@ -1,0 +1,369 @@
+﻿import aspose.pdf
+import aspose.pydrawing
+import datetime
+import decimal
+import io
+import uuid
+from typing import Iterable
+
+class Center(aspose.pdf.artifacts.pagination.HeaderFooterData):
+    '''Represents the center alignment settings for header and footer data.'''
+    
+    def __init__(self):
+        ...
+    
+    ...
+
+class DateComponent:
+    '''Represents a base class for date components with a format attribute.'''
+    
+    def __init__(self):
+        ...
+    
+    def get_format(self, ch: str) -> str:
+        '''Returns a string composed of a specified character repeated based on the format.
+        
+        :param ch: The character to repeat.
+        :returns: A string consisting of the character repeated.'''
+        ...
+    
+    @property
+    def format(self) -> int:
+        '''Gets or sets the format for the date component.'''
+        ...
+    
+    @format.setter
+    def format(self, value: int):
+        ...
+    
+    ...
+
+class Footer(aspose.pdf.artifacts.pagination.HorizontalAlignment):
+    '''Represents the footer settings.'''
+    
+    def __init__(self):
+        ...
+    
+    ...
+
+class Header(aspose.pdf.artifacts.pagination.HorizontalAlignment):
+    '''Represents the header settings.'''
+    
+    def __init__(self):
+        ...
+    
+    ...
+
+class HeaderFooterData:
+    '''Represents the pagination data for header and footer.'''
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def page_number(self) -> aspose.pdf.artifacts.pagination.PageNumber:
+        '''Gets or sets the page number settings.'''
+        ...
+    
+    @page_number.setter
+    def page_number(self, value: aspose.pdf.artifacts.pagination.PageNumber):
+        ...
+    
+    @property
+    def page_date(self) -> aspose.pdf.artifacts.pagination.PageDate:
+        '''Gets or sets the date settings.'''
+        ...
+    
+    @page_date.setter
+    def page_date(self, value: aspose.pdf.artifacts.pagination.PageDate):
+        ...
+    
+    ...
+
+class HeaderFooterSettings:
+    '''Represents the settings for header and footer artifacts.'''
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def page_range(self) -> aspose.pdf.artifacts.pagination.PageRange:
+        '''Gets or sets the range of pages for the header and footer settings.'''
+        ...
+    
+    @page_range.setter
+    def page_range(self, value: aspose.pdf.artifacts.pagination.PageRange):
+        ...
+    
+    @property
+    def header(self) -> aspose.pdf.artifacts.pagination.Header:
+        '''Gets or sets the header settings.'''
+        ...
+    
+    @header.setter
+    def header(self, value: aspose.pdf.artifacts.pagination.Header):
+        ...
+    
+    @property
+    def footer(self) -> aspose.pdf.artifacts.pagination.Footer:
+        '''Gets or sets the footer settings.'''
+        ...
+    
+    @footer.setter
+    def footer(self, value: aspose.pdf.artifacts.pagination.Footer):
+        ...
+    
+    ...
+
+class HorizontalAlignment:
+    '''Represents horizontal alignment settings for header and footer.'''
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def left(self) -> aspose.pdf.artifacts.pagination.Left:
+        '''Gets or sets the left alignment settings.'''
+        ...
+    
+    @left.setter
+    def left(self, value: aspose.pdf.artifacts.pagination.Left):
+        ...
+    
+    @property
+    def center(self) -> aspose.pdf.artifacts.pagination.Center:
+        '''Gets or sets the center alignment settings.'''
+        ...
+    
+    @center.setter
+    def center(self, value: aspose.pdf.artifacts.pagination.Center):
+        ...
+    
+    @property
+    def right(self) -> aspose.pdf.artifacts.pagination.Right:
+        '''Gets or sets the right alignment settings.'''
+        ...
+    
+    @right.setter
+    def right(self, value: aspose.pdf.artifacts.pagination.Right):
+        ...
+    
+    ...
+
+class Left(aspose.pdf.artifacts.pagination.HeaderFooterData):
+    '''Represents the left alignment settings for header and footer data.'''
+    
+    def __init__(self):
+        ...
+    
+    ...
+
+class PageDate:
+    '''Represents a date format composed of day, month, and year components.'''
+    
+    def __init__(self):
+        ...
+    
+    def get_formatted_date(self) -> str:
+        '''Returns the formatted date string based on the current date format.
+        
+        :returns: A formatted date string.'''
+        ...
+    
+    @property
+    def day(self) -> None:
+        '''Gets or sets the day component of the date.
+        The format of the date will be updated based on this component.'''
+        ...
+    
+    @day.setter
+    def day(self, value: None):
+        ...
+    
+    @property
+    def month(self) -> None:
+        '''Gets or sets the month component of the date.
+        The format of the date will be updated based on this component.'''
+        ...
+    
+    @month.setter
+    def month(self, value: None):
+        ...
+    
+    @property
+    def year(self) -> None:
+        '''Gets or sets the year component of the date.
+        The format of the date will be updated based on this component.'''
+        ...
+    
+    @year.setter
+    def year(self, value: None):
+        ...
+    
+    @property
+    def delimiter(self) -> str:
+        '''Gets or sets the delimiter used in the date format.
+        The format of the date will be updated based on this delimiter.'''
+        ...
+    
+    @delimiter.setter
+    def delimiter(self, value: str):
+        ...
+
+    class DayComponent:
+          '''Represents the day component of a date.'''
+
+          def __init__(self):
+              ...
+
+          def get_format(self) -> str:
+              '''Gets the format string for the day component.
+        
+              :returns: A string representing the day format.'''
+              ...
+
+    class MonthComponent:
+          ''' Represents the month component of a date.'''
+
+          def __init__(self):
+              ...
+
+          def get_format(self) -> str:
+              '''Gets the format string for the month component.
+        
+              :returns: A string representing the month format.'''
+              ...
+
+    class YearComponent:
+          ''' Represents the year component of a date.'''
+
+          def __init__(self):
+              ...
+
+          def get_format(self) -> str:
+              '''Gets the format string for the year component.
+        
+              :returns: A string representing the year format.'''
+              ...
+    
+    ...
+
+class PageNumber:
+    '''Represents a page number format that includes an index, total number of pages, and a delimiter.'''
+    
+    def __init__(self):
+        ...
+    
+    def get_page_number_string(self, page_number: int, count: int) -> str:
+        '''Returns a formatted string representing the page number based on the current settings.
+        
+        :param page_number: The current page number.
+        :param count: The total number of pages.
+        :returns: A formatted page number string.'''
+        ...
+    
+    @property
+    def offset(self) -> int:
+        '''Gets or sets the offset to be added to the page index.'''
+        ...
+    
+    @offset.setter
+    def offset(self, value: int):
+        ...
+    
+    @property
+    def index(self) -> None:
+        '''Gets or sets the page index component of the page number format.
+        The formatted string will include a placeholder for the page index.'''
+        ...
+    
+    @index.setter
+    def index(self, value: None):
+        ...
+    
+    @property
+    def total_num(self) -> None:
+        '''Gets or sets the total number of pages component of the page number format.
+        The formatted string will include a placeholder for the total number of pages.'''
+        ...
+    
+    @total_num.setter
+    def total_num(self, value: None):
+        ...
+    
+    @property
+    def delimiter(self) -> str:
+        '''Gets or sets the delimiter used in the page number format.
+        The formatted string will be updated based on the specified delimiter.'''
+        ...
+    
+    @delimiter.setter
+    def delimiter(self, value: str):
+        ...
+    
+    class PageIndex:
+          '''Represents the page index component in the page number format.'''
+
+          def __init__(self):
+              ...
+
+    class PageTotalNum:
+          '''Represents the total number of pages component in the page number format.'''
+
+          def __init__(self):
+              ...
+
+    ...
+
+class PageRange:
+    '''Represents the range of pages for header and footer settings.'''
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def start(self) -> int:
+        '''Gets or sets the starting page number.'''
+        ...
+    
+    @start.setter
+    def start(self, value: int):
+        ...
+    
+    @property
+    def end(self) -> int:
+        '''Gets or sets the ending page number.'''
+        ...
+    
+    @end.setter
+    def end(self, value: int):
+        ...
+    
+    @property
+    def even(self) -> int:
+        '''Gets or sets the setting for even pages.'''
+        ...
+    
+    @even.setter
+    def even(self, value: int):
+        ...
+    
+    @property
+    def odd(self) -> int:
+        '''Gets or sets the setting for odd pages.'''
+        ...
+    
+    @odd.setter
+    def odd(self, value: int):
+        ...
+    
+    ...
+
+class Right(aspose.pdf.artifacts.pagination.HeaderFooterData):
+    '''Represents the right alignment settings for header and footer data.'''
+    
+    def __init__(self):
+        ...
+    
+    ...
+
