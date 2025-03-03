@@ -3,8 +3,22 @@ import os
 
 class Inicializar():
     
+    #Nombre por defecto video grabado en pruebas
+    VideoPruebas = "Video_Prueba"
+    Formato_Video = ".mp4"
+    ffmpeg_path = r"C:\ffmpeg\bin\ffmpeg.exe"
+    
+    '''Formatos_Soportados = {
+        "mp4": {"codec": "libx264", "extra": ["-preset", "ultrafast", "-crf", "25"]},
+        "avi": {"codec": "libxvid", "extra": ["-q:v", "5"]},
+        "mkv": {"codec": "libx264", "extra": ["-preset", "medium", "-crf", "23"]},
+        "webm": {"codec": "libvpx", "extra": ["-b:v", "1M"]}
+    }'''
+    
     #Directorio Base - Obtiene la ruta del directorio src del proyecto
     BaseDir = os.path.abspath(os.path.join(__file__,"../.."))
+    
+    Carpeta_Videos = BaseDir + u'\Videos'
     
     #Variable en el archivo inicializar
     URL_SeleniumGrid = "http://localhost:4444/wd/hub"

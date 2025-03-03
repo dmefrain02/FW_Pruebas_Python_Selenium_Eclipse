@@ -69,6 +69,8 @@ from threading import Thread,Barrier
 from numpy._core._multiarray_umath import rindex
 from selenium.webdriver.common import desired_capabilities
 from numpy.lib.tests.test__datasource import valid_baseurl
+import subprocess
+from sys import stderr
 
 class Functions(Inicializar):
     
@@ -1016,8 +1018,88 @@ class Functions(Inicializar):
         Functions.click_en_elemento(self, Dia)
         Functions.esperar_elemento(self)
      
-    #Metodos para grabar videos (screen record) en las pruebas.
-    def inicializar_video(self,height_size, width_size,fps,nombre_arh_video,Ruta_Grabacion=Inicializar.Ruta_Grabacion):
+    #Metodos para grabar videos (screen record) en las pruebas.  
+    
+    """Verifica si FFmpeg está disponible"""
+    def inicializar_video(self,formato=Inicializar.Formato_Video, nombrearchivo_video = Inicializar.VideoPruebas, output_dir = Inicializar.Carpeta_Videos):
+                
+        self.ffmpeg_path = Inicializar.ffmpeg_path
+        self.ffmpeg_process = None
+        self.File_Name = f"{nombrearchivo_video}{formato}"
+        self.output_video = output_dir
+        self.output_file = os.path.join(self.output_video,self.File_Name)
+
+        # Validar si el formato es soportado
+        '''if formato not in Inicializar.Formatos_Soportados:
+            raise ValueError(f"Formato '{self.formato}' no soportado. Formatos válidos: {list(self.SUPPORTED_FORMATS.keys())}")
+        else:
+            print(f'Formatos soportados validos')'''
+
+
+        # Verificar si FFmpeg está instalado
+        if not Functions.valida_ffmpeg(self):
+            raise FileNotFoundError("FFmpeg no encontrado. Agrega FFmpeg al PATH o proporciona la ruta completa.")
+        else:
+            print(f'FFmpeg validado en {Inicializar.ffmpeg_path}')
+        
+    """Verifica si FFmpeg está disponible en el sistema"""    
+    def valida_ffmpeg(self):
+        
+        try:
+            subprocess.run([self.ffmpeg_path, "-version"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=True)
+            return True
+        except (subprocess.CalledProcessError, FileNotFoundError):
+            return False
+    
+    """Inicia la grabación de pantalla con FFmpeg"""   
+    def start_recording(self):
+        try:
+            comando = [
+               Inicializar.ffmpeg_path,
+                "-y",  # Sobrescribe el archivo si ya existe
+                "-f", "gdigrab",  # Captura la pantalla en Windows
+                "-framerate", "30",  # FPS
+                "-i", "desktop",  # Captura toda la pantalla
+                "-c:v", "libx264", "-preset", "ultrafast", "-crf", "25",  # Compresión rápida
+                self.output_file  # Nombre del archivo de salida
+                ]
+            
+            
+            '''codec_info = Inicializar.Formatos_Soportados[self.formato]
+            Inicializar.ffmpeg_path = [
+                self.ffmpeg_path,
+                "-y",
+                "-f", "gdigrab",
+                "-framerate", "30",
+                "-i", "desktop",
+                "-c:v", codec_info["codec"]
+            ] + codec_info["extra"] + [self.output_file]'''
+            
+            '''codec_info = Inicializar.Formatos_Soportados[self.formato]
+            Inicializar.ffmpeg_path = [
+                self.ffmpeg_path,
+                "-y",
+                "-f", "gdigrab",
+                "-framerate", "30",
+                "-i", "desktop",
+                "-c:v", 
+                codec_info["codec"],
+                codec_info["extra"],
+                self.output_file
+            ]'''
+                
+            self.process = subprocess.Popen(comando, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+            print(f"Grabación iniciada... Guardando en: {self.output_file}")
+        except Exception as e:
+            print(f"Error al iniciar FFmpeg: {e}")
+    
+    """Detiene la grabación de pantalla"""    
+    def stop_recording(self):
+        if self.process:
+            self.process.terminate()
+            print(f"Grabación finalizada. Video guardado en: {self.output_file}")
+    
+    '''def inicializar_video(self,height_size, width_size,fps,nombre_arh_video,Ruta_Grabacion=Inicializar.Ruta_Grabacion):
         self.screen_size = (height_size,width_size)
         self.fps = fps
         self.output_filename = Ruta_Grabacion + f'\{nombre_arh_video}'
@@ -1037,7 +1119,7 @@ class Functions(Inicializar):
     def terminar_grabacion(self,salida):
         salida.release()
         cv2.destroyAllWindows()
-        print('Se finaliza la grabación del video')
+        print('Se finaliza la grabación del video')'''
    
     def alert_navegadores(self,tipo_alert,texto_esperado="", msj="",texto_contenido ="", elemento="",texto_ingresado=""):
         self.alert = Alert(self.driver)
