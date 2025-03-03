@@ -1,0 +1,207 @@
+﻿from aspose.pdf.comparison import diff
+from aspose.pdf.comparison import graphicalcomparison
+from aspose.pdf.comparison import outputgenerator
+from aspose.pdf.comparison import sidebysidecomparison
+import aspose.pdf
+import aspose.pydrawing
+import datetime
+import decimal
+import io
+import uuid
+from typing import Iterable
+
+class ComparisonOptions:
+    '''Represents a PDF document comparison options class.'''
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def extraction_area(self) -> aspose.pdf.Rectangle:
+        '''Get and set the rectangular area in which the text of pages will be compared.'''
+        ...
+    
+    @extraction_area.setter
+    def extraction_area(self, value: aspose.pdf.Rectangle):
+        ...
+    
+    @property
+    def exclude_tables(self) -> bool:
+        '''Get and set the option that determines whether tables are excluded from comparison.
+        This option cannot be set together with :attr:`ComparisonOptions.extraction_area` option.
+        The default value is false.'''
+        ...
+    
+    @exclude_tables.setter
+    def exclude_tables(self, value: bool):
+        ...
+    
+    @property
+    def exclude_areas1(self) -> list[aspose.pdf.Rectangle]:
+        '''Get and set the exclude areas. Used for the first page or document in the comparison method.
+        This option can be setted along with :attr:`ComparisonOptions.exclude_tables`.
+        This option can't be setted along with :attr:`ComparisonOptions.extraction_area` option.'''
+        ...
+    
+    @exclude_areas1.setter
+    def exclude_areas1(self, value: list[aspose.pdf.Rectangle]):
+        ...
+    
+    @property
+    def exclude_areas2(self) -> list[aspose.pdf.Rectangle]:
+        '''Get and set the exclude areas. Used for the second page or document in the comparison method.
+        This option can be setted along with :attr:`ComparisonOptions.exclude_tables`.
+        This option can't be setted along with :attr:`ComparisonOptions.extraction_area` option.'''
+        ...
+    
+    @exclude_areas2.setter
+    def exclude_areas2(self, value: list[aspose.pdf.Rectangle]):
+        ...
+
+    @property
+    def edit_operations_order(self) -> aspose.pdf.comparison.EditOperationsOrder:
+        '''Gets and sets the edit operations order.'''
+        ...
+    
+    @edit_operations_order.setter
+    def edit_operations_order(self, value: aspose.pdf.comparison.EditOperationsOrder):
+        ...
+    
+    ...
+
+class DocumentComparisonStatistics(aspose.pdf.comparison.TextItemComparisonStatistics):
+    '''Represents a document comparison statistics class.'''
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def pages_statistics(self) -> None:
+        '''Gets and sets the list of pages statistics.'''
+        ...
+    
+    ...
+
+class TextItemComparisonStatistics:
+    '''Represents a text comparison ststistics class.'''
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def total_characters(self) -> int:
+        '''Gets and sets the total number of characters.'''
+        ...
+    
+    @property
+    def deleted_characters_count(self) -> int:
+        '''Gets and sets the number of deleted characters.'''
+        ...
+    
+    @property
+    def inserted_characters_count(self) -> int:
+        '''Gets and sets the number of inseted characters.'''
+        ...
+    
+    @property
+    def delete_operations_count(self) -> int:
+        '''Gets and sets the number of delete operations.'''
+        ...
+    
+    @property
+    def insert_operations_count(self) -> int:
+        '''Gets and sets the number of insert operations.'''
+        ...
+    
+    ...
+
+class TextPdfComparer:
+    '''Represents a class to comparison two PDF pages or PDF documents.'''
+    
+    def __init__(self):
+        ...
+    
+    @overload
+    @staticmethod
+    def compare_documents_page_by_page(self, document1: aspose.pdf.Document, document2: aspose.pdf.Document, options: aspose.pdf.comparison.ComparisonOptions) -> None:
+        '''Compares two documents page by page.
+        
+        :param document1: First document..
+        :param document2: Second document.
+        :param options: Comparison options.
+        :returns: List of changes by page.'''
+        ...
+    
+    @overload
+    @staticmethod
+    def compare_documents_page_by_page(self, document1: aspose.pdf.Document, document2: aspose.pdf.Document, options: aspose.pdf.comparison.ComparisonOptions, result_pdf_document_path: str) -> None:
+        '''Compares two documents page by page. The result is saved in a PDF file.
+        
+        :param document1: First document..
+        :param document2: Second document.
+        :param options: Comparison options.
+        :param result_pdf_document_path: Path to the pdf file to save the comparison results.
+        :returns: List of changes by page.'''
+        ...
+    
+    @overload
+    @staticmethod
+    def compare_flat_documents(self, document1: aspose.pdf.Document, document2: aspose.pdf.Document, options: aspose.pdf.comparison.ComparisonOptions) -> None:
+        '''Compares two documents page by page.
+        The documents are compared as a whole. Before comparing text, the texts of document pages are combined into one text.
+        
+        :param document1: First document.
+        :param document2: Second document.
+        :param options: Comparison options.
+        :returns: List of changes.'''
+        ...
+    
+    @overload
+    @staticmethod
+    def compare_flat_documents(self, document1: aspose.pdf.Document, document2: aspose.pdf.Document, options: aspose.pdf.comparison.ComparisonOptions, result_pdf_document_path: str) -> None:
+        '''Compares two documents page by page. The result is saved in a PDF file.
+        The documents are compared as a whole. Before comparing text, the texts of document pages are combined into one text.
+        
+        :param document1: First document.
+        :param document2: Second document.
+        :param options: Comparison options.
+        :param result_pdf_document_path: Path to the pdf file to save the comparison results.
+        :returns: List of changes.'''
+        ...
+    
+    @overload
+    @staticmethod
+    def create_comparison_statistics(self, diffs) -> aspose.pdf.comparison.TextItemComparisonStatistics:
+        ...
+    
+    @overload
+    @staticmethod
+    def create_comparison_statistics(self, diffs) -> aspose.pdf.comparison.DocumentComparisonStatistics:
+        ...
+    
+    @staticmethod
+    def compare_pages(self, page1: aspose.pdf.Page, page2: aspose.pdf.Page, options: aspose.pdf.comparison.ComparisonOptions) -> None:
+        '''Compares document pages.
+        
+        :param page1: First page.
+        :param page2: Second page.
+        :param options: Comparison options.
+        :returns: The list of changes.'''
+        ...
+    
+    @staticmethod
+    def assembly_source_page_text(self, diffs) -> str:
+        ...
+    
+    @staticmethod
+    def assembly_destination_page_text(self, diffs) -> str:
+        ...
+    
+    ...
+
+class EditOperationsOrder:
+    '''Specifies the order of edit operations.'''
+    
+    INSERT_FIRST: EditOperationsOrder
+    DELETE_FIRST: EditOperationsOrder
+

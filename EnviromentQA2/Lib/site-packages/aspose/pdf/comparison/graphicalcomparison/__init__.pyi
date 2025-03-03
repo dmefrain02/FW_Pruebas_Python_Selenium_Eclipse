@@ -1,0 +1,142 @@
+﻿import aspose.pdf
+import aspose.pydrawing
+import datetime
+import decimal
+import io
+import uuid
+from typing import Iterable
+
+class GraphicalPdfComparer:
+    '''Represents a class for graphically comparing PDF documents.
+    Should be used to search for small changes, mainly of a graphical nature.
+    To compare text content changes, use other PDF comparison classes.'''
+    
+    def __init__(self):
+        ...
+    
+    @overload
+    def compare_pages_to_pdf(self, page1: aspose.pdf.Page, page2: aspose.pdf.Page, result_pdf_path: str) -> None:
+        '''Compares pages graphically. The comparison result is placed in a PDF document.
+        
+        :param page1: The first page.
+        :param page2: The second page.
+        :param result_pdf_path: The path to target pdf file.'''
+        ...
+    
+    @overload
+    def compare_pages_to_pdf(self, page1: aspose.pdf.Page, page2: aspose.pdf.Page, pdf_document: aspose.pdf.Document) -> None:
+        '''Compares pages graphically. The comparison result is placed in a PDF document.
+        
+        :param page1: The first page.
+        :param page2: The second page.
+        :param pdf_document: The pdf document instance.'''
+        ...
+    
+    def get_difference(self, page1: aspose.pdf.Page, page2: aspose.pdf.Page) -> aspose.pdf.comparison.graphicalcomparison.ImagesDifference:
+        '''Gets differences between pages images.
+        The result contains an image of the first page compared and an array of differences.
+        
+        :param page1: The first page.
+        :param page2: The second page.
+        :returns: The :class:`ImagesDifference` instance.'''
+        ...
+    
+    def compare_documents_to_pdf(self, document1: aspose.pdf.Document, document2: aspose.pdf.Document, result_pdf_path: str) -> None:
+        '''Compares documents graphically. The comparison result is placed in a PDF document.
+        
+        :param document1: The first document to compare.
+        :param document2: The second document to compare.
+        :param result_pdf_path: The target pdf file path.'''
+        ...
+    
+    def compare_pages_to_image(self, page1: aspose.pdf.Page, page2: aspose.pdf.Page, result_image_path: str) -> None:
+        '''Compares pages graphically. The comparison result is placed in a image.
+        
+        :param page1: The first page to compare.
+        :param page2: The second page to compare.
+        :param result_image_path: The path to target image file.'''
+        ...
+    
+    def compare_documents_to_images(self, document1: aspose.pdf.Document, document2: aspose.pdf.Document, target_directory: str, file_name_prefix: str, image_format: aspose.pydrawing.Imaging.ImageFormat) -> None:
+        '''Compares documents graphically. The comparison result is placed in images.
+        
+        :param document1: The first document to compare.
+        :param document2: The second document to compare.
+        :param target_directory: The directory to save a comparison results.
+        :param file_name_prefix: The images name prefix.
+        :param image_format: The image format to save.'''
+        ...
+    
+    @property
+    def resolution(self) -> aspose.pdf.devices.Resolution:
+        '''Gets and sets the resolution of the resulting images.
+        The default value is 150dpi.'''
+        ...
+    
+    @resolution.setter
+    def resolution(self, value: aspose.pdf.devices.Resolution):
+        ...
+    
+    @property
+    def color(self) -> aspose.pdf.Color:
+        '''Gets and sets the change flag color.
+        The default color is red.'''
+        ...
+    
+    @color.setter
+    def color(self, value: aspose.pdf.Color):
+        ...
+    
+    @property
+    def threshold(self) -> float:
+        '''Gets and sets the threshold value in percentage.
+        This value allows you to ignore small changes if they are not significant to you.
+        The default value is 0%.'''
+        ...
+    
+    @threshold.setter
+    def threshold(self, value: float):
+        ...
+    
+    ...
+
+class ImagesDifference:
+    '''Represents the result class of comparing two PDF pages.'''
+    
+    def get_destination_image(self) -> aspose.pydrawing.Bitmap:
+        '''Returns a new bitmap representing the destination image by applying the difference array to the source image.
+        
+        :returns: A destination image.'''
+        ...
+    
+    def difference_to_image(self, color: aspose.pdf.Color, background_color: aspose.pdf.Color) -> aspose.pydrawing.Bitmap:
+        '''Converts the difference array to a bitmap image using the specified colors.
+        
+        :param color: The color for non-zero differences.
+        :param background_color: The background color for zero differences.
+        :returns: A bitmap image representing the difference array.'''
+        ...
+    
+    @property
+    def source_image(self) -> aspose.pydrawing.Bitmap:
+        '''Gets the image of first compared page. The image has a pixel format is 24bpp.'''
+        ...
+    
+    @property
+    def difference(self) -> list[int]:
+        '''Gets the difference array.
+        This array is similar to the original image data array obtained as a result of the LockBits method.'''
+        ...
+    
+    @property
+    def stride(self) -> int:
+        '''The stride of difference image data.'''
+        ...
+    
+    @property
+    def height(self) -> int:
+        '''The height of difference.'''
+        ...
+    
+    ...
+

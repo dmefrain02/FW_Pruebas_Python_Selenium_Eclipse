@@ -1,0 +1,5402 @@
+﻿import aspose.pdf
+import aspose.pydrawing
+import datetime
+import decimal
+import io
+import uuid
+from typing import Iterable
+
+class AIClientBase:
+    '''Represents client to access AI API.'''
+    
+    @property
+    def polling_interval_seconds(self) -> int:
+        '''Gets or sets the polling interval in seconds.'''
+        ...
+    
+    @polling_interval_seconds.setter
+    def polling_interval_seconds(self, value: int):
+        ...
+    
+    @property
+    def polling_timeout_seconds(self) -> int:
+        '''Gets or sets the polling timeout in seconds.'''
+        ...
+    
+    @polling_timeout_seconds.setter
+    def polling_timeout_seconds(self, value: int):
+        ...
+    
+    @property
+    def http_request_max_retries(self) -> int:
+        '''Gets or sets the maximum number of HTTP request retries.'''
+        ...
+    
+    @http_request_max_retries.setter
+    def http_request_max_retries(self, value: int):
+        ...
+    
+    @property
+    def backoff_delay_seconds(self) -> int:
+        '''Gets or sets the backoff delay in seconds.'''
+        ...
+    
+    @backoff_delay_seconds.setter
+    def backoff_delay_seconds(self, value: int):
+        ...
+    
+    ...
+
+class AIClientException(aspose.pdf.PdfException):
+    '''Represents an exception specific to the AI Client operations.'''
+    
+    def __init__(self, message: str):
+        '''Initializes a new instance of the :class:`AIClientException` class with a specified error message.
+        
+        :param message: The error message that describes the exception.'''
+        ...
+    
+    ...
+
+class AICopilotException(aspose.pdf.PdfException):
+    '''Represents an exception specific to Copilots operations.'''
+    
+    def __init__(self, message: str):
+        '''Initializes a new instance of the :class:`AICopilotException` class with a specified error message.
+        
+        :param message: The error message that describes the exception.'''
+        ...
+    
+    ...
+
+class AICopilotFactory:
+    '''Factory class for creating different types of copilots.'''
+    
+    ...
+
+class Annotation:
+    '''Represents the text content that is part of a message.'''
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def annotation_type(self) -> str:
+        '''Gets or sets the type of the annotation.'''
+        ...
+    
+    @annotation_type.setter
+    def annotation_type(self, value: str):
+        ...
+    
+    @property
+    def text(self) -> str:
+        '''Gets or sets the text in the message content that needs to be replaced.'''
+        ...
+    
+    @text.setter
+    def text(self, value: str):
+        ...
+    
+    @property
+    def file_citation(self) -> aspose.pdf.ai.FileCitation:
+        '''Gets or sets file citations are created by the file_search tool and define references to a
+        specific file that was uploaded and used by the Assistant to generate the response.'''
+        ...
+    
+    @file_citation.setter
+    def file_citation(self, value: aspose.pdf.ai.FileCitation):
+        ...
+    
+    @property
+    def start_index(self) -> int:
+        '''Gets or sets the starting index of the text in the message content that needs to be replaced.'''
+        ...
+    
+    @start_index.setter
+    def start_index(self, value: int):
+        ...
+    
+    @property
+    def end_index(self) -> int:
+        '''Gets or sets the ending index of the text in the message content that needs to be replaced.'''
+        ...
+    
+    @end_index.setter
+    def end_index(self, value: int):
+        ...
+    
+    ...
+
+class AssistantCreateRequest:
+    '''Request object for creating an assistant.'''
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def model(self) -> str:
+        '''Gets or sets ID of the model to use. You can use the List models API to see all of your available
+        models, or see our Model overview for descriptions of them.'''
+        ...
+    
+    @model.setter
+    def model(self, value: str):
+        ...
+    
+    @property
+    def name(self) -> str:
+        '''Gets or sets the name of the assistant. The maximum length is 256 characters.'''
+        ...
+    
+    @name.setter
+    def name(self, value: str):
+        ...
+    
+    @property
+    def description(self) -> str:
+        '''Gets or sets the description of the assistant. The maximum length is 512 characters.'''
+        ...
+    
+    @description.setter
+    def description(self, value: str):
+        ...
+    
+    @property
+    def instructions(self) -> str:
+        '''Gets or sets the system instructions that the assistant uses. The maximum length is 256,000
+        characters.'''
+        ...
+    
+    @instructions.setter
+    def instructions(self, value: str):
+        ...
+    
+    @property
+    def tools(self) -> None:
+        '''Gets or sets a list of tool enabled on the assistant. There can be a maximum of 128 tools per
+        assistant. Tools can be of types code_interpreter, file_search, or function.'''
+        ...
+    
+    @tools.setter
+    def tools(self, value: None):
+        ...
+    
+    @property
+    def tool_resources(self) -> aspose.pdf.ai.ToolResources:
+        '''Gets or sets resources that are used by the assistant's tools. The resources are specific to
+        the type of tool. For example, the code_interpreter  tool requires a list of file IDs,
+        while the file_search  tool requires a list of vector store IDs.'''
+        ...
+    
+    @tool_resources.setter
+    def tool_resources(self, value: aspose.pdf.ai.ToolResources):
+        ...
+    
+    @property
+    def temperature(self) -> float:
+        '''Gets or sets sampling temperature to use, between 0 and 2. Higher values like 0.8 will make the
+        output more random, while lower values like 0.2 will make it more focused and deterministic.'''
+        ...
+    
+    @temperature.setter
+    def temperature(self, value: float):
+        ...
+    
+    @property
+    def top_p(self) -> float:
+        '''Gets or sets an alternative to sampling with temperature, called nucleus sampling, where the model
+        considers the results of the tokens with top_p probability mass. So 0.1 means only the
+        tokens comprising the top 10% probability mass are considered.
+        We generally recommend altering this or temperature but not both.'''
+        ...
+    
+    @top_p.setter
+    def top_p(self, value: float):
+        ...
+    
+    @property
+    def response_format(self) -> aspose.pdf.ai.ResponseFormat:
+        '''Gets or sets the format that the model must output. Compatible with GPT-4o, GPT-4 Turbo, and all GPT-3.5 Turbo models since gpt-3.5-turbo-1106 .
+        Setting to { "type": "json_object" }  enables JSON mode, which guarantees the
+        message the model generates is valid JSON.
+        Important: when using JSON mode, you must also instruct the model to produce JSON
+        yourself via a system or user message. Without this, the model may generate an
+        unending stream of whitespace until the generation reaches the token limit, resulting in
+        a long-running and seemingly "stuck" request. Also note that the message content may
+        be partially cut off if finish_reason="length", which indicates the generation
+        exceeded max_tokens or the conversation exceeded the max context length.'''
+        ...
+    
+    @response_format.setter
+    def response_format(self, value: aspose.pdf.ai.ResponseFormat):
+        ...
+    
+    ...
+
+class AssistantListQueryParameters(aspose.pdf.ai.BaseListQueryParameters):
+    '''Represents the query parameters object for listing assistants.'''
+    
+    def __init__(self):
+        ...
+    
+    def get_query_parameters(self) -> str:
+        '''Gets the query parameters for listing assistants.
+        
+        :returns: The query parameters string.'''
+        ...
+    
+    ...
+
+class AssistantListResponse(aspose.pdf.ai.BaseResponse):
+    '''Represents the response containing a list of assistant responses.'''
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def first_id(self) -> str:
+        ...
+    
+    @first_id.setter
+    def first_id(self, value: str):
+        ...
+    
+    @property
+    def last_id(self) -> str:
+        ...
+    
+    @last_id.setter
+    def last_id(self, value: str):
+        ...
+    
+    @property
+    def has_more(self) -> bool:
+        ...
+    
+    @has_more.setter
+    def has_more(self, value: bool):
+        ...
+    
+    @property
+    def data(self) -> None:
+        ...
+    
+    @data.setter
+    def data(self, value: None):
+        ...
+    
+    ...
+
+class AssistantModifyRequest(aspose.pdf.ai.AssistantCreateRequest):
+    '''Request object for modifying an assistant.'''
+    
+    def __init__(self):
+        ...
+    
+    ...
+
+class AssistantResponse(aspose.pdf.ai.BaseResponse):
+    '''Represents an assistant that can call the model and use tools.'''
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def id(self) -> str:
+        '''Gets or sets the identifier, which can be referenced in API endpoints.'''
+        ...
+    
+    @id.setter
+    def id(self, value: str):
+        ...
+    
+    @property
+    def object(self) -> str:
+        '''Gets or sets the object type, which is always assistant.'''
+        ...
+    
+    @object.setter
+    def object(self, value: str):
+        ...
+    
+    @property
+    def created_at(self) -> int:
+        '''Gets or sets the Unix timestamp (in seconds) for when the assistant was created.'''
+        ...
+    
+    @created_at.setter
+    def created_at(self, value: int):
+        ...
+    
+    @property
+    def name(self) -> str:
+        '''Gets or sets the name of the assistant. The maximum length is 256 characters.'''
+        ...
+    
+    @name.setter
+    def name(self, value: str):
+        ...
+    
+    @property
+    def description(self) -> str:
+        '''Gets or sets the description of the assistant. The maximum length is 512 characters.'''
+        ...
+    
+    @description.setter
+    def description(self, value: str):
+        ...
+    
+    @property
+    def model(self) -> str:
+        '''Gets or sets the ID of the model to use. You can use the List models API to see all of your available
+        models, or see our Model overview for descriptions of them.'''
+        ...
+    
+    @model.setter
+    def model(self, value: str):
+        ...
+    
+    @property
+    def instructions(self) -> str:
+        '''Gets or sets the system instructions that the assistant uses. The maximum length is 256,000
+        characters.'''
+        ...
+    
+    @instructions.setter
+    def instructions(self, value: str):
+        ...
+    
+    @property
+    def tools(self) -> None:
+        '''Gets or sets a list of tool enabled on the assistant. There can be a maximum of 128 tools per
+        assistant. Tools can be of types code_interpreter, file_search, or function.'''
+        ...
+    
+    @tools.setter
+    def tools(self, value: None):
+        ...
+    
+    @property
+    def tool_resources(self) -> aspose.pdf.ai.ToolResources:
+        '''Gets or sets a set of resources that are used by the assistant's tools. The resources are specific to
+        the type of tool. For example, the code_interpreter  tool requires a list of file IDs,
+        while the file_search  tool requires a list of vector store IDs.'''
+        ...
+    
+    @tool_resources.setter
+    def tool_resources(self, value: aspose.pdf.ai.ToolResources):
+        ...
+    
+    @property
+    def temperature(self) -> float:
+        '''Gets or sets what sampling temperature to use, between 0 and 2. Higher values like 0.8 will make the
+        output more random, while lower values like 0.2 will make it more focused and
+        deterministic.'''
+        ...
+    
+    @temperature.setter
+    def temperature(self, value: float):
+        ...
+    
+    @property
+    def top_p(self) -> float:
+        '''Gets or sets an alternative to sampling with temperature, called nucleus sampling, where the model
+        considers the results of the tokens with top_p probability mass. So 0.1 means only the
+        tokens comprising the top 10% probability mass are considered.
+        We generally recommend altering this or temperature but not both.'''
+        ...
+    
+    @top_p.setter
+    def top_p(self, value: float):
+        ...
+    
+    @property
+    def response_format(self) -> aspose.pdf.ai.ResponseFormat:
+        '''Gets or sets the format that the model must output. Compatible with GPT-4o, GPT-4 Turbo,
+        and all GPT-3.5 Turbo models since gpt-3.5-turbo-1106 .
+        Setting to { "type": "json_object" } enables JSON mode, which guarantees the
+        message the model generates is valid JSON.
+        Important: when using JSON mode, you must also instruct the model to produce JSON
+        yourself via a system or user message. Without this, the model may generate an
+        unending stream of whitespace until the generation reaches the token limit, resulting in
+        a long-running and seemingly "stuck" request. Also note that the message content may
+        be partially cut off if finish_reason="length", which indicates the generation
+        exceeded max_tokens or the conversation exceeded the max context length.'''
+        ...
+    
+    @response_format.setter
+    def response_format(self, value: aspose.pdf.ai.ResponseFormat):
+        ...
+    
+    ...
+
+class Attachment:
+    '''Represents a list of files attached to the message, and the tools they should be added to.'''
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def file_id(self) -> str:
+        '''Gets or sets the ID of the File that is attached.'''
+        ...
+    
+    @file_id.setter
+    def file_id(self, value: str):
+        ...
+    
+    @property
+    def tools(self) -> None:
+        '''Gets or sets the type of tool that the File is attached to.'''
+        ...
+    
+    @tools.setter
+    def tools(self, value: None):
+        ...
+    
+    ...
+
+class BaseListQueryParameters:
+    '''Base query parameters for listing objects.'''
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def limit(self) -> int:
+        '''Gets or sets a limit on the number of objects to be returned. Limit can range between 1 and 100, and
+        the default is 20.'''
+        ...
+    
+    @limit.setter
+    def limit(self, value: int):
+        ...
+    
+    @property
+    def order(self) -> str:
+        '''Gets or sets sort order by the created_at  timestamp of the objects. asc for ascending order
+        and desc for descending order.'''
+        ...
+    
+    @order.setter
+    def order(self, value: str):
+        ...
+    
+    @property
+    def after(self) -> str:
+        '''Gets or sets a cursor for use in pagination. after is an object ID that defines your place in the list.
+        For instance, if you make a list request and receive 100 objects, ending with obj_foo, your
+        subsequent call can include after=obj_foo in order to fetch the next page of the list.'''
+        ...
+    
+    @after.setter
+    def after(self, value: str):
+        ...
+    
+    @property
+    def before(self) -> str:
+        '''Gets or sets a cursor for use in pagination. before is an object ID that defines your place in the list.
+        For instance, if you make a list request and receive 100 objects, ending with obj_foo, your
+        subsequent call can include before=obj_foo in order to fetch the previous page of the list.'''
+        ...
+    
+    @before.setter
+    def before(self, value: str):
+        ...
+    
+    ...
+
+class BaseResponse:
+    '''Base class for API responses.'''
+    
+    @property
+    def error_message(self) -> str:
+        '''Gets or sets the error information.'''
+        ...
+    
+    @property
+    def error(self) -> aspose.pdf.ai.Error:
+        '''Gets or sets the HTTP response error.'''
+        ...
+    
+    @error.setter
+    def error(self, value: aspose.pdf.ai.Error):
+        ...
+    
+    @property
+    def detail(self) -> str:
+        '''Gets or sets the response detail.'''
+        ...
+    
+    @detail.setter
+    def detail(self, value: str):
+        ...
+    
+    @property
+    def reason_phrase(self) -> str:
+        '''Gets the error reason phrase.'''
+        ...
+    
+    @property
+    def is_successful(self) -> bool:
+        '''Indicates if the response was successful.'''
+        ...
+    
+    ...
+
+class CancellationTokenExtensions:
+    '''Provides extension methods for CancellationToken.'''
+    
+    ...
+
+class ChatMessage:
+    '''A chat completion message generated by the model.'''
+    
+    @overload
+    def __init__(self):
+        '''Initializes a new instance of the :class:`ChatMessage` class.'''
+        ...
+    
+    @overload
+    def __init__(self, role: str, content: str):
+        '''Initializes a new instance of the :class:`ChatMessage` class.
+        
+        :param role: The role of the author of this message.
+        :param content: The contents of the message.'''
+        ...
+    
+    @staticmethod
+    def from_user(self, content: str) -> aspose.pdf.ai.ChatMessage:
+        '''Creates a new ChatMessage object representing a user message.
+        
+        :param content: The contents of the message.
+        :returns: A new :class:`ChatMessage` object with the specified content and the User role.'''
+        ...
+    
+    @staticmethod
+    def from_system(self, content: str) -> aspose.pdf.ai.ChatMessage:
+        '''Creates a new ChatMessage object representing a system message.
+        
+        :param content: The contents of the message.
+        :returns: A new :class:`ChatMessage` object with the specified content and the System role.'''
+        ...
+    
+    @staticmethod
+    def from_assistant(self, content: str) -> aspose.pdf.ai.ChatMessage:
+        '''Creates a new ChatMessage object representing an assistant message.
+        
+        :param content: The contents of the message.
+        :returns: A new :class:`ChatMessage` object with the specified content and the Assistant role.'''
+        ...
+    
+    @property
+    def role(self) -> str:
+        '''Gets or sets the role of the messages author.'''
+        ...
+    
+    @role.setter
+    def role(self, value: str):
+        ...
+    
+    @property
+    def content(self) -> str:
+        '''Gets or sets the contents of the message.'''
+        ...
+    
+    @content.setter
+    def content(self, value: str):
+        ...
+    
+    @property
+    def name(self) -> str:
+        '''Gets or sets an optional name for the participant. Provides the model information
+        to differentiate between participants of the same role.'''
+        ...
+    
+    @name.setter
+    def name(self, value: str):
+        ...
+    
+    @property
+    def tool_calls(self) -> None:
+        '''Gets or sets the tool calls generated by the model, such as function calls.'''
+        ...
+    
+    @tool_calls.setter
+    def tool_calls(self, value: None):
+        ...
+    
+    @property
+    def tool_call_id(self) -> str:
+        '''Gets or sets tool call that this message is responding to.'''
+        ...
+    
+    @tool_call_id.setter
+    def tool_call_id(self, value: str):
+        ...
+    
+    ...
+
+class Choice:
+    '''Represents a choice in a chat completion response.'''
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def index(self) -> int:
+        '''Gets or sets the index of the choice in the list of choices.'''
+        ...
+    
+    @index.setter
+    def index(self, value: int):
+        ...
+    
+    @property
+    def message(self) -> aspose.pdf.ai.ChatMessage:
+        '''Gets or sets a chat completion message generated by the model.'''
+        ...
+    
+    @message.setter
+    def message(self, value: aspose.pdf.ai.ChatMessage):
+        ...
+    
+    @property
+    def finish_reason(self) -> str:
+        '''Gets or sets the reason the model stopped generating tokens.
+        This will be stop if the model hit a natural stop point or
+        a provided stop sequence, length if the maximum number of
+        tokens specified in the request was reached.'''
+        ...
+    
+    @finish_reason.setter
+    def finish_reason(self, value: str):
+        ...
+    
+    @property
+    def logprobs(self) -> aspose.pdf.ai.Logprobs:
+        '''Gets or sets log probability information for the choice.'''
+        ...
+    
+    @logprobs.setter
+    def logprobs(self, value: aspose.pdf.ai.Logprobs):
+        ...
+    
+    ...
+
+class CodeInterpreter:
+    '''Represents the code interpreter tool resources.'''
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def file_ids(self) -> None:
+        '''Gets or sets a list of file IDs made available to the code_interpreter tool. There can be a
+        maximum of 20 files associated with the tool.'''
+        ...
+    
+    @file_ids.setter
+    def file_ids(self, value: None):
+        ...
+    
+    ...
+
+class CompletionCreateRequest:
+    '''Represents a request for the Create Chat Completion endpoint.'''
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def model(self) -> str:
+        '''Gets or sets the ID of the model to use.'''
+        ...
+    
+    @model.setter
+    def model(self, value: str):
+        ...
+    
+    @property
+    def messages(self) -> None:
+        '''Gets or sets a list of messages comprising the conversation so far.'''
+        ...
+    
+    @messages.setter
+    def messages(self, value: None):
+        ...
+    
+    @property
+    def frequency_penalty(self) -> float:
+        '''Gets or sets a number between -2.0 and 2.0.
+        Positive values penalize new tokens based on their existing frequency in the text so far,
+        decreasing the model's likelihood to repeat the same line verbatim.'''
+        ...
+    
+    @frequency_penalty.setter
+    def frequency_penalty(self, value: float):
+        ...
+    
+    @property
+    def logprobs(self) -> bool:
+        '''Gets or sets whether to return log probabilities of the output tokens or not.
+        If true, returns the log probabilities of each output token returned in the content of the message.'''
+        ...
+    
+    @logprobs.setter
+    def logprobs(self, value: bool):
+        ...
+    
+    @property
+    def max_tokens(self) -> int:
+        '''Gets or sets the maximum number of tokens to generate in the completion.'''
+        ...
+    
+    @max_tokens.setter
+    def max_tokens(self, value: int):
+        ...
+    
+    @property
+    def number_of_choices(self) -> int:
+        '''Gets or sets how many chat completion choices to generate for each input message. Note that you will be charged based on the number of generated
+        tokens across all of the choices. Keep n as 1 to minimize costs.'''
+        ...
+    
+    @number_of_choices.setter
+    def number_of_choices(self, value: int):
+        ...
+    
+    @property
+    def presence_penalty(self) -> float:
+        '''Gets or sets number between -2.0 and 2.0. Positive values penalize new tokens based on whether they appear in the text so far, increasing
+        the model's likelihood to talk about new topics.'''
+        ...
+    
+    @presence_penalty.setter
+    def presence_penalty(self, value: float):
+        ...
+    
+    @property
+    def response_format(self) -> aspose.pdf.ai.ResponseFormat:
+        '''Gets or sets an object specifying the format that the model must output.
+        Compatible with GPT-4 Turbo and all GPT-3.5 Turbo models newer than gpt-3.5-turbo-1106.
+        Setting to { "type": "json_object" } enables JSON mode, which guarantees the message the model generates is valid JSON.'''
+        ...
+    
+    @response_format.setter
+    def response_format(self, value: aspose.pdf.ai.ResponseFormat):
+        ...
+    
+    @property
+    def seed(self) -> int:
+        '''Gets or sets the Seed value.
+        This feature is in Beta. If specified, our system will make a best effort to sample deterministically,
+        such that repeated requests with the same seed and parameters should return the same result.
+        Determinism is not guaranteed, and you should refer to the system_fingerprint response parameter to monitor changes in the backend.'''
+        ...
+    
+    @seed.setter
+    def seed(self, value: int):
+        ...
+    
+    @property
+    def stop(self) -> None:
+        '''Gets or sets up to 4 sequences where the API will stop generating further tokens.'''
+        ...
+    
+    @stop.setter
+    def stop(self, value: None):
+        ...
+    
+    @property
+    def stream(self) -> bool:
+        '''Gets or sets if to use streaming.
+        If set, partial message deltas will be sent, like in ChatGPT.
+        Tokens will be sent as data-only server-sent events as they become available, with the stream terminated by a data: [DONE] message.'''
+        ...
+    
+    @stream.setter
+    def stream(self, value: bool):
+        ...
+    
+    @property
+    def temperature(self) -> float:
+        '''Gets or sets what sampling temperature to use, between 0 and 2.
+        Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic.'''
+        ...
+    
+    @temperature.setter
+    def temperature(self, value: float):
+        ...
+    
+    @property
+    def top_p(self) -> float:
+        '''Gets or sets an alternative to sampling with temperature, called nucleus sampling, where the model considers the results
+        of the tokens with top_p probability mass. So 0.1 means only the tokens comprising the top 10% probability mass are considered.'''
+        ...
+    
+    @top_p.setter
+    def top_p(self, value: float):
+        ...
+    
+    @property
+    def tools(self) -> None:
+        '''Gets or sets a list of tools the model may call. Currently, only functions are supported as a tool.
+        Use this to provide a list of functions the model may generate JSON inputs for. A max of 128 functions are supported.'''
+        ...
+    
+    @tools.setter
+    def tools(self, value: None):
+        ...
+    
+    @property
+    def tool_choice(self) -> aspose.pdf.ai.ToolChoice:
+        '''Gets or sets an object that controls which (if any) tool is called by the model.
+        none means the model will not call any tool and instead generates a message.
+        auto means the model can pick between generating a message or calling one or more tools.
+        required means the model must call one or more tools.
+        Specifying a particular tool via {"type": "function", "function": {"name": "my_function"}} forces the model to call that tool.
+        none is the default when no tools are present.auto is the default if tools are present.'''
+        ...
+    
+    @tool_choice.setter
+    def tool_choice(self, value: aspose.pdf.ai.ToolChoice):
+        ...
+    
+    @property
+    def user(self) -> str:
+        '''Gets or sets a unique identifier representing your end-user, which can help OpenAI to monitor and detect abuse.'''
+        ...
+    
+    @user.setter
+    def user(self, value: str):
+        ...
+    
+    ...
+
+class CompletionFunction:
+    '''Represents the function object.'''
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def name(self) -> str:
+        '''Gets or sets the name of the function to call.'''
+        ...
+    
+    @name.setter
+    def name(self, value: str):
+        ...
+    
+    ...
+
+class CompletionResponse(aspose.pdf.ai.BaseResponse):
+    '''Represents a chat completion response returned by model, based on the provided input.'''
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def id(self) -> str:
+        '''Gets or sets a unique identifier for the chat completion.'''
+        ...
+    
+    @id.setter
+    def id(self, value: str):
+        ...
+    
+    @property
+    def object(self) -> str:
+        '''Gets or sets the object type, which is always chat.completion.'''
+        ...
+    
+    @object.setter
+    def object(self, value: str):
+        ...
+    
+    @property
+    def created(self) -> int:
+        '''Gets or sets the Unix timestamp (in seconds) of when the chat completion was created.'''
+        ...
+    
+    @created.setter
+    def created(self, value: int):
+        ...
+    
+    @property
+    def model(self) -> str:
+        '''Gets or sets the model used for the chat completion.'''
+        ...
+    
+    @model.setter
+    def model(self, value: str):
+        ...
+    
+    @property
+    def system_fingerprint(self) -> str:
+        '''Gets or sets the fingerprint that represents the backend configuration that the model runs with.
+        Can be used in conjunction with the seed request parameter to understand when backend changes have been made that might impact determinism.'''
+        ...
+    
+    @system_fingerprint.setter
+    def system_fingerprint(self, value: str):
+        ...
+    
+    @property
+    def choices(self) -> None:
+        '''Gets or sets a list of chat completion choices. Can be more than one if n is greater than 1.'''
+        ...
+    
+    @choices.setter
+    def choices(self, value: None):
+        ...
+    
+    @property
+    def usage(self) -> aspose.pdf.ai.Usage:
+        '''Gets or sets the usage statistics for the completion request.'''
+        ...
+    
+    @usage.setter
+    def usage(self, value: aspose.pdf.ai.Usage):
+        ...
+    
+    ...
+
+class CreateChatCompletionChunkResponse:
+    '''Represents a streamed chunk of a chat completion response returned by model, based on the provided input.'''
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def id(self) -> str:
+        '''Gets or sets a unique identifier for the chat completion. Each chunk has the same ID.'''
+        ...
+    
+    @id.setter
+    def id(self, value: str):
+        ...
+    
+    @property
+    def object(self) -> str:
+        '''Gets or sets the object type, which is always chat.completion.chunk.'''
+        ...
+    
+    @object.setter
+    def object(self, value: str):
+        ...
+    
+    @property
+    def created(self) -> int:
+        '''Gets or sets the Unix timestamp (in seconds) of when the chat completion was created. Each chunk has the same timestamp.'''
+        ...
+    
+    @created.setter
+    def created(self, value: int):
+        ...
+    
+    @property
+    def model(self) -> str:
+        '''Gets or sets the model to generate the completion.'''
+        ...
+    
+    @model.setter
+    def model(self, value: str):
+        ...
+    
+    @property
+    def system_fingerprint(self) -> str:
+        '''Gets or sets the fingerprint that represents the backend configuration that the model runs with.
+        Can be used in conjunction with the seed request parameter to understand when backend changes have been made that might impact determinism.'''
+        ...
+    
+    @system_fingerprint.setter
+    def system_fingerprint(self, value: str):
+        ...
+    
+    @property
+    def choices(self) -> None:
+        '''Gets or sets a list of chat completion choices. Can contain more than one elements if n is greater than 1.
+        Can also be empty for the last chunk if you set stream_options: {"include_usage": true}.'''
+        ...
+    
+    @choices.setter
+    def choices(self, value: None):
+        ...
+    
+    @property
+    def usage(self) -> aspose.pdf.ai.Usage:
+        '''Gets or sets an optional field that will only be present when you set stream_options: {"include_usage": true} in your request.
+        When present, it contains a null value except for the last chunk which contains the token usage statistics for the entire request.'''
+        ...
+    
+    @usage.setter
+    def usage(self, value: aspose.pdf.ai.Usage):
+        ...
+    
+    ...
+
+class CreateEmbeddingRequest:
+    '''Represents a request for the Create Embeddings endpoint.'''
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def input(self) -> str:
+        '''Gets or sets input text to embed, encoded as a string or array of tokens. To embed multiple inputs in a single request,
+        pass an array of strings or array of token arrays. The input must not exceed the max input tokens
+        for the model (8192 tokens for text-embedding-ada-002), cannot be an empty string, and any array must be 2048 dimensions or less.'''
+        ...
+    
+    @input.setter
+    def input(self, value: str):
+        ...
+    
+    @property
+    def model(self) -> str:
+        '''Gets or sets the model to generate the embedding for.'''
+        ...
+    
+    @model.setter
+    def model(self, value: str):
+        ...
+    
+    @property
+    def encoding_format(self) -> str:
+        '''Gets or sets the format to return the embeddings in. Can be either float or base64.'''
+        ...
+    
+    @encoding_format.setter
+    def encoding_format(self, value: str):
+        ...
+    
+    @property
+    def dimensions(self) -> int:
+        '''Gets or sets the number of dimensions the resulting output embeddings should have. Only supported in text-embedding-3 and later models.'''
+        ...
+    
+    @dimensions.setter
+    def dimensions(self, value: int):
+        ...
+    
+    @property
+    def user(self) -> str:
+        '''Gets or sets a unique identifier representing your end-user, which can help OpenAI to monitor and detect abuse.'''
+        ...
+    
+    @user.setter
+    def user(self, value: str):
+        ...
+    
+    ...
+
+class CreateEmbeddingResponse:
+    '''Represents a response from the Create Embeddings endpoint.'''
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def object(self) -> str:
+        '''Gets or sets the object type, which is always list.'''
+        ...
+    
+    @object.setter
+    def object(self, value: str):
+        ...
+    
+    @property
+    def data(self) -> None:
+        '''Gets or sets a list of embedding objects.'''
+        ...
+    
+    @data.setter
+    def data(self, value: None):
+        ...
+    
+    @property
+    def model(self) -> str:
+        '''Gets or sets the model used for the embedding.'''
+        ...
+    
+    @model.setter
+    def model(self, value: str):
+        ...
+    
+    @property
+    def usage(self) -> aspose.pdf.ai.Usage:
+        '''Gets or sets the usage statistics for the embedding request.'''
+        ...
+    
+    @usage.setter
+    def usage(self, value: aspose.pdf.ai.Usage):
+        ...
+    
+    ...
+
+class CreateFineTuningJobRequest:
+    '''Represents a request for the Create Fine-Tuning Job endpoint.'''
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def model(self) -> str:
+        '''Gets or sets the name of the model to fine-tune. You can select one of the supported models.'''
+        ...
+    
+    @model.setter
+    def model(self, value: str):
+        ...
+    
+    @property
+    def training_file(self) -> str:
+        '''Gets or sets the ID of an uploaded file that contains training data.'''
+        ...
+    
+    @training_file.setter
+    def training_file(self, value: str):
+        ...
+    
+    @property
+    def hyperparameters(self) -> aspose.pdf.ai.Hyperparameters:
+        '''Gets or sets the hyperparameters used for the fine-tuning job.'''
+        ...
+    
+    @hyperparameters.setter
+    def hyperparameters(self, value: aspose.pdf.ai.Hyperparameters):
+        ...
+    
+    ...
+
+class CreateFineTuningJobResponse:
+    '''Represents a response from the Create Fine-Tuning Job endpoint.'''
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def object(self) -> str:
+        '''Gets or sets the object type, which is always fine_tuning.job.'''
+        ...
+    
+    @object.setter
+    def object(self, value: str):
+        ...
+    
+    @property
+    def id(self) -> str:
+        '''Gets or sets a unique identifier for the fine-tuning job.'''
+        ...
+    
+    @id.setter
+    def id(self, value: str):
+        ...
+    
+    @property
+    def model(self) -> str:
+        '''Gets or sets the model used for the fine-tuning job.'''
+        ...
+    
+    @model.setter
+    def model(self, value: str):
+        ...
+    
+    @property
+    def created_at(self) -> int:
+        '''Gets or sets the Unix timestamp (in seconds) of when the fine-tuning job was created.'''
+        ...
+    
+    @created_at.setter
+    def created_at(self, value: int):
+        ...
+    
+    @property
+    def fine_tuned_model(self) -> str:
+        '''Gets or sets the name of the fine-tuned model, once complete.'''
+        ...
+    
+    @fine_tuned_model.setter
+    def fine_tuned_model(self, value: str):
+        ...
+    
+    @property
+    def organization_id(self) -> str:
+        '''Gets or sets the organization that owns the fine-tuning job.'''
+        ...
+    
+    @organization_id.setter
+    def organization_id(self, value: str):
+        ...
+    
+    @property
+    def result_files(self) -> None:
+        '''Gets or sets the list of result files for the fine-tuning job.'''
+        ...
+    
+    @result_files.setter
+    def result_files(self, value: None):
+        ...
+    
+    @property
+    def status(self) -> str:
+        '''Gets or sets the status of the fine-tuning job.'''
+        ...
+    
+    @status.setter
+    def status(self, value: str):
+        ...
+    
+    @property
+    def validation_file(self) -> str:
+        '''Gets or sets the ID of an uploaded file that contains validation data.'''
+        ...
+    
+    @validation_file.setter
+    def validation_file(self, value: str):
+        ...
+    
+    @property
+    def training_file(self) -> str:
+        '''Gets or sets the ID of an uploaded file that contains training data.'''
+        ...
+    
+    @training_file.setter
+    def training_file(self, value: str):
+        ...
+    
+    ...
+
+class DeleteStatusResponse(aspose.pdf.ai.BaseResponse):
+    '''Represents the status of an object deletion.'''
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def id(self) -> str:
+        '''Gets or sets the ID of the deleted object.'''
+        ...
+    
+    @id.setter
+    def id(self, value: str):
+        ...
+    
+    @property
+    def object(self) -> str:
+        '''Gets or sets the object type, which is always "thread.deleted".'''
+        ...
+    
+    @object.setter
+    def object(self, value: str):
+        ...
+    
+    @property
+    def deleted(self) -> bool:
+        '''Gets or sets the value that indicates whether the thread was successfully deleted.'''
+        ...
+    
+    @deleted.setter
+    def deleted(self, value: bool):
+        ...
+    
+    ...
+
+class DocumentCollection:
+    '''Represents a collection of documents to be processed.'''
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def document_paths(self) -> None:
+        '''Gets or sets the collection of document paths to be processed.'''
+        ...
+    
+    @document_paths.setter
+    def document_paths(self, value: None):
+        ...
+    
+    @property
+    def text_documents(self) -> None:
+        '''Gets or sets the collection of text documents to be processed.'''
+        ...
+    
+    @text_documents.setter
+    def text_documents(self, value: None):
+        ...
+    
+    @property
+    def pdf_documents(self) -> None:
+        '''Gets or sets the collection of PDF documents to be processed.'''
+        ...
+    
+    @pdf_documents.setter
+    def pdf_documents(self, value: None):
+        ...
+    
+    ...
+
+class Embedding:
+    '''Represents an embedding vector returned by embedding endpoint.'''
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def object(self) -> str:
+        '''Gets or sets the object type, which is always "embedding".'''
+        ...
+    
+    @object.setter
+    def object(self, value: str):
+        ...
+    
+    @property
+    def index(self) -> int:
+        '''Gets or sets the index of the embedding in the list of embeddings.'''
+        ...
+    
+    @index.setter
+    def index(self, value: int):
+        ...
+    
+    @property
+    def embedding_list(self) -> None:
+        '''Gets or sets the embedding vector, which is a list of floats.
+        The length of vector depends on the model as listed in the embedding guide.'''
+        ...
+    
+    @embedding_list.setter
+    def embedding_list(self, value: None):
+        ...
+    
+    ...
+
+class Error:
+    '''Represents an error in the API response.'''
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def message(self) -> str:
+        '''Gets or sets the error message.'''
+        ...
+    
+    @message.setter
+    def message(self, value: str):
+        ...
+    
+    @property
+    def error_type(self) -> str:
+        '''Gets or sets the error type.'''
+        ...
+    
+    @error_type.setter
+    def error_type(self, value: str):
+        ...
+    
+    @property
+    def param(self) -> str:
+        '''Gets or sets the parameter name.'''
+        ...
+    
+    @param.setter
+    def param(self, value: str):
+        ...
+    
+    @property
+    def code(self) -> str:
+        '''Gets or sets the error code.'''
+        ...
+    
+    @code.setter
+    def code(self, value: str):
+        ...
+    
+    ...
+
+class ExpiresAfter:
+    '''Represents the expiration policy for a vector store.'''
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def anchor(self) -> str:
+        '''Gets or sets the anchor timestamp after which the expiration policy applies.
+        Supported anchors: last_active_at.'''
+        ...
+    
+    @anchor.setter
+    def anchor(self, value: str):
+        ...
+    
+    @property
+    def days(self) -> int:
+        '''Gets or sets the number of days after the anchor time that the vector store will expire.'''
+        ...
+    
+    @days.setter
+    def days(self, value: int):
+        ...
+    
+    ...
+
+class FileCitation:
+    '''Represents the file citation.'''
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def file_id(self) -> str:
+        '''Gets or sets the ID of the specific File the citation is from.'''
+        ...
+    
+    @file_id.setter
+    def file_id(self, value: str):
+        ...
+    
+    ...
+
+class FileCounts:
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def in_progress(self) -> int:
+        '''Gets or sets the number of files that are currently being processed.'''
+        ...
+    
+    @in_progress.setter
+    def in_progress(self, value: int):
+        ...
+    
+    @property
+    def completed(self) -> int:
+        '''Gets or sets the number of files that have been successfully processed.'''
+        ...
+    
+    @completed.setter
+    def completed(self, value: int):
+        ...
+    
+    @property
+    def failed(self) -> int:
+        '''Gets or sets the number of files that failed to be processed.'''
+        ...
+    
+    @failed.setter
+    def failed(self, value: int):
+        ...
+    
+    @property
+    def cancelled(self) -> int:
+        '''Gets or sets the number of files that were cancelled.'''
+        ...
+    
+    @cancelled.setter
+    def cancelled(self, value: int):
+        ...
+    
+    @property
+    def total(self) -> int:
+        '''Gets or sets the total number of files in the vector store.'''
+        ...
+    
+    @total.setter
+    def total(self, value: int):
+        ...
+    
+    ...
+
+class FileListResponse(aspose.pdf.ai.BaseResponse):
+    '''Represents a file list response containing a list of file responses.'''
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def object(self) -> str:
+        '''Gets or sets the object type, which is always list.'''
+        ...
+    
+    @object.setter
+    def object(self, value: str):
+        ...
+    
+    @property
+    def data(self) -> None:
+        ...
+    
+    @data.setter
+    def data(self, value: None):
+        ...
+    
+    ...
+
+class FileResponse(aspose.pdf.ai.BaseResponse):
+    '''The FileResponse object represents a document that has been uploaded to OpenAI.'''
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def id(self) -> str:
+        '''Gets or sets the file identifier, which can be referenced in the API endpoints.'''
+        ...
+    
+    @id.setter
+    def id(self, value: str):
+        ...
+    
+    @property
+    def bytes(self) -> int:
+        '''Gets or sets the size of the file, in bytes.'''
+        ...
+    
+    @bytes.setter
+    def bytes(self, value: int):
+        ...
+    
+    @property
+    def created_at(self) -> int:
+        '''Gets or sets the Unix timestamp (in seconds) for when the file was created.'''
+        ...
+    
+    @created_at.setter
+    def created_at(self, value: int):
+        ...
+    
+    @property
+    def filename(self) -> str:
+        '''Gets or sets the name of the file.'''
+        ...
+    
+    @filename.setter
+    def filename(self, value: str):
+        ...
+    
+    @property
+    def object(self) -> str:
+        '''Gets or sets the object type, which is always file.'''
+        ...
+    
+    @object.setter
+    def object(self, value: str):
+        ...
+    
+    @property
+    def purpose(self) -> str:
+        '''Gets or sets the intended purpose of the file. Supported values are assistants,
+        assistants_output, batch, batch_output, fine-tune, fine-tune-results and vision.'''
+        ...
+    
+    @purpose.setter
+    def purpose(self, value: str):
+        ...
+    
+    ...
+
+class FileSearch:
+    '''Represents the file search tool resources.'''
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def vector_store_ids(self) -> None:
+        '''Gets or sets the ID of the vector store attached to this assistant. There can be a maximum
+        of 1 vector store attached to the assistant.'''
+        ...
+    
+    @vector_store_ids.setter
+    def vector_store_ids(self, value: None):
+        ...
+    
+    @property
+    def vector_stores(self) -> None:
+        '''Gets or sets the helper to create a vector store with file_ids and attach it to this thread.
+        There can be a maximum of 1 vector store attached to the thread.'''
+        ...
+    
+    @vector_stores.setter
+    def vector_stores(self, value: None):
+        ...
+    
+    ...
+
+class Function:
+    '''Represents a function that can be called by the model.'''
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def name(self) -> str:
+        '''Gets or sets the name of the function to call.'''
+        ...
+    
+    @name.setter
+    def name(self, value: str):
+        ...
+    
+    @property
+    def description(self) -> str:
+        '''Gets or sets a description of what the function does, used by the model to choose when and how to call the function.'''
+        ...
+    
+    @description.setter
+    def description(self, value: str):
+        ...
+    
+    @property
+    def parameters(self) -> object:
+        '''Gets or sets the parameters the functions accepts, described as a JSON Schema object.'''
+        ...
+    
+    @parameters.setter
+    def parameters(self, value: object):
+        ...
+    
+    ...
+
+class Hyperparameters:
+    '''Represents the hyperparameters used for a fine-tuning job.'''
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def batch_size(self) -> str:
+        '''Gets or sets number of examples in each batch.'''
+        ...
+    
+    @batch_size.setter
+    def batch_size(self, value: str):
+        ...
+    
+    ...
+
+class IAIClient:
+    '''Represents an interface for an AI client.'''
+    
+    ...
+
+class IAICopilot:
+    '''Represents a copilot for AI interactions.'''
+    
+    @property
+    def has_context(self) -> bool:
+        '''Gets a value indicating whether the copilot has context.'''
+        ...
+    
+    ...
+
+class IChatCopilot:
+    '''Represents a chat copilot for interacting with documents via AI models.'''
+    
+    ...
+
+class IEntityId:
+    '''Represents an entity with an ID.'''
+    
+    @property
+    def id(self) -> str:
+        '''Gets or sets the ID of the entity.'''
+        ...
+    
+    @id.setter
+    def id(self, value: str):
+        ...
+    
+    ...
+
+class IImageDescriptionCopilot:
+    '''Represents an image description copilot for extracting image descriptions using AI models.'''
+    
+    ...
+
+class ILlamaClient:
+    '''Represents a client interface for interacting with the Llama API.'''
+    
+    ...
+
+class IOpenAIClient:
+    '''Represents a client interface for interacting with the OpenAI API, extending basic AI client functionalities.'''
+    
+    ...
+
+class IQueryParameters:
+    '''Represents query parameters for API requests.'''
+    
+    def get_query_parameters(self) -> str:
+        '''Gets the query parameters as a string.
+        
+        :returns: The query parameters as a string.'''
+        ...
+    
+    ...
+
+class IStatus:
+    '''Represents the status of an operation.'''
+    
+    @property
+    def status(self) -> str:
+        '''Gets or sets the status of the operation.'''
+        ...
+    
+    @status.setter
+    def status(self, value: str):
+        ...
+    
+    ...
+
+class ISummaryCopilot:
+    '''Represents a summary copilot for generating summaries for documents using AI models.'''
+    
+    ...
+
+class ImageDescription:
+    '''Represents an image description.'''
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def name(self) -> str:
+        '''Gets or sets the name of the image.'''
+        ...
+    
+    @name.setter
+    def name(self, value: str):
+        ...
+    
+    @property
+    def page_number(self) -> int:
+        '''Gets or sets the page number where the image is located.'''
+        ...
+    
+    @page_number.setter
+    def page_number(self, value: int):
+        ...
+    
+    @property
+    def image_bytes(self) -> bytes:
+        '''Gets or sets the byte array representing the image.'''
+        ...
+    
+    @image_bytes.setter
+    def image_bytes(self, value: bytes):
+        ...
+    
+    @property
+    def description(self) -> str:
+        '''Gets or sets the description associated with the image.'''
+        ...
+    
+    @description.setter
+    def description(self, value: str):
+        ...
+    
+    @property
+    def rectangle(self) -> aspose.pdf.Rectangle:
+        '''Gets or sets the rectangle information of the image.'''
+        ...
+    
+    @rectangle.setter
+    def rectangle(self, value: aspose.pdf.Rectangle):
+        ...
+    
+    ...
+
+class ImageDescriptionResult:
+    '''Represents the response containing image descriptions.'''
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def file_path(self) -> str:
+        '''Gets or sets the file name.'''
+        ...
+    
+    @file_path.setter
+    def file_path(self, value: str):
+        ...
+    
+    @property
+    def pdf_document(self) -> aspose.pdf.ai.PdfDocument:
+        '''Gets or sets the PDF document.'''
+        ...
+    
+    @pdf_document.setter
+    def pdf_document(self, value: aspose.pdf.ai.PdfDocument):
+        ...
+    
+    @property
+    def image_descriptions(self) -> None:
+        '''Gets or sets the list of image descriptions.'''
+        ...
+    
+    @property
+    def is_pdf_document(self) -> bool:
+        '''Gets a value indicating whether the ImageDescriptionResult contains a PDF document.'''
+        ...
+    
+    @property
+    def is_pdf_document_path(self) -> bool:
+        '''Gets a value indicating whether the ImageDescriptionResult contains a PDF document path.'''
+        ...
+    
+    ...
+
+class ImageFile:
+    '''Represents an image File in the content of a message.'''
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def file_id(self) -> str:
+        '''Gets or sets the File ID of the image in the message content. Set purpose="vision"
+        when uploading the File if you need to later display the file content.'''
+        ...
+    
+    @file_id.setter
+    def file_id(self, value: str):
+        ...
+    
+    @property
+    def detail(self) -> str:
+        '''Gets or sets the detail level of the image if specified by the user. low  uses
+        fewer tokens, you can opt in to high resolution using high.'''
+        ...
+    
+    @detail.setter
+    def detail(self, value: str):
+        ...
+    
+    ...
+
+class ImageUrl:
+    '''Represents an image URL in the content of a message.'''
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def url(self) -> str:
+        '''Gets or sets the external URL of the image, must be a supported image types: jpeg, jpg, png, gif, webp.'''
+        ...
+    
+    @url.setter
+    def url(self, value: str):
+        ...
+    
+    @property
+    def detail(self) -> str:
+        '''Gets or sets the detail level of the image if specified by the user. low  uses
+        fewer tokens, you can opt in to high resolution using high .'''
+        ...
+    
+    @detail.setter
+    def detail(self, value: str):
+        ...
+    
+    ...
+
+class IncompleteDetails:
+    '''Details on why the run is incomplete. Will be null if the run is not incomplete.'''
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def reason(self) -> str:
+        '''Gets or sets the reason why the message is incomplete.'''
+        ...
+    
+    @reason.setter
+    def reason(self, value: str):
+        ...
+    
+    ...
+
+class LastError:
+    '''The last error associated with this run. Will be null if there are no errors.'''
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def code(self) -> str:
+        '''Gets or sets one of server_error, rate_limit_exceeded, or invalid_prompt.'''
+        ...
+    
+    @code.setter
+    def code(self, value: str):
+        ...
+    
+    @property
+    def message(self) -> str:
+        '''Gets or sets a human-readable description of the error.'''
+        ...
+    
+    @message.setter
+    def message(self, value: str):
+        ...
+    
+    ...
+
+class LlamaChatCompletionRequest:
+    '''Represents the request body for the ChatGPT API requests.'''
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def model(self) -> str:
+        '''Sets or gets ID of the model to use.'''
+        ...
+    
+    @model.setter
+    def model(self, value: str):
+        ...
+    
+    @property
+    def messages(self) -> None:
+        '''Sets or gets a list of messages comprising the conversation.'''
+        ...
+    
+    @messages.setter
+    def messages(self, value: None):
+        ...
+    
+    @property
+    def max_tokens(self) -> int:
+        '''Sets or gets the maximum number of tokens to generate in the chat completion.
+        Default value is null, means infinity.'''
+        ...
+    
+    @max_tokens.setter
+    def max_tokens(self, value: int):
+        ...
+    
+    @property
+    def number_of_choices(self) -> int:
+        '''Sets or gets how many chat completion choices to generate for each input message.'''
+        ...
+    
+    @number_of_choices.setter
+    def number_of_choices(self, value: int):
+        ...
+    
+    @property
+    def temperature(self) -> float:
+        '''Sets or gets the sampling temperature to use, between 0 and 2.
+        Higher values like 0.8 will make the output more random,
+        while lower values like 0.2 will make it more focused and deterministic.
+        Default value is 1.'''
+        ...
+    
+    @temperature.setter
+    def temperature(self, value: float):
+        ...
+    
+    @property
+    def presence_penalty(self) -> float:
+        '''Sets or gets the presence penalty to use during sampling.'''
+        ...
+    
+    @presence_penalty.setter
+    def presence_penalty(self, value: float):
+        ...
+    
+    @property
+    def frequency_penalty(self) -> float:
+        '''Sets or gets the frequency penalty to use during sampling.'''
+        ...
+    
+    @frequency_penalty.setter
+    def frequency_penalty(self, value: float):
+        ...
+    
+    @property
+    def logit_bias(self) -> object:
+        '''Sets or gets the logit bias to use during sampling.'''
+        ...
+    
+    @logit_bias.setter
+    def logit_bias(self, value: object):
+        ...
+    
+    @property
+    def stream(self) -> bool:
+        '''Sets or gets whether to stream the response.'''
+        ...
+    
+    @stream.setter
+    def stream(self, value: bool):
+        ...
+    
+    ...
+
+class LlamaChatCompletionResponse(aspose.pdf.ai.BaseResponse):
+    '''Represents a chat completion response returned by model, based on the provided input.'''
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def id(self) -> str:
+        '''Gets or sets a unique identifier for the chat completion.'''
+        ...
+    
+    @id.setter
+    def id(self, value: str):
+        ...
+    
+    @property
+    def object(self) -> str:
+        '''Gets or sets the object type, which is always chat.completion.'''
+        ...
+    
+    @object.setter
+    def object(self, value: str):
+        ...
+    
+    @property
+    def created(self) -> int:
+        '''Gets or sets the Unix timestamp (in seconds) of when the chat completion was created.'''
+        ...
+    
+    @created.setter
+    def created(self, value: int):
+        ...
+    
+    @property
+    def model(self) -> str:
+        '''Gets or sets the model used for the chat completion.'''
+        ...
+    
+    @model.setter
+    def model(self, value: str):
+        ...
+    
+    @property
+    def choices(self) -> None:
+        '''Gets or sets a list of chat completion choices. Can be more than one if n is greater than 1.'''
+        ...
+    
+    @choices.setter
+    def choices(self, value: None):
+        ...
+    
+    @property
+    def usage(self) -> aspose.pdf.ai.Usage:
+        '''Gets or sets usage statistics for the completion request.'''
+        ...
+    
+    @usage.setter
+    def usage(self, value: aspose.pdf.ai.Usage):
+        ...
+    
+    @property
+    def system_fingerprint(self) -> str:
+        '''Gets or sets the fingerprint that represents the backend configuration that the model runs with.'''
+        ...
+    
+    @system_fingerprint.setter
+    def system_fingerprint(self, value: str):
+        ...
+    
+    ...
+
+class LlamaClient(aspose.pdf.ai.AIClientBase):
+    '''Represents a client for interacting with the Llama API.'''
+    
+    @staticmethod
+    def create_with_api_key(self, api_key: str) -> None:
+        '''Creates a new instance of Aspose.Pdf.AI.LlamaClient.Builder with the provided API key.
+        
+        :param api_key: The API key to use for the client.
+        :returns: An instance of Aspose.Pdf.AI.LlamaClient.Builder.'''
+        ...
+    
+    ...
+
+class LlamaCopilotOptionsBase:
+    '''Represents the base options for configuring the LlamaCopilot.'''
+    
+    @property
+    def model(self) -> str:
+        '''Gets or sets the model to use for the assistant.'''
+        ...
+    
+    @model.setter
+    def model(self, value: str):
+        ...
+    
+    @property
+    def temperature(self) -> float:
+        '''Gets or sets the sampling temperature to use for the model.'''
+        ...
+    
+    @temperature.setter
+    def temperature(self, value: float):
+        ...
+    
+    @property
+    def top_p(self) -> float:
+        '''Gets or sets the top-p value for nucleus sampling.'''
+        ...
+    
+    @top_p.setter
+    def top_p(self, value: float):
+        ...
+    
+    @property
+    def max_completion_tokens(self) -> int:
+        '''Gets or sets the maximum number of completion tokens that may be used over the course of the run.'''
+        ...
+    
+    @max_completion_tokens.setter
+    def max_completion_tokens(self, value: int):
+        ...
+    
+    @property
+    def system_instructions(self) -> str:
+        '''Gets or sets the file path for the text file containing assistant system instructions.'''
+        ...
+    
+    @system_instructions.setter
+    def system_instructions(self, value: str):
+        ...
+    
+    @property
+    def document_collection(self) -> aspose.pdf.ai.DocumentCollection:
+        '''Gets or sets the collection of documents to be processed.'''
+        ...
+    
+    @document_collection.setter
+    def document_collection(self, value: aspose.pdf.ai.DocumentCollection):
+        ...
+    
+    ...
+
+class LlamaModels:
+    '''Contains constants related to different Llama models.'''
+    
+    llama_13b_chat: str
+    
+    ...
+
+class LlamaSummaryCopilot:
+    '''Provides functionality for getting document summaries using AI models.
+    Example usage of creating an Llama client, configuring options, and using the summary copilot.
+    Note: This copilot uses completion API, so the total amount of text that can be sent is limited by the model context window.'''
+    
+    @property
+    def has_context(self) -> bool:
+        ...
+    
+    ...
+
+class LlamaSummaryCopilotOptions(aspose.pdf.ai.LlamaCopilotOptionsBase):
+    '''Represents the options for configuring the OpenAICopilot.'''
+    
+    @overload
+    def with_documents(self, document_collection: aspose.pdf.ai.DocumentCollection) -> aspose.pdf.ai.LlamaSummaryCopilotOptions:
+        '''Sets the document collection for the summary copilot options.
+        
+        :param document_collection: The document collection to set.
+        :returns: The current instance of :class:`LlamaSummaryCopilotOptions`.'''
+        ...
+    
+    @overload
+    def with_documents(self, text_documents) -> aspose.pdf.ai.LlamaSummaryCopilotOptions:
+        ...
+    
+    @overload
+    def with_documents(self, pdf_documents) -> aspose.pdf.ai.LlamaSummaryCopilotOptions:
+        ...
+    
+    @overload
+    def with_documents(self, file_paths) -> aspose.pdf.ai.LlamaSummaryCopilotOptions:
+        ...
+    
+    @overload
+    def with_document(self, text_document: aspose.pdf.ai.TextDocument) -> aspose.pdf.ai.LlamaSummaryCopilotOptions:
+        '''Adds a text document to the document collection for the summary copilot options.
+        
+        :param text_document: The text document to add.
+        :returns: The current instance of :class:`LlamaSummaryCopilotOptions`.'''
+        ...
+    
+    @overload
+    def with_document(self, pdf_document: aspose.pdf.ai.PdfDocument) -> aspose.pdf.ai.LlamaSummaryCopilotOptions:
+        '''Adds a PDF document to the document collection for the summary copilot options.
+        
+        :param pdf_document: The PDF document to add.
+        :returns: The current instance of :class:`LlamaSummaryCopilotOptions`.'''
+        ...
+    
+    @overload
+    def with_document(self, file_path: str) -> aspose.pdf.ai.LlamaSummaryCopilotOptions:
+        '''Adds a document path to the document collection for the summary copilot options.
+        
+        :param file_path: The file path of the document to add.
+        :returns: The current instance of :class:`LlamaSummaryCopilotOptions`.'''
+        ...
+    
+    def get_options(self) -> aspose.pdf.ai.LlamaSummaryCopilotOptions:
+        '''Gets the current :class:`LlamaSummaryCopilotOptions`.
+        
+        :returns: The current instance of :class:`LlamaSummaryCopilotOptions`.'''
+        ...
+    
+    @staticmethod
+    def create(self) -> aspose.pdf.ai.LlamaSummaryCopilotOptions:
+        '''Creates a new instance of :class:`LlamaSummaryCopilotOptions`.
+        
+        :returns: A new instance of :class:`LlamaSummaryCopilotOptions`.'''
+        ...
+    
+    def with_model(self, model: str) -> aspose.pdf.ai.LlamaSummaryCopilotOptions:
+        '''Sets the model for the summary copilot options.
+        
+        :param model: The model to set.
+        :returns: The current instance of :class:`LlamaSummaryCopilotOptions`.'''
+        ...
+    
+    def with_temperature(self, temperature: float) -> aspose.pdf.ai.LlamaSummaryCopilotOptions:
+        ...
+    
+    def with_top_p(self, top_p: float) -> aspose.pdf.ai.LlamaSummaryCopilotOptions:
+        ...
+    
+    def with_max_completion_tokens(self, max_completion_tokens: int) -> aspose.pdf.ai.LlamaSummaryCopilotOptions:
+        ...
+    
+    def with_instructions(self, instructions: str) -> aspose.pdf.ai.LlamaSummaryCopilotOptions:
+        '''Sets the instructions for the summary copilot options.
+        
+        :param instructions: The instructions to set.
+        :returns: The current instance of :class:`LlamaSummaryCopilotOptions`.'''
+        ...
+    
+    def with_summary_prompt(self, summary_prompt: str) -> aspose.pdf.ai.LlamaSummaryCopilotOptions:
+        '''Sets the summary prompt for the summary copilot options.
+        
+        :param summary_prompt: The summary prompt to set.
+        :returns: The current instance of :class:`LlamaSummaryCopilotOptions`.'''
+        ...
+    
+    @property
+    def summary_prompt(self) -> str:
+        '''Gets or sets the prompt to instruct the model to provide a document summary.'''
+        ...
+    
+    @summary_prompt.setter
+    def summary_prompt(self, value: str):
+        ...
+    
+    ...
+
+class Logprobs:
+    '''Represents log probability information for a choice.'''
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def tokens(self) -> None:
+        '''Gets or sets a list of message content tokens with log probability information.'''
+        ...
+    
+    @tokens.setter
+    def tokens(self, value: None):
+        ...
+    
+    @property
+    def token_logprobs(self) -> None:
+        '''Gets or sets a list of token log probabilities.'''
+        ...
+    
+    @token_logprobs.setter
+    def token_logprobs(self, value: None):
+        ...
+    
+    @property
+    def text_offset(self) -> None:
+        '''Gets or sets a list of integers representing the UTF-8 byte representation of each token.'''
+        ...
+    
+    @text_offset.setter
+    def text_offset(self, value: None):
+        ...
+    
+    ...
+
+class MessageContentBase:
+    '''The content of the message in array of text and/or images.'''
+    
+    @property
+    def message_content_type(self) -> str:
+        '''Gets or sets the type of content.'''
+        ...
+    
+    @message_content_type.setter
+    def message_content_type(self, value: str):
+        ...
+    
+    @property
+    def image_file(self) -> aspose.pdf.ai.ImageFile:
+        '''Gets or sets an image File in the content of a message.'''
+        ...
+    
+    @image_file.setter
+    def image_file(self, value: aspose.pdf.ai.ImageFile):
+        ...
+    
+    @property
+    def image_url(self) -> aspose.pdf.ai.ImageUrl:
+        '''Gets or sets an image URL in the content of a message.'''
+        ...
+    
+    @image_url.setter
+    def image_url(self, value: aspose.pdf.ai.ImageUrl):
+        ...
+    
+    ...
+
+class MessageContentRequest(aspose.pdf.ai.MessageContentBase):
+    '''The content of the message in array of text and/or images.'''
+    
+    def __init__(self):
+        ...
+    
+    @staticmethod
+    def create_image_file_content(self, file_id: str, detail: str) -> aspose.pdf.ai.MessageContentRequest:
+        '''Creates an image file content for a message.
+        
+        :param file_id: The ID of the image file.
+        :param detail: The detail of the image file.
+                       Specifies the detail level of the image if specified by the user.
+                       "low" uses fewer tokens, you can opt in to high resolution using "high".
+                       Default is "auto".
+        :returns: A new instance of MessageContentRequest with ImageFile content.'''
+        ...
+    
+    @staticmethod
+    def create_image_url_content(self, image_url: str, detail: str) -> aspose.pdf.ai.MessageContentRequest:
+        '''Creates an image URL content for a message.
+        
+        :param image_url: The URL of the image.
+        :param detail: The detail of the image URL.
+                       Specifies the detail level of the image if specified by the user.
+                       "low" uses fewer tokens, you can opt in to high resolution using "high".
+                       Default is "auto".
+        :returns: A new instance of MessageContentRequest with ImageUrl content.'''
+        ...
+    
+    @staticmethod
+    def create_text_content(self, text: str) -> aspose.pdf.ai.MessageContentRequest:
+        '''Creates a text content for a message.
+        
+        :param text: The text content of the message.
+        :returns: A new instance of MessageContentRequest with text content.'''
+        ...
+    
+    @property
+    def text(self) -> str:
+        '''Gets or sets the text content that is part of a message.'''
+        ...
+    
+    @text.setter
+    def text(self, value: str):
+        ...
+    
+    ...
+
+class MessageContentResponse(aspose.pdf.ai.MessageContentBase):
+    '''The content of the response message in array of text and/or images.'''
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def text(self) -> aspose.pdf.ai.TextResponse:
+        '''Gets or sets the text content that is part of a message.'''
+        ...
+    
+    @text.setter
+    def text(self, value: aspose.pdf.ai.TextResponse):
+        ...
+    
+    ...
+
+class MessageCreation:
+    '''Represents the creation of a message with its unique identifier.'''
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def message_id(self) -> str:
+        '''Gets or sets the unique identifier of the message.'''
+        ...
+    
+    @message_id.setter
+    def message_id(self, value: str):
+        ...
+    
+    ...
+
+class OpenAIAssistantCopilotOptionsBase(aspose.pdf.ai.OpenAICopilotOptionsBase):
+    '''Represents the base options for configuring the OpenAICopilots based on Assistants API.'''
+    
+    @property
+    def temperature(self) -> float:
+        '''Gets or sets the sampling temperature to use for the model.'''
+        ...
+    
+    @temperature.setter
+    def temperature(self, value: float):
+        ...
+    
+    @property
+    def top_p(self) -> float:
+        '''Gets or sets the top-p value for nucleus sampling.'''
+        ...
+    
+    @top_p.setter
+    def top_p(self, value: float):
+        ...
+    
+    @property
+    def max_prompt_tokens(self) -> int:
+        '''Gets or sets the maximum number of prompt tokens that may be used over the course of the run.'''
+        ...
+    
+    @max_prompt_tokens.setter
+    def max_prompt_tokens(self, value: int):
+        ...
+    
+    @property
+    def max_completion_tokens(self) -> int:
+        '''Gets or sets the maximum number of completion tokens that may be used over the course of the run.'''
+        ...
+    
+    @max_completion_tokens.setter
+    def max_completion_tokens(self, value: int):
+        ...
+    
+    @property
+    def system_instructions(self) -> str:
+        '''Gets or sets the file path for the text file containing assistant system instructions.'''
+        ...
+    
+    @system_instructions.setter
+    def system_instructions(self, value: str):
+        ...
+    
+    @property
+    def document_collection(self) -> aspose.pdf.ai.DocumentCollection:
+        '''Gets or sets the collection of documents to be processed.'''
+        ...
+    
+    @document_collection.setter
+    def document_collection(self, value: aspose.pdf.ai.DocumentCollection):
+        ...
+    
+    ...
+
+class OpenAIChatCopilot:
+    '''Represents a chat copilot for interacting with documents via AI models.
+    
+    Example usage of creating an OpenAI client, configuring options, and using the ChatCopilot to interact with user queries
+    and manage conversation context.
+    
+    // Create AI client.
+    
+    var openAiClient = OpenAIClient
+    
+        .CreateWithApiKey(ApiKey) // Create OpenAI client with the API key.
+    
+        .WithProject("proj_RoywW1DLqDC89GoAW5ngoVN8") // Configure optional parameters.
+    
+        .WithOrganization("org_123")
+    
+        .Build(); // Build.
+    
+    // Create copilot options.
+    
+    var options = OpenAIChatCopilotOptions
+    
+        .Create() // Create options like this, or...
+    
+        //.Create(options => { options.Model = OpenAIModels.Gpt35Turbo; }) // ...create using delegate.
+    
+        .WithModel(OpenAIModels.Gpt35Turbo) // Configure other optional parameters.
+    
+        .WithTemperature(0.5)
+    
+        .WithTopP(1)
+    
+        .WithDocument("DocumentInputPath") // Attach documents using .WithDocument(s) methods allows to add text, pdf and paths to documents.
+    
+        .WithContextBackupJsonPath("PathToContextBackup") // Supply context backup to resume the conversation session.
+    
+        .WithRestoreContextFromBackup(true); // If set to true, the context
+    
+    // Create summary copilot.
+    
+    var chatCopilot = AICopilotFactory.CreateChatCopilot(openAiClient, options);
+    
+    // Get response on a user query.
+    
+    string copilotResponse1 = await chatCopilot.GetResponseAsync("user message");
+    
+    // Get response on a list of queries.
+    
+    string copilotResponse2 = await chatCopilot.GetResponseAsync(new List<string>
+    
+    {
+    
+        "message1",
+    
+        "message2"
+    
+    });
+    
+    // Save summary as PDF document.
+    
+    await chatCopilot.SaveResponseAsync("message1", "outputPath");
+    
+    // Save summary with specified format.
+    
+    await chatCopilot.SaveResponseAsync("message1", "outputPath", SaveFormat.DocX);
+    
+    // Save summary as PDF document.
+    
+    await chatCopilot.SaveResponseAsync(new List<string>
+    
+    {
+    
+        "message1",
+    
+        "message2"
+    
+    }, "outputPath");
+    
+    // Save summary with specified format.
+    
+    await chatCopilot.SaveResponseAsync(new List<string>
+    
+    {
+    
+        "message1",
+    
+        "message2"
+    
+    }, "outputPath", SaveFormat.DocX);
+    
+    // Save the context.
+    
+    await chatCopilot.SaveContextAsync("outputPath");
+    
+    // Delete the context.
+    
+    await chatCopilot.DeleteContextAsync();'''
+    
+    @property
+    def has_context(self) -> bool:
+        ...
+    
+    ...
+
+class OpenAIChatCopilotOptions(aspose.pdf.ai.OpenAIAssistantCopilotOptionsBase):
+    '''Represents the options for configuring the OpenAICopilot.'''
+    
+    @overload
+    def with_documents(self, document_collection: aspose.pdf.ai.DocumentCollection) -> aspose.pdf.ai.OpenAIChatCopilotOptions:
+        '''Sets the document collection for the chat copilot options.
+        
+        :param document_collection: The document collection to set.
+        :returns: The current instance of :class:`OpenAIChatCopilotOptions`.'''
+        ...
+    
+    @overload
+    def with_documents(self, text_documents) -> aspose.pdf.ai.OpenAIChatCopilotOptions:
+        ...
+    
+    @overload
+    def with_documents(self, pdf_documents) -> aspose.pdf.ai.OpenAIChatCopilotOptions:
+        ...
+    
+    @overload
+    def with_documents(self, file_paths) -> aspose.pdf.ai.OpenAIChatCopilotOptions:
+        ...
+    
+    @overload
+    def with_document(self, text_document: aspose.pdf.ai.TextDocument) -> aspose.pdf.ai.OpenAIChatCopilotOptions:
+        '''Adds a text document to the document collection for the chat copilot options.
+        
+        :param text_document: The text document to add.
+        :returns: The current instance of :class:`OpenAIChatCopilotOptions`.'''
+        ...
+    
+    @overload
+    def with_document(self, pdf_document: aspose.pdf.ai.PdfDocument) -> aspose.pdf.ai.OpenAIChatCopilotOptions:
+        '''Adds a PDF document to the document collection for the chat copilot options.
+        
+        :param pdf_document: The PDF document to add.
+        :returns: The current instance of :class:`OpenAIChatCopilotOptions`.'''
+        ...
+    
+    @overload
+    def with_document(self, file_path: str) -> aspose.pdf.ai.OpenAIChatCopilotOptions:
+        '''Adds a document path to the document collection for the chat copilot options.
+        
+        :param file_path: The file path of the document to add.
+        :returns: The current instance of :class:`OpenAIChatCopilotOptions`.'''
+        ...
+    
+    def get_options(self) -> aspose.pdf.ai.OpenAIChatCopilotOptions:
+        '''Gets the current :class:`OpenAIChatCopilotOptions`.
+        
+        :returns: The current instance of :class:`OpenAIChatCopilotOptions`.'''
+        ...
+    
+    @staticmethod
+    def create(self) -> aspose.pdf.ai.OpenAIChatCopilotOptions:
+        '''Creates a new instance of :class:`OpenAIChatCopilotOptions`.
+        
+        :returns: A new instance of :class:`OpenAIChatCopilotOptions`.'''
+        ...
+    
+    def with_model(self, model: str) -> aspose.pdf.ai.OpenAIChatCopilotOptions:
+        '''Sets the model for the chat copilot options.
+        
+        :param model: The model to set.
+        :returns: The current instance of :class:`OpenAIChatCopilotOptions`.'''
+        ...
+    
+    def with_temperature(self, temperature: float) -> aspose.pdf.ai.OpenAIChatCopilotOptions:
+        ...
+    
+    def with_top_p(self, top_p: float) -> aspose.pdf.ai.OpenAIChatCopilotOptions:
+        ...
+    
+    def with_max_prompt_tokens(self, max_prompt_tokens: int) -> aspose.pdf.ai.OpenAIChatCopilotOptions:
+        ...
+    
+    def with_max_completion_tokens(self, max_completion_tokens: int) -> aspose.pdf.ai.OpenAIChatCopilotOptions:
+        ...
+    
+    def with_instructions(self, instructions: str) -> aspose.pdf.ai.OpenAIChatCopilotOptions:
+        '''Sets the instructions for the chat copilot options.
+        
+        :param instructions: The instructions to set.
+        :returns: The current instance of :class:`OpenAIChatCopilotOptions`.'''
+        ...
+    
+    def with_assistant_name(self, assistant_name: str) -> aspose.pdf.ai.OpenAIChatCopilotOptions:
+        '''Sets the assistant name for the chat copilot options.
+        
+        :param assistant_name: The assistant name to set.
+        :returns: The current instance of :class:`OpenAIChatCopilotOptions`.'''
+        ...
+    
+    def with_truncation_strategy(self, truncation_strategy: aspose.pdf.ai.TruncationStrategy) -> aspose.pdf.ai.OpenAIChatCopilotOptions:
+        '''Sets the truncation strategy for the chat copilot options.
+        
+        :param truncation_strategy: The truncation strategy.
+        :returns: The current instance of :class:`OpenAIChatCopilotOptions`.'''
+        ...
+    
+    def with_vector_store_expire_days(self, days: int) -> aspose.pdf.ai.OpenAIChatCopilotOptions:
+        '''Sets the number of days for vector store expiration in the chat copilot options.
+        
+        :param days: The number of days for vector store expiration.
+        :returns: The current instance of :class:`OpenAIChatCopilotOptions`.'''
+        ...
+    
+    def with_restore_context_from_backup(self, restore_context: bool) -> aspose.pdf.ai.OpenAIChatCopilotOptions:
+        '''Sets whether to restore the context from backup in the chat copilot options.
+        
+        :param restore_context: A value indicating whether to restore the context from backup.
+        :returns: The current instance of :class:`OpenAIChatCopilotOptions`.'''
+        ...
+    
+    def with_context_backup_json_path(self, file_path: str) -> aspose.pdf.ai.OpenAIChatCopilotOptions:
+        '''Sets the file path for the context backup JSON in the chat copilot options.
+        
+        :param file_path: The file path for the context backup JSON.
+        :returns: The current instance of :class:`OpenAIChatCopilotOptions`.'''
+        ...
+    
+    @property
+    def assistant_name(self) -> str:
+        '''Gets or sets the name of the assistant.'''
+        ...
+    
+    @assistant_name.setter
+    def assistant_name(self, value: str):
+        ...
+    
+    @property
+    def vector_store_expire_days(self) -> int:
+        '''Gets or sets the number of days before the vector store expires.'''
+        ...
+    
+    @vector_store_expire_days.setter
+    def vector_store_expire_days(self, value: int):
+        ...
+    
+    @property
+    def truncation_strategy(self) -> aspose.pdf.ai.TruncationStrategy:
+        '''Gets or sets the truncation strategy for the thread.'''
+        ...
+    
+    @truncation_strategy.setter
+    def truncation_strategy(self, value: aspose.pdf.ai.TruncationStrategy):
+        ...
+    
+    @property
+    def restore_context_from_backup(self) -> bool:
+        '''Gets or sets a value indicating whether to restore the context from backup.'''
+        ...
+    
+    @restore_context_from_backup.setter
+    def restore_context_from_backup(self, value: bool):
+        ...
+    
+    @property
+    def context_backup_json_path(self) -> str:
+        '''Gets or sets the file path for the context backup JSON.'''
+        ...
+    
+    @context_backup_json_path.setter
+    def context_backup_json_path(self, value: str):
+        ...
+    
+    ...
+
+class OpenAIClient(aspose.pdf.ai.AIClientBase):
+    '''Provides methods to interact with the OpenAI API for managing vector store file batches.
+    
+    Provides methods to interact with the OpenAI API for managing vector store files.
+    
+    Provides methods to interact with the OpenAI API for managing vector stores.
+    
+    Represents a client for interacting with the OpenAI API, extending basic AI client functionalities.
+    
+    Provides methods to interact with the OpenAI API for managing run steps within threads.
+    
+    Provides methods to interact with the OpenAI API for managing files.
+    
+    Provides methods to interact with the OpenAI API for managing thread messages.
+    
+    Provides methods to interact with the OpenAI API for managing threads.
+    
+    Provides methods to interact with the OpenAI API for managing assistants.
+    
+    Provides a method to interact with the OpenAI API for creating completions.
+    
+    Provides methods to interact with the OpenAI API for managing runs within threads.'''
+    
+    @staticmethod
+    def create_with_api_key(self, api_key: str) -> None:
+        '''Creates a new instance of Aspose.Pdf.AI.OpenAIClient.Builder with the provided API key.
+        
+        :param api_key: The API key to use for the client.
+        :returns: An instance of Aspose.Pdf.AI.OpenAIClient.Builder.'''
+        ...
+    
+    ...
+
+class OpenAIContext:
+    '''Represents the entity IDs related to an assistant.'''
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def assistant_id(self) -> str:
+        '''Gets or sets the Assistant ID.'''
+        ...
+    
+    @assistant_id.setter
+    def assistant_id(self, value: str):
+        ...
+    
+    @property
+    def thread_id(self) -> str:
+        '''Gets or sets the Thread ID.'''
+        ...
+    
+    @thread_id.setter
+    def thread_id(self, value: str):
+        ...
+    
+    @property
+    def file_ids(self) -> None:
+        '''Gets or sets the list of File IDs.'''
+        ...
+    
+    @file_ids.setter
+    def file_ids(self, value: None):
+        ...
+    
+    @property
+    def vector_store_id(self) -> str:
+        '''Gets or sets the Vector Store ID.'''
+        ...
+    
+    @vector_store_id.setter
+    def vector_store_id(self, value: str):
+        ...
+    
+    ...
+
+class OpenAICopilotOptionsBase:
+    '''Represents the base options for configuring the OpenAICopilot.'''
+    
+    @property
+    def model(self) -> str:
+        '''Gets or sets the model to use for the assistant.'''
+        ...
+    
+    @model.setter
+    def model(self, value: str):
+        ...
+    
+    ...
+
+class OpenAIImageDescriptionCopilot:
+    '''Provides image processing functionality for OpenAICopilot class.
+    
+    Example usage of creating an OpenAI client, configuration of ImageDescriptionCopilot options,
+    and usage of the copilot to generate image descriptions and add descriptions to attached documents.
+    
+    // Create AI client.
+    
+    var openAiClient = OpenAIClient
+    
+        .CreateWithApiKey(ApiKey) // Create OpenAI client with the API key.
+    
+        .WithProject("proj_RoywW1DLqDC89GoAW5ngoVN8") // Configure optional parameters.
+    
+        .WithOrganization("org_123")
+    
+        .Build(); // Build.
+    
+    // Create copilot options.
+    
+    var options = OpenAIImageDescriptionCopilotOptions
+    
+        .Create() // Create options like this, or...
+    
+        //.Create(options => { options.Model = OpenAIModels.Gpt35Turbo; }) // ...create using delegate.
+    
+        .WithModel(OpenAIModels.Gpt35Turbo) // Configure other optional parameters.
+    
+        .WithTemperature(0.5)
+    
+        .WithTopP(1)
+    
+        .WithDocument(new PdfDocument // Attach documents.
+    
+        {
+    
+            Name = "Another_Pdf_with_images",
+    
+            Document = new Document(GetInputPath("Pdf_with_images_low_res_bw.pdf"))
+    
+        })
+    
+        .WithDocument(GetInputPath("Mona_liza.jpg")) // Attach images
+    
+        .WithDocument(GetInputPath("Pdf_with_images.pdf")); // Attach document paths.
+    
+    // Create copilot.
+    
+    var copilot = AICopilotFactory.CreateImageDescriptionCopilot(openAiClient, options);
+    
+    // Get Image descriptions.
+    
+    List<ImageDescriptionResult> imageDescriptions = await copilot.GetImageDescriptionsAsync();
+    
+    // Use extension method to add image descriptions to attached documents.
+    
+    await copilot.AddPdfImageDescriptionsAsync("DocumentsOutputDirectory");'''
+    
+    @property
+    def has_context(self) -> bool:
+        ...
+    
+    ...
+
+class OpenAIImageDescriptionCopilotExtensions:
+    '''Provides extension methods for OpenAIImageDescriptionCopilot class.'''
+    
+    ...
+
+class OpenAIImageDescriptionCopilotOptions(aspose.pdf.ai.OpenAIAssistantCopilotOptionsBase):
+    '''Represents the options for configuring the OpenAICopilot.'''
+    
+    @overload
+    def with_documents(self, document_collection: aspose.pdf.ai.DocumentCollection) -> aspose.pdf.ai.OpenAIImageDescriptionCopilotOptions:
+        '''Sets the document collection for the image description copilot options.
+        
+        :param document_collection: The document collection to set.
+        :returns: The current instance of :class:`OpenAIImageDescriptionCopilotOptions`.'''
+        ...
+    
+    @overload
+    def with_documents(self, pdf_documents) -> aspose.pdf.ai.OpenAIImageDescriptionCopilotOptions:
+        ...
+    
+    @overload
+    def with_documents(self, file_paths) -> aspose.pdf.ai.OpenAIImageDescriptionCopilotOptions:
+        ...
+    
+    @overload
+    def with_document(self, pdf_document: aspose.pdf.ai.PdfDocument) -> aspose.pdf.ai.OpenAIImageDescriptionCopilotOptions:
+        '''Adds a PDF document to the document collection for the image description copilot options.
+        
+        :param pdf_document: The PDF document to add.
+        :returns: The current instance of :class:`OpenAIImageDescriptionCopilotOptions`.'''
+        ...
+    
+    @overload
+    def with_document(self, file_path: str) -> aspose.pdf.ai.OpenAIImageDescriptionCopilotOptions:
+        '''Adds a document path to the document collection for the image description copilot options.
+        
+        :param file_path: The file path of the document to add.
+        :returns: The current instance of :class:`OpenAIImageDescriptionCopilotOptions`.'''
+        ...
+    
+    def get_options(self) -> aspose.pdf.ai.OpenAIImageDescriptionCopilotOptions:
+        '''Gets the current :class:`OpenAIImageDescriptionCopilotOptions`.
+        
+        :returns: The current instance of :class:`OpenAIImageDescriptionCopilotOptions`.'''
+        ...
+    
+    @staticmethod
+    def create(self) -> aspose.pdf.ai.OpenAIImageDescriptionCopilotOptions:
+        '''Creates a new instance of :class:`OpenAIImageDescriptionCopilotOptions`.
+        
+        :returns: A new instance of :class:`OpenAIImageDescriptionCopilotOptions`.'''
+        ...
+    
+    def with_model(self, model: str) -> aspose.pdf.ai.OpenAIImageDescriptionCopilotOptions:
+        '''Sets the model for the image description copilot options.
+        
+        :param model: The model to set.
+        :returns: The current instance of :class:`OpenAIImageDescriptionCopilotOptions`.'''
+        ...
+    
+    def with_temperature(self, temperature: float) -> aspose.pdf.ai.OpenAIImageDescriptionCopilotOptions:
+        ...
+    
+    def with_top_p(self, top_p: float) -> aspose.pdf.ai.OpenAIImageDescriptionCopilotOptions:
+        ...
+    
+    def with_max_prompt_tokens(self, max_prompt_tokens: int) -> aspose.pdf.ai.OpenAIImageDescriptionCopilotOptions:
+        ...
+    
+    def with_max_completion_tokens(self, max_completion_tokens: int) -> aspose.pdf.ai.OpenAIImageDescriptionCopilotOptions:
+        ...
+    
+    def with_instructions(self, instructions: str) -> aspose.pdf.ai.OpenAIImageDescriptionCopilotOptions:
+        '''Sets the instructions for the image description copilot options.
+        
+        :param instructions: The instructions to set.
+        :returns: The current instance of :class:`OpenAIImageDescriptionCopilotOptions`.'''
+        ...
+    
+    def with_image_description_prompt(self, image_description_prompt: str) -> aspose.pdf.ai.OpenAIImageDescriptionCopilotOptions:
+        '''Sets the prompt for the image description copilot options.
+        
+        :param image_description_prompt: The image description prompt to set.
+        :returns: The current instance of :class:`OpenAIImageDescriptionCopilotOptions`.'''
+        ...
+    
+    def with_assistant_name(self, assistant_name: str) -> aspose.pdf.ai.OpenAIImageDescriptionCopilotOptions:
+        '''Sets the assistant name for the image description copilot options.
+        
+        :param assistant_name: The assistant name to set.
+        :returns: The current instance of :class:`OpenAIImageDescriptionCopilotOptions`.'''
+        ...
+    
+    def with_image_detail(self, image_detail: str) -> aspose.pdf.ai.OpenAIImageDescriptionCopilotOptions:
+        '''Sets the image detail level.
+        
+        :param image_detail: The detail level to set ("low" or "high").
+        :returns: The current instance of :class:`OpenAIImageDescriptionCopilotOptions`.'''
+        ...
+    
+    @property
+    def model(self) -> str:
+        '''Gets or sets the vision model to use for the assistant.'''
+        ...
+    
+    @model.setter
+    def model(self, value: str):
+        ...
+    
+    @property
+    def image_detail(self) -> str:
+        '''Gets or sets the detail level of the image if specified by the user.
+        "low" uses fewer tokens, you can opt in to high resolution using "high".
+        If not set defaults to "auto".'''
+        ...
+    
+    @image_detail.setter
+    def image_detail(self, value: str):
+        ...
+    
+    @property
+    def image_description_prompt(self) -> str:
+        '''Gets or sets the prompt to instruct the model to provide image description.'''
+        ...
+    
+    @image_description_prompt.setter
+    def image_description_prompt(self, value: str):
+        ...
+    
+    @property
+    def assistant_name(self) -> str:
+        '''Gets or sets the name of the assistant.'''
+        ...
+    
+    @assistant_name.setter
+    def assistant_name(self, value: str):
+        ...
+    
+    ...
+
+class OpenAIModels:
+    '''Contains the available OpenAI model identifiers.'''
+    
+    gpt_35_turbo: str
+    
+    gpt_35_turbo_0125: str
+    
+    gpt_35_turbo_1106: str
+    
+    gpt_35_turbo_16k0613: str
+    
+    gpt_4o: str
+    
+    gpt_4_turbo: str
+    
+    ...
+
+class OpenAISummaryCopilot:
+    '''Provides functionality for getting document summaries using AI models.
+    
+    Example usage of creating an OpenAI client, configuring options, and using the summary copilot.
+    
+    // Create AI client.
+    
+    var openAiClient = OpenAIClient
+    
+        .CreateWithApiKey(ApiKey) // Create OpenAI client with the API key.
+    
+        .WithProject("proj_RoywW1DLqDC89GoAW5ngoVN8") // Configure optional parameters.
+    
+        .Build();
+    
+    // Create copilot options.
+    
+    var options = OpenAISummaryCopilotOptions
+    
+        .Create() // Create options like this, or...
+    
+        //.Create(options => { options.Model = OpenAIModels.Gpt35Turbo; }) // ...create using delegate.
+    
+        .WithTemperature(0.5) // Configure other optional parameters.
+    
+        .WithDocument("DocumentInputPath") // .WithDocument methods allows to add text, pdf and paths to documents.
+    
+        .WithDocuments(new List<TextDocument>()); // .WithDocuments methods allows to add text, pdf and path collections.
+    
+    // Create summary copilot.
+    
+    var summaryCopilot = AICopilotFactory.CreateSummaryCopilot(openAiClient, options);
+    
+    // Get summary text.
+    
+    string summaryText = await summaryCopilot.GetSummaryAsync();
+    
+    // Get summary document.
+    
+    Document summaryDocument = await summaryCopilot.GetSummaryDocumentAsync();
+    
+    // Get summary document with page info.
+    
+    Document summaryDocumentWithPageInfo = await summaryCopilot.GetSummaryDocumentAsync(new PageInfo());
+    
+    // Save summary as PDF document.
+    
+    await summaryCopilot.SaveSummaryAsync("outputPath");
+    
+    // Save summary with specified format.
+    
+    await summaryCopilot.SaveSummaryAsync("outputPath", SaveFormat.DocX);'''
+    
+    @property
+    def has_context(self) -> bool:
+        ...
+    
+    ...
+
+class OpenAISummaryCopilotOptions(aspose.pdf.ai.OpenAIAssistantCopilotOptionsBase):
+    '''Represents the options for configuring the OpenAICopilot.'''
+    
+    @overload
+    def with_documents(self, document_collection: aspose.pdf.ai.DocumentCollection) -> aspose.pdf.ai.OpenAISummaryCopilotOptions:
+        '''Sets the document collection for the summary copilot options.
+        
+        :param document_collection: The document collection to set.
+        :returns: The current instance of :class:`OpenAISummaryCopilotOptions`.'''
+        ...
+    
+    @overload
+    def with_documents(self, text_documents) -> aspose.pdf.ai.OpenAISummaryCopilotOptions:
+        ...
+    
+    @overload
+    def with_documents(self, pdf_documents) -> aspose.pdf.ai.OpenAISummaryCopilotOptions:
+        ...
+    
+    @overload
+    def with_documents(self, file_paths) -> aspose.pdf.ai.OpenAISummaryCopilotOptions:
+        ...
+    
+    @overload
+    def with_document(self, text_document: aspose.pdf.ai.TextDocument) -> aspose.pdf.ai.OpenAISummaryCopilotOptions:
+        '''Adds a text document to the document collection for the summary copilot options.
+        
+        :param text_document: The text document to add.
+        :returns: The current instance of :class:`OpenAISummaryCopilotOptions`.'''
+        ...
+    
+    @overload
+    def with_document(self, pdf_document: aspose.pdf.ai.PdfDocument) -> aspose.pdf.ai.OpenAISummaryCopilotOptions:
+        '''Adds a PDF document to the document collection for the summary copilot options.
+        
+        :param pdf_document: The PDF document to add.
+        :returns: The current instance of :class:`OpenAISummaryCopilotOptions`.'''
+        ...
+    
+    @overload
+    def with_document(self, file_path: str) -> aspose.pdf.ai.OpenAISummaryCopilotOptions:
+        '''Adds a document path to the document collection for the summary copilot options.
+        
+        :param file_path: The file path of the document to add.
+        :returns: The current instance of :class:`OpenAISummaryCopilotOptions`.'''
+        ...
+    
+    def get_options(self) -> aspose.pdf.ai.OpenAISummaryCopilotOptions:
+        '''Gets the current :class:`OpenAISummaryCopilotOptions`.
+        
+        :returns: The current instance of :class:`OpenAISummaryCopilotOptions`.'''
+        ...
+    
+    @staticmethod
+    def create(self) -> aspose.pdf.ai.OpenAISummaryCopilotOptions:
+        '''Creates a new instance of :class:`OpenAISummaryCopilotOptions`.
+        
+        :returns: A new instance of :class:`OpenAISummaryCopilotOptions`.'''
+        ...
+    
+    def with_model(self, model: str) -> aspose.pdf.ai.OpenAISummaryCopilotOptions:
+        '''Sets the model for the summary copilot options.
+        
+        :param model: The model to set.
+        :returns: The current instance of :class:`OpenAISummaryCopilotOptions`.'''
+        ...
+    
+    def with_temperature(self, temperature: float) -> aspose.pdf.ai.OpenAISummaryCopilotOptions:
+        ...
+    
+    def with_top_p(self, top_p: float) -> aspose.pdf.ai.OpenAISummaryCopilotOptions:
+        ...
+    
+    def with_max_prompt_tokens(self, max_prompt_tokens: int) -> aspose.pdf.ai.OpenAISummaryCopilotOptions:
+        ...
+    
+    def with_max_completion_tokens(self, max_completion_tokens: int) -> aspose.pdf.ai.OpenAISummaryCopilotOptions:
+        ...
+    
+    def with_instructions(self, instructions: str) -> aspose.pdf.ai.OpenAISummaryCopilotOptions:
+        '''Sets the instructions for the summary copilot options.
+        
+        :param instructions: The instructions to set.
+        :returns: The current instance of :class:`OpenAISummaryCopilotOptions`.'''
+        ...
+    
+    def with_summary_prompt(self, summary_prompt: str) -> aspose.pdf.ai.OpenAISummaryCopilotOptions:
+        '''Sets the summary prompt for the summary copilot options.
+        
+        :param summary_prompt: The summary prompt to set.
+        :returns: The current instance of :class:`OpenAISummaryCopilotOptions`.'''
+        ...
+    
+    def with_assistant_name(self, assistant_name: str) -> aspose.pdf.ai.OpenAISummaryCopilotOptions:
+        '''Sets the assistant name for the summary copilot options.
+        
+        :param assistant_name: The assistant name to set.
+        :returns: The current instance of :class:`OpenAISummaryCopilotOptions`.'''
+        ...
+    
+    @property
+    def summary_prompt(self) -> str:
+        '''Gets or sets the prompt to instruct the model to provide a document summary.'''
+        ...
+    
+    @summary_prompt.setter
+    def summary_prompt(self, value: str):
+        ...
+    
+    @property
+    def assistant_name(self) -> str:
+        '''Gets or sets the name of the assistant.'''
+        ...
+    
+    @assistant_name.setter
+    def assistant_name(self, value: str):
+        ...
+    
+    ...
+
+class PdfDocument:
+    '''Represents a PDF document with a name.'''
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def name(self) -> str:
+        '''Gets or sets the name of the PDF document.
+        Generates new GUID if the name is not set.'''
+        ...
+    
+    @name.setter
+    def name(self, value: str):
+        ...
+    
+    @property
+    def document(self) -> aspose.pdf.Document:
+        '''Gets or sets the the PDF document.'''
+        ...
+    
+    @document.setter
+    def document(self, value: aspose.pdf.Document):
+        ...
+    
+    ...
+
+class RequiredAction:
+    '''Details on the action required to continue the run. Will be null if no action is required.'''
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def required_action_type(self) -> str:
+        '''Gets or sets the type of action that is required.'''
+        ...
+    
+    @required_action_type.setter
+    def required_action_type(self, value: str):
+        ...
+    
+    @property
+    def submit_tool_outputs(self) -> aspose.pdf.ai.SubmitToolOutputs:
+        '''Gets or sets details on the tool outputs needed for this run to continue.'''
+        ...
+    
+    @submit_tool_outputs.setter
+    def submit_tool_outputs(self, value: aspose.pdf.ai.SubmitToolOutputs):
+        ...
+    
+    ...
+
+class ResponseFormat:
+    '''Represents the format of a response, which can be either a string value or an object value.'''
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def string_value(self) -> str:
+        '''Gets or sets the string value of the response format.'''
+        ...
+    
+    @string_value.setter
+    def string_value(self, value: str):
+        ...
+    
+    @property
+    def object_value(self) -> None:
+        '''Gets or sets the object value of the response format.'''
+        ...
+    
+    @object_value.setter
+    def object_value(self, value: None):
+        ...
+    
+    @property
+    def is_string_value(self) -> bool:
+        '''Gets a value indicating whether the response format is a string value.'''
+        ...
+    
+    @property
+    def is_object_value(self) -> bool:
+        '''Gets a value indicating whether the response format is an object value.'''
+        ...
+    
+    ...
+
+class RunCreateRequest:
+    '''Represents a request to create a run.'''
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def assistant_id(self) -> str:
+        '''Gets or sets the ID of the assistant to use to execute this run.'''
+        ...
+    
+    @assistant_id.setter
+    def assistant_id(self, value: str):
+        ...
+    
+    @property
+    def model(self) -> str:
+        '''Gets or sets the ID of the Model to be used to execute this run. If a value is provided here, it will override the model associated with the assistant.
+        If not, the model associated with the assistant will be used.'''
+        ...
+    
+    @model.setter
+    def model(self, value: str):
+        ...
+    
+    @property
+    def instructions(self) -> str:
+        '''Gets or sets the instructions that override the instructions of the assistant. This is useful for modifying the behavior on a per-run basis.'''
+        ...
+    
+    @instructions.setter
+    def instructions(self, value: str):
+        ...
+    
+    @property
+    def additional_instructions(self) -> str:
+        '''Gets or sets the additional instructions.
+        Appends additional instructions at the end of the instructions for the run.
+        This is useful for modifying the behavior on a per-run basis without overriding other instructions.'''
+        ...
+    
+    @additional_instructions.setter
+    def additional_instructions(self, value: str):
+        ...
+    
+    @property
+    def additional_messages(self) -> None:
+        '''Gets or sets the additional messages to the thread before creating the run.'''
+        ...
+    
+    @additional_messages.setter
+    def additional_messages(self, value: None):
+        ...
+    
+    @property
+    def tools(self) -> None:
+        '''Gets or sets the tools that override the tools the assistant can use for this run.
+        This is useful for modifying the behavior on a per-run basis.'''
+        ...
+    
+    @tools.setter
+    def tools(self, value: None):
+        ...
+    
+    @property
+    def temperature(self) -> float:
+        '''Gets or sets what sampling temperature to use, between 0 and 2.
+        Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic.'''
+        ...
+    
+    @temperature.setter
+    def temperature(self, value: float):
+        ...
+    
+    @property
+    def top_p(self) -> float:
+        '''Gets or sets an alternative to sampling with temperature, called nucleus sampling,
+        where the model considers the results of the tokens with top_p probability mass.
+        So 0.1 means only the tokens comprising the top 10% probability mass are considered.
+        We generally recommend altering this or temperature but not both.'''
+        ...
+    
+    @top_p.setter
+    def top_p(self, value: float):
+        ...
+    
+    @property
+    def stream(self) -> bool:
+        '''Gets or sets if to use streaming.
+        If true, returns a stream of events that happen during the Run as server-sent events,
+        terminating when the Run enters a terminal state with a data: [DONE] message.'''
+        ...
+    
+    @stream.setter
+    def stream(self, value: bool):
+        ...
+    
+    @property
+    def max_prompt_tokens(self) -> int:
+        '''Gets or sets the maximum number of prompt tokens that may be used over the course of the run.
+        The run will make a best effort to use only the number of prompt tokens specified, across multiple turns of the run.
+        If the run exceeds the number of prompt tokens specified, the run will end with status incomplete. See incomplete_details for more info.'''
+        ...
+    
+    @max_prompt_tokens.setter
+    def max_prompt_tokens(self, value: int):
+        ...
+    
+    @property
+    def max_completion_tokens(self) -> int:
+        '''Gets or sets the maximum number of completion tokens that may be used over the course of the run.
+        The run will make a best effort to use only the number of completion tokens specified, across multiple turns of the run.
+        If the run exceeds the number of completion tokens specified, the run will end with status incomplete. See incomplete_details for more info.'''
+        ...
+    
+    @max_completion_tokens.setter
+    def max_completion_tokens(self, value: int):
+        ...
+    
+    @property
+    def truncation_strategy(self) -> aspose.pdf.ai.TruncationStrategy:
+        '''Gets or sets the truncation strategy.
+        Controls for how a thread will be truncated prior to the run. Use this to control the initial context window of the run.'''
+        ...
+    
+    @truncation_strategy.setter
+    def truncation_strategy(self, value: aspose.pdf.ai.TruncationStrategy):
+        ...
+    
+    @property
+    def tool_choice(self) -> str:
+        '''Gets or sets which (if any) tool is called by the model. none means the model will not call any tools and instead generates a message.
+        auto is the default value and means the model can pick between generating a message or calling one or more tools.
+        required means the model must call one or more tools before responding to the user.
+        Specifying a particular tool like {"type": "file_search"} or {"type": "function", "function": {"name": "my_function"}} forces the model to call that tool.'''
+        ...
+    
+    @tool_choice.setter
+    def tool_choice(self, value: str):
+        ...
+    
+    @property
+    def response_format(self) -> aspose.pdf.ai.ResponseFormat:
+        '''Gets or sets the response format.
+        Specifies the format that the model must output. Compatible with GPT-4o, GPT-4 Turbo, and all GPT-3.5 Turbo models since gpt-3.5-turbo-1106.
+        Setting to { "type": "json_object" } enables JSON mode, which guarantees the message the model generates is valid JSON.
+        Important: when using JSON mode, you must also instruct the model to produce JSON yourself via a system or user message.
+        Without this, the model may generate an unending stream of whitespace until the generation reaches the token limit,
+        resulting in a long-running and seemingly "stuck" request.
+        Also note that the message content may be partially cut off if finish_reason="length",
+        which indicates the generation exceeded max_tokens or the conversation exceeded the max context length.'''
+        ...
+    
+    @response_format.setter
+    def response_format(self, value: aspose.pdf.ai.ResponseFormat):
+        ...
+    
+    ...
+
+class RunListQueryParameters(aspose.pdf.ai.BaseListQueryParameters):
+    '''Query parameters object for listing runs.'''
+    
+    def __init__(self):
+        ...
+    
+    def get_query_parameters(self) -> str:
+        '''Gets the query parameters for listing runs.
+        
+        :returns: The query parameters string.'''
+        ...
+    
+    ...
+
+class RunListResponse(aspose.pdf.ai.BaseResponse):
+    '''Represents a list response containing run data.'''
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def first_id(self) -> str:
+        ...
+    
+    @first_id.setter
+    def first_id(self, value: str):
+        ...
+    
+    @property
+    def last_id(self) -> str:
+        ...
+    
+    @last_id.setter
+    def last_id(self, value: str):
+        ...
+    
+    @property
+    def has_more(self) -> bool:
+        ...
+    
+    @has_more.setter
+    def has_more(self, value: bool):
+        ...
+    
+    @property
+    def data(self) -> None:
+        ...
+    
+    @data.setter
+    def data(self, value: None):
+        ...
+    
+    ...
+
+class RunModifyRequest:
+    '''Represents a request to modify a run.'''
+    
+    def __init__(self):
+        ...
+    
+    ...
+
+class RunResponse(aspose.pdf.ai.BaseResponse):
+    '''Represents an execution run on a thread.'''
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def id(self) -> str:
+        '''Gets or sets the identifier, which can be referenced in API endpoints.'''
+        ...
+    
+    @id.setter
+    def id(self, value: str):
+        ...
+    
+    @property
+    def object(self) -> str:
+        '''Gets or sets the object type, which is always thread.run.'''
+        ...
+    
+    @object.setter
+    def object(self, value: str):
+        ...
+    
+    @property
+    def created_at(self) -> int:
+        '''Gets or sets the Unix timestamp (in seconds) for when the run was created.'''
+        ...
+    
+    @created_at.setter
+    def created_at(self, value: int):
+        ...
+    
+    @property
+    def thread_id(self) -> str:
+        '''Gets or sets the ID of the thread that was executed on as a part of this run.'''
+        ...
+    
+    @thread_id.setter
+    def thread_id(self, value: str):
+        ...
+    
+    @property
+    def assistant_id(self) -> str:
+        '''Gets or sets the ID of the assistant used for execution of this run.'''
+        ...
+    
+    @assistant_id.setter
+    def assistant_id(self, value: str):
+        ...
+    
+    @property
+    def status(self) -> str:
+        '''Gets or sets the status of the run, which can be either queued, in_progress, requires_action,
+        cancelling, cancelled, failed, completed, incomplete, or expired.'''
+        ...
+    
+    @status.setter
+    def status(self, value: str):
+        ...
+    
+    @property
+    def required_action(self) -> aspose.pdf.ai.RequiredAction:
+        '''Gets or sets the details on the action required to continue the run. Will be null if no action is required.'''
+        ...
+    
+    @required_action.setter
+    def required_action(self, value: aspose.pdf.ai.RequiredAction):
+        ...
+    
+    @property
+    def last_error(self) -> aspose.pdf.ai.LastError:
+        '''Gets or sets the last error associated with this run. Will be null if there are no errors.'''
+        ...
+    
+    @last_error.setter
+    def last_error(self, value: aspose.pdf.ai.LastError):
+        ...
+    
+    @property
+    def expires_at(self) -> int:
+        '''Gets or sets the Unix timestamp (in seconds) for when the run will expire.'''
+        ...
+    
+    @expires_at.setter
+    def expires_at(self, value: int):
+        ...
+    
+    @property
+    def started_at(self) -> int:
+        '''Gets or sets the Unix timestamp (in seconds) for when the run was started.'''
+        ...
+    
+    @started_at.setter
+    def started_at(self, value: int):
+        ...
+    
+    @property
+    def cancelled_at(self) -> int:
+        '''Gets or sets the Unix timestamp (in seconds) for when the run was cancelled.'''
+        ...
+    
+    @cancelled_at.setter
+    def cancelled_at(self, value: int):
+        ...
+    
+    @property
+    def failed_at(self) -> int:
+        '''Gets or sets the Unix timestamp (in seconds) for when the run failed.'''
+        ...
+    
+    @failed_at.setter
+    def failed_at(self, value: int):
+        ...
+    
+    @property
+    def completed_at(self) -> int:
+        '''Gets or sets the Unix timestamp (in seconds) for when the run was completed.'''
+        ...
+    
+    @completed_at.setter
+    def completed_at(self, value: int):
+        ...
+    
+    @property
+    def incomplete_details(self) -> aspose.pdf.ai.IncompleteDetails:
+        '''Gets or sets the details on why the run is incomplete. Will be null if the run is not incomplete.'''
+        ...
+    
+    @incomplete_details.setter
+    def incomplete_details(self, value: aspose.pdf.ai.IncompleteDetails):
+        ...
+    
+    @property
+    def model(self) -> str:
+        '''Gets or sets the model that the assistant used for this run.'''
+        ...
+    
+    @model.setter
+    def model(self, value: str):
+        ...
+    
+    @property
+    def instructions(self) -> str:
+        '''Gets or sets the instructions that the assistant used for this run.'''
+        ...
+    
+    @instructions.setter
+    def instructions(self, value: str):
+        ...
+    
+    @property
+    def tools(self) -> None:
+        '''Gets or sets the list of tools that the assistant used for this run.'''
+        ...
+    
+    @tools.setter
+    def tools(self, value: None):
+        ...
+    
+    @property
+    def usage(self) -> aspose.pdf.ai.Usage:
+        '''Gets or sets the usage statistics related to the run. This value will be null if the run is not in a terminal state (i.e.
+        in_progress, queued, etc.).'''
+        ...
+    
+    @usage.setter
+    def usage(self, value: aspose.pdf.ai.Usage):
+        ...
+    
+    @property
+    def temperature(self) -> float:
+        '''Gets or sets the sampling temperature used for this run. If not set, defaults to 1.'''
+        ...
+    
+    @temperature.setter
+    def temperature(self, value: float):
+        ...
+    
+    @property
+    def top_p(self) -> float:
+        '''Gets or sets the nucleus sampling value used for this run. If not set, defaults to 1.'''
+        ...
+    
+    @top_p.setter
+    def top_p(self, value: float):
+        ...
+    
+    @property
+    def max_prompt_tokens(self) -> int:
+        '''Gets or sets the maximum number of prompt tokens specified to have been used over the course of the run.'''
+        ...
+    
+    @max_prompt_tokens.setter
+    def max_prompt_tokens(self, value: int):
+        ...
+    
+    @property
+    def max_completion_tokens(self) -> int:
+        '''Gets or sets the maximum number of completion tokens specified to have been used over the course of the run.'''
+        ...
+    
+    @max_completion_tokens.setter
+    def max_completion_tokens(self, value: int):
+        ...
+    
+    @property
+    def truncation_strategy(self) -> aspose.pdf.ai.TruncationStrategy:
+        '''Gets or sets the truncation strategy that controls for how a thread will be truncated prior to the run.
+        Use this to control the initial context window of the run.'''
+        ...
+    
+    @truncation_strategy.setter
+    def truncation_strategy(self, value: aspose.pdf.ai.TruncationStrategy):
+        ...
+    
+    @property
+    def tool_choice(self) -> str:
+        '''Gets or sets which (if any) tool is called by the model. none means the model will not call any tools
+        and instead generates a message. auto is the default value and means the model can pick
+        between generating a message or calling one or more tools. required means the model must
+        call one or more tools before responding to the user. Specifying a particular tool like {"type":
+        "file_search"} or {"type": "function", "function": {"name": "my_function"}}
+        forces the model to call that tool.'''
+        ...
+    
+    @tool_choice.setter
+    def tool_choice(self, value: str):
+        ...
+    
+    @property
+    def response_format(self) -> aspose.pdf.ai.ResponseFormat:
+        '''Gets or sets the format that the model must output. Compatible with GPT-4o, GPT-4 Turbo, and all
+        GPT-3.5 Turbo models since gpt-3.5-turbo-1106.
+        Setting to { "type": "json_object" } enables JSON mode, which guarantees the message
+        the model generates is valid JSON.
+        Important: when using JSON mode, you must also instruct the model to produce JSON yourself
+        via a system or user message. Without this, the model may generate an unending stream of
+        whitespace until the generation reaches the token limit, resulting in a long-running and seemingly
+        "stuck" request. Also note that the message content may be partially cut off if
+        finish_reason="length", which indicates the generation exceeded max_tokens or the
+        conversation exceeded the max context length.'''
+        ...
+    
+    @response_format.setter
+    def response_format(self, value: aspose.pdf.ai.ResponseFormat):
+        ...
+    
+    ...
+
+class RunStepDetails:
+    '''The details of the run step.'''
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def run_step_type(self) -> str:
+        '''Gets or sets the type of run step.'''
+        ...
+    
+    @run_step_type.setter
+    def run_step_type(self, value: str):
+        ...
+    
+    @property
+    def message_creation(self) -> aspose.pdf.ai.MessageCreation:
+        '''Gets or sets the details of the message creation.'''
+        ...
+    
+    @message_creation.setter
+    def message_creation(self, value: aspose.pdf.ai.MessageCreation):
+        ...
+    
+    @property
+    def tool_calls(self) -> None:
+        '''Gets or sets the details of the tool calls.'''
+        ...
+    
+    @tool_calls.setter
+    def tool_calls(self, value: None):
+        ...
+    
+    ...
+
+class RunStepListQueryParameters(aspose.pdf.ai.BaseListQueryParameters):
+    '''Query parameters object for listing run steps.'''
+    
+    def __init__(self):
+        ...
+    
+    def get_query_parameters(self) -> str:
+        '''Gets the query parameters for listing run steps.
+        
+        :returns: The query parameters string.'''
+        ...
+    
+    ...
+
+class RunStepListResponse(aspose.pdf.ai.BaseResponse):
+    '''Represents a list response containing run step data.'''
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def first_id(self) -> str:
+        ...
+    
+    @first_id.setter
+    def first_id(self, value: str):
+        ...
+    
+    @property
+    def last_id(self) -> str:
+        ...
+    
+    @last_id.setter
+    def last_id(self, value: str):
+        ...
+    
+    @property
+    def has_more(self) -> bool:
+        ...
+    
+    @has_more.setter
+    def has_more(self, value: bool):
+        ...
+    
+    @property
+    def data(self) -> None:
+        ...
+    
+    @data.setter
+    def data(self, value: None):
+        ...
+    
+    ...
+
+class RunStepResponse(aspose.pdf.ai.BaseResponse):
+    '''Represents a step in execution of a run.'''
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def id(self) -> str:
+        '''Gets or sets the identifier of the run step, which can be referenced in API endpoints.'''
+        ...
+    
+    @id.setter
+    def id(self, value: str):
+        ...
+    
+    @property
+    def object(self) -> str:
+        '''Gets or sets the object type, which is always thread.run.step.'''
+        ...
+    
+    @object.setter
+    def object(self, value: str):
+        ...
+    
+    @property
+    def created_at(self) -> int:
+        '''Gets or sets the Unix timestamp (in seconds) for when the run step was created.'''
+        ...
+    
+    @created_at.setter
+    def created_at(self, value: int):
+        ...
+    
+    @property
+    def assistant_id(self) -> str:
+        '''Gets or sets the ID of the assistant associated with the run step.'''
+        ...
+    
+    @assistant_id.setter
+    def assistant_id(self, value: str):
+        ...
+    
+    @property
+    def thread_id(self) -> str:
+        '''Gets or sets the ID of the thread that was run.'''
+        ...
+    
+    @thread_id.setter
+    def thread_id(self, value: str):
+        ...
+    
+    @property
+    def run_id(self) -> str:
+        '''Gets or sets the ID of the run that this run step is a part of.'''
+        ...
+    
+    @run_id.setter
+    def run_id(self, value: str):
+        ...
+    
+    @property
+    def run_step_type(self) -> str:
+        '''Gets or sets the type of run step, which can be either message_creation or tool_calls.'''
+        ...
+    
+    @run_step_type.setter
+    def run_step_type(self, value: str):
+        ...
+    
+    @property
+    def status(self) -> str:
+        '''Gets or sets the status of the run step, which can be either in_progress, cancelled, failed,
+        completed, or expired.'''
+        ...
+    
+    @status.setter
+    def status(self, value: str):
+        ...
+    
+    @property
+    def step_details(self) -> aspose.pdf.ai.RunStepDetails:
+        '''Gets or sets the details of the run step.'''
+        ...
+    
+    @step_details.setter
+    def step_details(self, value: aspose.pdf.ai.RunStepDetails):
+        ...
+    
+    @property
+    def last_error(self) -> aspose.pdf.ai.LastError:
+        '''Gets or sets the last error associated with this run step. Will be null if there are no errors.'''
+        ...
+    
+    @last_error.setter
+    def last_error(self, value: aspose.pdf.ai.LastError):
+        ...
+    
+    @property
+    def expired_at(self) -> int:
+        '''Gets or sets the Unix timestamp (in seconds) for when the run step expired. A step is considered expired if the
+        parent run is expired.'''
+        ...
+    
+    @expired_at.setter
+    def expired_at(self, value: int):
+        ...
+    
+    @property
+    def cancelled_at(self) -> int:
+        '''Gets or sets the Unix timestamp (in seconds) for when the run step was cancelled.'''
+        ...
+    
+    @cancelled_at.setter
+    def cancelled_at(self, value: int):
+        ...
+    
+    @property
+    def failed_at(self) -> int:
+        '''Gets or sets the Unix timestamp (in seconds) for when the run step failed.'''
+        ...
+    
+    @failed_at.setter
+    def failed_at(self, value: int):
+        ...
+    
+    @property
+    def completed_at(self) -> int:
+        '''Gets or sets the Unix timestamp (in seconds) for when the run step completed.'''
+        ...
+    
+    @completed_at.setter
+    def completed_at(self, value: int):
+        ...
+    
+    @property
+    def usage(self) -> aspose.pdf.ai.Usage:
+        '''Gets or sets usage statistics related to the run step.
+        This value will be null while the run step's status is in_progress.'''
+        ...
+    
+    @usage.setter
+    def usage(self, value: aspose.pdf.ai.Usage):
+        ...
+    
+    ...
+
+class RunThreadCreateRequest:
+    '''Represents a request to create a thread and run it in one request.'''
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def assistant_id(self) -> str:
+        '''Gets or sets the ID of the assistant to use to execute this run.'''
+        ...
+    
+    @assistant_id.setter
+    def assistant_id(self, value: str):
+        ...
+    
+    @property
+    def thread(self) -> aspose.pdf.ai.ThreadCreateRequest:
+        '''Gets or sets a request to create a thread.'''
+        ...
+    
+    @thread.setter
+    def thread(self, value: aspose.pdf.ai.ThreadCreateRequest):
+        ...
+    
+    @property
+    def model(self) -> str:
+        '''Gets or sets the ID of the Model to be used to execute this run. If a value is provided here,
+        it will override the model associated with the assistant.
+        If not, the model associated with the assistant will be used.'''
+        ...
+    
+    @model.setter
+    def model(self, value: str):
+        ...
+    
+    @property
+    def instructions(self) -> str:
+        '''Gets or sets the instructions that override the instructions of the assistant.
+        This is useful for modifying the behavior on a per-run basis.'''
+        ...
+    
+    @instructions.setter
+    def instructions(self, value: str):
+        ...
+    
+    @property
+    def tools(self) -> None:
+        '''Gets or sets the tools that override the tools the assistant can use for this run.
+        This is useful for modifying the behavior on a per-run basis.'''
+        ...
+    
+    @tools.setter
+    def tools(self, value: None):
+        ...
+    
+    @property
+    def tool_resources(self) -> aspose.pdf.ai.ToolResources:
+        '''Gets or sets a set of resources that are used by the assistant's tools.'''
+        ...
+    
+    @tool_resources.setter
+    def tool_resources(self, value: aspose.pdf.ai.ToolResources):
+        ...
+    
+    @property
+    def temperature(self) -> float:
+        '''Gets or sets what sampling temperature to use, between 0 and 2.
+        Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic.'''
+        ...
+    
+    @temperature.setter
+    def temperature(self, value: float):
+        ...
+    
+    @property
+    def top_p(self) -> float:
+        '''Gets or sets a value that alternative to sampling with temperature, called nucleus sampling, where the model considers the results of the tokens with top_p probability mass.
+        So 0.1 means only the tokens comprising the top 10% probability mass are considered.
+        We generally recommend altering this or temperature but not both.'''
+        ...
+    
+    @top_p.setter
+    def top_p(self, value: float):
+        ...
+    
+    @property
+    def stream(self) -> bool:
+        '''Gets or sets if to use streaming.
+        If true, returns a stream of events that happen during the Run as server-sent events, terminating when the Run enters a terminal state with a data: [DONE] message.'''
+        ...
+    
+    @stream.setter
+    def stream(self, value: bool):
+        ...
+    
+    @property
+    def max_prompt_tokens(self) -> int:
+        '''Gets or sets the maximum number of prompt tokens that may be used over the course of the run.
+        The run will make a best effort to use only the number of prompt tokens specified, across multiple turns of the run.
+        If the run exceeds the number of prompt tokens specified, the run will end with status incomplete. See incomplete_details for more info.'''
+        ...
+    
+    @max_prompt_tokens.setter
+    def max_prompt_tokens(self, value: int):
+        ...
+    
+    @property
+    def max_completion_tokens(self) -> int:
+        '''Gets or sets the maximum number of completion tokens that may be used over the course of the run.
+        The run will make a best effort to use only the number of completion tokens specified, across multiple turns of the run.
+        If the run exceeds the number of completion tokens specified, the run will end with status incomplete. See incomplete_details for more info.'''
+        ...
+    
+    @max_completion_tokens.setter
+    def max_completion_tokens(self, value: int):
+        ...
+    
+    @property
+    def truncation_strategy(self) -> aspose.pdf.ai.TruncationStrategy:
+        '''Gets or sets the truncation strategy that controls for how a thread will be truncated prior to the run.
+        Use this to control the initial context window of the run.'''
+        ...
+    
+    @truncation_strategy.setter
+    def truncation_strategy(self, value: aspose.pdf.ai.TruncationStrategy):
+        ...
+    
+    @property
+    def tool_choice(self) -> str:
+        '''Gets or sets which (if any) tool is called by the model. none means the model will not call any tools and instead generates a message.
+        auto is the default value and means the model can pick between generating a message or calling one or more tools.
+        required means the model must call one or more tools before responding to the user.
+        Specifying a particular tool like {"type": "file_search"} or {"type": "function", "function": {"name": "my_function"}} forces the model to call that tool.'''
+        ...
+    
+    @tool_choice.setter
+    def tool_choice(self, value: str):
+        ...
+    
+    @property
+    def response_format(self) -> aspose.pdf.ai.ResponseFormat:
+        '''Gets or sets the format that the model must output. Compatible with GPT-4o, GPT-4 Turbo, and all GPT-3.5 Turbo models since gpt-3.5-turbo-1106.
+        Setting to { "type": "json_object" } enables JSON mode, which guarantees the message the model generates is valid JSON.
+        Important: when using JSON mode, you must also instruct the model to produce JSON yourself via a system or user message.
+        Without this, the model may generate an unending stream of whitespace until the generation reaches the token limit, resulting in a long-running and seemingly "stuck" request.
+        Also note that the message content may be partially cut off if finish_reason="length", which indicates the generation exceeded max_tokens or the conversation exceeded the max context length.'''
+        ...
+    
+    @response_format.setter
+    def response_format(self, value: aspose.pdf.ai.ResponseFormat):
+        ...
+    
+    ...
+
+class SubmitToolOutputs:
+    '''Represents details on the tool outputs needed for the run to continue.'''
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def tool_calls(self) -> None:
+        '''Gets or sets a list of the relevant tool calls.'''
+        ...
+    
+    @tool_calls.setter
+    def tool_calls(self, value: None):
+        ...
+    
+    ...
+
+class TextDocument:
+    '''Represents a text document with a name and content.'''
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def name(self) -> str:
+        '''Gets or sets the name of the text document.'''
+        ...
+    
+    @name.setter
+    def name(self, value: str):
+        ...
+    
+    @property
+    def content(self) -> str:
+        '''Gets or sets the content of the text document.'''
+        ...
+    
+    @content.setter
+    def content(self, value: str):
+        ...
+    
+    ...
+
+class TextResponse:
+    '''Represents the text content that is part of a message.'''
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def value(self) -> str:
+        '''Gets or sets the text of the message.'''
+        ...
+    
+    @value.setter
+    def value(self, value: str):
+        ...
+    
+    @property
+    def annotations(self) -> None:
+        '''Gets or sets a list of annotations for the message.'''
+        ...
+    
+    @annotations.setter
+    def annotations(self, value: None):
+        ...
+    
+    ...
+
+class ThreadCreateRequest:
+    '''Represents a request to create a thread.'''
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def messages(self) -> None:
+        '''Gets or sets a list of messages to start the thread with.'''
+        ...
+    
+    @messages.setter
+    def messages(self, value: None):
+        ...
+    
+    @property
+    def tool_resources(self) -> aspose.pdf.ai.ToolResources:
+        '''Gets or sets a set of resources that are made available to the assistant's tools in this thread.'''
+        ...
+    
+    @tool_resources.setter
+    def tool_resources(self, value: aspose.pdf.ai.ToolResources):
+        ...
+    
+    ...
+
+class ThreadMessageCreateRequest:
+    '''Represents a request to create a message within a thread.'''
+    
+    def __init__(self):
+        ...
+    
+    @staticmethod
+    def from_user(self) -> aspose.pdf.ai.ThreadMessageCreateRequest:
+        '''Creates a new :class:`ThreadMessageCreateRequest` with the role set to User.
+        
+        :returns: A new instance of :class:`ThreadMessageCreateRequest` with the role set to User.'''
+        ...
+    
+    @staticmethod
+    def from_assistant(self) -> aspose.pdf.ai.ThreadMessageCreateRequest:
+        '''Creates a new :class:`ThreadMessageCreateRequest` with the role set to Assistant.
+        
+        :returns: A new instance of :class:`ThreadMessageCreateRequest` with the role set to Assistant.'''
+        ...
+    
+    def with_content(self, content: aspose.pdf.ai.MessageContentRequest) -> aspose.pdf.ai.ThreadMessageCreateRequest:
+        '''Adds a message content to the thread message request.
+        
+        :param content: The message content to add.
+        :returns: The current instance of :class:`ThreadMessageCreateRequest`.'''
+        ...
+    
+    def with_contents(self, content) -> aspose.pdf.ai.ThreadMessageCreateRequest:
+        ...
+    
+    def with_attachments(self, attachments) -> aspose.pdf.ai.ThreadMessageCreateRequest:
+        ...
+    
+    @property
+    def role(self) -> str:
+        '''Gets or sets the role of the entity creating the message.
+        Allowed values include: "user", "assistant".'''
+        ...
+    
+    @role.setter
+    def role(self, value: str):
+        ...
+    
+    @property
+    def content(self) -> None:
+        '''Gets or sets the content of the message. Can be a string or an array of content parts.'''
+        ...
+    
+    @content.setter
+    def content(self, value: None):
+        ...
+    
+    @property
+    def attachments(self) -> None:
+        '''Gets or sets a list of files attached to the message.'''
+        ...
+    
+    @attachments.setter
+    def attachments(self, value: None):
+        ...
+    
+    ...
+
+class ThreadMessageListQueryParameters(aspose.pdf.ai.BaseListQueryParameters):
+    '''Query parameters object for listing thread messages.'''
+    
+    def __init__(self):
+        ...
+    
+    def get_query_parameters(self) -> str:
+        '''Gets the query parameters for listing thread messages.
+        
+        :returns: The query parameters string.'''
+        ...
+    
+    @property
+    def run_id(self) -> str:
+        '''Filter messages by the run ID that generated them.'''
+        ...
+    
+    @run_id.setter
+    def run_id(self, value: str):
+        ...
+    
+    ...
+
+class ThreadMessageListResponse(aspose.pdf.ai.BaseResponse):
+    '''Represents a list response containing thread message data.'''
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def first_id(self) -> str:
+        ...
+    
+    @first_id.setter
+    def first_id(self, value: str):
+        ...
+    
+    @property
+    def last_id(self) -> str:
+        ...
+    
+    @last_id.setter
+    def last_id(self, value: str):
+        ...
+    
+    @property
+    def has_more(self) -> bool:
+        ...
+    
+    @has_more.setter
+    def has_more(self, value: bool):
+        ...
+    
+    @property
+    def data(self) -> None:
+        ...
+    
+    @data.setter
+    def data(self, value: None):
+        ...
+    
+    ...
+
+class ThreadMessageModifyRequest:
+    '''Represents a request to modify a message within a thread.'''
+    
+    def __init__(self):
+        ...
+    
+    ...
+
+class ThreadMessageResponse(aspose.pdf.ai.BaseResponse):
+    '''Represents a message within a thread.'''
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def id(self) -> str:
+        '''Gets or sets the identifier, which can be referenced in API endpoints.'''
+        ...
+    
+    @id.setter
+    def id(self, value: str):
+        ...
+    
+    @property
+    def object(self) -> str:
+        '''Gets or sets the object type, which is always "thread.message".'''
+        ...
+    
+    @object.setter
+    def object(self, value: str):
+        ...
+    
+    @property
+    def created_at(self) -> int:
+        '''Gets or sets the Unix timestamp (in seconds) for when the message was created.'''
+        ...
+    
+    @created_at.setter
+    def created_at(self, value: int):
+        ...
+    
+    @property
+    def thread_id(self) -> str:
+        '''Gets or sets the ID of the thread to which this message belongs.'''
+        ...
+    
+    @thread_id.setter
+    def thread_id(self, value: str):
+        ...
+    
+    @property
+    def status(self) -> str:
+        '''Gets or sets the status of the message. One of queued , in_progress , requires_action ,
+        or completed .'''
+        ...
+    
+    @status.setter
+    def status(self, value: str):
+        ...
+    
+    @property
+    def incomplete_details(self) -> aspose.pdf.ai.IncompleteDetails:
+        '''Gets or sets an incomplete message, details about why the message is incomplete.'''
+        ...
+    
+    @incomplete_details.setter
+    def incomplete_details(self, value: aspose.pdf.ai.IncompleteDetails):
+        ...
+    
+    @property
+    def completed_at(self) -> int:
+        '''Gets or sets the Unix timestamp (in seconds) for when the message was completed.'''
+        ...
+    
+    @completed_at.setter
+    def completed_at(self, value: int):
+        ...
+    
+    @property
+    def incomplete_at(self) -> int:
+        '''Gets or sets the Unix timestamp (in seconds) for when the message was marked as incomplete.'''
+        ...
+    
+    @incomplete_at.setter
+    def incomplete_at(self, value: int):
+        ...
+    
+    @property
+    def role(self) -> str:
+        '''Gets or sets the entity that produced the message. One of "user" or "assistant".'''
+        ...
+    
+    @role.setter
+    def role(self, value: str):
+        ...
+    
+    @property
+    def content(self) -> None:
+        '''Gets or sets the content of the message in an array of text and/or images.'''
+        ...
+    
+    @content.setter
+    def content(self, value: None):
+        ...
+    
+    @property
+    def assistant_id(self) -> str:
+        '''Gets or sets, if applicable, the ID of the assistant that authored this message.'''
+        ...
+    
+    @assistant_id.setter
+    def assistant_id(self, value: str):
+        ...
+    
+    @property
+    def run_id(self) -> str:
+        '''Gets or sets the ID of the run associated with the creation of this message.
+        Value is null when messages are created manually.'''
+        ...
+    
+    @run_id.setter
+    def run_id(self, value: str):
+        ...
+    
+    @property
+    def attachments(self) -> None:
+        '''Gets or sets a list of files attached to the message.'''
+        ...
+    
+    @attachments.setter
+    def attachments(self, value: None):
+        ...
+    
+    ...
+
+class ThreadModifyRequest:
+    '''Represents a request to modify a thread.'''
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def tool_resources(self) -> aspose.pdf.ai.ToolResources:
+        '''Gets or sets a set of resources that are made available to the assistant's tools in this thread.'''
+        ...
+    
+    @tool_resources.setter
+    def tool_resources(self, value: aspose.pdf.ai.ToolResources):
+        ...
+    
+    ...
+
+class ThreadResponse(aspose.pdf.ai.BaseResponse):
+    '''Represents a thread that contains messages.'''
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def id(self) -> str:
+        '''Gets or sets the identifier, which can be referenced in API endpoints.'''
+        ...
+    
+    @id.setter
+    def id(self, value: str):
+        ...
+    
+    @property
+    def object(self) -> str:
+        '''Gets or sets the object type, which is always thread.'''
+        ...
+    
+    @object.setter
+    def object(self, value: str):
+        ...
+    
+    @property
+    def created_at(self) -> int:
+        '''Gets or sets the Unix timestamp (in seconds) for when the thread was created.'''
+        ...
+    
+    @created_at.setter
+    def created_at(self, value: int):
+        ...
+    
+    @property
+    def tool_resources(self) -> aspose.pdf.ai.ToolResources:
+        '''Gets or sets a set of resources that are made available to the assistant's tools in this thread. The resources are
+        specific to the type of tool. For example, the code_interpreter tool requires a list of file IDs,
+        while the file_search tool requires a list of vector store IDs.'''
+        ...
+    
+    @tool_resources.setter
+    def tool_resources(self, value: aspose.pdf.ai.ToolResources):
+        ...
+    
+    ...
+
+class Tool:
+    '''Represents a tool that can be called by the model.'''
+    
+    @overload
+    def __init__(self):
+        '''Initializes a new instance of the :class:`Tool` class.'''
+        ...
+    
+    @overload
+    def __init__(self, tool_type: str):
+        '''Initializes a new instance of the :class:`Tool` class with the specified tool type.
+        
+        :param tool_type: The type of the tool.'''
+        ...
+    
+    @overload
+    def __init__(self, function: aspose.pdf.ai.Function):
+        '''Initializes a new instance of the :class:`Tool` class with the specified function.
+        
+        :param function: The function that the model can call.'''
+        ...
+    
+    @staticmethod
+    def function(self, function: aspose.pdf.ai.Function) -> aspose.pdf.ai.Tool:
+        '''Creates a new tool instance with the specified function.
+        
+        :param function: The function that the model can call.
+        :returns: A new tool instance with the specified function.'''
+        ...
+    
+    @property
+    def tool_type(self) -> str:
+        '''Gets or sets the type of the tool. Currently, only function is supported.'''
+        ...
+    
+    @tool_type.setter
+    def tool_type(self, value: str):
+        ...
+    
+    @property
+    def tool_function(self) -> aspose.pdf.ai.Function:
+        '''Gets or sets the function that the model can call.'''
+        ...
+    
+    @tool_function.setter
+    def tool_function(self, value: aspose.pdf.ai.Function):
+        ...
+    
+    code_interpreter: aspose.pdf.ai.Tool
+    
+    file_search: aspose.pdf.ai.Tool
+    
+    ...
+
+class ToolCall:
+    '''Represents a tool call within a message.'''
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def id(self) -> str:
+        '''Gets or sets the ID of the tool call.'''
+        ...
+    
+    @id.setter
+    def id(self, value: str):
+        ...
+    
+    @property
+    def tool_type(self) -> str:
+        '''Gets or sets the type of the tool. Currently, only function is supported.'''
+        ...
+    
+    @tool_type.setter
+    def tool_type(self, value: str):
+        ...
+    
+    @property
+    def function(self) -> aspose.pdf.ai.Function:
+        '''Gets or sets the function that the model called.'''
+        ...
+    
+    @function.setter
+    def function(self, value: aspose.pdf.ai.Function):
+        ...
+    
+    ...
+
+class ToolChoice:
+    '''Represents the ToolChoice, which can be either a string value or an object value.'''
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def string_value(self) -> str:
+        '''Gets or sets the string value of the ToolChoice.'''
+        ...
+    
+    @string_value.setter
+    def string_value(self, value: str):
+        ...
+    
+    @property
+    def object_value(self) -> None:
+        '''Gets or sets the object value of the ToolChoice.'''
+        ...
+    
+    @object_value.setter
+    def object_value(self, value: None):
+        ...
+    
+    @property
+    def is_string_value(self) -> bool:
+        '''Gets a value indicating whether the ToolChoice is a string value.'''
+        ...
+    
+    @property
+    def is_object_value(self) -> bool:
+        '''Gets a value indicating whether the ToolChoice is an object value.'''
+        ...
+    
+    ...
+
+class ToolResources:
+    '''Represents a set of resources that are used by the assistant's tools. The resources are specific to
+    the type of tool. For example, the code_interpreter tool requires a list of file IDs,
+    while the file_search tool requires a list of vector store IDs.'''
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def code_interpreter(self) -> aspose.pdf.ai.CodeInterpreter:
+        '''Gets or sets the code interpreter tool resources.'''
+        ...
+    
+    @code_interpreter.setter
+    def code_interpreter(self, value: aspose.pdf.ai.CodeInterpreter):
+        ...
+    
+    @property
+    def file_search(self) -> aspose.pdf.ai.FileSearch:
+        '''Gets or sets the file search tool resources.'''
+        ...
+    
+    @file_search.setter
+    def file_search(self, value: aspose.pdf.ai.FileSearch):
+        ...
+    
+    ...
+
+class TruncationStrategy:
+    '''Represents the truncation strategy that controls for how a thread will be truncated prior to the run.'''
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def strategy_type(self) -> str:
+        '''Gets or sets the truncation strategy to use for the thread.
+        The default is auto.
+        If set to last_messages, the thread will be truncated to the n most recent messages in the thread.
+        When set to auto, messages in the middle of the thread will be dropped to fit the context length of the model, max_prompt_tokens.'''
+        ...
+    
+    @strategy_type.setter
+    def strategy_type(self, value: str):
+        ...
+    
+    @property
+    def last_messages(self) -> int:
+        '''Gets or sets the number of most recent messages from the thread when constructing the context for the run.'''
+        ...
+    
+    @last_messages.setter
+    def last_messages(self, value: int):
+        ...
+    
+    ...
+
+class Usage:
+    '''Represents usage statistics for a request.'''
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def prompt_tokens(self) -> int:
+        '''Gets or sets number of tokens in the prompt.'''
+        ...
+    
+    @prompt_tokens.setter
+    def prompt_tokens(self, value: int):
+        ...
+    
+    @property
+    def completion_tokens(self) -> int:
+        '''Gets or sets number of tokens in the generated completion.'''
+        ...
+    
+    @completion_tokens.setter
+    def completion_tokens(self, value: int):
+        ...
+    
+    @property
+    def total_tokens(self) -> int:
+        '''Gets or sets total number of tokens used in the request (prompt + completion).'''
+        ...
+    
+    @total_tokens.setter
+    def total_tokens(self, value: int):
+        ...
+    
+    ...
+
+class VectorStore:
+    '''A helper to create a vector store with file_ids and attach it to this thread. There can be a maximum of 1 vector store attached to the thread.'''
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def file_ids(self) -> None:
+        '''Gets or sets a list of file IDs to add to the vector store. There can be a maximum of 10000 files in a vector store.'''
+        ...
+    
+    @file_ids.setter
+    def file_ids(self, value: None):
+        ...
+    
+    ...
+
+class VectorStoreCreateRequest:
+    '''Create a vector store request.'''
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def file_ids(self) -> None:
+        '''Gets or sets a list of File IDs that the vector store should use. Useful for tools like file_search
+        that can access files.'''
+        ...
+    
+    @file_ids.setter
+    def file_ids(self, value: None):
+        ...
+    
+    @property
+    def name(self) -> str:
+        '''Gets or sets the name of the vector store.'''
+        ...
+    
+    @name.setter
+    def name(self, value: str):
+        ...
+    
+    @property
+    def expires_after(self) -> aspose.pdf.ai.ExpiresAfter:
+        '''Gets or sets the expiration policy for a vector store.'''
+        ...
+    
+    @expires_after.setter
+    def expires_after(self, value: aspose.pdf.ai.ExpiresAfter):
+        ...
+    
+    ...
+
+class VectorStoreFileBatchCreateRequest:
+    '''Create a vector store file batch request.'''
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def file_ids(self) -> None:
+        '''Gets or sets s list of File IDs that the vector store should use. Useful for tools like file_search that can access files.'''
+        ...
+    
+    @file_ids.setter
+    def file_ids(self, value: None):
+        ...
+    
+    ...
+
+class VectorStoreFileBatchFileListQueryParameters(aspose.pdf.ai.BaseListQueryParameters):
+    '''Query parameters object for listing vector store file batch files.'''
+    
+    def __init__(self):
+        ...
+    
+    def get_query_parameters(self) -> str:
+        '''Gets the query parameters for listing store file batch files.
+        
+        :returns: The query parameters string.'''
+        ...
+    
+    @property
+    def filter(self) -> str:
+        '''Gets or sets a filter by file status. One of in_progress, completed, failed, cancelled.'''
+        ...
+    
+    @filter.setter
+    def filter(self, value: str):
+        ...
+    
+    ...
+
+class VectorStoreFileBatchFileListResponse(aspose.pdf.ai.BaseResponse):
+    '''Represents a list response containing vector store file batch data.'''
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def first_id(self) -> str:
+        ...
+    
+    @first_id.setter
+    def first_id(self, value: str):
+        ...
+    
+    @property
+    def last_id(self) -> str:
+        ...
+    
+    @last_id.setter
+    def last_id(self, value: str):
+        ...
+    
+    @property
+    def has_more(self) -> bool:
+        ...
+    
+    @has_more.setter
+    def has_more(self, value: bool):
+        ...
+    
+    @property
+    def data(self) -> None:
+        ...
+    
+    @data.setter
+    def data(self, value: None):
+        ...
+    
+    ...
+
+class VectorStoreFileBatchResponse(aspose.pdf.ai.BaseResponse):
+    '''The vector store files batch response object.'''
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def id(self) -> str:
+        '''Gets or sets the identifier, which can be referenced in API endpoints.'''
+        ...
+    
+    @id.setter
+    def id(self, value: str):
+        ...
+    
+    @property
+    def object(self) -> str:
+        '''Gets or sets the object type, which is always vector_store.file_batch.'''
+        ...
+    
+    @object.setter
+    def object(self, value: str):
+        ...
+    
+    @property
+    def created_at(self) -> int:
+        '''Gets or sets the Unix timestamp (in seconds) for when the vector store files batch was created.'''
+        ...
+    
+    @created_at.setter
+    def created_at(self, value: int):
+        ...
+    
+    @property
+    def vector_store_id(self) -> str:
+        '''Gets or sets the ID of the vector store that the File is attached to.'''
+        ...
+    
+    @vector_store_id.setter
+    def vector_store_id(self, value: str):
+        ...
+    
+    @property
+    def status(self) -> str:
+        '''Gets or sets the status of the vector store file batch.'''
+        ...
+    
+    @status.setter
+    def status(self, value: str):
+        ...
+    
+    @property
+    def file_counts(self) -> aspose.pdf.ai.FileCounts:
+        '''Gets or sets the number of files that have been processed.'''
+        ...
+    
+    @file_counts.setter
+    def file_counts(self, value: aspose.pdf.ai.FileCounts):
+        ...
+    
+    ...
+
+class VectorStoreFileCreateRequest:
+    '''Create a vector store file request.'''
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def file_id(self) -> str:
+        '''Gets or sets a File ID that the vector store should use. Useful for tools like file_search that can access files.'''
+        ...
+    
+    @file_id.setter
+    def file_id(self, value: str):
+        ...
+    
+    ...
+
+class VectorStoreFileListQueryParameters(aspose.pdf.ai.BaseListQueryParameters):
+    '''Query parameters object for listing vector store files.'''
+    
+    def __init__(self):
+        ...
+    
+    def get_query_parameters(self) -> str:
+        '''Gets the query parameters for listing vector store files.
+        
+        :returns: The query parameters string.'''
+        ...
+    
+    @property
+    def filter(self) -> str:
+        '''Gets or sets a filter by file status. One of in_progress, completed, failed, cancelled.'''
+        ...
+    
+    @filter.setter
+    def filter(self, value: str):
+        ...
+    
+    ...
+
+class VectorStoreFileListResponse(aspose.pdf.ai.BaseResponse):
+    '''Represents a list response containing vector store file data.'''
+    
+    def __init__(self):
+        ...
+    
+    def get_file_id_list(self) -> None:
+        '''Gets the list of file IDs from the vector store.
+        
+        :returns: The list of file IDs.'''
+        ...
+    
+    @property
+    def first_id(self) -> str:
+        ...
+    
+    @first_id.setter
+    def first_id(self, value: str):
+        ...
+    
+    @property
+    def last_id(self) -> str:
+        ...
+    
+    @last_id.setter
+    def last_id(self, value: str):
+        ...
+    
+    @property
+    def has_more(self) -> bool:
+        ...
+    
+    @has_more.setter
+    def has_more(self, value: bool):
+        ...
+    
+    @property
+    def data(self) -> None:
+        ...
+    
+    @data.setter
+    def data(self, value: None):
+        ...
+    
+    ...
+
+class VectorStoreFileResponse(aspose.pdf.ai.BaseResponse):
+    '''A vector store file response.'''
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def id(self) -> str:
+        '''Gets or sets the identifier, which can be referenced in API endpoints.
+        ///'''
+        ...
+    
+    @id.setter
+    def id(self, value: str):
+        ...
+    
+    @property
+    def object(self) -> str:
+        '''Gets or sets the object type, which is always vector_store.file.'''
+        ...
+    
+    @object.setter
+    def object(self, value: str):
+        ...
+    
+    @property
+    def usage_bytes(self) -> int:
+        '''Gets or sets the total vector store usage in bytes. Note that this may be different from the original file size.'''
+        ...
+    
+    @usage_bytes.setter
+    def usage_bytes(self, value: int):
+        ...
+    
+    @property
+    def created_at(self) -> int:
+        '''Gets or sets the Unix timestamp (in seconds) for when the vector store file was created.'''
+        ...
+    
+    @created_at.setter
+    def created_at(self, value: int):
+        ...
+    
+    @property
+    def vector_store_id(self) -> str:
+        '''Gets or sets the ID of the vector store that the File is attached to.'''
+        ...
+    
+    @vector_store_id.setter
+    def vector_store_id(self, value: str):
+        ...
+    
+    @property
+    def status(self) -> str:
+        '''Gets or sets the status of the vector store file, which can be either in_progress, completed,
+        cancelled, or failed. The status completed indicates that the vector store file is ready for use.'''
+        ...
+    
+    @status.setter
+    def status(self, value: str):
+        ...
+    
+    @property
+    def last_error(self) -> aspose.pdf.ai.LastError:
+        '''Gets or sets the last error associated with this vector store file. Will be null if there are no errors.'''
+        ...
+    
+    @last_error.setter
+    def last_error(self, value: aspose.pdf.ai.LastError):
+        ...
+    
+    ...
+
+class VectorStoreListQueryParameters(aspose.pdf.ai.BaseListQueryParameters):
+    '''Query parameters object for listing vector stores.'''
+    
+    def __init__(self):
+        ...
+    
+    def get_query_parameters(self) -> str:
+        '''Gets the query parameters for listing vector stores.
+        
+        :returns: The query parameters string.'''
+        ...
+    
+    ...
+
+class VectorStoreListResponse(aspose.pdf.ai.BaseResponse):
+    '''Represents a list response containing vector store data.'''
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def first_id(self) -> str:
+        ...
+    
+    @first_id.setter
+    def first_id(self, value: str):
+        ...
+    
+    @property
+    def last_id(self) -> str:
+        ...
+    
+    @last_id.setter
+    def last_id(self, value: str):
+        ...
+    
+    @property
+    def has_more(self) -> bool:
+        ...
+    
+    @has_more.setter
+    def has_more(self, value: bool):
+        ...
+    
+    @property
+    def data(self) -> None:
+        ...
+    
+    @data.setter
+    def data(self, value: None):
+        ...
+    
+    ...
+
+class VectorStoreModifyRequest:
+    '''Modify a vector store request.'''
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def name(self) -> str:
+        '''Gets or sets the name of the vector store.'''
+        ...
+    
+    @name.setter
+    def name(self, value: str):
+        ...
+    
+    @property
+    def expires_after(self) -> aspose.pdf.ai.ExpiresAfter:
+        '''Gets or sets the expiration policy for a vector store.'''
+        ...
+    
+    @expires_after.setter
+    def expires_after(self, value: aspose.pdf.ai.ExpiresAfter):
+        ...
+    
+    ...
+
+class VectorStoreResponse(aspose.pdf.ai.BaseResponse):
+    '''The vector store object.'''
+    
+    def __init__(self):
+        ...
+    
+    @property
+    def id(self) -> str:
+        '''Gets or sets the identifier, which can be referenced in API endpoints.'''
+        ...
+    
+    @id.setter
+    def id(self, value: str):
+        ...
+    
+    @property
+    def object(self) -> str:
+        '''Gets or sets the object type, which is always vector_store.'''
+        ...
+    
+    @object.setter
+    def object(self, value: str):
+        ...
+    
+    @property
+    def created_at(self) -> int:
+        '''Gets or sets the Unix timestamp (in seconds) for when the vector store was created.'''
+        ...
+    
+    @created_at.setter
+    def created_at(self, value: int):
+        ...
+    
+    @property
+    def name(self) -> str:
+        '''Gets or sets the name of the vector store.'''
+        ...
+    
+    @name.setter
+    def name(self, value: str):
+        ...
+    
+    @property
+    def usage_bytes(self) -> int:
+        '''Gets or sets the total number of bytes used by the files in the vector store.'''
+        ...
+    
+    @usage_bytes.setter
+    def usage_bytes(self, value: int):
+        ...
+    
+    @property
+    def file_counts(self) -> aspose.pdf.ai.FileCounts:
+        '''Gets or sets the number of files that have been processed.'''
+        ...
+    
+    @file_counts.setter
+    def file_counts(self, value: aspose.pdf.ai.FileCounts):
+        ...
+    
+    @property
+    def status(self) -> str:
+        '''Gets or sets the status of the vector store, which can be either expired, in_progress, or
+        completed. A status of completed indicates that the vector store is ready for use.'''
+        ...
+    
+    @status.setter
+    def status(self, value: str):
+        ...
+    
+    @property
+    def expires_after(self) -> aspose.pdf.ai.ExpiresAfter:
+        '''Gets or sets the expiration policy for a vector store.'''
+        ...
+    
+    @expires_after.setter
+    def expires_after(self, value: aspose.pdf.ai.ExpiresAfter):
+        ...
+    
+    @property
+    def expires_at(self) -> int:
+        '''Gets or sets the Unix timestamp (in seconds) for when the vector store will expire.'''
+        ...
+    
+    @expires_at.setter
+    def expires_at(self, value: int):
+        ...
+    
+    @property
+    def last_active_at(self) -> int:
+        '''Gets or sets the Unix timestamp (in seconds) for when the vector store was last active.'''
+        ...
+    
+    @last_active_at.setter
+    def last_active_at(self, value: int):
+        ...
+    
+    ...
+
