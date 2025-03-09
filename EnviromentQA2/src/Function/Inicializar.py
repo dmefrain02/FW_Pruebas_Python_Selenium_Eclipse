@@ -5,7 +5,7 @@ class Inicializar():
     
     #Nombre por defecto video grabado en pruebas
     VideoPruebas = "Video_Prueba"
-    Formato_Video = ".mp4"
+    Formato_Video = "mp4"
     ffmpeg_path = r"C:\ffmpeg\bin\ffmpeg.exe"
     
     '''Formatos_Soportados = {
