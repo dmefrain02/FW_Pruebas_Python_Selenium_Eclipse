@@ -105,6 +105,12 @@ class Functions(Inicializar):
         elif navegador == ("Firefox_Remote"):
             #Metodo para crear el driver de la instancia del Navegador
             self.driver = Functions.get_driver(self,navegador,Remote,URL_SeleniumGrid)
+        elif navegador == ("Chrome_Docker"):
+            self.driver = Functions.get_driver(self,navegador,Remote,URL_SeleniumGrid)
+        elif navegador == ("Edge_Docker"):
+            self.driver = Functions.get_driver(self,navegador,Remote,URL_SeleniumGrid)
+        elif navegador == ("Firefox_Docker"):
+            self.driver = Functions.get_driver(self,navegador,Remote,URL_SeleniumGrid)  
         else:
              raise ValueError(f"Navegador {navegador} no soportado.")
         
@@ -124,6 +130,13 @@ class Functions(Inicializar):
                 self.driver = Functions._create_edge_remote_driver(self,grid_url)
             elif browser == "Firefox_Remote":
                 self.driver = Functions._create_firefox_remote_driver(self,grid_url)
+            elif browser == "Chrome_Docker":
+                self.driver = Functions._create_chrome_sel_grid_docker_driver(self,grid_url)
+            elif browser == "Edge_Docker":
+                self.driver = Functions._create_edge_sel_grid_docker_driver(self,grid_url)
+            elif browser == "Firefox_Docker":
+                self.driver = Functions._create_firefox_sel_grid_docker_driver(self,grid_url)
+                
             return self.driver
         else:  #Instancia Navegador Local
             if browser == "Chrome":
@@ -203,6 +216,31 @@ class Functions(Inicializar):
         #options.add_argument("headless")
         
         self.driver = webdriver.Remote(grid_url,options=options)
+        return self.driver
+
+    def _create_chrome_sel_grid_docker_driver(self, grid_url):
+        options = webdriver.ChromeOptions()
+        self.driver = webdriver.Remote(
+            command_executor= grid_url,
+            options=options
+        ) 
+        return self.driver
+    def _create_edge_sel_grid_docker_driver(self, grid_url):
+        options = OpcionesEdge();
+        options.add_argument("start-maximized")
+        options.add_argument("inprivate")
+        #options.add_argument("headless")
+        self.driver = webdriver.Remote(grid_url,options=options)
+        
+        return self.driver
+    def _create_firefox_sel_grid_docker_driver(self, grid_url):
+        options = OpcionesFirefox()
+        options.add_argument('--window-size=1200,1200')# Maximiza la ventana
+        #options.add_argument("inprivate")
+        #options.add_argument("headless")
+        
+        self.driver = webdriver.Remote(grid_url,options=options)
+        
         return self.driver
 
     #Cerrar la instancia del navegador

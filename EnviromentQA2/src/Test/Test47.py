@@ -20,7 +20,7 @@ class Test(unittest.TestCase):
             Selenium.WebdriverWait(self,2)
             Selenium.cerrar_driver_navegador(self)
         
-    def test_02(self):
+    def Test_02(self):
         Selenium.abrir_navegador(self,"Chrome")
         #recording_thread = threading.Thread(target=Selenium.start(self), daemon=True)
         #recording_thread.start()
@@ -65,10 +65,21 @@ class Test(unittest.TestCase):
         Selenium.alert_navegadores(self,4,"","","You entered","texto-ing", "Test")
         Selenium.WebdriverWait(self,2)
         Selenium.cerrar_driver_navegador(self)
+        
+    def test_06(self):
+        for Nav_Sel_Grid in Inicializar.Navegadores_Sel_Grid:
+            Selenium.abrir_navegador(self,Nav_Sel_Grid, True)
+            Selenium.get_url_driver(self,"https://demoqa.com/alerts")
+            Selenium.WebdriverWait(self,2)
+            Selenium.click_en_elemento(self, "btn-accept")
+            Selenium.alert_navegadores(self,0,"You clicked a button","No se muestra el mensaje correcto")
+            Selenium.WebdriverWait(self,2)
+            Selenium.cerrar_driver_navegador(self)
 
     def tearDown(self):
-        Selenium.stop(self)
-        Selenium.cerrar_driver_navegador(self)
+        #Selenium.stop(self)
+        #Selenium.cerrar_driver_navegador(self)
+        pass
 
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']

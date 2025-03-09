@@ -22,8 +22,9 @@ class Inicializar():
     
     #Variable en el archivo inicializar
     URL_SeleniumGrid = "http://localhost:4444/wd/hub"
-    Navegadores_Sel_Grid = ["Chrome_Remote","Edge_Remote"] #"Firefox_Remote"
-    #Navegadores_Sel_Grid = ["Chrome_Remote","Edge_Remote"]
+    #Con Docker Compose, para utilizarlo con Dockers individuales, se requiere dejar solo el browser docker a utilziar o bien enviar el browser por medio de la variable navegador.
+    Navegadores_Sel_Grid = ["Chrome_Docker","Edge_Docker","Firefox_Docker"]#["Chrome_Remote","Edge_Remote"] #"Firefox_Remote"
+    #Navegadores_Sel_Grid = ["Chrome_Remote","Edge_Remote"] #"Firefox_Remote"
     
     #Tiempo de espera utilizado dentro del Framework
     Tiempo_Espera = 1
