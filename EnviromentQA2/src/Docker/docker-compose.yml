@@ -1,3 +1,13 @@
+#Para crear un contenedor docker con una solo instancias
+#docker run -d -p 4444:4444 -p 7900:7900 --shm-size="2g" selenium/standalone-chrome:latest
+#docker run -d -p 4444:4444 -p 7900:7900 --shm-size="2g" selenium/standalone-firefox:latest
+#docker run -d -p 4444:4444 -p 7900:7900 --shm-size="2g" selenium/standalone-edge:latest
+
+#Ejecutar desde la consola colocada en la carpeta del archivo: 
+#docker-compose up -d 
+#o
+#docker-compose -f <docker-compose.yml> logs
+
 version: "3"
 services:
   selenium-hub:
@@ -14,6 +24,8 @@ services:
       - SE_EVENT_BUS_HOST=selenium-hub
       - SE_EVENT_BUS_PUBLISH_PORT=4442
       - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+    deploy:
+      replicas: 3  # Ejecutar 3 instancias
 
   firefox:
     image: selenium/node-firefox
@@ -23,11 +35,15 @@ services:
       - SE_EVENT_BUS_HOST=selenium-hub
       - SE_EVENT_BUS_PUBLISH_PORT=4442
       - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
-	  
+    deploy:
+      replicas: 3  # Ejecutar 3 instancias
   edge:
     image: selenium/node-edge
+    depends_on:
       - selenium-hub
     environment:
       - SE_EVENT_BUS_HOST=selenium-hub
       - SE_EVENT_BUS_PUBLISH_PORT=4442
       - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+    deploy:
+      replicas: 3  # Ejecutar 3 instancias
