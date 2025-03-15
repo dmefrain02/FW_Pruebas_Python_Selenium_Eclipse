@@ -20,7 +20,7 @@ class Test(unittest.TestCase):
             Selenium.WebdriverWait(self,2)
             Selenium.cerrar_driver_navegador(self)
         
-    def test_02(self):
+    def Test_02(self):
         Selenium.abrir_navegador(self,"Chrome")
         #recording_thread = threading.Thread(target=Selenium.start(self), daemon=True)
         #recording_thread.start()

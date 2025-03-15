@@ -133,7 +133,7 @@ class Functions(Inicializar):
                 driver = Functions._create_firefox_driver(self)
                 return self.driver
             elif browser == "Edge":
-                driver = Functions._create_edge_driver(self)
+                driver = Functions._create_edge_driv<er(self)
                 return self.driver
             else:
                 raise ValueError(f"Navegador {browser} no soportado.")
