@@ -38,8 +38,7 @@ from selenium.webdriver.remote import remote_connection
 
 from Function.Inicializar import Inicializar
 from Function.DriverFactory import DriverFactory
-from selenium.common.exceptions import NoSuchElementException,NoAlertPresentException,NoSuchWindowException,TimeoutException,\
-    UnexpectedAlertPresentException
+from selenium.common.exceptions import NoSuchElementException,NoAlertPresentException,NoSuchWindowException,TimeoutException, UnexpectedAlertPresentException
 import json
 import pytest
 from _ctypes_test import func
@@ -107,7 +106,7 @@ class Functions(Inicializar):
             #Metodo para crear el driver de la instancia del Navegador
             self.driver = Functions.get_driver(self,navegador,Remote,URL_SeleniumGrid)
         else:
-             raise ValueError(f"Navegador {navegador} no soportado.")
+             raise ValueError(f"Navegador {navegador} no se encuentra soportado.")
         
         return self.driver
 
@@ -125,19 +124,20 @@ class Functions(Inicializar):
                 self.driver = Functions._create_edge_remote_driver(self,grid_url)
             elif browser == "Firefox_Remote":
                 self.driver = Functions._create_firefox_remote_driver(self,grid_url)
+            else:
+                raise ValueError(f"Navegador en selenium grid {browser} no se encuentra soportado.")
             return self.driver
         else:  #Instancia Navegador Local
             if browser == "Chrome":
                 self.driver = Functions._create_chrome_driver(self)
-                return self.driver
             elif browser == "Firefox":
-                driver = Functions._create_firefox_driver(self)
-                return self.driver
+                self.driver = Functions._create_firefox_driver(self)
             elif browser == "Edge":
-                driver = Functions._create_edge_driver(self)
-                return self.driver
+                self.driver = Functions._create_edge_driver(self)
             else:
-                raise ValueError(f"Navegador {browser} no soportado.")
+                raise ValueError(f"Navegador {browser} no se encuentra soportado.")
+            
+            return self.driver
 
     #Crea y configura el driver de Chrome usando webdriver-manager
     def _create_chrome_driver(self):
@@ -220,18 +220,20 @@ class Functions(Inicializar):
     #Metodo para encontrar elementos en el DOM
     def encontrando_elementos_en_el_DOM(self,estrategia_busqueda, valor_busqueda):
         try:
-            if estrategia_busqueda == "xpath":
+            if estrategia_busqueda.lower() == "xpath":
                 elemento = self.driver.find_element(By.XPATH, valor_busqueda)
                 print(u'ID_Elements: Se esta interactuando con el elemento: ' + valor_busqueda)
                 return elemento
-            elif estrategia_busqueda == "name":
+            elif estrategia_busqueda.lower() == "name":
                 elemento = self.driver.find_element(By.NAME, valor_busqueda)
                 print(u'ID_Elements: Se esta interactuando con el elemento: ' + valor_busqueda)
                 return elemento
-            elif estrategia_busqueda == "id":
+            elif estrategia_busqueda.lower() == "id":
                 elemento = self.driver.find_element(By.ID, valor_busqueda)
                 print(u'ID_Elements: Se esta interactuando con el elemento: ' + valor_busqueda)
                 return elemento
+            else:
+                raise ValueError(f"Estrategia de busqueda {estrategia_busqueda} con el valor de busqueda {valor_busqueda} no se encuentra soportada.")
             
         except TimeoutException:
             print(u'El elemento esperado no se presento: ' + valor_busqueda)
@@ -276,6 +278,8 @@ class Functions(Inicializar):
                 print('uElemento Encontrado:' + valor_busqueda)
                 print(u'ID_Elements: Se esta interactuando con el elemento: ' + valor_busqueda)
                 return elemento
+            else:
+                raise ValueError(f"Estrategia de busqueda {estrategia_busqueda} con el valor de busqueda {valor_busqueda} no se encuentra soportada.")
             
         except TimeoutException:
             print(u'El elemento esperado no se presento: ' + valor_busqueda)
@@ -287,84 +291,6 @@ class Functions(Inicializar):
         except UnexpectedAlertPresentException:
             print(u'No se presento la alerta: ' + valor_busqueda)
             Functions.cerrar_driver_navegador(self)
-    
-    #Encontrando elementos en el DOM por medio de XPATH
-    '''def elementos_del_DOM_x_XPATH(self, XPATH):
-        elements = self.driver.find_element(By.XPATH, XPATH)
-        print(u'XPATH_Elements: Se esta interactuando con el elemento: ' + XPATH)
-        return elements
-    
-    #Encontrando elementos en el DOM por medio de ID
-    def elementos_del_DOM_x_ID(self, ID):
-        elements = self.driver.find_element(By.ID, ID)
-        print(u'ID_Elements: Se esta interactuando con el elemento: ' + ID)
-        return elements
-    
-    #Encontrando elementos en el DOM por medio de Name
-    def elementos_del_DOM_x_NAME(self, NAME):
-        elements = self.driver.find_element(By.NAME, NAME)
-        print(u'NAME_Elements: Se esta interactuando con el elemento: ' + NAME)
-        return elements
-    
-    #Encontrando elementos en el DOM por medio de XPATH utilizando esperas
-    def _elementos_del_DOM_x_XPATH(self,XPATH):
-        try:
-            wait = WebDriverWait(self.driver,20)
-            wait.until(EC.visibility_of_element_located((By.XPATH,XPATH)))
-            wait.until(EC.element_to_be_clickable((By.XPATH,XPATH)))
-            
-            print(u'Esperando a que el elemento se visualice: ' + XPATH)
-            elements = self.driver.find_element(By.XPATH, XPATH)
-            
-            print('uElemento Encontrado:' + XPATH)
-            return elements
-        except TimeoutException:
-            print(u'Esperando el Elemento y este no se presento: ' + XPATH)
-            Functions.cerrar_driver_navegador(self)
-            
-        except NoSuchElementException:
-            print('uEsperando el Elemento y este no se presento: ' + XPATH)
-            Functions.cerrar_driver_navegador(self)
-    
-    #Encontrando elementos en el DOM por medio de Id utilizando esperas    
-    def _elementos_del_DOM_x_ID(self,ID):
-        try:
-            wait = WebDriverWait(self.driver,20)
-            wait.until(EC.visibility_of_element_located((By.ID,ID)))
-            wait.until(EC.element_to_be_clickable((By.ID,ID)))
-            
-            print(u'Esperando a que el elemento se visualice: ' + ID)
-            elements = self.driver.find_element(By.ID, ID)
-            
-            print('uElemento Encontrado:' + ID)
-            return elements
-        except TimeoutException:
-            print(u'Esperando el Elemento y este no se presento: ' + ID)
-            Functions.cerrar_driver_navegador(self)
-            
-        except NoSuchElementException:
-            print('uEsperando el Elemento y este no se presento: ' + ID)
-            Functions.cerrar_driver_navegador(self)
-    
-    #Encontrando elementos en el DOM por medio de Name utilizando esperas        
-    def _elementos_del_DOM_x_NAME(self,NAME):
-        try:
-            wait = WebDriverWait(self.driver,20)
-            wait.until(EC.visibility_of_element_located((By.NAME,NAME)))
-            wait.until(EC.element_to_be_clickable((By.NAME,NAME)))
-            
-            print(u'Esperando a que el elemento se visualice: ' + NAME)
-            elements = self.driver.find_element(By.NAME, NAME)
-            
-            print('uElemento Encontrado:' + NAME)
-            return elements
-        except TimeoutException:
-            print(u'Esperando el Elemento y este no se presento: ' + NAME)
-            Functions.cerrar_driver_navegador(self)
-            
-        except NoSuchElementException:
-            print('uEsperando el Elemento y este no se presento: ' + NAME)
-            Functions.cerrar_driver_navegador(self)'''
     
     #Obtener Archivo JSON con los localizadores por medio del nombre      
     def obtener_archivo_json(self,file):
@@ -1021,20 +947,23 @@ class Functions(Inicializar):
     #Metodos para grabar videos (screen record) en las pruebas.  
     
     """Verifica si FFmpeg está disponible"""
-    def inicializar_video(self,formato=Inicializar.Formato_Video, nombrearchivo_video = Inicializar.VideoPruebas, output_dir = Inicializar.Carpeta_Videos):
-                
+    def inicializar_video(self, framerate = 30, formato=Inicializar.Formato_Video, nombrearchivo_video = Inicializar.VideoPruebas, output_dir = Inicializar.Carpeta_Videos):
+              
+        self.formato = formato.lower()
+        self.output_video = output_dir
+        self.filename = f"{nombrearchivo_video}.{formato}"
+        self.output_file = os.path.join(self.output_video,self.filename)
+        self.framerate = framerate
+        os.makedirs(self.output_video, exist_ok=True)
+        
         self.ffmpeg_path = Inicializar.ffmpeg_path
         self.ffmpeg_process = None
-        self.File_Name = f"{nombrearchivo_video}{formato}"
-        self.output_video = output_dir
-        self.output_file = os.path.join(self.output_video,self.File_Name)
 
         # Validar si el formato es soportado
         '''if formato not in Inicializar.Formatos_Soportados:
             raise ValueError(f"Formato '{self.formato}' no soportado. Formatos válidos: {list(self.SUPPORTED_FORMATS.keys())}")
         else:
             print(f'Formatos soportados validos')'''
-
 
         # Verificar si FFmpeg está instalado
         if not Functions.valida_ffmpeg(self):
@@ -1054,7 +983,7 @@ class Functions(Inicializar):
     """Inicia la grabación de pantalla con FFmpeg"""   
     def start_recording(self):
         try:
-            comando = [
+            '''comando = [
                Inicializar.ffmpeg_path,
                 "-y",  # Sobrescribe el archivo si ya existe
                 "-f", "gdigrab",  # Captura la pantalla en Windows
@@ -1062,9 +991,7 @@ class Functions(Inicializar):
                 "-i", "desktop",  # Captura toda la pantalla
                 "-c:v", "libx264", "-preset", "ultrafast", "-crf", "25",  # Compresión rápida
                 self.output_file  # Nombre del archivo de salida
-                ]
-            
-            
+                ]'''     
             '''codec_info = Inicializar.Formatos_Soportados[self.formato]
             Inicializar.ffmpeg_path = [
                 self.ffmpeg_path,
@@ -1073,9 +1000,8 @@ class Functions(Inicializar):
                 "-framerate", "30",
                 "-i", "desktop",
                 "-c:v", codec_info["codec"]
-            ] + codec_info["extra"] + [self.output_file]'''
-            
-            '''codec_info = Inicializar.Formatos_Soportados[self.formato]
+            ] + codec_info["extra"] + [self.output_file]'' 
+            codec_info = Inicializar.Formatos_Soportados[self.formato]
             Inicializar.ffmpeg_path = [
                 self.ffmpeg_path,
                 "-y",
@@ -1088,16 +1014,19 @@ class Functions(Inicializar):
                 self.output_file
             ]'''
                 
-            self.process = subprocess.Popen(comando, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+            self.process = subprocess.Popen([
+            "ffmpeg", "-y", "-f", "gdigrab", "-framerate", str(self.framerate),
+            "-i", "desktop", self.output_file
+        ], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+            
             print(f"Grabación iniciada... Guardando en: {self.output_file}")
         except Exception as e:
             print(f"Error al iniciar FFmpeg: {e}")
     
     """Detiene la grabación de pantalla"""    
     def stop_recording(self):
-        if self.process:
-            self.process.terminate()
-            print(f"Grabación finalizada. Video guardado en: {self.output_file}")
+        self.process.terminate()
+        print(f"Grabación finalizada. Video guardado en: {self.output_file}")
     
     '''def inicializar_video(self,height_size, width_size,fps,nombre_arh_video,Ruta_Grabacion=Inicializar.Ruta_Grabacion):
         self.screen_size = (height_size,width_size)
@@ -1149,3 +1078,32 @@ class Functions(Inicializar):
             self.alert.send_keys(texto_ingresado)
             self.alert.accept()
             Functions.Assert_In_Elemento(self,texto_contenido, Functions.obtener_Texto(self, elemento))
+    
+    ''' grabar segunda opcion, revisar graba bien solo el primer frame'''
+    def inicializar(self, framerate = 30, formato=Inicializar.Formato_Video, nombrearchivo_video = Inicializar.VideoPruebas, output_dir = Inicializar.Carpeta_Videos):
+        self.formato = formato.lower()
+        self.output_video = output_dir
+        self.filename = f"{nombrearchivo_video}.{self.formato}"
+        self.output_file = os.path.join(self.output_video,self.filename)
+        self.framerate = framerate
+        self.resolution = pyautogui.size()
+        os.makedirs(self.output_video, exist_ok=True)
+        fourcc = cv2.VideoWriter_fourcc(*("XVID" if self.formato == "avi" else "mp4v"))
+        self.out = cv2.VideoWriter(self.output_file,fourcc,self.framerate,self.resolution)
+        
+    def start(self,duracion = 10):
+        start_time = time.time()
+        while time.time()- start_time < duracion:
+            img = pyautogui.screenshot()
+            frame = np.array(img)
+            #frame = cv2.cvtColor(frame,cv2.Color_RGB2BGR)
+            self.out.write(frame)
+            #self.stop()
+        
+    def stop(self):
+        self.out.release()
+        print(f"Video guardado en: {self.output_file}")
+        
+        
+        
+        

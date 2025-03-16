@@ -5,7 +5,7 @@ class Inicializar():
     
     #Nombre por defecto video grabado en pruebas
     VideoPruebas = "Video_Prueba"
-    Formato_Video = ".mp4"
+    Formato_Video = "mp4"
     ffmpeg_path = r"C:\ffmpeg\bin\ffmpeg.exe"
     
     '''Formatos_Soportados = {
@@ -23,7 +23,6 @@ class Inicializar():
     #Variable en el archivo inicializar
     URL_SeleniumGrid = "http://localhost:4444/wd/hub"
     Navegadores_Sel_Grid = ["Chrome_Remote","Edge_Remote"] #"Firefox_Remote"
-    #Navegadores_Sel_Grid = ["Chrome_Remote","Edge_Remote"]
     
     #Tiempo de espera utilizado dentro del Framework
     Tiempo_Espera = 1
