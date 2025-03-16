@@ -106,7 +106,7 @@ class Functions(Inicializar):
             #Metodo para crear el driver de la instancia del Navegador
             self.driver = Functions.get_driver(self,navegador,Remote,URL_SeleniumGrid)
         else:
-             raise ValueError(f"Navegador {navegador} no soportado.")
+             raise ValueError(f"Navegador {navegador} no se encuentra soportado.")
         
         return self.driver
 
@@ -124,19 +124,20 @@ class Functions(Inicializar):
                 self.driver = Functions._create_edge_remote_driver(self,grid_url)
             elif browser == "Firefox_Remote":
                 self.driver = Functions._create_firefox_remote_driver(self,grid_url)
+            else:
+                raise ValueError(f"Navegador en selenium grid {browser} no se encuentra soportado.")
             return self.driver
         else:  #Instancia Navegador Local
             if browser == "Chrome":
                 self.driver = Functions._create_chrome_driver(self)
-                return self.driver
             elif browser == "Firefox":
-                driver = Functions._create_firefox_driver(self)
-                return self.driver
+                self.driver = Functions._create_firefox_driver(self)
             elif browser == "Edge":
-                driver = Functions._create_edge_driver(self)
-                return self.driver
+                self.driver = Functions._create_edge_driver(self)
             else:
-                raise ValueError(f"Navegador {browser} no soportado.")
+                raise ValueError(f"Navegador {browser} no se encuentra soportado.")
+            
+            return self.driver
 
     #Crea y configura el driver de Chrome usando webdriver-manager
     def _create_chrome_driver(self):
@@ -219,18 +220,20 @@ class Functions(Inicializar):
     #Metodo para encontrar elementos en el DOM
     def encontrando_elementos_en_el_DOM(self,estrategia_busqueda, valor_busqueda):
         try:
-            if estrategia_busqueda == "xpath":
+            if estrategia_busqueda.lower() == "xpath":
                 elemento = self.driver.find_element(By.XPATH, valor_busqueda)
                 print(u'ID_Elements: Se esta interactuando con el elemento: ' + valor_busqueda)
                 return elemento
-            elif estrategia_busqueda == "name":
+            elif estrategia_busqueda.lower() == "name":
                 elemento = self.driver.find_element(By.NAME, valor_busqueda)
                 print(u'ID_Elements: Se esta interactuando con el elemento: ' + valor_busqueda)
                 return elemento
-            elif estrategia_busqueda == "id":
+            elif estrategia_busqueda.lower() == "id":
                 elemento = self.driver.find_element(By.ID, valor_busqueda)
                 print(u'ID_Elements: Se esta interactuando con el elemento: ' + valor_busqueda)
                 return elemento
+            else:
+                raise ValueError(f"Estrategia de busqueda {estrategia_busqueda} con el valor de busqueda {valor_busqueda} no se encuentra soportada.")
             
         except TimeoutException:
             print(u'El elemento esperado no se presento: ' + valor_busqueda)
@@ -275,6 +278,8 @@ class Functions(Inicializar):
                 print('uElemento Encontrado:' + valor_busqueda)
                 print(u'ID_Elements: Se esta interactuando con el elemento: ' + valor_busqueda)
                 return elemento
+            else:
+                raise ValueError(f"Estrategia de busqueda {estrategia_busqueda} con el valor de busqueda {valor_busqueda} no se encuentra soportada.")
             
         except TimeoutException:
             print(u'El elemento esperado no se presento: ' + valor_busqueda)
@@ -286,84 +291,6 @@ class Functions(Inicializar):
         except UnexpectedAlertPresentException:
             print(u'No se presento la alerta: ' + valor_busqueda)
             Functions.cerrar_driver_navegador(self)
-    
-    #Encontrando elementos en el DOM por medio de XPATH
-    '''def elementos_del_DOM_x_XPATH(self, XPATH):
-        elements = self.driver.find_element(By.XPATH, XPATH)
-        print(u'XPATH_Elements: Se esta interactuando con el elemento: ' + XPATH)
-        return elements
-    
-    #Encontrando elementos en el DOM por medio de ID
-    def elementos_del_DOM_x_ID(self, ID):
-        elements = self.driver.find_element(By.ID, ID)
-        print(u'ID_Elements: Se esta interactuando con el elemento: ' + ID)
-        return elements
-    
-    #Encontrando elementos en el DOM por medio de Name
-    def elementos_del_DOM_x_NAME(self, NAME):
-        elements = self.driver.find_element(By.NAME, NAME)
-        print(u'NAME_Elements: Se esta interactuando con el elemento: ' + NAME)
-        return elements
-    
-    #Encontrando elementos en el DOM por medio de XPATH utilizando esperas
-    def _elementos_del_DOM_x_XPATH(self,XPATH):
-        try:
-            wait = WebDriverWait(self.driver,20)
-            wait.until(EC.visibility_of_element_located((By.XPATH,XPATH)))
-            wait.until(EC.element_to_be_clickable((By.XPATH,XPATH)))
-            
-            print(u'Esperando a que el elemento se visualice: ' + XPATH)
-            elements = self.driver.find_element(By.XPATH, XPATH)
-            
-            print('uElemento Encontrado:' + XPATH)
-            return elements
-        except TimeoutException:
-            print(u'Esperando el Elemento y este no se presento: ' + XPATH)
-            Functions.cerrar_driver_navegador(self)
-            
-        except NoSuchElementException:
-            print('uEsperando el Elemento y este no se presento: ' + XPATH)
-            Functions.cerrar_driver_navegador(self)
-    
-    #Encontrando elementos en el DOM por medio de Id utilizando esperas    
-    def _elementos_del_DOM_x_ID(self,ID):
-        try:
-            wait = WebDriverWait(self.driver,20)
-            wait.until(EC.visibility_of_element_located((By.ID,ID)))
-            wait.until(EC.element_to_be_clickable((By.ID,ID)))
-            
-            print(u'Esperando a que el elemento se visualice: ' + ID)
-            elements = self.driver.find_element(By.ID, ID)
-            
-            print('uElemento Encontrado:' + ID)
-            return elements
-        except TimeoutException:
-            print(u'Esperando el Elemento y este no se presento: ' + ID)
-            Functions.cerrar_driver_navegador(self)
-            
-        except NoSuchElementException:
-            print('uEsperando el Elemento y este no se presento: ' + ID)
-            Functions.cerrar_driver_navegador(self)
-    
-    #Encontrando elementos en el DOM por medio de Name utilizando esperas        
-    def _elementos_del_DOM_x_NAME(self,NAME):
-        try:
-            wait = WebDriverWait(self.driver,20)
-            wait.until(EC.visibility_of_element_located((By.NAME,NAME)))
-            wait.until(EC.element_to_be_clickable((By.NAME,NAME)))
-            
-            print(u'Esperando a que el elemento se visualice: ' + NAME)
-            elements = self.driver.find_element(By.NAME, NAME)
-            
-            print('uElemento Encontrado:' + NAME)
-            return elements
-        except TimeoutException:
-            print(u'Esperando el Elemento y este no se presento: ' + NAME)
-            Functions.cerrar_driver_navegador(self)
-            
-        except NoSuchElementException:
-            print('uEsperando el Elemento y este no se presento: ' + NAME)
-            Functions.cerrar_driver_navegador(self)'''
     
     #Obtener Archivo JSON con los localizadores por medio del nombre      
     def obtener_archivo_json(self,file):
