@@ -112,7 +112,7 @@ class Functions(Inicializar):
         elif navegador == ("Firefox_Docker"):
             self.driver = Functions.get_driver(self,navegador,Remote,URL_SeleniumGrid)  
         else:
-             raise ValueError(f"Navegador {navegador} no soportado.")
+             raise ValueError(f"Navegador {navegador} no se encuentra soportado.")
         
         return self.driver
 
@@ -136,6 +136,8 @@ class Functions(Inicializar):
                 self.driver = Functions._create_edge_sel_grid_docker_driver(self,grid_url)
             elif browser == "Firefox_Docker":
                 self.driver = Functions._create_firefox_sel_grid_docker_driver(self,grid_url)
+            else:
+                raise ValueError(f"Navegador en selenium grid {browser} no se encuentra soportado.")
                 
             return self.driver
         else:  #Instancia Navegador Local
@@ -149,7 +151,7 @@ class Functions(Inicializar):
                 driver = Functions._create_edge_driver(self)
                 return self.driver
             else:
-                raise ValueError(f"Navegador {browser} no soportado.")
+                raise ValueError(f"Navegador {browser} no se encuentra soportado.")
 
     #Crea y configura el driver de Chrome usando webdriver-manager
     def _create_chrome_driver(self):
@@ -260,15 +262,16 @@ class Functions(Inicializar):
             if estrategia_busqueda == "xpath":
                 elemento = self.driver.find_element(By.XPATH, valor_busqueda)
                 print(u'ID_Elements: Se esta interactuando con el elemento: ' + valor_busqueda)
-                return elemento
             elif estrategia_busqueda == "name":
                 elemento = self.driver.find_element(By.NAME, valor_busqueda)
                 print(u'ID_Elements: Se esta interactuando con el elemento: ' + valor_busqueda)
-                return elemento
             elif estrategia_busqueda == "id":
                 elemento = self.driver.find_element(By.ID, valor_busqueda)
                 print(u'ID_Elements: Se esta interactuando con el elemento: ' + valor_busqueda)
-                return elemento
+            else:
+                raise ValueError(f"Estrategia de busqueda {estrategia_busqueda} con el valor {valor_busqueda} no se encuentra soportada.")
+            
+            return elemento
             
         except TimeoutException:
             print(u'El elemento esperado no se presento: ' + valor_busqueda)
@@ -290,7 +293,6 @@ class Functions(Inicializar):
                 elemento = self.driver.find_element(By.XPATH, valor_busqueda)
                 print('uElemento Encontrado:' + valor_busqueda)
                 print(u'ID_Elements: Se esta interactuando con el elemento: ' + valor_busqueda)
-                return elemento
             
             elif estrategia_busqueda == "name":
                 wait = WebDriverWait(self.driver,tiempo_espera)
@@ -301,7 +303,6 @@ class Functions(Inicializar):
                 elemento = self.driver.find_element(By.NAME, valor_busqueda)
                 print('uElemento Encontrado:' + valor_busqueda)
                 print(u'ID_Elements: Se esta interactuando con el elemento: ' + valor_busqueda)
-                return elemento
             
             elif estrategia_busqueda == "id":
                 wait = WebDriverWait(self.driver,tiempo_espera)
@@ -312,8 +313,11 @@ class Functions(Inicializar):
                 elemento = self.driver.find_element(By.ID, valor_busqueda)
                 print('uElemento Encontrado:' + valor_busqueda)
                 print(u'ID_Elements: Se esta interactuando con el elemento: ' + valor_busqueda)
-                return elemento
             
+            else:
+                raise ValueError(f"Estrategia de busqueda {estrategia_busqueda} con el valor {valor_busqueda} no se encuentra soportada.")
+            
+            return elemento
         except TimeoutException:
             print(u'El elemento esperado no se presento: ' + valor_busqueda)
             Functions.cerrar_driver_navegador(self)
