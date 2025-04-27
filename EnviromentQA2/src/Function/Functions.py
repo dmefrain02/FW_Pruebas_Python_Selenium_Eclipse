@@ -78,12 +78,11 @@ class Functions(Inicializar):
     Nav_utilizado_capturas = ""
     
     #Abrir Navegador
-    def abrir_navegador(self,navegador=Inicializar.Navegador,Remote = False, URL_SeleniumGrid = Inicializar.URL_SeleniumGrid):
+    def abrir_navegador(self,navegador=Inicializar.Navegador, Remote = False, URL_SeleniumGrid = Inicializar.URL_SeleniumGrid,PortSelGrid=Inicializar.PortSelGrid):
         print(u"Directorio Base:" + Inicializar.BaseDir)
         print("-------------------------------------------")
         print(navegador)
         print("-------------------------------------------")
-        
         self.Nav_utilizado_capturas = navegador          
         if navegador ==("Edge"):
             #Metodo para crear el driver de la instancia del Navegador
