@@ -8,42 +8,36 @@
 #o
 #docker-compose -f <docker-compose.yml> logs
 
-version: "3"
+version: '3'
 services:
   selenium-hub:
-    image: selenium/hub
+    image: selenium/hub:3.141.59
     container_name: selenium-hub
     ports:
       - "4444:4444"
 
-  chrome:
-    image: selenium/node-chrome
+  selenium-chrome:
+    image: selenium/node-chrome-debug:3.141.59
+    container_name: selenium-chrome
+    ports:
+      - "5901:5900" # VNC
+    environment:
+      - HUB_HOST=selenium-hub
+      - NODE_MAX_INSTANCES=1
+      - NODE_MAX_SESSION=1
+      - DISPLAY=:99
     depends_on:
       - selenium-hub
-    environment:
-      - SE_EVENT_BUS_HOST=selenium-hub
-      - SE_EVENT_BUS_PUBLISH_PORT=4442
-      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
-    deploy:
-      replicas: 3  # Ejecutar 3 instancias
+    volumes:
+      - ./videos:/videos
 
-  firefox:
-    image: selenium/node-firefox
+  video:
+    image: selenium/video:ffmpeg-4.3.1-20230403
+    container_name: video
     depends_on:
-      - selenium-hub
+      - selenium-chrome
     environment:
-      - SE_EVENT_BUS_HOST=selenium-hub
-      - SE_EVENT_BUS_PUBLISH_PORT=4442
-      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
-    deploy:
-      replicas: 3  # Ejecutar 3 instancias
-  edge:
-    image: selenium/node-edge
-    depends_on:
-      - selenium-hub
-    environment:
-      - SE_EVENT_BUS_HOST=selenium-hub
-      - SE_EVENT_BUS_PUBLISH_PORT=4442
-      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
-    deploy:
-      replicas: 3  # Ejecutar 3 instancias
+      - DISPLAY_CONTAINER_NAME=selenium-chrome
+      - FILE_NAME=test_run.mp4
+    volumes:
+      - ./videos:/videos
