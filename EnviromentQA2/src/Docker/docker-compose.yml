@@ -8,42 +8,68 @@
 #o
 #docker-compose -f <docker-compose.yml> logs
 
-version: "3"
+version: '3'
 services:
   selenium-hub:
-    image: selenium/hub
+    image: selenium/hub:3.141.59
     container_name: selenium-hub
     ports:
       - "4444:4444"
 
-  chrome:
-    image: selenium/node-chrome
+  chrome-debug:
+    image: selenium/node-chrome-debug:3.141.59
+    container_name: chrome-debug
     depends_on:
       - selenium-hub
     environment:
-      - SE_EVENT_BUS_HOST=selenium-hub
-      - SE_EVENT_BUS_PUBLISH_PORT=4442
-      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
-    deploy:
-      replicas: 3  # Ejecutar 3 instancias
+      - HUB_HOST=selenium-hub
+      - NODE_MAX_INSTANCES=1
+      - NODE_MAX_SESSION=1
+      - DISPLAY=:99
+    ports:
+      - "5900:5900"  # VNC port
+    shm_size: 2gb
+    volumes:
+      - ./videos:/videos
 
-  firefox:
-    image: selenium/node-firefox
+  firefox-debug:
+    image: selenium/node-firefox-debug:3.141.59
+    container_name: firefox-debug
     depends_on:
       - selenium-hub
     environment:
-      - SE_EVENT_BUS_HOST=selenium-hub
-      - SE_EVENT_BUS_PUBLISH_PORT=4442
-      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
-    deploy:
-      replicas: 3  # Ejecutar 3 instancias
-  edge:
-    image: selenium/node-edge
+      - HUB_HOST=selenium-hub
+      - NODE_MAX_INSTANCES=1
+      - NODE_MAX_SESSION=1
+      - DISPLAY=:99
+    ports:
+      - "5901:5900"  # VNC port
+    shm_size: 2gb
+    volumes:
+      - ./videos:/videos
+      
+  video-chrome:
+    image: jrottenberg/ffmpeg:4.3-ubuntu2004
+    container_name: video-chrome
     depends_on:
-      - selenium-hub
-    environment:
-      - SE_EVENT_BUS_HOST=selenium-hub
-      - SE_EVENT_BUS_PUBLISH_PORT=4442
-      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
-    deploy:
-      replicas: 3  # Ejecutar 3 instancias
+      - chrome-debug
+    network_mode: service:chrome-debug
+    volumes:
+      - ./videos:/videos
+    entrypoint: >
+      bash -c "sleep 5 &&
+             ffmpeg -y -video_size 1360x1020 -framerate 15 -f x11grab -i :99.0 \
+             -codec:v libx264 -preset ultrafast -pix_fmt yuv420p /videos/test_chrome.mp4"
+
+  video-firefox:
+    image: jrottenberg/ffmpeg:4.3-ubuntu2004
+    container_name: video-firefox
+    depends_on:
+      - firefox-debug
+    network_mode: service:firefox-debug
+    volumes:
+      - ./videos:/videos
+    entrypoint: >
+      bash -c "sleep 5 &&
+             ffmpeg -y -video_size 1360x1020 -framerate 15 -f x11grab -i :99.0 \
+             -codec:v libx264 -preset ultrafast -pix_fmt yuv420p /videos/test_firefox.mp4"
