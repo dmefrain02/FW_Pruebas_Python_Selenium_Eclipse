@@ -10,7 +10,7 @@ class Test(unittest.TestCase):
     def setUp(self):
         Selenium.obtener_archivo_json(self, 'Localizadores_Spotify')
         
-    def test_01(self):
+    def Test_01(self):
         for Nav_Sel_Grid in Inicializar.Navegadores_Sel_Grid:
             Selenium.abrir_navegador(self,Nav_Sel_Grid, True)
             Selenium.get_url_driver(self,"https://demoqa.com/alerts")
@@ -20,7 +20,7 @@ class Test(unittest.TestCase):
             Selenium.WebdriverWait(self,2)
             Selenium.cerrar_driver_navegador(self)
         
-    def Test_02(self):
+    def test_02(self):
         Selenium.abrir_navegador(self,"Chrome")
         Selenium.get_url_driver(self,"https://demoqa.com/alerts")
         Selenium.WebdriverWait(self,2)
