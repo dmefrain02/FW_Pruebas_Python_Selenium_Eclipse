@@ -47,7 +47,6 @@ from locale import str
 from _testmultiphase import Str
 import time
 import openpyxl
-from idlelib.calltip import get_entity
 import re # para expresiones regulares
 import os # para capturas
 import allure
@@ -55,7 +54,6 @@ import pyodbc
 from allure_commons.types import AttachmentType
 from pickle import NONE
 from _pytest.python import Function
-#from pkg_resources._vendor.jaraco.functools import except_
 from _pytest.threadexception import catch_threading_exception
 from http.cookiejar import Cookie
 from PIL import Image #Pillow - Manejo de Imagenes
