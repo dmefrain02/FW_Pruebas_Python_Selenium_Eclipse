@@ -20,7 +20,7 @@ class Test(unittest.TestCase):
             Selenium.WebdriverWait(self,2)
             Selenium.cerrar_driver_navegador(self)
         
-    def test_02(self):
+    def Test_02(self):
         Selenium.abrir_navegador(self,"Chrome")
         Selenium.get_url_driver(self,"https://demoqa.com/alerts")
         Selenium.WebdriverWait(self,2)
