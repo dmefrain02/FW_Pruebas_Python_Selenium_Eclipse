@@ -47,7 +47,6 @@ from locale import str
 from _testmultiphase import Str
 import time
 import openpyxl
-from idlelib.calltip import get_entity
 import re # para expresiones regulares
 import os # para capturas
 import allure
