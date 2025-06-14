@@ -2,13 +2,13 @@ import unittest
 from Function.Functions import Functions as Selenium
 from Function.Inicializar import Inicializar
 import time
+import subprocess
 import threading
 
 class Test(unittest.TestCase):
 
     def setUp(self):
         Selenium.obtener_archivo_json(self, 'Localizadores_Spotify')
-        Selenium.inicializar(self)
         
     def Test_01(self):
         for Nav_Sel_Grid in Inicializar.Navegadores_Sel_Grid:
@@ -22,17 +22,12 @@ class Test(unittest.TestCase):
         
     def Test_02(self):
         Selenium.abrir_navegador(self,"Chrome")
-        #recording_thread = threading.Thread(target=Selenium.start(self), daemon=True)
-        #recording_thread.start()
-        
-        #while recording_thread:
-        while Selenium.start(self):
-            Selenium.get_url_driver(self,"https://demoqa.com/alerts")
-            Selenium.WebdriverWait(self,2)
-            Selenium.click_en_elemento(self, "btn-time")
-            Selenium.esperar_elemento(self, 5)
-            Selenium.alert_navegadores(self,1,"This alert appeared after 5 seconds","No se muestra el mensaje correcto")
-            #Selenium.cerrar_driver_navegador(self)
+        Selenium.get_url_driver(self,"https://demoqa.com/alerts")
+        Selenium.WebdriverWait(self,2)
+        Selenium.click_en_elemento(self, "btn-time")
+        Selenium.esperar_elemento(self, 5)
+        Selenium.alert_navegadores(self,1,"This alert appeared after 5 seconds","No se muestra el mensaje correcto")
+        Selenium.cerrar_driver_navegador(self)
 
     def Test_03(self):
         for Nav_Sel_Grid in Inicializar.Navegadores_Sel_Grid:
@@ -65,10 +60,20 @@ class Test(unittest.TestCase):
         Selenium.alert_navegadores(self,4,"","","You entered","texto-ing", "Test")
         Selenium.WebdriverWait(self,2)
         Selenium.cerrar_driver_navegador(self)
+        
+    def Test_06(self):
+        for Nav_Sel_Grid in Inicializar.Navegadores_Sel_Grid:
+            Selenium.abrir_navegador(self,Nav_Sel_Grid, True)
+            Selenium.get_url_driver(self,"https://demoqa.com/alerts")
+            Selenium.WebdriverWait(self,2)
+            Selenium.click_en_elemento(self, "btn-accept")
+            Selenium.alert_navegadores(self,0,"You clicked a button","No se muestra el mensaje correcto")
+            Selenium.WebdriverWait(self,2)
+            Selenium.cerrar_driver_navegador(self)
 
     def tearDown(self):
-        Selenium.stop(self)
-        Selenium.cerrar_driver_navegador(self)
+        #Selenium.cerrar_driver_navegador(self)
+        pass
 
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
