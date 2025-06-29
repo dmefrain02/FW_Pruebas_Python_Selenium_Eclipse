@@ -1,0 +1,75 @@
+#Para crear un contenedor docker con una solo instancias
+#docker run -d -p 4444:4444 -p 7900:7900 --shm-size="2g" selenium/standalone-chrome:latest
+#docker run -d -p 4444:4444 -p 7900:7900 --shm-size="2g" selenium/standalone-firefox:latest
+#docker run -d -p 4444:4444 -p 7900:7900 --shm-size="2g" selenium/standalone-edge:latest
+
+#Ejecutar desde la consola colocada en la carpeta del archivo: 
+#docker-compose up -d 
+#o
+#docker-compose -f <docker-compose.yml> logs
+
+version: '3'
+services:
+  selenium-hub:
+    image: selenium/hub:3.141.59
+    container_name: selenium-hub
+    ports:
+      - "4444:4444"
+
+  chrome-debug:
+    image: selenium/node-chrome-debug:3.141.59
+    container_name: chrome-debug
+    depends_on:
+      - selenium-hub
+    environment:
+      - HUB_HOST=selenium-hub
+      - NODE_MAX_INSTANCES=1
+      - NODE_MAX_SESSION=1
+      - DISPLAY=:99
+    ports:
+      - "5900:5900"  # VNC port
+    shm_size: 2gb
+    volumes:
+      - ./videos:/videos
+
+  firefox-debug:
+    image: selenium/node-firefox-debug:3.141.59
+    container_name: firefox-debug
+    depends_on:
+      - selenium-hub
+    environment:
+      - HUB_HOST=selenium-hub
+      - NODE_MAX_INSTANCES=1
+      - NODE_MAX_SESSION=1
+      - DISPLAY=:99
+    ports:
+      - "5901:5900"  # VNC port
+    shm_size: 2gb
+    volumes:
+      - ./videos:/videos
+      
+  video-chrome:
+    image: jrottenberg/ffmpeg:4.3-ubuntu2004
+    container_name: video-chrome
+    depends_on:
+      - chrome-debug
+    network_mode: service:chrome-debug
+    volumes:
+      - ./videos:/videos
+    entrypoint: >
+      bash -c "sleep 5 &&
+             ffmpeg -y -video_size 1360x1020 -framerate 15 -f x11grab -i :99.0 \
+             -codec:v libx264 -preset ultrafast -pix_fmt yuv420p /videos/test_chrome.mp4"
+
+  video-firefox:
+    image: jrottenberg/ffmpeg:4.3-ubuntu2004
+    container_name: video-firefox
+    depends_on:
+      - firefox-debug
+    network_mode: service:firefox-debug
+    volumes:
+      - ./videos:/videos
+    entrypoint: >
+      bash -c "sleep 5 &&
+             ffmpeg -y -video_size 1360x1020 -framerate 15 -f x11grab -i :99.0 \
+             -codec:v libx264 -preset ultrafast -pix_fmt yuv420p /videos/test_firefox.mp4"
