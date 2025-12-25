@@ -1,3 +1,5 @@
+#password admin jenkins docker: a67d5f5438904948b9ff986a7653672f para el usuario admin
+
 #Para crear un contenedor docker con una solo instancias
 #docker run -d -p 4444:4444 -p 7900:7900 --shm-size="2g" selenium/standalone-chrome:latest
 #docker run -d -p 4444:4444 -p 7900:7900 --shm-size="2g" selenium/standalone-firefox:latest

@@ -1,0 +1,124 @@
+{
+  "uid" : "8212ced4191e3e18",
+  "name" : "Realizar una búsqueda en Google",
+  "fullName" : "Busqueda en Google: Realizar una búsqueda en Google",
+  "historyId" : "8605d0dd89abc7a7b52b3cb0e153c309",
+  "time" : {
+    "start" : 1750619099536,
+    "stop" : 1750619102486,
+    "duration" : 2950
+  },
+  "status" : "skipped",
+  "flaky" : false,
+  "beforeStages" : [ ],
+  "testStage" : {
+    "status" : "skipped",
+    "steps" : [ {
+      "name" : "Given el usuario abre el navegador",
+      "time" : {
+        "start" : 1750619099536,
+        "stop" : 1750619101656,
+        "duration" : 2120
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "hasContent" : false,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
+    }, {
+      "name" : "When ingresa a la pagina de Google",
+      "time" : {
+        "start" : 1750619101656,
+        "stop" : 1750619102485,
+        "duration" : 829
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "hasContent" : false,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
+    }, {
+      "name" : "When usuario digita el texto \"QA Tecnology CRC Youtube\"",
+      "time" : {
+        "start" : 1750619102486
+      },
+      "status" : "unknown",
+      "steps" : [ {
+        "name" : "Then presiona la tecla Enter",
+        "time" : {
+          "start" : 1750619102486,
+          "stop" : 1750619102486,
+          "duration" : 0
+        },
+        "status" : "skipped",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "hasContent" : false,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false
+      }, {
+        "name" : "And esperar los resultados de la búsqueda",
+        "time" : {
+          "start" : 1750619102486,
+          "stop" : 1750619102486,
+          "duration" : 0
+        },
+        "status" : "skipped",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ ],
+        "stepsCount" : 0,
+        "hasContent" : false,
+        "attachmentsCount" : 0,
+        "shouldDisplayMessage" : false
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 2,
+      "hasContent" : true,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
+    } ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 5,
+    "hasContent" : true,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  },
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "severity",
+    "value" : "normal"
+  }, {
+    "name" : "feature",
+    "value" : "Busqueda en Google"
+  }, {
+    "name" : "framework",
+    "value" : "behave"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : true,
+  "retry" : true,
+  "extra" : {
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "8212ced4191e3e18.json",
+  "parameterValues" : [ ]
+}

@@ -1,6 +1,7 @@
+# -*- coding: utf-8 -*- 
 import unittest
-from Function.Functions import Functions as Selenium
-from Function.Inicializar import Inicializar
+from src.Function.Functions import Functions as Selenium
+from src.Function.Inicializar import Inicializar
 import time
 import subprocess
 import threading

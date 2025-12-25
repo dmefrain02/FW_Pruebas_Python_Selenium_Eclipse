@@ -1,0 +1,30 @@
+{
+	"Registro":{
+		"GetFieldBy":"xpath",
+		"ValueToFind":"//a[contains(text(),'Sign up')]"		
+	},
+	"username":{
+		"GetFieldBy":"id",
+		"ValueToFind":"username"
+	},
+	"email":{
+		"GetFieldBy":"id",
+		"ValueToFind":"email"
+	},
+	"password":{
+		"GetFieldBy":"id",
+		"ValueToFind":"password"
+	},
+	"usernameperfil":{
+		"GetFieldBy":"xpath",
+		"ValueToFind":"//a[contains(text(),'dmcace')]"
+	},
+	"btnregister":{
+		"GetFieldBy":"xpath",
+		"ValueToFind":"//button[contains(text(),'Sign up')]"
+	},
+	"btnlogin":{
+		"GetFieldBy":"xpath",
+		"ValueToFind":"//button[contains(text(),'Sign up')]"
+	}
+}

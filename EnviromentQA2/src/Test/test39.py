@@ -1,4 +1,4 @@
-from Function.Functions import Functions as Selenium
+from src.Function.Functions import Functions as Selenium
 import unittest
 import allure
 
@@ -61,7 +61,7 @@ class Test(unittest.TestCase):
         
         with allure.step(u'Paso 12: Validaciones en el registro: Elemento se muestra en pantalla'):
             Selenium.esperar_elemento(self)
-            Selenium.Assert_True_IsDisplayer_Elemento(self, 'Register_Success', 'No se muestra el elemento')
+            Selenium.Assert_True_IsDisplayer(self, 'Register_Success', 'No se muestra el elemento')
         
         with allure.step(u'Paso 13: Validaciones en el registro: Registro Exitoso'):
             Selenium.Assert_Equals_Comparar_Textos(self, 'Register_Success', 'Congratulations! Your new account has been successfully created!', 'No se muestra el texto esperado')
@@ -86,8 +86,8 @@ class Test(unittest.TestCase):
         
         with allure.step(u'Paso 5: Validaciones luego de realizar el login'):
             Selenium.esperar_elemento(self)
-            Selenium.Assert_True_IsDisplayer_Elemento(self, 'My_Account', 'No se muestra el elemento')
-            Selenium.Assert_Equals_Comparar_Textos(self, 'My_Account', 'My Account', 'No se muestra el texto esperado')
+            Selenium.Assert_True_IsDisplayer(self, 'My_Account', 'No se muestra el elemento')
+            Selenium.Assert_Equal(self, 'My_Account', 'My Account', 'No se muestra el texto esperado')
 
     
     def tearDown(self):

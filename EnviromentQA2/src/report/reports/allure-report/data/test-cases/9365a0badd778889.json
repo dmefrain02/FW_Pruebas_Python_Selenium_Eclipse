@@ -1,0 +1,189 @@
+{
+  "uid" : "9365a0badd778889",
+  "name" : "Mover elemento en la pantalla",
+  "fullName" : "Busqueda en Google: Mover elemento en la pantalla",
+  "historyId" : "1e40314aa5cff706b8e37c8f315a9313",
+  "time" : {
+    "start" : 1750621873884,
+    "stop" : 1750621886409,
+    "duration" : 12525
+  },
+  "status" : "broken",
+  "statusMessage" : "selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"[id=\"text_drop\"]\"}\n  (Session info: chrome=137.0.7151.120); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception\nStacktrace:\n\tGetHandleVerifier [0x0x613b03+62899]\n\tGetHandleVerifier [0x0x613b44+62964]\n\t(No symbol) [0x0x4410f3]\n\t(No symbol) [0x0x48980e]\n\t(No symbol) [0x0x489bab]\n\t(No symbol) [0x0x4d25c2]\n\t(No symbol) [0x0x4ae554]\n\t(No symbol) [0x0x4cfd81]\n\t(No symbol) [0x0x4ae306]\n\t(No symbol) [0x0x47d670]\n\t(No symbol) [0x0x47e4e4]\n\tGetHandleVerifier [0x0x874793+2556483]\n\tGetHandleVerifier [0x0x86fd02+2537394]\n\tGetHandleVerifier [0x0x63a2fa+220586]\n\tGetHandleVerifier [0x0x62aae8+157080]\n\tGetHandleVerifier [0x0x63141d+184013]\n\tGetHandleVerifier [0x0x61ba68+95512]\n\tGetHandleVerifier [0x0x61bc10+95936]\n\tGetHandleVerifier [0x0x606b5a+9738]\n\tBaseThreadInitThunk [0x0x753c5d49+25]\n\tRtlInitializeExceptionChain [0x0x774bd09b+107]\n\tRtlGetAppContainerNamedObjectPath [0x0x774bd021+561]\n\n",
+  "statusTrace" : "  File \"C:\\Users\\dmefr\\OneDrive\\Escritorio\\FW_Pruebas_Python_Selenium_VSCode\\EnviromentQA\\Lib\\site-packages\\behave\\model.py\", line 1329, in run\n    match.run(runner.context)\n    ~~~~~~~~~^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\dmefr\\OneDrive\\Escritorio\\FW_Pruebas_Python_Selenium_VSCode\\EnviromentQA\\Lib\\site-packages\\behave\\matchers.py\", line 98, in run\n    self.func(context, *args, **kwargs)\n    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"features\\steps\\steps1.py\", line 36, in step_click_login\n    assert context.driver.find_element(By.ID, 'text_drop').text == 'Dropped!', \"El texto no coincide con lo esperado\"\n           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\dmefr\\OneDrive\\Escritorio\\FW_Pruebas_Python_Selenium_VSCode\\EnviromentQA\\Lib\\site-packages\\selenium\\webdriver\\remote\\webdriver.py\", line 914, in find_element\n    return self.execute(Command.FIND_ELEMENT, {\"using\": by, \"value\": value})[\"value\"]\n           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\dmefr\\OneDrive\\Escritorio\\FW_Pruebas_Python_Selenium_VSCode\\EnviromentQA\\Lib\\site-packages\\selenium\\webdriver\\remote\\webdriver.py\", line 447, in execute\n    self.error_handler.check_response(response)\n    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^\n  File \"C:\\Users\\dmefr\\OneDrive\\Escritorio\\FW_Pruebas_Python_Selenium_VSCode\\EnviromentQA\\Lib\\site-packages\\selenium\\webdriver\\remote\\errorhandler.py\", line 232, in check_response\n    raise exception_class(message, screen, stacktrace)\n",
+  "flaky" : true,
+  "beforeStages" : [ ],
+  "testStage" : {
+    "status" : "broken",
+    "statusMessage" : "selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"[id=\"text_drop\"]\"}\n  (Session info: chrome=137.0.7151.120); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception\nStacktrace:\n\tGetHandleVerifier [0x0x613b03+62899]\n\tGetHandleVerifier [0x0x613b44+62964]\n\t(No symbol) [0x0x4410f3]\n\t(No symbol) [0x0x48980e]\n\t(No symbol) [0x0x489bab]\n\t(No symbol) [0x0x4d25c2]\n\t(No symbol) [0x0x4ae554]\n\t(No symbol) [0x0x4cfd81]\n\t(No symbol) [0x0x4ae306]\n\t(No symbol) [0x0x47d670]\n\t(No symbol) [0x0x47e4e4]\n\tGetHandleVerifier [0x0x874793+2556483]\n\tGetHandleVerifier [0x0x86fd02+2537394]\n\tGetHandleVerifier [0x0x63a2fa+220586]\n\tGetHandleVerifier [0x0x62aae8+157080]\n\tGetHandleVerifier [0x0x63141d+184013]\n\tGetHandleVerifier [0x0x61ba68+95512]\n\tGetHandleVerifier [0x0x61bc10+95936]\n\tGetHandleVerifier [0x0x606b5a+9738]\n\tBaseThreadInitThunk [0x0x753c5d49+25]\n\tRtlInitializeExceptionChain [0x0x774bd09b+107]\n\tRtlGetAppContainerNamedObjectPath [0x0x774bd021+561]\n\n",
+    "statusTrace" : "  File \"C:\\Users\\dmefr\\OneDrive\\Escritorio\\FW_Pruebas_Python_Selenium_VSCode\\EnviromentQA\\Lib\\site-packages\\behave\\model.py\", line 1329, in run\n    match.run(runner.context)\n    ~~~~~~~~~^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\dmefr\\OneDrive\\Escritorio\\FW_Pruebas_Python_Selenium_VSCode\\EnviromentQA\\Lib\\site-packages\\behave\\matchers.py\", line 98, in run\n    self.func(context, *args, **kwargs)\n    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"features\\steps\\steps1.py\", line 36, in step_click_login\n    assert context.driver.find_element(By.ID, 'text_drop').text == 'Dropped!', \"El texto no coincide con lo esperado\"\n           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\dmefr\\OneDrive\\Escritorio\\FW_Pruebas_Python_Selenium_VSCode\\EnviromentQA\\Lib\\site-packages\\selenium\\webdriver\\remote\\webdriver.py\", line 914, in find_element\n    return self.execute(Command.FIND_ELEMENT, {\"using\": by, \"value\": value})[\"value\"]\n           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\dmefr\\OneDrive\\Escritorio\\FW_Pruebas_Python_Selenium_VSCode\\EnviromentQA\\Lib\\site-packages\\selenium\\webdriver\\remote\\webdriver.py\", line 447, in execute\n    self.error_handler.check_response(response)\n    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^\n  File \"C:\\Users\\dmefr\\OneDrive\\Escritorio\\FW_Pruebas_Python_Selenium_VSCode\\EnviromentQA\\Lib\\site-packages\\selenium\\webdriver\\remote\\errorhandler.py\", line 232, in check_response\n    raise exception_class(message, screen, stacktrace)\n",
+    "steps" : [ {
+      "name" : "Given el usuario abre el navegador a DemoQA",
+      "time" : {
+        "start" : 1750621873885,
+        "stop" : 1750621876242,
+        "duration" : 2357
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "hasContent" : false,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
+    }, {
+      "name" : "When ingresa a la pagina de DemoQA",
+      "time" : {
+        "start" : 1750621876242,
+        "stop" : 1750621884623,
+        "duration" : 8381
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "hasContent" : false,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
+    }, {
+      "name" : "When usuario arrastra el elemento \"Draggable\" a la posición \"100, 200\"",
+      "time" : {
+        "start" : 1750621884624,
+        "stop" : 1750621886372,
+        "duration" : 1748
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ {
+        "uid" : "ee22d6d0b9a4f1d",
+        "name" : "Arrastrar y Soltar",
+        "source" : "ee22d6d0b9a4f1d.png",
+        "type" : "image/png",
+        "size" : 339484
+      } ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "hasContent" : true,
+      "attachmentsCount" : 1,
+      "shouldDisplayMessage" : false
+    }, {
+      "name" : "Then verifica que el elemento se ha movido a la nueva posición",
+      "time" : {
+        "start" : 1750621886372,
+        "stop" : 1750621886405,
+        "duration" : 33
+      },
+      "status" : "broken",
+      "statusMessage" : "selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"[id=\"text_drop\"]\"}\n  (Session info: chrome=137.0.7151.120); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception\nStacktrace:\n\tGetHandleVerifier [0x0x613b03+62899]\n\tGetHandleVerifier [0x0x613b44+62964]\n\t(No symbol) [0x0x4410f3]\n\t(No symbol) [0x0x48980e]\n\t(No symbol) [0x0x489bab]\n\t(No symbol) [0x0x4d25c2]\n\t(No symbol) [0x0x4ae554]\n\t(No symbol) [0x0x4cfd81]\n\t(No symbol) [0x0x4ae306]\n\t(No symbol) [0x0x47d670]\n\t(No symbol) [0x0x47e4e4]\n\tGetHandleVerifier [0x0x874793+2556483]\n\tGetHandleVerifier [0x0x86fd02+2537394]\n\tGetHandleVerifier [0x0x63a2fa+220586]\n\tGetHandleVerifier [0x0x62aae8+157080]\n\tGetHandleVerifier [0x0x63141d+184013]\n\tGetHandleVerifier [0x0x61ba68+95512]\n\tGetHandleVerifier [0x0x61bc10+95936]\n\tGetHandleVerifier [0x0x606b5a+9738]\n\tBaseThreadInitThunk [0x0x753c5d49+25]\n\tRtlInitializeExceptionChain [0x0x774bd09b+107]\n\tRtlGetAppContainerNamedObjectPath [0x0x774bd021+561]\n\n",
+      "statusTrace" : "  File \"C:\\Users\\dmefr\\OneDrive\\Escritorio\\FW_Pruebas_Python_Selenium_VSCode\\EnviromentQA\\Lib\\site-packages\\behave\\model.py\", line 1329, in run\n    match.run(runner.context)\n    ~~~~~~~~~^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\dmefr\\OneDrive\\Escritorio\\FW_Pruebas_Python_Selenium_VSCode\\EnviromentQA\\Lib\\site-packages\\behave\\matchers.py\", line 98, in run\n    self.func(context, *args, **kwargs)\n    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"features\\steps\\steps1.py\", line 36, in step_click_login\n    assert context.driver.find_element(By.ID, 'text_drop').text == 'Dropped!', \"El texto no coincide con lo esperado\"\n           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\dmefr\\OneDrive\\Escritorio\\FW_Pruebas_Python_Selenium_VSCode\\EnviromentQA\\Lib\\site-packages\\selenium\\webdriver\\remote\\webdriver.py\", line 914, in find_element\n    return self.execute(Command.FIND_ELEMENT, {\"using\": by, \"value\": value})[\"value\"]\n           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\dmefr\\OneDrive\\Escritorio\\FW_Pruebas_Python_Selenium_VSCode\\EnviromentQA\\Lib\\site-packages\\selenium\\webdriver\\remote\\webdriver.py\", line 447, in execute\n    self.error_handler.check_response(response)\n    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^\n  File \"C:\\Users\\dmefr\\OneDrive\\Escritorio\\FW_Pruebas_Python_Selenium_VSCode\\EnviromentQA\\Lib\\site-packages\\selenium\\webdriver\\remote\\errorhandler.py\", line 232, in check_response\n    raise exception_class(message, screen, stacktrace)\n",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "hasContent" : true,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : true
+    }, {
+      "name" : "And cierra el navegador",
+      "time" : {
+        "start" : 1750621886409,
+        "stop" : 1750621886409,
+        "duration" : 0
+      },
+      "status" : "skipped",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "hasContent" : false,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
+    } ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 5,
+    "hasContent" : true,
+    "attachmentsCount" : 1,
+    "shouldDisplayMessage" : false
+  },
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "severity",
+    "value" : "normal"
+  }, {
+    "name" : "feature",
+    "value" : "Busqueda en Google"
+  }, {
+    "name" : "framework",
+    "value" : "behave"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ {
+      "uid" : "5626efd9fbf9a534",
+      "status" : "broken",
+      "statusDetails" : "selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"[id=\"text_drop\"]\"}\n  (Session info: chrome=137.0.7151.120); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception\nStacktrace:\n\tGetHandleVerifier [0x0x613b03+62899]\n\tGetHandleVerifier [0x0x613b44+62964]\n\t(No symbol) [0x0x4410f3]\n\t(No symbol) [0x0x48980e]\n\t(No symbol) [0x0x489bab]\n\t(No symbol) [0x0x4d25c2]\n\t(No symbol) [0x0x4ae554]\n\t(No symbol) [0x0x4cfd81]\n\t(No symbol) [0x0x4ae306]\n\t(No symbol) [0x0x47d670]\n\t(No symbol) [0x0x47e4e4]\n\tGetHandleVerifier [0x0x874793+2556483]\n\tGetHandleVerifier [0x0x86fd02+2537394]\n\tGetHandleVerifier [0x0x63a2fa+220586]\n\tGetHandleVerifier [0x0x62aae8+157080]\n\tGetHandleVerifier [0x0x63141d+184013]\n\tGetHandleVerifier [0x0x61ba68+95512]\n\tGetHandleVerifier [0x0x61bc10+95936]\n\tGetHandleVerifier [0x0x606b5a+9738]\n\tBaseThreadInitThunk [0x0x753c5d49+25]\n\tRtlInitializeExceptionChain [0x0x774bd09b+107]\n\tRtlGetAppContainerNamedObjectPath [0x0x774bd021+561]\n\n",
+      "time" : {
+        "start" : 1750621793916,
+        "stop" : 1750621803401,
+        "duration" : 9485
+      }
+    }, {
+      "uid" : "c34ccc425524879e",
+      "status" : "broken",
+      "statusDetails" : "AttributeError: 'Context' object has no attribute 'assertEqual'\n",
+      "time" : {
+        "start" : 1750621463868,
+        "stop" : 1750621473928,
+        "duration" : 10060
+      }
+    }, {
+      "uid" : "4fbf0cd48582e3",
+      "status" : "broken",
+      "statusDetails" : "TypeError: Functions.captura_pantalla_allure() missing 1 required positional argument: 'Descripcion'\n",
+      "time" : {
+        "start" : 1750621356021,
+        "stop" : 1750621364522,
+        "duration" : 8501
+      }
+    }, {
+      "uid" : "42606115c93d6599",
+      "status" : "broken",
+      "statusDetails" : "AttributeError: 'Context' object has no attribute 'assertEqual'\n",
+      "time" : {
+        "start" : 1750621209294,
+        "stop" : 1750621217446,
+        "duration" : 8152
+      }
+    }, {
+      "uid" : "3144ba3d751e1a3",
+      "status" : "broken",
+      "statusDetails" : "AttributeError: 'Context' object has no attribute 'assertEqual'\n",
+      "time" : {
+        "start" : 1750621094318,
+        "stop" : 1750621104264,
+        "duration" : 9946
+      }
+    } ],
+    "categories" : [ {
+      "name" : "Test defects",
+      "matchedStatuses" : [ ],
+      "flaky" : false
+    } ],
+    "tags" : [ ]
+  },
+  "source" : "9365a0badd778889.json",
+  "parameterValues" : [ ]
+}

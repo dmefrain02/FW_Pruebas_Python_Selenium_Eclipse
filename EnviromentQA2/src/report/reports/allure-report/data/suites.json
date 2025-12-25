@@ -1,0 +1,29 @@
+{
+  "uid" : "98d3104e051c652961429bf95fa0b5d6",
+  "name" : "suites",
+  "children" : [ {
+    "name" : "Realizar una búsqueda en Google",
+    "uid" : "746d8f83ad64b4bb",
+    "parentUid" : "98d3104e051c652961429bf95fa0b5d6",
+    "status" : "passed",
+    "time" : {
+      "start" : 1750621864036,
+      "stop" : 1750621873882,
+      "duration" : 9846
+    },
+    "flaky" : true,
+    "parameters" : [ ]
+  }, {
+    "name" : "Mover elemento en la pantalla",
+    "uid" : "9365a0badd778889",
+    "parentUid" : "98d3104e051c652961429bf95fa0b5d6",
+    "status" : "broken",
+    "time" : {
+      "start" : 1750621873884,
+      "stop" : 1750621886409,
+      "duration" : 12525
+    },
+    "flaky" : true,
+    "parameters" : [ ]
+  } ]
+}

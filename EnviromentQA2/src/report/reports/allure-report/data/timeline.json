@@ -1,0 +1,29 @@
+{
+  "uid" : "ab17fc5a4eb3bca4b216b548c7f9fcbc",
+  "name" : "timeline",
+  "children" : [ {
+    "name" : "Mover elemento en la pantalla",
+    "uid" : "9365a0badd778889",
+    "parentUid" : "ab17fc5a4eb3bca4b216b548c7f9fcbc",
+    "status" : "broken",
+    "time" : {
+      "start" : 1750621873884,
+      "stop" : 1750621886409,
+      "duration" : 12525
+    },
+    "flaky" : true,
+    "parameters" : [ ]
+  }, {
+    "name" : "Realizar una búsqueda en Google",
+    "uid" : "746d8f83ad64b4bb",
+    "parentUid" : "ab17fc5a4eb3bca4b216b548c7f9fcbc",
+    "status" : "passed",
+    "time" : {
+      "start" : 1750621864036,
+      "stop" : 1750621873882,
+      "duration" : 9846
+    },
+    "flaky" : true,
+    "parameters" : [ ]
+  } ]
+}

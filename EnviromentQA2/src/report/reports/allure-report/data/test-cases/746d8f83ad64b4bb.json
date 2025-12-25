@@ -1,0 +1,197 @@
+{
+  "uid" : "746d8f83ad64b4bb",
+  "name" : "Realizar una búsqueda en Google",
+  "fullName" : "Busqueda en Google: Realizar una búsqueda en Google",
+  "historyId" : "8605d0dd89abc7a7b52b3cb0e153c309",
+  "time" : {
+    "start" : 1750621864036,
+    "stop" : 1750621873882,
+    "duration" : 9846
+  },
+  "status" : "passed",
+  "flaky" : true,
+  "beforeStages" : [ ],
+  "testStage" : {
+    "status" : "passed",
+    "steps" : [ {
+      "name" : "Given el usuario abre el navegador",
+      "time" : {
+        "start" : 1750621864036,
+        "stop" : 1750621866135,
+        "duration" : 2099
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "hasContent" : false,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
+    }, {
+      "name" : "When ingresa a la pagina de Google",
+      "time" : {
+        "start" : 1750621866135,
+        "stop" : 1750621867899,
+        "duration" : 1764
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "hasContent" : false,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
+    }, {
+      "name" : "When usuario digita el texto QA Tecnology CRC Youtube",
+      "time" : {
+        "start" : 1750621867899,
+        "stop" : 1750621868045,
+        "duration" : 146
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ {
+        "uid" : "75b84a426abe70d5",
+        "name" : "Busqueda de texto",
+        "source" : "75b84a426abe70d5.png",
+        "type" : "image/png",
+        "size" : 34744
+      } ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "hasContent" : true,
+      "attachmentsCount" : 1,
+      "shouldDisplayMessage" : false
+    }, {
+      "name" : "Then presiona la tecla Enter",
+      "time" : {
+        "start" : 1750621868045,
+        "stop" : 1750621869680,
+        "duration" : 1635
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ {
+        "uid" : "21f46a4a14a41c9a",
+        "name" : "Presionar Enter",
+        "source" : "21f46a4a14a41c9a.png",
+        "type" : "image/png",
+        "size" : 48894
+      } ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "hasContent" : true,
+      "attachmentsCount" : 1,
+      "shouldDisplayMessage" : false
+    }, {
+      "name" : "And esperar los resultados de la búsqueda",
+      "time" : {
+        "start" : 1750621869680,
+        "stop" : 1750621873882,
+        "duration" : 4202
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "hasContent" : false,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
+    } ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 5,
+    "hasContent" : true,
+    "attachmentsCount" : 2,
+    "shouldDisplayMessage" : false
+  },
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "severity",
+    "value" : "normal"
+  }, {
+    "name" : "feature",
+    "value" : "Busqueda en Google"
+  }, {
+    "name" : "framework",
+    "value" : "behave"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ {
+      "uid" : "aa3bf3d0e0f2ca42",
+      "status" : "passed",
+      "time" : {
+        "start" : 1750621784152,
+        "stop" : 1750621793914,
+        "duration" : 9762
+      }
+    }, {
+      "uid" : "ad5e98cddd0fd280",
+      "status" : "passed",
+      "time" : {
+        "start" : 1750621454217,
+        "stop" : 1750621463867,
+        "duration" : 9650
+      }
+    }, {
+      "uid" : "9b6c6a7b01e0ea50",
+      "status" : "broken",
+      "statusDetails" : "TypeError: Functions.captura_pantalla_allure() missing 1 required positional argument: 'Descripcion'\n",
+      "time" : {
+        "start" : 1750621352016,
+        "stop" : 1750621356020,
+        "duration" : 4004
+      }
+    }, {
+      "uid" : "c5bbeda12f7ebd6",
+      "status" : "passed",
+      "time" : {
+        "start" : 1750621201496,
+        "stop" : 1750621209292,
+        "duration" : 7796
+      }
+    }, {
+      "uid" : "979ce1ccf80d6fee",
+      "status" : "passed",
+      "time" : {
+        "start" : 1750621087142,
+        "stop" : 1750621094317,
+        "duration" : 7175
+      }
+    }, {
+      "uid" : "8212ced4191e3e18",
+      "status" : "skipped",
+      "time" : {
+        "start" : 1750619099536,
+        "stop" : 1750619102486,
+        "duration" : 2950
+      }
+    }, {
+      "uid" : "a9d42d46b7876d05",
+      "status" : "passed",
+      "time" : {
+        "start" : 1750618056660,
+        "stop" : 1750618063783,
+        "duration" : 7123
+      }
+    } ],
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "746d8f83ad64b4bb.json",
+  "parameterValues" : [ ]
+}
