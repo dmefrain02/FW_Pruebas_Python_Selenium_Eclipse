@@ -1,0 +1,138 @@
+{
+  "uid" : "c34ccc425524879e",
+  "name" : "Mover elemento en la pantalla",
+  "fullName" : "Busqueda en Google: Mover elemento en la pantalla",
+  "historyId" : "1e40314aa5cff706b8e37c8f315a9313",
+  "time" : {
+    "start" : 1750621463868,
+    "stop" : 1750621473928,
+    "duration" : 10060
+  },
+  "status" : "broken",
+  "statusMessage" : "AttributeError: 'Context' object has no attribute 'assertEqual'\n",
+  "statusTrace" : "  File \"C:\\Users\\dmefr\\OneDrive\\Escritorio\\FW_Pruebas_Python_Selenium_VSCode\\EnviromentQA\\Lib\\site-packages\\behave\\model.py\", line 1329, in run\n    match.run(runner.context)\n    ~~~~~~~~~^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\dmefr\\OneDrive\\Escritorio\\FW_Pruebas_Python_Selenium_VSCode\\EnviromentQA\\Lib\\site-packages\\behave\\matchers.py\", line 98, in run\n    self.func(context, *args, **kwargs)\n    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"features\\steps\\steps1.py\", line 35, in step_click_login\n    Selenium.Assert_Equal(context, 'text_drop', 'Dropped!', 'No se mostro el texto esperado')\n    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\dmefr\\OneDrive\\Escritorio\\FW_Pruebas_Python_Selenium_VSCode\\EnviromentQA\\src\\Function\\Functions.py\", line 874, in Assert_Equal\n    return self.assertEqual(Functions.obtener_Texto(self, elemento),texto_esperado, msj)\n           ^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\dmefr\\OneDrive\\Escritorio\\FW_Pruebas_Python_Selenium_VSCode\\EnviromentQA\\Lib\\site-packages\\behave\\runner.py\", line 321, in __getattr__\n    raise AttributeError(msg)\n",
+  "flaky" : false,
+  "beforeStages" : [ ],
+  "testStage" : {
+    "status" : "broken",
+    "statusMessage" : "AttributeError: 'Context' object has no attribute 'assertEqual'\n",
+    "statusTrace" : "  File \"C:\\Users\\dmefr\\OneDrive\\Escritorio\\FW_Pruebas_Python_Selenium_VSCode\\EnviromentQA\\Lib\\site-packages\\behave\\model.py\", line 1329, in run\n    match.run(runner.context)\n    ~~~~~~~~~^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\dmefr\\OneDrive\\Escritorio\\FW_Pruebas_Python_Selenium_VSCode\\EnviromentQA\\Lib\\site-packages\\behave\\matchers.py\", line 98, in run\n    self.func(context, *args, **kwargs)\n    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"features\\steps\\steps1.py\", line 35, in step_click_login\n    Selenium.Assert_Equal(context, 'text_drop', 'Dropped!', 'No se mostro el texto esperado')\n    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\dmefr\\OneDrive\\Escritorio\\FW_Pruebas_Python_Selenium_VSCode\\EnviromentQA\\src\\Function\\Functions.py\", line 874, in Assert_Equal\n    return self.assertEqual(Functions.obtener_Texto(self, elemento),texto_esperado, msj)\n           ^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\dmefr\\OneDrive\\Escritorio\\FW_Pruebas_Python_Selenium_VSCode\\EnviromentQA\\Lib\\site-packages\\behave\\runner.py\", line 321, in __getattr__\n    raise AttributeError(msg)\n",
+    "steps" : [ {
+      "name" : "Given el usuario abre el navegador a DemoQA",
+      "time" : {
+        "start" : 1750621463869,
+        "stop" : 1750621466048,
+        "duration" : 2179
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "hasContent" : false,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
+    }, {
+      "name" : "When ingresa a la pagina de DemoQA",
+      "time" : {
+        "start" : 1750621466048,
+        "stop" : 1750621472211,
+        "duration" : 6163
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "hasContent" : false,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
+    }, {
+      "name" : "When usuario arrastra el elemento \"Draggable\" a la posición \"100, 200\"",
+      "time" : {
+        "start" : 1750621472211,
+        "stop" : 1750621473922,
+        "duration" : 1711
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ {
+        "uid" : "c0fb8c950a9b4ad4",
+        "name" : "Arrastrar y Soltar",
+        "source" : "c0fb8c950a9b4ad4.png",
+        "type" : "image/png",
+        "size" : 250454
+      } ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "hasContent" : true,
+      "attachmentsCount" : 1,
+      "shouldDisplayMessage" : false
+    }, {
+      "name" : "Then verifica que el elemento se ha movido a la nueva posición",
+      "time" : {
+        "start" : 1750621473922,
+        "stop" : 1750621473927,
+        "duration" : 5
+      },
+      "status" : "broken",
+      "statusMessage" : "AttributeError: 'Context' object has no attribute 'assertEqual'\n",
+      "statusTrace" : "  File \"C:\\Users\\dmefr\\OneDrive\\Escritorio\\FW_Pruebas_Python_Selenium_VSCode\\EnviromentQA\\Lib\\site-packages\\behave\\model.py\", line 1329, in run\n    match.run(runner.context)\n    ~~~~~~~~~^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\dmefr\\OneDrive\\Escritorio\\FW_Pruebas_Python_Selenium_VSCode\\EnviromentQA\\Lib\\site-packages\\behave\\matchers.py\", line 98, in run\n    self.func(context, *args, **kwargs)\n    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"features\\steps\\steps1.py\", line 35, in step_click_login\n    Selenium.Assert_Equal(context, 'text_drop', 'Dropped!', 'No se mostro el texto esperado')\n    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\dmefr\\OneDrive\\Escritorio\\FW_Pruebas_Python_Selenium_VSCode\\EnviromentQA\\src\\Function\\Functions.py\", line 874, in Assert_Equal\n    return self.assertEqual(Functions.obtener_Texto(self, elemento),texto_esperado, msj)\n           ^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\dmefr\\OneDrive\\Escritorio\\FW_Pruebas_Python_Selenium_VSCode\\EnviromentQA\\Lib\\site-packages\\behave\\runner.py\", line 321, in __getattr__\n    raise AttributeError(msg)\n",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "hasContent" : true,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : true
+    }, {
+      "name" : "And cierra el navegador",
+      "time" : {
+        "start" : 1750621473928,
+        "stop" : 1750621473928,
+        "duration" : 0
+      },
+      "status" : "skipped",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "hasContent" : false,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
+    } ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 5,
+    "hasContent" : true,
+    "attachmentsCount" : 1,
+    "shouldDisplayMessage" : false
+  },
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "severity",
+    "value" : "normal"
+  }, {
+    "name" : "feature",
+    "value" : "Busqueda en Google"
+  }, {
+    "name" : "framework",
+    "value" : "behave"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : true,
+  "retry" : true,
+  "extra" : {
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "c34ccc425524879e.json",
+  "parameterValues" : [ ]
+}

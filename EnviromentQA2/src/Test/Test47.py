@@ -1,6 +1,7 @@
+# -*- coding: utf-8 -*- 
 import unittest
-from Function.Functions import Functions as Selenium
-from Function.Inicializar import Inicializar
+from src.Function.Functions import Functions as Selenium
+from src.Function.Inicializar import Inicializar
 import time
 import subprocess
 import threading
@@ -10,7 +11,7 @@ class Test(unittest.TestCase):
     def setUp(self):
         Selenium.obtener_archivo_json(self, 'Localizadores_Spotify')
         
-    def Test_01(self):
+    def test_01(self):
         for Nav_Sel_Grid in Inicializar.Navegadores_Sel_Grid:
             Selenium.abrir_navegador(self,Nav_Sel_Grid, True)
             Selenium.get_url_driver(self,"https://demoqa.com/alerts")

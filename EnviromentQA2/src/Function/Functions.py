@@ -36,26 +36,22 @@ from selenium.webdriver.remote import remote_connection
 #import aspose.pdf as ap
 #import urllib
 from urllib3.exceptions import NewConnectionError, MaxRetryError
-
-from Function.Inicializar import Inicializar
-from Function.DriverFactory import DriverFactory
+from src.Function.Inicializar import Inicializar
+from src.Function.DriverFactory import DriverFactory
 from selenium.common.exceptions import NoSuchElementException,NoAlertPresentException,NoSuchWindowException,TimeoutException, UnexpectedAlertPresentException, WebDriverException
 import json
 import pytest
-from _ctypes_test import func
-from locale import str
-from _testmultiphase import Str
 import time
 import openpyxl
+from idlelib.calltip import get_entity
 import re # para expresiones regulares
 import os # para capturas
 import allure
 import pyodbc
 from allure_commons.types import AttachmentType
 from pickle import NONE
-from _pytest.python import Function
 #from pkg_resources._vendor.jaraco.functools import except_
-from _pytest.threadexception import catch_threading_exception
+#from _pytest.threadexception import catch_threading_exception
 from http.cookiejar import Cookie
 from PIL import Image #Pillow - Manejo de Imagenes
 from io import BytesIO #Para conocer tamaños en bytes, ya esta instalado en Python
@@ -417,7 +413,6 @@ class Functions(Inicializar):
     #Obtener Archivo JSON con los localizadores por medio del nombre      
     def obtener_archivo_json(self,file):
         json_ruta = Inicializar.Json + "/"+file+'.json'
-        
         try:
             with open(json_ruta,'r')as read_file:
                 self.json_strings = json.loads(read_file.read())
@@ -428,6 +423,7 @@ class Functions(Inicializar):
         except FileNotFoundError:
             self.json_strings =False
             pytest.skip(u'Obtener Archivo Json: No se encontro el archivo json' + file)
+            obtener_archivo_json
             Functions.cerrar_driver_navegador(self)
      
     #Obtener entidad de elemento en el archivo JSON       
@@ -675,6 +671,7 @@ class Functions(Inicializar):
     def crear_path(self):
         fecha = Functions.obtener_fecha_actual(self)
         GeneralPath = Inicializar.Path_Evidencias
+        print(f'Ruta General de las Capturas: {GeneralPath}')
         DriverTest = self.Nav_utilizado_capturas
             
         TestCase =self.__class__.__name__
@@ -682,8 +679,10 @@ class Functions(Inicializar):
         
         if   ((Inicializar.TestCase_x_Context =="S") and (GeneralPath != "")):
             path = f"{GeneralPath}\{fecha}\Pruebas\{TestCase}\{DriverTest}\{HoraActual}"
+            print(f"Ruta Contruida para guardar las capturas: {path}")
         elif ((Inicializar.TestCase_x_Context == "N") and (GeneralPath != "")):
             path =f"{GeneralPath}\{fecha}\{TestCase}\{DriverTest}\{HoraActual}"
+            print(f"Ruta Contruida para guardar las capturas: {path}")
         elif (((Inicializar.TestCase_x_Context == "N") or (Inicializar.TestCase_x_Context == "S")) and (GeneralPath == "")):
             path = f'{Inicializar.BaseDir}\Capturas\{fecha}\{TestCase}\{DriverTest}\{HoraActual}'
             print(f'No se encuentra establecida la ruta para guardar la captura de pantalla, se guardara en la carpeta raiz del framework de pruebas.\nEn: {path}')
@@ -882,8 +881,7 @@ class Functions(Inicializar):
         return self.assertTrue(elemento.is_displayed()==True,msj)
     def Assert_In_Elemento(self,texto_contenido, texto_ingresado_alert):
         return self.assertIn(texto_contenido, f'{texto_ingresado_alert}')
-
-                         
+                  
     #Mover Mouse en aplicativo web
     def Mover_Mouse_x_App_Web(self,entidad):
         action = ActionChains(self.driver)
@@ -1225,7 +1223,4 @@ class Functions(Inicializar):
     def stop(self):
         self.out.release()
         print(f"Video guardado en: {self.output_file}")
-        
-        
-        
         

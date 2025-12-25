@@ -1,0 +1,21 @@
+[ {
+  "uid" : "746d8f83ad64b4bb",
+  "name" : "Realizar una búsqueda en Google",
+  "time" : {
+    "start" : 1750621864036,
+    "stop" : 1750621873882,
+    "duration" : 9846
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "9365a0badd778889",
+  "name" : "Mover elemento en la pantalla",
+  "time" : {
+    "start" : 1750621873884,
+    "stop" : 1750621886409,
+    "duration" : 12525
+  },
+  "status" : "broken",
+  "severity" : "normal"
+} ]

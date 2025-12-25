@@ -1,4 +1,4 @@
-from Function.Inicializar import Inicializar
+from src.Function.Inicializar import Inicializar
 from selenium import webdriver
 
 #Librerias Webdrivers Services de los navegadores

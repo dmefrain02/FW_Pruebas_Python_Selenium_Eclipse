@@ -1,0 +1,29 @@
+{
+  "uid" : "83edc06c07f9ae9e47eb6dd1b683e4e2",
+  "name" : "packages",
+  "children" : [ {
+    "name" : "Realizar una búsqueda en Google",
+    "uid" : "746d8f83ad64b4bb",
+    "parentUid" : "83edc06c07f9ae9e47eb6dd1b683e4e2",
+    "status" : "passed",
+    "time" : {
+      "start" : 1750621864036,
+      "stop" : 1750621873882,
+      "duration" : 9846
+    },
+    "flaky" : true,
+    "parameters" : [ ]
+  }, {
+    "name" : "Mover elemento en la pantalla",
+    "uid" : "9365a0badd778889",
+    "parentUid" : "83edc06c07f9ae9e47eb6dd1b683e4e2",
+    "status" : "broken",
+    "time" : {
+      "start" : 1750621873884,
+      "stop" : 1750621886409,
+      "duration" : 12525
+    },
+    "flaky" : true,
+    "parameters" : [ ]
+  } ]
+}

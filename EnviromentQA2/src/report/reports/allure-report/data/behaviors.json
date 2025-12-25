@@ -1,0 +1,33 @@
+{
+  "uid" : "b1a8273437954620fa374b796ffaacdd",
+  "name" : "behaviors",
+  "children" : [ {
+    "name" : "Busqueda en Google",
+    "children" : [ {
+      "name" : "Realizar una búsqueda en Google",
+      "uid" : "746d8f83ad64b4bb",
+      "parentUid" : "44c7d234fe8dff24cc384e8c800c6cd4",
+      "status" : "passed",
+      "time" : {
+        "start" : 1750621864036,
+        "stop" : 1750621873882,
+        "duration" : 9846
+      },
+      "flaky" : true,
+      "parameters" : [ ]
+    }, {
+      "name" : "Mover elemento en la pantalla",
+      "uid" : "9365a0badd778889",
+      "parentUid" : "44c7d234fe8dff24cc384e8c800c6cd4",
+      "status" : "broken",
+      "time" : {
+        "start" : 1750621873884,
+        "stop" : 1750621886409,
+        "duration" : 12525
+      },
+      "flaky" : true,
+      "parameters" : [ ]
+    } ],
+    "uid" : "44c7d234fe8dff24cc384e8c800c6cd4"
+  } ]
+}

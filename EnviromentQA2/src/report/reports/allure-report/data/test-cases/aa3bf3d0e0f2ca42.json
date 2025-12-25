@@ -1,0 +1,138 @@
+{
+  "uid" : "aa3bf3d0e0f2ca42",
+  "name" : "Realizar una búsqueda en Google",
+  "fullName" : "Busqueda en Google: Realizar una búsqueda en Google",
+  "historyId" : "8605d0dd89abc7a7b52b3cb0e153c309",
+  "time" : {
+    "start" : 1750621784152,
+    "stop" : 1750621793914,
+    "duration" : 9762
+  },
+  "status" : "passed",
+  "flaky" : false,
+  "beforeStages" : [ ],
+  "testStage" : {
+    "status" : "passed",
+    "steps" : [ {
+      "name" : "Given el usuario abre el navegador",
+      "time" : {
+        "start" : 1750621784152,
+        "stop" : 1750621786297,
+        "duration" : 2145
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "hasContent" : false,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
+    }, {
+      "name" : "When ingresa a la pagina de Google",
+      "time" : {
+        "start" : 1750621786297,
+        "stop" : 1750621788054,
+        "duration" : 1757
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "hasContent" : false,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
+    }, {
+      "name" : "When usuario digita el texto QA Tecnology CRC Youtube",
+      "time" : {
+        "start" : 1750621788054,
+        "stop" : 1750621788219,
+        "duration" : 165
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ {
+        "uid" : "8071f13321016986",
+        "name" : "Busqueda de texto",
+        "source" : "8071f13321016986.png",
+        "type" : "image/png",
+        "size" : 34744
+      } ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "hasContent" : true,
+      "attachmentsCount" : 1,
+      "shouldDisplayMessage" : false
+    }, {
+      "name" : "Then presiona la tecla Enter",
+      "time" : {
+        "start" : 1750621788219,
+        "stop" : 1750621789764,
+        "duration" : 1545
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ {
+        "uid" : "4bd33eced4a40979",
+        "name" : "Presionar Enter",
+        "source" : "4bd33eced4a40979.png",
+        "type" : "image/png",
+        "size" : 46896
+      } ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "hasContent" : true,
+      "attachmentsCount" : 1,
+      "shouldDisplayMessage" : false
+    }, {
+      "name" : "And esperar los resultados de la búsqueda",
+      "time" : {
+        "start" : 1750621789765,
+        "stop" : 1750621793913,
+        "duration" : 4148
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "hasContent" : false,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
+    } ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 5,
+    "hasContent" : true,
+    "attachmentsCount" : 2,
+    "shouldDisplayMessage" : false
+  },
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "severity",
+    "value" : "normal"
+  }, {
+    "name" : "feature",
+    "value" : "Busqueda en Google"
+  }, {
+    "name" : "framework",
+    "value" : "behave"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : true,
+  "retry" : true,
+  "extra" : {
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "aa3bf3d0e0f2ca42.json",
+  "parameterValues" : [ ]
+}

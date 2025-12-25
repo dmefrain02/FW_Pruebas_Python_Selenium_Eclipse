@@ -1,0 +1,25 @@
+{
+  "uid" : "4b4757e66a1912dae1a509f688f20b0f",
+  "name" : "categories",
+  "children" : [ {
+    "name" : "Test defects",
+    "children" : [ {
+      "name" : "selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"[id=\"text_drop\"]\"}\n  (Session info: chrome=137.0.7151.120); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception\nStacktrace:\n\tGetHandleVerifier [0x0x613b03+62899]\n\tGetHandleVerifier [0x0x613b44+62964]\n\t(No symbol) [0x0x4410f3]\n\t(No symbol) [0x0x48980e]\n\t(No symbol) [0x0x489bab]\n\t(No symbol) [0x0x4d25c2]\n\t(No symbol) [0x0x4ae554]\n\t(No symbol) [0x0x4cfd81]\n\t(No symbol) [0x0x4ae306]\n\t(No symbol) [0x0x47d670]\n\t(No symbol) [0x0x47e4e4]\n\tGetHandleVerifier [0x0x874793+2556483]\n\tGetHandleVerifier [0x0x86fd02+2537394]\n\tGetHandleVerifier [0x0x63a2fa+220586]\n\tGetHandleVerifier [0x0x62aae8+157080]\n\tGetHandleVerifier [0x0x63141d+184013]\n\tGetHandleVerifier [0x0x61ba68+95512]\n\tGetHandleVerifier [0x0x61bc10+95936]\n\tGetHandleVerifier [0x0x606b5a+9738]\n\tBaseThreadInitThunk [0x0x753c5d49+25]\n\tRtlInitializeExceptionChain [0x0x774bd09b+107]\n\tRtlGetAppContainerNamedObjectPath [0x0x774bd021+561]\n\n",
+      "children" : [ {
+        "name" : "Mover elemento en la pantalla",
+        "uid" : "9365a0badd778889",
+        "parentUid" : "6887c67d75561c1b23a2825786c8d526",
+        "status" : "broken",
+        "time" : {
+          "start" : 1750621873884,
+          "stop" : 1750621886409,
+          "duration" : 12525
+        },
+        "flaky" : true,
+        "parameters" : [ ]
+      } ],
+      "uid" : "6887c67d75561c1b23a2825786c8d526"
+    } ],
+    "uid" : "bdbf199525818fae7a8651db9eafe741"
+  } ]
+}

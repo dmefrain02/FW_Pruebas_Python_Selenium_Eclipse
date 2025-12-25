@@ -1,0 +1,132 @@
+{
+  "uid" : "4fbf0cd48582e3",
+  "name" : "Mover elemento en la pantalla",
+  "fullName" : "Busqueda en Google: Mover elemento en la pantalla",
+  "historyId" : "1e40314aa5cff706b8e37c8f315a9313",
+  "time" : {
+    "start" : 1750621356021,
+    "stop" : 1750621364522,
+    "duration" : 8501
+  },
+  "status" : "broken",
+  "statusMessage" : "TypeError: Functions.captura_pantalla_allure() missing 1 required positional argument: 'Descripcion'\n",
+  "statusTrace" : "  File \"C:\\Users\\dmefr\\OneDrive\\Escritorio\\FW_Pruebas_Python_Selenium_VSCode\\EnviromentQA\\Lib\\site-packages\\behave\\model.py\", line 1329, in run\n    match.run(runner.context)\n    ~~~~~~~~~^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\dmefr\\OneDrive\\Escritorio\\FW_Pruebas_Python_Selenium_VSCode\\EnviromentQA\\Lib\\site-packages\\behave\\matchers.py\", line 98, in run\n    self.func(context, *args, **kwargs)\n    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"features\\steps\\steps1.py\", line 29, in step_mover_arrastrar\n    Selenium.captura_pantalla_allure(context)\n    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^\n",
+  "flaky" : false,
+  "beforeStages" : [ ],
+  "testStage" : {
+    "status" : "broken",
+    "statusMessage" : "TypeError: Functions.captura_pantalla_allure() missing 1 required positional argument: 'Descripcion'\n",
+    "statusTrace" : "  File \"C:\\Users\\dmefr\\OneDrive\\Escritorio\\FW_Pruebas_Python_Selenium_VSCode\\EnviromentQA\\Lib\\site-packages\\behave\\model.py\", line 1329, in run\n    match.run(runner.context)\n    ~~~~~~~~~^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\dmefr\\OneDrive\\Escritorio\\FW_Pruebas_Python_Selenium_VSCode\\EnviromentQA\\Lib\\site-packages\\behave\\matchers.py\", line 98, in run\n    self.func(context, *args, **kwargs)\n    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"features\\steps\\steps1.py\", line 29, in step_mover_arrastrar\n    Selenium.captura_pantalla_allure(context)\n    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^\n",
+    "steps" : [ {
+      "name" : "Given el usuario abre el navegador a DemoQA",
+      "time" : {
+        "start" : 1750621356021,
+        "stop" : 1750621358212,
+        "duration" : 2191
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "hasContent" : false,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
+    }, {
+      "name" : "When ingresa a la pagina de DemoQA",
+      "time" : {
+        "start" : 1750621358212,
+        "stop" : 1750621362915,
+        "duration" : 4703
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "hasContent" : false,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
+    }, {
+      "name" : "When usuario arrastra el elemento \"Draggable\" a la posición \"100, 200\"",
+      "time" : {
+        "start" : 1750621362915,
+        "stop" : 1750621364520,
+        "duration" : 1605
+      },
+      "status" : "broken",
+      "statusMessage" : "TypeError: Functions.captura_pantalla_allure() missing 1 required positional argument: 'Descripcion'\n",
+      "statusTrace" : "  File \"C:\\Users\\dmefr\\OneDrive\\Escritorio\\FW_Pruebas_Python_Selenium_VSCode\\EnviromentQA\\Lib\\site-packages\\behave\\model.py\", line 1329, in run\n    match.run(runner.context)\n    ~~~~~~~~~^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\dmefr\\OneDrive\\Escritorio\\FW_Pruebas_Python_Selenium_VSCode\\EnviromentQA\\Lib\\site-packages\\behave\\matchers.py\", line 98, in run\n    self.func(context, *args, **kwargs)\n    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"features\\steps\\steps1.py\", line 29, in step_mover_arrastrar\n    Selenium.captura_pantalla_allure(context)\n    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^\n",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "hasContent" : true,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : true
+    }, {
+      "name" : "Then verifica que el elemento se ha movido a la nueva posición",
+      "time" : {
+        "start" : 1750621364522,
+        "stop" : 1750621364522,
+        "duration" : 0
+      },
+      "status" : "skipped",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "hasContent" : false,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
+    }, {
+      "name" : "And cierra el navegador",
+      "time" : {
+        "start" : 1750621364522,
+        "stop" : 1750621364522,
+        "duration" : 0
+      },
+      "status" : "skipped",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "hasContent" : false,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
+    } ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 5,
+    "hasContent" : true,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  },
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "severity",
+    "value" : "normal"
+  }, {
+    "name" : "feature",
+    "value" : "Busqueda en Google"
+  }, {
+    "name" : "framework",
+    "value" : "behave"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : true,
+  "retry" : true,
+  "extra" : {
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "4fbf0cd48582e3.json",
+  "parameterValues" : [ ]
+}

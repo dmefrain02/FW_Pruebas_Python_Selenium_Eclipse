@@ -1,0 +1,26 @@
+{
+	"Busqueda_Mercado_Libre":{
+		"GetFieldBy":"xpath",
+		"ValueToFind":"//input[@id='cb1-edit']"		
+	},
+	"Producto_Buscado":{
+		"GetFieldBy":"xpath",
+		"ValueToFind":"//body/main[@id='root-app']/div[1]/div[2]/section[1]/div[5]/ol[1]/li[1]/div[1]/div[1]/div[1]/div[2]/h3[1]"
+	},
+	"txt_busqueda_google":{
+		"GetFieldBy":"id",
+		"ValueToFind":"APjFqb"
+	},
+	"carga_archivo":{
+		"GetFieldBy": "xpath",
+		"ValueToFind":"//input[@id='file-upload']"
+	},
+	"btn_carga_archivo":{
+		"GetFieldBy": "xpath",
+		"ValueToFind":"//input[@id='file-submit']"
+	},
+	"archivo_cargado":{
+		"GetFieldBy": "xpath",
+		"ValueToFind":"//h3[contains(text(),'File Uploaded!')]"
+	}
+}
