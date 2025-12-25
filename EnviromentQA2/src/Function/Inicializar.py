@@ -21,9 +21,11 @@ class Inicializar():
     Carpeta_Videos = BaseDir + u'\Videos'
     
     #Variable en el archivo inicializar
-    URL_SeleniumGrid = "http://localhost:4444/wd/hub"
+    PortSelGrid = "4444"
+    URL_SeleniumGrid = u"http://localhost:"+PortSelGrid+"/wd/hub"
     #Para utilizar con Docker Compose. Si quiere utilizar con Dockers individuales, se requiere dejar solo el browser en docker a enviar el browser docker por medio de la variable navegador.
-    Navegadores_Sel_Grid = ["Chrome_Docker","Edge_Docker","Firefox_Docker"]
+    Navegadores_Sel_Grid = ["Chrome_Docker","Firefox_Docker"]
+    #Navegadores_Sel_Grid = ["Chrome_Docker","Edge_Docker","Firefox_Docker"]
     #Navegadores_Sel_Grid = ["Chrome_Remote","Edge_Remote"] #"Firefox_Remote"
     
     #Tiempo de espera utilizado dentro del Framework
